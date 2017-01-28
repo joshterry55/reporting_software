@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 }
 
   namespace :api do
+    get 'users/info'
     resources :users
     resources :companies
     resources :regions
