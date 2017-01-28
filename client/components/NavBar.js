@@ -27,17 +27,22 @@ class App extends React.Component {
       case 'Employee':
         return(
           <div>
-            <li><Link to='/'>My Schedule</Link></li>
-            <li><Link to='/'>My Info</Link></li>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/announcements'>Announcements</Link></li>
+            <li><Link to='/leaderboards'>Boards</Link></li>
+            <li><Link to='/trainings'>Training</Link></li>
+            <li><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
             <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
           </div>
         )
       case 'Admin':
       return(
         <div>
-          <li><Link to='/'>Schedule</Link></li>
-          <li><Link to='/'>Admin</Link></li>
-          <li><Link to='/'>My Info</Link></li>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/announcements'>Announcements</Link></li>
+          <li><Link to='/leaderboards'>Boards</Link></li>
+          <li><Link to='/trainings'>Training</Link></li>
+          <li><Link to='/admin'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
@@ -56,7 +61,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#60b9e8'}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#ef5262'}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span className="logo-text">Reports</span> <span className="little-bee"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>

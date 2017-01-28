@@ -6,6 +6,11 @@ import NoMatch from './components/NoMatch';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
+import Announcements from './components/Announcements'
+import Leaderboards from './components/Leaderboards'
+import Trainings from './components/Trainings'
+import Employee from './components/Employee'
+import Admin from './components/Admin'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -28,11 +33,15 @@ const AdminRoutes = AdminAccess( (props) => props.children )
 export default (
   <Route>
     <Route path="/" component={App}>
-      
       <Route path='/signup' component={SignUp} />
       <Route path='/signin' component={SignIn} />
       <Route component={AuthWrapper}>
+        <Route path='/announcements' component={Announcements} />
+        <Route path='/leaderboards' component={Leaderboards}/>
+        <Route path='/employee' component={Employee} />
+        <Route path='/trainings' component={Trainings} />
         <Route component={AdminRoutes}>
+          <Route path='/admin' component={Admin} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>
