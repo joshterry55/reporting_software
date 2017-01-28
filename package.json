@@ -26,10 +26,10 @@
     "redux-thunk": "^2.1.0",
     "stats-webpack-plugin": "^0.2.1",
     "webpack": "^1.9.11",
-    "webpack-dev-middleware": "1.7.0"
+    "webpack-dev-middleware": "1.7.0",
+    "webpack-dev-server": "^1.9.0",
   },
   "devDependencies": {
-    "webpack-dev-server": "^1.9.0",
     "yarn": "^0.19.1"
   }
 }
