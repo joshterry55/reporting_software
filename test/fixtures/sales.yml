@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  kw: MyString
+  sit_down: 1
+  site_survey: 1
+  close: 1
+  cancel: 1
+  date: MyString
+  user: one
+
+two:
+  first_name: MyString
+  last_name: MyString
+  kw: MyString
+  sit_down: 1
+  site_survey: 1
+  close: 1
+  cancel: 1
+  date: MyString
+  user: two

@@ -6,10 +6,7 @@ class User < ApplicationRecord
   belongs_to :company, optional: true
   belongs_to :region, optional: true
   belongs_to :office, optional: true
-  has_many :sitdowns
-  has_many :closes
-  has_many :sitesurveys
-  has_many :cancels
+  has_many :sales
   validates_presence_of :first_name, :last_name, :role
   validates_inclusion_of :role, in: %w(Admin Employee)
 

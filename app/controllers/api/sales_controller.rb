@@ -1,4 +1,4 @@
-class Api::SitesurveysController < ApplicationController
+class Api::SalesController < ApplicationController
   def index
   end
 

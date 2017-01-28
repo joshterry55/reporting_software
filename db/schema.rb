@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127233620) do
+ActiveRecord::Schema.define(version: 20170128224439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,21 @@ ActiveRecord::Schema.define(version: 20170127233620) do
     t.index ["company_id"], name: "index_regions_on_company_id", using: :btree
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "kw"
+    t.integer  "sit_down"
+    t.integer  "site_survey"
+    t.integer  "close"
+    t.integer  "cancel"
+    t.string   "date"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
+  end
+
   create_table "sitdowns", force: :cascade do |t|
     t.string   "number",     null: false
     t.string   "date",       null: false
@@ -115,6 +130,7 @@ ActiveRecord::Schema.define(version: 20170127233620) do
   add_foreign_key "closes", "users"
   add_foreign_key "offices", "regions"
   add_foreign_key "regions", "companies"
+  add_foreign_key "sales", "users"
   add_foreign_key "sitdowns", "users"
   add_foreign_key "sitesurveys", "users"
   add_foreign_key "users", "companies"
