@@ -28,6 +28,7 @@ class Regions extends React.Component {
     }).done( region => {
       this.props.dispatch({type: 'ADD_ASSIGNED_REGION', region})
       this.refs.regionForm.reset()
+      this.toggleAdd()
     }).fail( data => {
     })
   }

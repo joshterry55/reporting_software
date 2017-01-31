@@ -8,13 +8,17 @@ class Region extends React.Component {
 
   componentDidMount() {
     let regionId = parseInt(this.props.params.id)
-    debugger
+    return this.props.assignedregions.map( region => {
+      if(region.id === regionId) {
+        this.props.dispatch({type: 'CURRENT_REGION', region })
+      }
+    });
   }
 
   display() {
     return(
       <div>
-        REGION
+        {this.props.currentregion.name}
       </div>
     )
   }
@@ -29,8 +33,8 @@ class Region extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user } = state
-  return { user }
+  let { user, assignedregions, currentregion } = state
+  return { user, assignedregions, currentregion }
 }
 
 export default connect(mapStateToProps)(Region)

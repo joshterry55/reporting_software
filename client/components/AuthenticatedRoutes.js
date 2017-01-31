@@ -4,18 +4,6 @@ import { login } from '../actions/auth'
 
 class AuthenticatedRoutes extends React.Component {
 
-  componentDidMount() {
-    $.ajax({
-      url: '/api/companies',
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( company => {
-      this.props.dispatch({ type: 'ASSIGNED_COMPANY', company })
-    }).fail( data => {
-      console.log(data);
-    });
-  }
-
   render() {
     return(
       <div>
