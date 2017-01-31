@@ -12,6 +12,7 @@ import Trainings from './components/Trainings'
 import Employee from './components/Employee'
 import Admin from './components/Admin'
 import Company from './components/Company'
+import CreateCompany from './components/CreateCompany'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -43,6 +44,7 @@ export default (
         <Route path='/trainings' component={Trainings} />
         <Route component={AdminRoutes}>
           <Route path='/company' component={Company} />
+          <Route path='/createcompany' component={CreateCompany} />
           <Route path='/admin' component={Admin} />
         </Route>
       </Route>

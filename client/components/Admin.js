@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux'
 
 class Admin extends React.Component {
   constructor(props) {
@@ -7,10 +8,29 @@ class Admin extends React.Component {
 
   }
 
+  componentDidMount() {
+    if(this.props.user.assigned_company.length) {
+      $.ajax({
+        url: '/api/companies',
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( company => {
+        this.props.dispatch({ type: 'ASSIGNED_COMPANY', company })
+      }).fail( data => {
+        console.log(data);
+      });
+    }
+  }
+
   display() {
-    return(
-      <Link to='/company'>Company</Link>
-    )
+    if(this.props.assignedcompany.length)
+      return(
+        <Link to='/company'>{this.props.assignedcompany[0].name}</Link>
+      )
+    else
+      return(
+        <Link to='/createcompany'>Create a Company</Link>
+      )
   }
 
   render() {
@@ -66,4 +86,9 @@ class Admin extends React.Component {
 //   )
 // }
 
-export default Admin
+const mapStateToProps = (state) => {
+  let { user, assignedcompany } = state
+  return { user, assignedcompany }
+}
+
+export default connect(mapStateToProps)(Admin)
