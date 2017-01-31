@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { login } from '../actions/auth'
+import { companysetup, regionsetup, officesetup } from '../actions/companysetup'
 import { setFlash } from '../actions/flash'
 
 class SignIn extends React.Component {
@@ -25,6 +26,8 @@ class SignIn extends React.Component {
       data: user
     }).done( user => {
       this.props.dispatch(login(user));
+      this.props.dispatch(companysetup());
+      this.props.dispatch(regionsetup())
       this.props.history.push('/')
     }).fail( err => {
       debugger

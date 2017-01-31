@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router';
 
 class Regions extends React.Component {
   constructor(props) {
@@ -9,20 +10,7 @@ class Regions extends React.Component {
 
     this.createRegion = this.createRegion.bind(this)
     this.toggleAdd = this.toggleAdd.bind(this)
-  }
-
-  componentDidMount() {
-    let companyId = this.props.user.assigned_company[0].id
-    $.ajax({
-      url: '/api/regions',
-      type: 'GET',
-      dataType: 'JSON',
-      data: { company_id: companyId }
-    }).done( regions => {
-      this.props.dispatch({ type: 'ASSIGNED_REGIONS', regions })
-    }).fail( data => {
-      console.log(data);
-    });
+    this.displayRegions = this.displayRegions.bind(this)
   }
 
   createRegion(e) {
@@ -66,18 +54,30 @@ class Regions extends React.Component {
     }
   }
 
+  displayRegions() {
+    return this.props.assignedregions.map( region => {
+      return(
+        <div key={region.id}><Link to={`/region/${region.id}`}>{region.name}</Link></div>
+      );
+    });
+  }
+
+
   render() {
     return(
       <div>
         {this.display()}
+        <div className='collection'>
+          {this.displayRegions()}
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  let { user } = state
-  return { user }
+  let { user, assignedregions } = state
+  return { user, assignedregions }
 }
 
 export default connect(mapStateToProps)(Regions)

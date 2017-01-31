@@ -1,7 +1,10 @@
 class Api::RegionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
-    @company_id = params[:company_id]
-    @regions = Region.where(company_id: @company_id)
+    @regions = current_user.assigned_regions
+    # @company_id = params[:company_id]
+    # @regions = Region.where(company_id: @company_id)
     render json: @regions
   end
 

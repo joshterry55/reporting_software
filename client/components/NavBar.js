@@ -5,16 +5,11 @@ import { logout, login } from '../actions/auth';
 import Flash from '../components/Flash';
 
 
-class App extends React.Component {
+class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.navs = this.navs.bind(this)
     this.logout = this.logout.bind(this)
-  }
-
-  componentDidMount() {
-    $('.button-collapse').sideNav({closeOnClick: true, menuWidth: 200})
-    this.props.dispatch(login());
   }
 
   logout(e) {
@@ -78,7 +73,6 @@ class App extends React.Component {
         <div id="flashContainer" style={{position: 'fixed', top:'64px', width: '100%', opacity: '0.85', textAlign: 'center', zIndex:'999'}}>
           <Flash />
         </div>
-        { this.props.children }
       </div>
     )
   }
@@ -88,4 +82,4 @@ const mapStateToProps = (state) => {
   return { user: state.user }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(NavBar);

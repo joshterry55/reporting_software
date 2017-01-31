@@ -8,19 +8,19 @@ class Admin extends React.Component {
 
   }
 
-  componentDidMount() {
-    if(this.props.user.assigned_company.length) {
-      $.ajax({
-        url: '/api/companies',
-        type: 'GET',
-        dataType: 'JSON'
-      }).done( company => {
-        this.props.dispatch({ type: 'ASSIGNED_COMPANY', company })
-      }).fail( data => {
-        console.log(data);
-      });
-    }
-  }
+  // componentDidMount() {
+  //   if(this.props.user.assigned_company.length) {
+  //     $.ajax({
+  //       url: '/api/companies',
+  //       type: 'GET',
+  //       dataType: 'JSON'
+  //     }).done( company => {
+  //       this.props.dispatch({ type: 'ASSIGNED_COMPANY', company })
+  //     }).fail( data => {
+  //       console.log(data);
+  //     });
+  //   }
+  // }
 
   display() {
     if(this.props.assignedcompany.length)
