@@ -11,6 +11,7 @@ import Leaderboards from './components/Leaderboards'
 import Trainings from './components/Trainings'
 import Employee from './components/Employee'
 import Admin from './components/Admin'
+import Company from './components/Company'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -41,6 +42,7 @@ export default (
         <Route path='/employee' component={Employee} />
         <Route path='/trainings' component={Trainings} />
         <Route component={AdminRoutes}>
+          <Route path='/company' component={Company} />
           <Route path='/admin' component={Admin} />
         </Route>
       </Route>

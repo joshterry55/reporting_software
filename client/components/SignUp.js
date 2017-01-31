@@ -44,7 +44,7 @@ class SignUp extends React.Component {
     return(
       <div className='row container'>
         <div className='col s12 m10 offset-m1' style={styles.signUpBox}>
-          <h2 className='center'>Sign Up</h2>
+          <h3 className='center'>Sign Up</h3>
           <form className='col s10 offset-s1 m8 offset-m2' onSubmit={this.handleSubmit}>
             <input placeholder='first name' ref='first_name' required={true} />
             <input placeholder='last name' ref='last_name' required={true} />

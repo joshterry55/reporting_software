@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
   registrations: "api/registrations",
   sessions: "api/sessions",
+  invitations: "api/invitations"
 }
 
   namespace :api do

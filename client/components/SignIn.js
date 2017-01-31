@@ -41,7 +41,7 @@ class SignIn extends React.Component {
           <form className='col s10 offset-s1 m8 offset-m2' onSubmit={this.handleSubmit}>
             <input type="email" required={true} ref='email' placeholder='email' />
             <input type='password' required={true} ref='password' placeholder='password' />
-            <button className='btn'>Sign In</button>
+            <button className='btn' style={{backgroundColor: '#60b9e8'}}>Sign In</button>
           </form>
         </div>
       </div>
