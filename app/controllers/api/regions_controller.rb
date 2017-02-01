@@ -8,6 +8,11 @@ class Api::RegionsController < ApplicationController
     render json: @regions
   end
 
+  def show
+    @region = Region.find(params[:id])
+    render json: @region
+  end
+
   def new
   end
 
@@ -24,8 +29,6 @@ class Api::RegionsController < ApplicationController
   def edit
   end
 
-  def show
-  end
 
   private
 
