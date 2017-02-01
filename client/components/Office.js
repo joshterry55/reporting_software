@@ -21,15 +21,15 @@ class Office extends React.Component {
   render() {
     return(
       <div>
-        Office Page
+        {this.props.currentoffice.name}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  let { assignedoffices } = state
-  return { assignedoffices }
+  let { assignedoffices, currentoffice } = state
+  return { assignedoffices, currentoffice }
 }
 
 export default connect(mapStateToProps)(Office)
