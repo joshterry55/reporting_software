@@ -57,7 +57,7 @@ class NavBar extends React.Component {
   render() {
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#ef5262'}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#60b9e8'}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span className="logo-text">Reports</span> <span className="little-bee"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>

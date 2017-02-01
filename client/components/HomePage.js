@@ -57,7 +57,7 @@ class HomePage extends React.Component {
 						<div className="slider" style={{boxShadow: '0 0 25px rgba(0,0,0,0.60)'}}>
 					    <ul className="slides" onClick={this.nextSlide}>
 					      <li>
-					        <img src="http://lorempixel.com/580/250/nature/1" />
+					        <img src="http://res.cloudinary.com/dk2bj79p0/image/upload/v1485915389/Brio_Image_1_bvn3ag.jpg" />
 					        <div className="caption left-align">
 					          <h4 style={{marginBottom:'-15px', ...styles.textGlow}}>Welcome to</h4>
 					          <h3 style={styles.textGlow}>Reports</h3>

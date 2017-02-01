@@ -56,11 +56,13 @@ class Regions extends React.Component {
   }
 
   displayRegions() {
-    return this.props.assignedregions.map( region => {
-      return(
-        <div key={region.id}><Link to={`/region/${region.id}`}>{region.name}</Link></div>
-      );
-    });
+    if(this.props.assignedregions.length) {      
+      return this.props.assignedregions.map( region => {
+        return(
+          <div key={region.id}><Link to={`/region/${region.id}`}>{region.name}</Link></div>
+        );
+      });
+    }
   }
 
 

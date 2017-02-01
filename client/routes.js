@@ -13,6 +13,7 @@ import Employee from './components/Employee'
 import Admin from './components/Admin'
 import Company from './components/Company'
 import Region from './components/Region'
+import Office from './components/Office'
 import CreateCompany from './components/CreateCompany'
 import HomePage from './components/HomePage'
 
@@ -48,6 +49,7 @@ export default (
         <Route component={AdminRoutes}>
           <Route path='/company' component={Company} />
           <Route path='/region/:id' component={Region} />
+          <Route path='/office/:id' component={Office} />
           <Route path='/createcompany' component={CreateCompany} />
           <Route path='/admin' component={Admin} />
         </Route>
