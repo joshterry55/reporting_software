@@ -7,9 +7,11 @@ class Region extends React.Component {
     super(props)
 
     this.state = { addOffice: false }
+    this.state = { editRegion: false }
 
     this.createOffice = this.createOffice.bind(this)
     this.toggleAdd = this.toggleAdd.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
     this.displayOffices = this.displayOffices.bind(this)
   }
 
@@ -47,7 +49,7 @@ class Region extends React.Component {
     this.setState({addOffice: !this.state.addOffice})
   }
 
-  display() {
+  displayAdd() {
     if(this.state.addOffice) {
       return(
         <div>
@@ -77,14 +79,54 @@ class Region extends React.Component {
     }
   }
 
+  toggleEdit() {
+    this.setState({editRegion: !this.state.editRegion})
+  }
+
+  submitEdittedRegion(e, id) {
+    e.preventDefault()
+    $.ajax({
+      type: "PUT",
+      url: `/api/regions/${id}`,
+      dataType: 'JSON',
+      data: { region: { name: this.refs.newRegionName.value }}
+    }).success( region => {
+      this.props.dispatch({type: 'CURRENT_REGION', region})
+      this.props.dispatch({type: 'UPDATE_ASSIGNED_REGION', region})
+      this.toggleEdit()
+    }).fail( data => {
+      console.log('failed')
+    })
+  }
+
+  display() {
+    let region = this.props.currentregion
+    if(this.state.editRegion){
+      return(
+        <form ref='editRegionForm' onSubmit={(e) => this.submitEdittedRegion(e, region.id)}>
+          <div>
+            <input ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} />
+          </div>
+          <div>
+            <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
+          </div>
+        </form>
+      )
+    } else {
+      return(
+        <div>
+          <div>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
+        </div>
+      )
+    }
+  }
+
 
   render() {
     return(
       <div>
-        <div>
-          {this.props.currentregion.name}
-        </div>
         {this.display()}
+        {this.displayAdd()}
         <div className='collection'>
           {this.displayOffices()}
         </div>

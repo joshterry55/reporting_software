@@ -31,14 +31,12 @@ class Company extends React.Component {
 
   submitEdittedCompany(e, id) {
     e.preventDefault()
-    debugger
     $.ajax({
       type: "PUT",
       url: `/api/companies/${id}`,
       dataType: 'JSON',
       data: { company: { name: this.refs.newCompanyName.value }}
     }).success( company => {
-      debugger
       this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
       this.toggleEdit()
     }).fail( data => {
@@ -63,7 +61,7 @@ class Company extends React.Component {
       } else {
         return(
           <div>
-            <div>{company.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}}>edit</i></div>
+            <div>{company.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
           </div>
         )
       }

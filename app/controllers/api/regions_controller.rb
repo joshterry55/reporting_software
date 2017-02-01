@@ -29,6 +29,20 @@ class Api::RegionsController < ApplicationController
   def edit
   end
 
+  def update
+    @region = Region.find(params[:id])
+    if @region.update(region_params)
+      current_user.assigned_regions.each do |x|
+        if x['id'] == @region.id
+          current_user.assigned_regions.delete(x)
+          current_user.assigned_regions << @region
+          current_user.save
+        end
+      end
+      render json: @region
+    else
+    end
+  end
 
   private
 
