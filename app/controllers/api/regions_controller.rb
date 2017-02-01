@@ -44,6 +44,24 @@ class Api::RegionsController < ApplicationController
     end
   end
 
+  def destroy
+    @region = Region.find(params[:id])
+    current_user.assigned_regions.each do |r|
+      if r['id'] == @region.id
+        current_user.assigned_regions.delete(r)
+        current_user.save
+      end
+    end
+    current_user.assigned_offices.each do |o|
+      if o['region_id'] == @region.id
+        current_user.assigned_offices.delete(o)
+      end
+      current_user.save
+    end
+    @region.destroy
+    render json: @region
+  end
+
   private
 
   def region_params

@@ -11,6 +11,13 @@ const assignedregions = (state = {}, action) => {
         ...state.slice(indexUpdate + 1),
         action.region
       ]
+    case 'REMOVE_ASSIGNED_REGION':
+      let index = state.findIndex( s => s.id === action.region.id)
+      debugger
+      return [
+        ...state.slice(0, index),
+        ...state.slice(index + 1)
+      ]
     default:
       return state;
   }

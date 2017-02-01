@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 class Region extends React.Component {
   constructor(props) {
@@ -99,6 +99,25 @@ class Region extends React.Component {
     })
   }
 
+  deleteRegion(id) {
+    let confirmed = confirm("Are you sure you want to delete this Region? Doing so will delete all offices and employees.")
+    if(confirmed) {
+      $.ajax({
+        type: "DELETE",
+        url: `/api/regions/${id}`,
+        dataType: 'JSON'
+      }).success( region => {
+        browserHistory.push('/company');
+        this.props.dispatch({type: 'REMOVE_ASSIGNED_REGION', region})
+        this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
+        let messageSuccess = `${region.name} deleted`
+        this.props.dispatch(setFlash(messageSuccess, 'success'))
+      }).fail( data => {
+        console.log('failed')
+      })
+    }
+  }
+
   display() {
     let region = this.props.currentregion
     if(this.state.editRegion){
@@ -115,7 +134,7 @@ class Region extends React.Component {
     } else {
       return(
         <div>
-          <div>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
+          <div>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteRegion(region.id)}>delete</i></div>
         </div>
       )
     }
