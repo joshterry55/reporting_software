@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar'
 import { login } from '../actions/auth';
-import { companysetup, regionsetup } from '../actions/companysetup';
+import { companysetup, regionsetup, officesetup } from '../actions/companysetup';
 import { connect } from 'react-redux'
 
 class App extends React.Component {
@@ -14,6 +14,7 @@ class App extends React.Component {
     this.props.dispatch(login());
     this.props.dispatch(companysetup());
     this.props.dispatch(regionsetup())
+    this.props.dispatch(officesetup())
   }
 
 

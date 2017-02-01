@@ -12,6 +12,7 @@ export const companysetup = () => {
       });
 	}
 }
+
 export const regionsetup = () => {
 	return(dispatch) => {
     $.ajax({
@@ -26,16 +27,18 @@ export const regionsetup = () => {
     });
 	}
 }
+
 export const officesetup = () => {
 	return(dispatch) => {
     $.ajax({
-        url: '/api/companies',
-        type: 'GET',
-        dataType: 'JSON'
-      }).done( company => {
-        dispatch({ type: 'ASSIGNED_COMPANY', company })
-      }).fail( data => {
-        console.log(data);
-      });
+      url: '/api/offices',
+      type: 'GET',
+      dataType: 'JSON',
+      async: false
+    }).done( offices => {
+      dispatch({ type: 'ASSIGNED_OFFICES', offices })
+    }).fail( data => {
+      console.log(data);
+    });
 	}
 }

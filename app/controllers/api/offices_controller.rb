@@ -2,6 +2,8 @@ class Api::OfficesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    @offices = current_user.assigned_offices
+    render json: @offices
   end
 
   def show

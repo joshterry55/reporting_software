@@ -65,21 +65,21 @@ class HomePage extends React.Component {
 					        </div>
 					      </li>
 					      <li>
-					        <img src="http://lorempixel.com/580/250/nature/2" />
+					        <img src="http://res.cloudinary.com/dk2bj79p0/image/upload/v1485918462/Brio_Image_2_olsils.jpg" />
 					        <div className="caption right-align">
 					          <h3 style={styles.textGlow}>Ben</h3>
 					          <h5 style={styles.textGlow} className="light grey-text text-lighten-3">Choose some text</h5>
 					        </div>
 					      </li>
 					      <li>
-					        <img src="http://lorempixel.com/580/250/nature/3" />
+					        <img src="http://res.cloudinary.com/dk2bj79p0/image/upload/v1485918469/Brio_Image_3_gtisib.jpg" />
 					        <div className="caption left-align">
 					          <h3 style={styles.textGlow}>BLAH</h3>
 					          <h5 style={styles.textGlow} className="light grey-text text-lighten-3">blah blah blah</h5>
 					        </div>
 					      </li>
 					      <li>
-					        <img src="http://lorempixel.com/580/250/nature/4" />
+					        <img src="http://res.cloudinary.com/dk2bj79p0/image/upload/v1485918473/Brio_Image_4_sn6lpe.jpg" />
 					        <div className="caption center-align">
 					          <h3 style={styles.textGlow}>for</h3>
 					          <h5 style={styles.textGlow} className="light grey-text text-lighten-3">the reports page</h5>

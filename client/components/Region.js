@@ -26,7 +26,6 @@ class Region extends React.Component {
     e.preventDefault()
     let name = this.refs.officeName.value
     let regionId = this.props.currentregion.id
-    debugger
     $.ajax({
       url: '/api/offices',
       type: 'POST',
@@ -67,11 +66,13 @@ class Region extends React.Component {
   }
 
   displayOffices() {
-    if(this.props.assignedoffices.length) {      
+    if(this.props.assignedoffices.length) {
       return this.props.assignedoffices.map( office => {
-        return(
-          <div key={office.id}><Link to={`/office/${office.id}`}>{office.name}</Link></div>
-        );
+        if(this.props.currentregion.id === office.region_id) {
+          return(
+            <div key={office.id}><Link to={`/office/${office.id}`}>{office.name}</Link></div>
+          );
+        }
       });
     }
   }

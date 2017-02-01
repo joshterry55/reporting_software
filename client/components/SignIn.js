@@ -28,6 +28,7 @@ class SignIn extends React.Component {
       this.props.dispatch(login(user));
       this.props.dispatch(companysetup());
       this.props.dispatch(regionsetup())
+      this.props.dispatch(officesetup())
       this.props.history.push('/')
     }).fail( err => {
       debugger
