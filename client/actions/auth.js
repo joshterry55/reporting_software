@@ -23,6 +23,7 @@ export const logout = (router) => {
       type: 'DELETE',
       async: false
     }).done( user => {
+      window.location.reload()
       router.push('/')
     }).fail( err => {
 

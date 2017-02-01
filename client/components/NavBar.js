@@ -15,6 +15,8 @@ class NavBar extends React.Component {
   logout(e) {
     e.preventDefault()
     this.props.dispatch(logout(this.props.history))
+    window.location.reload()
+    debugger
   }
 
   navs() {
