@@ -8,24 +8,10 @@ class Admin extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   if(this.props.user.assigned_company.length) {
-  //     $.ajax({
-  //       url: '/api/companies',
-  //       type: 'GET',
-  //       dataType: 'JSON'
-  //     }).done( company => {
-  //       this.props.dispatch({ type: 'ASSIGNED_COMPANY', company })
-  //     }).fail( data => {
-  //       console.log(data);
-  //     });
-  //   }
-  // }
-
   display() {
-    if(this.props.assignedcompany.length)
+    if(this.props.assignedcompany.id)
       return(
-        <Link to='/company'>{this.props.assignedcompany[0].name}</Link>
+        <Link to='/company'>{this.props.assignedcompany.name}</Link>
       )
     else
       return(

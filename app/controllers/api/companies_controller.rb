@@ -2,7 +2,7 @@ class Api::CompaniesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @company = current_user.assigned_company
+    @company = current_user.assigned_company[0]
     render json: @company
   end
 
@@ -23,6 +23,17 @@ class Api::CompaniesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      current_user.assigned_company = []
+      current_user.assigned_company << @company
+      current_user.save
+      render json: @company
+    else
+    end
   end
 
   private

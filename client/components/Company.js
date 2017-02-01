@@ -5,6 +5,10 @@ import Regions from './Regions'
 class Company extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = { editCompany: false }
+
+    this.toggleEdit = this.toggleEdit.bind(this)
   }
 
   componentDidMount() {
@@ -21,14 +25,48 @@ class Company extends React.Component {
     }
   }
 
+  toggleEdit() {
+    this.setState({editCompany: !this.state.editCompany})
+  }
+
+  submitEdittedCompany(e, id) {
+    e.preventDefault()
+    debugger
+    $.ajax({
+      type: "PUT",
+      url: `/api/companies/${id}`,
+      dataType: 'JSON',
+      data: { company: { name: this.refs.newCompanyName.value }}
+    }).success( company => {
+      debugger
+      this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
+      this.toggleEdit()
+    }).fail( data => {
+      console.log('failed')
+    })
+  }
+
   display() {
-    if(this.props.assignedcompany.length) {
-      let companyName = this.props.assignedcompany[0].name
-      return(
-        <div>
-          {companyName}
-        </div>
-      )
+    if(this.props.assignedcompany.id) {
+      let company = this.props.assignedcompany
+      if(this.state.editCompany) {
+        return(
+          <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
+            <div>
+              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} />
+            </div>
+            <div>
+              <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
+            </div>
+          </form>
+        )
+      } else {
+        return(
+          <div>
+            <div>{company.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}}>edit</i></div>
+          </div>
+        )
+      }
     }
   }
 
