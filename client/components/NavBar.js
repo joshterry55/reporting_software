@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { logout, login } from '../actions/auth';
 import Flash from '../components/Flash';
 
@@ -14,9 +14,8 @@ class NavBar extends React.Component {
 
   logout(e) {
     e.preventDefault()
+    browserHistory.push('/')
     this.props.dispatch(logout(this.props.history))
-    window.location.reload()
-    debugger
   }
 
   navs() {

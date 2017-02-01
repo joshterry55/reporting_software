@@ -14,6 +14,7 @@ import Admin from './components/Admin'
 import Company from './components/Company'
 import Region from './components/Region'
 import CreateCompany from './components/CreateCompany'
+import HomePage from './components/HomePage'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -36,6 +37,7 @@ const AdminRoutes = AdminAccess( (props) => props.children )
 export default (
   <Route>
     <Route path="/" component={App}>
+      <IndexRoute component={HomePage} />
       <Route path='/signup' component={SignUp} />
       <Route path='/signin' component={SignIn} />
       <Route component={AuthWrapper}>
