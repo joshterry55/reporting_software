@@ -6,6 +6,7 @@ class Admin extends React.Component {
   constructor(props) {
     super(props)
 
+    this.setForm = this.setForm.bind(this)
   }
 
   // display() {
@@ -19,12 +20,17 @@ class Admin extends React.Component {
   //     )
   // }
 
+  setForm() {
+    this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
+    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+  }
+
   adminTabs() {
     if(this.props.assignedcompany.id) {
       return(
           <div className="col s12">
             <ul className="tabs tabs-fixed-width">
-              <li  className="tab col s3 admin-tabs"><Link to='/addsale'>Add Sale</Link></li>
+              <li  className="tab col s3 admin-tabs" onClick={this.setForm}><Link to='/addsale'>Add Sale</Link></li>
               <li  className="tab col s3 admin-tabs"><Link to='/company'>{this.props.assignedcompany.name}</Link></li>
             </ul>
           </div>
