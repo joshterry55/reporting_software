@@ -15,6 +15,12 @@ class NavBar extends React.Component {
   logout(e) {
     e.preventDefault()
     browserHistory.push('/')
+    this.props.dispatch({type: 'RESET_ASSIGNED_COMPANY'})
+    this.props.dispatch({type: 'RESET_ASSIGNED_REGION'})
+    this.props.dispatch({type: 'RESET_ASSIGNED_OFFICE'})
+    this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
+    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+    this.props.dispatch({type: 'RESET_EMPLOYEE'})
     this.props.dispatch(logout(this.props.history))
   }
 

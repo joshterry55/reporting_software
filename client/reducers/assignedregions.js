@@ -17,6 +17,8 @@ const assignedregions = (state = {}, action) => {
         ...state.slice(0, index),
         ...state.slice(index + 1)
       ]
+    case 'RESET_ASSIGNED_REGION':
+      return action.region = []
     default:
       return state;
   }

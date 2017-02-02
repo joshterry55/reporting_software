@@ -4,6 +4,8 @@ const assignedcompany = (state = {}, action) => {
       return action.company
     case 'ADD_ASSIGNED_COMPANY':
       return [...state, action.company]
+    case 'RESET_ASSIGNED_COMPANY':
+      return action.company = []
     default:
       return state;
   }
