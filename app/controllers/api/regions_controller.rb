@@ -36,6 +36,7 @@ class Api::RegionsController < ApplicationController
         if r['id'] == @region.id
           current_user.assigned_regions.delete(r)
           current_user.assigned_regions << @region
+          current_user.assigned_regions.flatten
           current_user.save
         end
       end

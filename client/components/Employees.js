@@ -14,10 +14,13 @@ class Employees extends React.Component {
   }
 
   componentDidMount() {
-    let path = window.location.pathname
-    let officeId = path.replace(/\D/g, '')
+    let officeId = this.props.urlParams
     this.props.dispatch(employees(officeId))
   }
+
+  // alternative to this.props.urlParams 
+  // let path = window.location.pathname
+  // let officeId = path.replace(/\D/g, '')
 
   toggleAdd() {
     this.setState({addEmployee: !this.state.addEmployee})

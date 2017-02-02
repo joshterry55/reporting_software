@@ -87,10 +87,11 @@ class Office extends React.Component {
   }
 
   render() {
+    let officeId = parseInt(this.props.params.id)
     return(
       <div>
         {this.display()}
-        <Employees />
+        <Employees urlParams={officeId}/>
       </div>
     )
   }
