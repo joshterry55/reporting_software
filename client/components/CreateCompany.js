@@ -19,7 +19,7 @@ class CreateCompany extends React.Component {
         name: name
       }}
     }).done( company => {
-      this.props.dispatch({type: 'ADD_ASSIGNED_COMPANY', company})
+      this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
       this.props.history.push('/company');
     }).fail( data => {
         debugger
@@ -39,7 +39,7 @@ class CreateCompany extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='row container white-container'>
         {this.display()}
       </div>
     )

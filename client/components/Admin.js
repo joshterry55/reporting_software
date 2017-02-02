@@ -8,26 +8,50 @@ class Admin extends React.Component {
 
   }
 
-  display() {
-    if(this.props.assignedcompany.id)
+  // display() {
+  //   if(this.props.assignedcompany.id)
+  //     return(
+  //       <Link to='/company'>{this.props.assignedcompany.name}</Link>
+  //     )
+  //   else
+  //     return(
+  //       <Link to='/createcompany'>Create a Company</Link>
+  //     )
+  // }
+
+  adminTabs() {
+    if(this.props.assignedcompany.id) {
       return(
-        <Link to='/company'>{this.props.assignedcompany.name}</Link>
+          <div className="col s12">
+            <ul className="tabs tabs-fixed-width">
+              <li  className="tab col s3 admin-tabs"><Link to='/'>ADMIN</Link></li>
+              <li  className="tab col s3 admin-tabs"><Link to='/company'>{this.props.assignedcompany.name}</Link></li>
+            </ul>
+          </div>
       )
-    else
+    } else {
       return(
-        <Link to='/createcompany'>Create a Company</Link>
+          <div className="col s12">
+            <ul className="tabs tabs-fixed-width">
+              <li  className="tab col s3 admin-tabs"><Link to='/'>Home</Link></li>
+              <li  className="tab col s3 admin-tabs"><Link to='/createcompany'>Company Setup</Link></li>
+            </ul>
+          </div>
       )
+    }
   }
 
   render() {
     return(
       <div className='row container white-container'>
-        Admin Page
-        {this.display()}
+        {this.adminTabs()}
       </div>
     )
   }
 }
+
+// Admin Page
+// {this.display()}
 
 
 // inviteEmployee(e) {

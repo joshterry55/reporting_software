@@ -16,7 +16,7 @@ class Regions extends React.Component {
   createRegion(e) {
     e.preventDefault()
     let name = this.refs.regionName.value
-    let companyId = this.props.user.assigned_company[0].id
+    let companyId = this.props.assignedcompany.id
     $.ajax({
       url: '/api/regions',
       type: 'POST',
@@ -79,8 +79,8 @@ class Regions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions } = state
-  return { user, assignedregions }
+  let { user, assignedregions, assignedcompany } = state
+  return { user, assignedregions, assignedcompany }
 }
 
 export default connect(mapStateToProps)(Regions)

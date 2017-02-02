@@ -18,7 +18,6 @@ class SignUp extends React.Component {
     let password = this.refs.password.value
     let password_confirmation = this.refs.password_confirmation.value
     let role = 'Admin'
-    debugger
     $.ajax({
       url: '/users',
       type: 'POST',
