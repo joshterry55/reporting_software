@@ -6,7 +6,11 @@ export const companysetup = () => {
         dataType: 'JSON',
         async: false
       }).done( company => {
-        dispatch({ type: 'ASSIGNED_COMPANY', company })
+				if(company === null) {
+					dispatch({type: 'RESET_ASSIGNED_COMPANY'})
+				} else {
+					dispatch({type: 'ASSIGNED_COMPANY', company })
+				}
       }).fail( data => {
         console.log(data);
       });
@@ -21,7 +25,11 @@ export const regionsetup = () => {
       dataType: 'JSON',
       async: false
     }).done( regions => {
-      dispatch({ type: 'ASSIGNED_REGIONS', regions })
+			if(regions === null) {
+				dispatch({type: 'RESET_ASSIGNED_REGION'})
+			} else {
+				dispatch({ type: 'ASSIGNED_REGIONS', regions })
+			}
     }).fail( data => {
       console.log(data);
     });

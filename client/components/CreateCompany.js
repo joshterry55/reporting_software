@@ -8,10 +8,6 @@ class CreateCompany extends React.Component {
     this.createCompany = this.createCompany.bind(this)
   }
 
-  componentDidMount() {
-    this.props.dispatch({type: 'RESET_ASSIGNED_COMPANY'})
-  }
-
   createCompany(e) {
     e.preventDefault()
     let name = this.refs.companyName.value
