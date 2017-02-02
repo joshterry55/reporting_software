@@ -24,7 +24,7 @@ class Admin extends React.Component {
       return(
           <div className="col s12">
             <ul className="tabs tabs-fixed-width">
-              <li  className="tab col s3 admin-tabs"><Link to='/'>ADMIN</Link></li>
+              <li  className="tab col s3 admin-tabs"><Link to='/addsale'>Add Sale</Link></li>
               <li  className="tab col s3 admin-tabs"><Link to='/company'>{this.props.assignedcompany.name}</Link></li>
             </ul>
           </div>

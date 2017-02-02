@@ -11,6 +11,12 @@ class Api::UsersController < ApplicationController
     render json: @employees
   end
 
+  def employees
+    @company = Company.find(params[:id])
+    @employees = @company.users
+    render json: @employees
+  end
+
   def show
     @user = User.find(params[:id])
     render json: @user
