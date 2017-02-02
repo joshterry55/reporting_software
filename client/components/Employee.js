@@ -7,7 +7,7 @@ class Employee extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="row container white-container">
         Employee Page
       </div>
     )

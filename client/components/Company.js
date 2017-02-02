@@ -51,7 +51,7 @@ class Company extends React.Component {
         return(
           <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
             <div>
-              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus />
+              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
             </div>
             <div>
               <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
@@ -70,12 +70,22 @@ class Company extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='row container white-container'>
         {this.display()}
         <Regions />
       </div>
     )
   }
+}
+
+const styles = {
+	whiteBottom: {
+		position: 'fixed',
+		bottom: '0px',
+		height: '3000px',
+		backgroundColor: '#f2f7f7',
+		zIndex: '-1'
+	}
 }
 
 const mapStateToProps = (state) => {

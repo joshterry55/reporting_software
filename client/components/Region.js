@@ -144,7 +144,7 @@ class Region extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='row container white-container'>
         {this.display()}
         {this.displayAdd()}
         <div className='collection'>

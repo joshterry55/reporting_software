@@ -21,7 +21,7 @@ class Admin extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='row container white-container'>
         Admin Page
         {this.display()}
       </div>

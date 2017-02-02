@@ -7,7 +7,7 @@ class Announcements extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='row container white-container'>
         Announcement Page
       </div>
     )
