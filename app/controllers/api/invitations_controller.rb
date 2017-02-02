@@ -6,13 +6,12 @@ class Api::InvitationsController < Devise::InvitationsController
   def create
     new_user_id = JSON.parse(super)['id']
     user = User.find(new_user_id)
-    binding.pry
     user.company = Company.find(params[:company_id])
     user.region = Region.find(params[:region_id])
     user.office = Office.find(params[:office_id])
     user.assigned_company << user.company
     user.assigned_regions << user.region
-    user.assigned_offices << user.office 
+    user.assigned_offices << user.office
     user.save
   end
 

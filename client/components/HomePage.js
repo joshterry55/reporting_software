@@ -13,7 +13,7 @@ class HomePage extends React.Component {
 		$('.slider').slider('next');
 		$('.slider').slider('pause');
 		let $startSlide = $('.slider').slider('start');
-		setTimout($startSlide, 2000);
+		setTimeout($startSlide, 2000);
 	}
 
 	loginCheck() {
