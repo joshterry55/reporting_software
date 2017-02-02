@@ -32,9 +32,9 @@ class Api::RegionsController < ApplicationController
   def update
     @region = Region.find(params[:id])
     if @region.update(region_params)
-      current_user.assigned_regions.each do |x|
-        if x['id'] == @region.id
-          current_user.assigned_regions.delete(x)
+      current_user.assigned_regions.each do |r|
+        if r['id'] == @region.id
+          current_user.assigned_regions.delete(r)
           current_user.assigned_regions << @region
           current_user.save
         end

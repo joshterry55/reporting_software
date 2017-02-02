@@ -25,6 +25,33 @@ class Api::OfficesController < ApplicationController
   def edit
   end
 
+  def update
+    @office = Office.find(params[:id])
+    if @office.update(office_params)
+      current_user.assigned_offices.each do |o|
+        if o['id'] == @office.id
+          current_user.assigned_offices.delete(o)
+          current_user.assigned_offices << @office
+          current_user.save
+        end
+      end
+      render json: @office
+    else
+    end
+  end
+
+  def destroy
+    @office = Office.find(params[:id])
+    current_user.assigned_offices.each do |o|
+      if o['id'] == @office.id
+        current_user.assigned_offices.delete(o)
+        current_user.save
+      end
+    end
+    @office.destroy
+    render json: @office
+  end
+
   private
 
   def office_params

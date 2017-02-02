@@ -51,7 +51,7 @@ class Company extends React.Component {
         return(
           <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
             <div>
-              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} />
+              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus />
             </div>
             <div>
               <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>

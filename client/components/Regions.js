@@ -42,7 +42,7 @@ class Regions extends React.Component {
       return(
         <div>
           <form ref='regionForm' onSubmit={this.createRegion}>
-            <input ref='regionName' placeholder='Region Name'/>
+            <input ref='regionName' placeholder='Region Name' autoFocus />
             <input type='submit' />
           </form>
           <button onClick={this.toggleAdd}>Cancel</button>

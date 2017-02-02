@@ -5,14 +5,18 @@ import { clearFlash } from '../actions/flash'
 const fadeFlash = (dispatch) => {
   setTimeout( () => {
     dispatch(clearFlash())
-  }, 15000)
+  }, 5500)
+}
+
+const xFlash = (dispatch) => {
+  dispatch(clearFlash())
 }
 
 const Flash = ({ flash, dispatch }) => {
   if(flash.message) {
     return(
       <div id="alert" className={`alert alert-${flash.msgType}`}>
-        <a className='close' onClick={ (e) => {e.preventDefault; () => dispatch(clearFlash())}}>
+        <a style={{ cursor: 'pointer' }} className='close' onClick={() => xFlash(dispatch) }>
           &times;
         </a>
         {flash.message}

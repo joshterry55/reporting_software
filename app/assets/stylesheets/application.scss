@@ -4,3 +4,20 @@ body {
   background-color: #3a3b3a;
   font-family: Questrial
 }
+
+.alert {
+  padding: 5px;
+  border: 1px solid transparent;
+}
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}

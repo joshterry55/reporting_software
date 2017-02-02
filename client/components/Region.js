@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link, browserHistory } from 'react-router'
+import { setFlash } from '../actions/flash';
 
 class Region extends React.Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class Region extends React.Component {
       return(
         <div>
           <form ref='officeForm' onSubmit={this.createOffice}>
-            <input ref='officeName' placeholder='Office Name'/>
+            <input ref='officeName' placeholder='Office Name' autoFocus/>
             <input type='submit' />
           </form>
           <button onClick={this.toggleAdd}>Cancel</button>
@@ -124,7 +125,7 @@ class Region extends React.Component {
       return(
         <form ref='editRegionForm' onSubmit={(e) => this.submitEdittedRegion(e, region.id)}>
           <div>
-            <input ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} />
+            <input ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
           </div>
           <div>
             <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
