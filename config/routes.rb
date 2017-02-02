@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'users/info'
+    get 'office/:id/users', as: 'office/users', :to => 'users#index'
     resources :users
     resources :companies
     resources :regions

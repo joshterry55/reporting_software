@@ -7,6 +7,7 @@ import assignedregions from './assignedregions'
 import currentregion from './currentregion'
 import assignedoffices from './assignedoffices'
 import currentoffice from './currentoffice'
+import employees from './employees'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   assignedregions,
   currentregion,
   assignedoffices,
-  currentoffice
+  currentoffice,
+  employees
  });
 
 export default rootReducer;

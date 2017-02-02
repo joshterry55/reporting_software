@@ -13,6 +13,7 @@ class Api::InvitationsController < Devise::InvitationsController
     user.assigned_regions << user.region
     user.assigned_offices << user.office
     user.save
+
   end
 
 

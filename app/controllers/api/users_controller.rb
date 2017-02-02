@@ -6,6 +6,9 @@ class Api::UsersController < ApplicationController
   end
 
   def index
+    @office = Office.find(params[:id])
+    @employees = @office.users
+    render json: @employees
   end
 
   def show
