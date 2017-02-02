@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { companyemployees } from '../actions/employees';
+import { companyemployees, employees } from '../actions/employees';
+import { setFlash } from '../actions/flash';
 
 class AddSale extends React.Component {
   constructor(props) {
@@ -10,8 +11,11 @@ class AddSale extends React.Component {
   }
 
   componentDidMount() {
-    let companyId = this.props.assignedcompany.id
-    this.props.dispatch(companyemployees(companyId))
+    if(this.props.currentoffice.id) {
+    } else {
+      let companyId = this.props.assignedcompany.id
+      this.props.dispatch(companyemployees(companyId))
+    }
   }
 
   componentDidUpdate() {
@@ -53,7 +57,6 @@ class AddSale extends React.Component {
       cancel = 0
     }
     let date = this.refs.date.value
-    debugger
     $.ajax({
       url: '/api/sales',
       type: 'POST',
@@ -70,6 +73,8 @@ class AddSale extends React.Component {
         date: date
       }}
     }).done( sale => {
+      let messageSuccess = `Sale Added`
+      this.props.dispatch(setFlash(messageSuccess, 'success'))
       this.refs.saleForm.reset()
     }).fail( data => {
       debugger
@@ -85,7 +90,7 @@ class AddSale extends React.Component {
   addSale() {
     if(this.props.employees.length) {
       return(
-        <form className='container' ref='saleForm' onSubmit={this.submitSale}>
+        <form ref='saleForm' onSubmit={this.submitSale}>
           <div>
             <label>Select a salesman</label>
             <select ref='employee'>
@@ -133,7 +138,7 @@ class AddSale extends React.Component {
 
   render() {
     return(
-      <div className="row container white-container">
+      <div className="col s12">
         <span className='center'>New Sale</span>
         {this.addSale()}
       </div>
@@ -142,8 +147,8 @@ class AddSale extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, employees } = state
-  return { user, assignedcompany, employees }
+  let { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice } = state
+  return { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice }
 }
 
 export default connect(mapStateToProps)(AddSale)
