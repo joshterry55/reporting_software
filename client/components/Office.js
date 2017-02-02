@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { currentregion } from '../actions/currentregion'
 import { Link, browserHistory } from 'react-router'
 import { setFlash } from '../actions/flash';
+import Employees from './Employees'
 
 class Office extends React.Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class Office extends React.Component {
     return(
       <div>
         {this.display()}
+        <Employees />
       </div>
     )
   }
