@@ -18,6 +18,7 @@ import CreateCompany from './components/CreateCompany'
 import HomePage from './components/HomePage'
 import AddSale from './components/AddSale'
 import RegionSelect from './components/RegionSelect'
+import ReportRegionSelect from './components/ReportRegionSelect'
 
 
 const AdminAccess = UserAuthWrapper({
@@ -56,6 +57,7 @@ export default (
           <Route path='/createcompany' component={CreateCompany} />
           <Route path='/admin' component={Admin} />
           <Route path='/addsale' component={RegionSelect} />
+          <Route path='/reports' component={ReportRegionSelect} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>

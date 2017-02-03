@@ -9,14 +9,14 @@ class AddSale extends React.Component {
 
     this.submitSale = this.submitSale.bind(this)
   }
-
-  componentDidMount() {
-    if(this.props.currentoffice.id) {
-    } else {
-      let companyId = this.props.assignedcompany.id
-      this.props.dispatch(companyemployees(companyId))
-    }
-  }
+  //
+  // componentDidMount() {
+  //   if(this.props.currentoffice.id) {
+  //   } else {
+  //     let companyId = this.props.assignedcompany.id
+  //     this.props.dispatch(companyemployees(companyId))
+  //   }
+  // }
 
   componentDidUpdate() {
   $('select').material_select();
@@ -29,6 +29,8 @@ class AddSale extends React.Component {
   submitSale(e) {
     e.preventDefault()
     let employeeId = this.refs.employee.value
+    let officeId = this.props.currentoffice.id
+    let regionId = this.props.currentregion.id
     let kw = this.refs.kw.value
     let firstName = this.refs.firstName.value
     let lastName = this.refs.lastName.value
@@ -56,7 +58,9 @@ class AddSale extends React.Component {
     } else {
       cancel = 0
     }
-    let date = this.refs.date.value
+    let input = this.refs.date.value
+    var test = new Date(input)
+    let date = this.dateFormat(test)
     $.ajax({
       url: '/api/sales',
       type: 'POST',
@@ -66,6 +70,8 @@ class AddSale extends React.Component {
         last_name: lastName,
         kw: kw,
         user_id: employeeId,
+        region_id: regionId,
+        office_id: officeId,
         sit_down: sitDown,
         close: close,
         site_survey: siteSurvey,
@@ -79,6 +85,21 @@ class AddSale extends React.Component {
     }).fail( data => {
       debugger
     })
+  }
+
+  dateFormat(day) {
+    let fullDate = day
+    debugger
+    let myDate = []
+    myDate.push(fullDate.toDateString().substr(0, 3))
+    let monthNumber = fullDate.getMonth();
+    let monthNames = ["January", "February", "March", "April",
+                      "May", "June", "July", "August", "September",
+                      "October", "November", "December"]
+    myDate.push(monthNames[monthNumber] + ' ' + fullDate.getDate())
+    myDate.push(fullDate.getFullYear())
+
+    return `${myDate[1]}, ${myDate[2]}`
   }
 
   employeeOptions() {
@@ -154,8 +175,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice } = state
-  return { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice }
+  let { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice, currentregion } = state
+  return { user, assignedcompany, employees, assignedregions, assignedoffices, currentoffice, currentregion }
 }
 
 export default connect(mapStateToProps)(AddSale)

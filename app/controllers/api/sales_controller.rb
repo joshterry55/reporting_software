@@ -4,6 +4,14 @@ class Api::SalesController < ApplicationController
   def index
   end
 
+  def office
+    @office = Office.find(params[:id])
+    @week_dates = params[:startday]
+    @sales = @office.sales.where(date: @week_dates)
+    render json: @sales
+
+  end
+
   def show
   end
 
@@ -24,6 +32,6 @@ class Api::SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id)
+    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :startday)
   end
 end

@@ -8,6 +8,8 @@ import currentregion from './currentregion'
 import assignedoffices from './assignedoffices'
 import currentoffice from './currentoffice'
 import employees from './employees'
+import setdate from './setdate'
+import officesales from './officesales'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   currentregion,
   assignedoffices,
   currentoffice,
-  employees
+  employees,
+  setdate,
+  officesales
  });
 
 export default rootReducer;

@@ -5,6 +5,7 @@ import { logout, login } from '../actions/auth';
 import Flash from '../components/Flash';
 
 
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +45,7 @@ class NavBar extends React.Component {
           <li><Link to='/announcements'>Announcements</Link></li>
           <li><Link to='/leaderboards'>Boards</Link></li>
           <li><Link to='/trainings'>Training</Link></li>
+          <li><Link to='/reports'>Reports</Link></li>
           <li><Link to='/admin'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>

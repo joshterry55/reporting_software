@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import OfficeSelect from './OfficeSelect'
+import ReportOfficeSelect from './ReportOfficeSelect'
 import { Dropdown, Button, NavItem } from 'react-materialize';
 
-class RegionSelect extends React.Component {
+class ReportRegionSelect extends React.Component {
   constructor(props) {
     super(props)
 
@@ -18,8 +18,6 @@ class RegionSelect extends React.Component {
 
   regionInfo(region) {
     this.props.dispatch({type: 'CURRENT_REGION', region})
-    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
-    this.props.dispatch({type: 'RESET_EMPLOYEE'})
   }
 
   render() {
@@ -33,14 +31,14 @@ class RegionSelect extends React.Component {
       <div className='row container white-container'>
         <div className='container'>
           <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
-            <h4 className='center'>New Sale</h4>
+            <h4 className='center'>Office Reports</h4>
             <br />
             <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
               { this.showRegions() }
             </Dropdown>
           </div>
           <br />
-          <OfficeSelect />
+          <ReportOfficeSelect />
         </div>
       </div>
     )
@@ -68,4 +66,4 @@ const mapStateToProps = (state) => {
   return { user, assignedregions, currentregion }
 }
 
-export default connect(mapStateToProps)(RegionSelect)
+export default connect(mapStateToProps)(ReportRegionSelect)
