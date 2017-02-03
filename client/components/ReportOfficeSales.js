@@ -7,17 +7,8 @@ class ReportOfficeSales extends React.Component {
   constructor(props) {
     super(props)
 
-    this.totalCheck = this.totalCheck.bind(this)
   }
 
-  componentDidUpdate() {
-    this.totalCheck();
-  }
-
-  totalCheck() {
-    let currentSales = this.props.officesales
-		// this.props.dispatch(totalsales(currentSales));
-  }
 
   displaySales() {
     if(this.props.officesales.length) {
@@ -41,6 +32,18 @@ class ReportOfficeSales extends React.Component {
 
 
   render() {
+    let kilowatts = 0
+    let sitdown = 0
+    let close = 0
+    let cancel = 0
+    let sitesurvey = 0
+    if(this.props.currentoffice.id) {
+      kilowatts = this.props.officetotalkw['KW'].toFixed(2)
+      sitdown = this.props.officetotalsitdown['SD']
+      close = this.props.officetotalclose['CL']
+      cancel = this.props.officetotalcancel['CA']
+      sitesurvey = this.props.officetotalsitesurvey['SS']
+    }
     return(
       <div>
         <table className='striped'>
@@ -59,13 +62,13 @@ class ReportOfficeSales extends React.Component {
           <tbody id="products">
             {this.displaySales()}
             <tr className='row'>
+              <td className='col s3'><b>TOTAL:</b></td>
               <td className='col s3'></td>
-              <td className='col s3'>0</td>
-              <td className='col s2'>0</td>
-              <td className='col s1'>3</td>
-              <td className='col s1'>3</td>
-              <td className='col s1'>3</td>
-              <td className='col s1'>3</td>
+              <td className='col s2'>{kilowatts}</td>
+              <td className='col s1'>{sitdown}</td>
+              <td className='col s1'>{close}</td>
+              <td className='col s1'>{sitesurvey}</td>
+              <td className='col s1'>{cancel}</td>
             </tr>
           </tbody>
         </table>
@@ -75,8 +78,8 @@ class ReportOfficeSales extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown } = state
-  return { officesales, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown }
 }
 
 export default connect(mapStateToProps)(ReportOfficeSales)

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router'
 import ReportDateBar from './ReportDateBar';
 import ReportOfficeSales from './ReportOfficeSales';
+import ReportBox from './ReportBox';
 let weekOffset = 0
 
 class ReportContainer extends Component {
@@ -50,6 +51,7 @@ class ReportContainer extends Component {
 					<ReportDateBar />
 					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
 						<div style={styles.calendar}>
+							<ReportBox />
 							<ReportOfficeSales />
 						</div>
 					</div>
