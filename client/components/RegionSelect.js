@@ -30,9 +30,10 @@ class RegionSelect extends React.Component {
     return(
       <div className='row container white-container'>
         <div className='container'>
-          <div className='col s12 m4 offset-m4'>
+          <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
+            <h4 className='center'>New Sale</h4>
             <br />
-            <Dropdown trigger={<Button>{regionName}</Button>}>
+            <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
               { this.showRegions() }
             </Dropdown>
           </div>
@@ -41,6 +42,22 @@ class RegionSelect extends React.Component {
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  employeeButton: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'clip',
+    textAlign: 'center',
+    lineHeight: '42px',
+    width: '100%',
+    height: '40px',
+    paddingLeft: '5px',
+    backgroundColor: '#60b9e8',
+    color: '#f2f7f7',
+    borderRadius: '0',
+
   }
 }
 

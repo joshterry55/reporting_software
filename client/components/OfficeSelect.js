@@ -33,9 +33,9 @@ class OfficeSelect extends React.Component {
     }
     return(
       <div>
-        <div className='col s12 m4 offset-m4'>
+        <div className='col s10 offset-s1 m6 offset-m3'>
           <br />
-          <Dropdown  trigger={<Button>{officeName}</Button>}>
+          <Dropdown  trigger={<Button style={styles.employeeButton}>{officeName}</Button>}>
             { this.showOffices() }
           </Dropdown>
         </div>
@@ -44,6 +44,22 @@ class OfficeSelect extends React.Component {
         <AddSale />
       </div>
     )
+  }
+}
+
+const styles = {
+  employeeButton: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'clip',
+    textAlign: 'center',
+    lineHeight: '42px',
+    width: '100%',
+    height: '40px',
+    paddingLeft: '5px',
+    backgroundColor: '#60b9e8',
+    color: '#f2f7f7',
+    borderRadius: '0',
+
   }
 }
 

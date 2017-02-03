@@ -138,8 +138,7 @@ class AddSale extends React.Component {
 
   render() {
     return(
-      <div className="col s12">
-        <span className='center'>New Sale</span>
+      <div className="col s12" style={{marginTop: '15px'}}>
         {this.addSale()}
       </div>
     )
