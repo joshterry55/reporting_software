@@ -10,6 +10,11 @@ import currentoffice from './currentoffice'
 import employees from './employees'
 import setdate from './setdate'
 import officesales from './officesales'
+import officetotalcancel from './officetotalcancel'
+import officetotalclose from './officetotalclose'
+import officetotalkw from './officetotalkw'
+import officetotalsitdown from './officetotalsitdown'
+import officetotalsitesurvey from './officetotalsitesurvey'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -22,7 +27,12 @@ const rootReducer = combineReducers({
   currentoffice,
   employees,
   setdate,
-  officesales
+  officesales,
+  officetotalcancel,
+  officetotalclose,
+  officetotalkw,
+  officetotalsitdown,
+  officetotalsitesurvey
  });
 
 export default rootReducer;

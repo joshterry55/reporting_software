@@ -37,14 +37,15 @@ class ReportContainer extends Component {
 	render() {
 		return(
 			<div>
+				<div className='col s12'><br /></div>
 				<div style={styles.topBarContainer}>
 					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
 						<button type='button' className='btn' style={styles.buttonCurrent} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
-
 				</div>
+				<div className='col s12'><br /></div>
 				<div className="col s12" style={styles.noPadding}>
 					<ReportDateBar />
 					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
@@ -60,7 +61,7 @@ class ReportContainer extends Component {
 
 const styles = {
 	topBarContainer: {
-		height: '45px'
+		height: '45px',
 	},
 	calendarWindow: {
 		height: '454px',
@@ -70,7 +71,7 @@ const styles = {
 		overflow: 'scroll',
 	},
 	calendar: {
-		minHeight: '1px'
+		minHeight: '1px',
 	},
 	button: {
 		height: '30px',

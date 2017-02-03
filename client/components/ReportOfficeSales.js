@@ -1,11 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { setFlash } from '../actions/flash';
+import { totalsales } from '../actions/totalsales';
 
 class ReportOfficeSales extends React.Component {
   constructor(props) {
     super(props)
 
+    this.totalCheck = this.totalCheck.bind(this)
+  }
+
+  componentDidUpdate() {
+    this.totalCheck();
+  }
+
+  totalCheck() {
+    let currentSales = this.props.officesales
+		// this.props.dispatch(totalsales(currentSales));
   }
 
   displaySales() {
@@ -47,6 +58,15 @@ class ReportOfficeSales extends React.Component {
           <hr />
           <tbody id="products">
             {this.displaySales()}
+            <tr className='row'>
+              <td className='col s3'></td>
+              <td className='col s3'>0</td>
+              <td className='col s2'>0</td>
+              <td className='col s1'>3</td>
+              <td className='col s1'>3</td>
+              <td className='col s1'>3</td>
+              <td className='col s1'>3</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -55,8 +75,8 @@ class ReportOfficeSales extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales } = state
-  return { officesales }
+  let { officesales, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown } = state
+  return { officesales, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown }
 }
 
 export default connect(mapStateToProps)(ReportOfficeSales)
