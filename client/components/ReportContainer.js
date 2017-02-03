@@ -70,7 +70,6 @@ const styles = {
 		overflow: 'scroll',
 	},
 	calendar: {
-		width: '1575px',
 		minHeight: '1px'
 	},
 	button: {
