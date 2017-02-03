@@ -97,12 +97,12 @@ class AddSale extends React.Component {
               { this.employeeOptions() }
             </select>
             <br />
-            <label>First Name</label>
-            <input type='text' ref='firstName' required />
-            <label>Last Name</label>
-            <input type='text' ref='lastName' required/>
-            <label>KW</label>
-            <input type='text' ref='kw' required />
+            <p style={styles.customLabel}>Customer First Name</p>
+            <input type='text' ref='firstName' required placeholder="First Name" />
+            <p style={styles.customLabel}>Customer Last Name</p>
+            <input type='text' ref='lastName' required placeholder="Last Name" />
+            <p style={styles.customLabel}>KW</p>
+            <input type='text' ref='kw' required placeholder="ex. 5.2"/>
             <p>
               <input type="checkbox" id="sitdown" className='filled-in' />
               <label htmlFor="sitdown">Sit Down</label>
@@ -122,15 +122,15 @@ class AddSale extends React.Component {
             <label>Date</label>
             <input type="date" ref='date' className="datepicker" placeholder='click to select date' />
           </div>
-          <div>
-            <button type='submit' className='btn' style={{backgroundColor: '#60b9e8'}}>Add Sale</button>
+          <div className='col s6 offset-s3 l4 offset-l4' style={{marginBottom: '30px', marginTop: '10px'}}>
+            <button type='submit' className='btn' style={{backgroundColor: '#60b9e8', width: '100%', textAlign: 'center'}}>Add Sale</button>
           </div>
         </form>
       )
     } else {
       return(
-        <div>
-          No Employees
+        <div className="center">
+          <h4>No Employees</h4>
         </div>
       )
     }
@@ -142,6 +142,14 @@ class AddSale extends React.Component {
         {this.addSale()}
       </div>
     )
+  }
+}
+const styles = {
+  customLabel: {
+    padding: '0px',
+    margin: '0px',
+    fontSize: '12px',
+    color: 'gray'
   }
 }
 
