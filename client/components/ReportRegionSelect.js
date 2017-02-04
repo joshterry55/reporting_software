@@ -53,7 +53,6 @@ const styles = {
     lineHeight: '42px',
     width: '100%',
     height: '40px',
-    paddingLeft: '5px',
     backgroundColor: '#60b9e8',
     color: '#f2f7f7',
     borderRadius: '0',
