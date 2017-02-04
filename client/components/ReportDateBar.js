@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { officesales } from '../actions/officesales';
+import weekdates from '../actions/weekdates';
 
 class ReportDateBar extends Component {
 	constructor(props) {
@@ -35,6 +36,7 @@ class ReportDateBar extends Component {
 		let officeId = this.props.currentoffice.id
 		if(officeId != undefined && weekDates[0] != "undefined NaN, NaN") {
 			this.props.dispatch(officesales(officeId, weekDates))
+			this.props.dispatch(weekdates(weekDates))
 		}
 		return(
 			<div>

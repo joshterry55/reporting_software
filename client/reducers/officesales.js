@@ -10,6 +10,12 @@ const officesales = (state = {}, action) => {
       ...state.slice(indexUpdate + 1),
       action.sale
       ]
+    case 'REMOVE_OFFICE_SALE':
+    let index = state.findIndex( s => s.id === action.sale.id)
+      return [
+      ...state.slice(0, index),
+      ...state.slice(index + 1)
+      ]
     default:
       return state;
   }

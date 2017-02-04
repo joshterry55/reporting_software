@@ -113,6 +113,7 @@ class ReportOfficeSales extends React.Component {
       if(parseKw == NaN) {
         alert("KW must be a valid number")
       } else {
+        $('.modal').modal('close');
         var test = new Date(input)
         let date = this.dateFormat(test)
 
@@ -132,7 +133,16 @@ class ReportOfficeSales extends React.Component {
           }}
         }).done( sale => {
           let messageSuccess = `Sale Updated`
-          this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
+          let hasDate = false
+          this.props.weekdates.map( date => {
+            if(date === sale.date) {
+              hasDate = true
+              this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
+            }
+          })
+          if(hasDate === false) {
+            this.props.dispatch({type: 'REMOVE_OFFICE_SALE', sale})
+          }
           this.props.dispatch(setFlash(messageSuccess, 'success'))
           this.refs.editSaleForm.reset()
         }).fail( data => {
@@ -329,8 +339,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates }
 }
 
 export default connect(mapStateToProps)(ReportOfficeSales)
