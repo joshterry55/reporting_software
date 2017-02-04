@@ -15,6 +15,7 @@ import officetotalclose from './officetotalclose'
 import officetotalkw from './officetotalkw'
 import officetotalsitdown from './officetotalsitdown'
 import officetotalsitesurvey from './officetotalsitesurvey'
+import currentsale from './currentsale'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   officetotalclose,
   officetotalkw,
   officetotalsitdown,
-  officetotalsitesurvey
+  officetotalsitesurvey,
+  currentsale
  });
 
 export default rootReducer;

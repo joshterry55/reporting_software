@@ -29,6 +29,13 @@ class Api::SalesController < ApplicationController
   def edit
   end
 
+  def update 
+    @sale = Sale.find(params[:id])
+    if @sale.update(sale_params)
+      render json: @sale
+    end
+  end
+
   private
 
   def sale_params
