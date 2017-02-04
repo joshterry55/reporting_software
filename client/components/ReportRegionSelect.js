@@ -29,7 +29,7 @@ class ReportRegionSelect extends React.Component {
     }
     return(
       <div className='row container white-container'>
-        <div className='container'>
+        <div className = 'col s10 offset-s1'>
           <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
             <h4 className='center'>Office Reports</h4>
             <br />

@@ -47,7 +47,7 @@ class ReportContainer extends Component {
 					</div>
 				</div>
 				<div className='col s12'><br /></div>
-				<div className="col s12" style={styles.noPadding}>
+				<div className="col s12" >
 					<ReportDateBar />
 					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
 						<div style={styles.calendar}>
@@ -66,11 +66,12 @@ const styles = {
 		height: '45px',
 	},
 	calendarWindow: {
-		height: '454px',
+		height: '600px',
 		width: '100%',
 		backgroundColor: "#ccc",
 		border: "1px solid black",
 		overflow: 'scroll',
+		marginBottom: '20px'
 	},
 	calendar: {
 		minHeight: '1px',

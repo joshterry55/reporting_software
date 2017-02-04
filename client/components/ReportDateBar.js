@@ -70,7 +70,11 @@ const styles = {
 		overflowY: 'hidden'
 	},
 	dateBar: {
-		width: '1575px'
+		width: '100%',
+		textAlign: 'center',
+		fontSize: '20px',
+		lineHeight: '40px',
+		fontWeight: 'bold'
 	},
 	dateBox: {
 		width: "225px",
