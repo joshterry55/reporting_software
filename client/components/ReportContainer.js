@@ -92,8 +92,9 @@ const styles = {
 	},
 	buttonCurrent: {
 		background: "#60b9e8",
-		color: '#0d3c73',
-		textShadow: '0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8'
+		color: '#f2f7f7',
+		textShadow: '1px 1px 1px rgba(0,0,0,0.5)'
+
 	},
 	viewButton: {
     height: '21px',

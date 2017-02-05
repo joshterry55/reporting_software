@@ -60,7 +60,7 @@ const styles = {
     backgroundColor: '#60b9e8',
     color: '#f2f7f7',
     borderRadius: '0',
-
+    textShadow: '1px 1px 1px rgba(0,0,0,0.5)'
   }
 }
 

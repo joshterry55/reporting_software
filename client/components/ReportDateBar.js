@@ -65,60 +65,23 @@ const styles = {
 	dateBarWindow: {
 		width: '100%',
 		height: '40px',
-		backgroundColor: "#ccc",
+		// backgroundColor: "#ccc",
+		backgroundColor: "#888",
 		border: "1px solid black",
 		borderBottom: '0px solid black',
 		overflowX: 'scroll',
-		overflowY: 'hidden'
+		overflowY: 'hidden',
+		boxShadow: 'inset 0 0 5px rgba(0,0,0,0.5)'
+		// boxShadow: 'inset 0 0 5px black'
 	},
 	dateBar: {
 		width: '100%',
 		textAlign: 'center',
 		fontSize: '20px',
 		lineHeight: '40px',
-		fontWeight: 'bold'
-	},
-	dateBox: {
-		width: "225px",
-		height: "40px",
-		border: "1px solid #333",
-		backgroundColor: "#666",
-		background: "linear-gradient(#999, #333)",
-		position: "relative"
-	},
-	dateBoxToday: {
-		backgroundColor: "#66f",
-		background: "linear-gradient(#1b7ff2, #1257a6)",
-	},
-	dayText: {
-		fontWeight: "bold",
-		fontSize: "49px",
-		color: "#fff",
-		opacity: "0.25",
-		position: "absolute",
-		bottom: "-20px",
-		left: "0"
-	},
-	dateText: {
-		fontWeight: "bold",
-		fontSize: "22px",
-		color: "#fff",
-		position: "absolute",
-		bottom: "-8px",
-		right: "1px",
-		textShadow: "0 0 10px rgba(0,0,0,0.35)"
-	},
-	yearText: {
-		fontWeight: "bold",
-		fontSize: "20px",
-		color: "#000",
-		opacity: "0.15",
-		position: "absolute",
-		top: "-7px",
-		right: "0"
-	},
-	leftFloat: {
-		float: 'left'
+		fontWeight: 'bold',
+		color: '#f2f7f7',
+		textShadow: '1px 1px 1px rgba(0,0,0,0.75)'
 	}
 }
 
