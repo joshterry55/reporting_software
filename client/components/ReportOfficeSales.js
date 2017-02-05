@@ -49,6 +49,7 @@ class ReportOfficeSales extends React.Component {
     } else {
       this.refs.cancel.checked = false
     }
+
   }
 
   // truePerc(sale) {

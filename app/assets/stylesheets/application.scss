@@ -60,3 +60,18 @@ input:focus {
 //   color: #00dd00 !important;
 //   opacity: 1 !important;
 // }
+
+.picker__date-display {
+  background-color: #60b9e8;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
+  color: #f2f7f7
+}
+.picker__weekday-display {
+  background-color: #aaa;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.75)
+
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+  background-color: #60b9e8;
+}
