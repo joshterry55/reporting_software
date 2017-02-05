@@ -18,6 +18,8 @@ class ReportRegionSelect extends React.Component {
 
   regionInfo(region) {
     this.props.dispatch({type: 'CURRENT_REGION', region})
+    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+    this.props.dispatch({type: 'RESET_OFFICE_SALES'})
   }
 
   render() {
