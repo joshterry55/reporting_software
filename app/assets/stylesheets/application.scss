@@ -39,6 +39,22 @@ body {
 .modal {
   max-height: 100% !important;
 }
+
+.checkbox-blue[type="checkbox"].filled-in:checked + label:after{
+     border: 2px solid #60b9e8;
+     background-color: #60b9e8;
+}
+
+input:focus {
+  border-bottom: 1px solid #60b9e8 !important;
+  -webkit-box-shadow: 0 1px 0 0 #60b9e8 !important;
+  -moz-box-shadow: 0 1px 0 0 #60b9e8 !important;
+  box-shadow: 0 1px 0 0 #60b9e8 !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #60b9e8 !important;
+}
 //
 // .confirm-icon:hover {
 //   color: #00dd00 !important;

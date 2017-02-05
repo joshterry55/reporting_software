@@ -175,34 +175,50 @@ class ReportOfficeSales extends React.Component {
             <span>Edit Sale</span>
           </div>
 					<div className="modal-content">
-            <p className='col s12' style={styles.customLabel}>Customer First Name</p>
-            <input type='text' ref='firstName' required placeholder="First Name" />
-            <p className='col s12' style={styles.customLabel}>Customer Last Name</p>
-            <input type='text' ref='lastName' required placeholder="Last Name" />
-            <p className='col s12' style={styles.customLabel}>KW</p>
-            <input type='text' ref='kw' required placeholder="ex. 5.2"/>
-            <p className='col s12'>
-              <input type="checkbox" ref='sitdown' id="sitdown" className='filled-in' />
-              <label htmlFor="sitdown">Sit Down</label>
-            </p>
-            <p className='col s12'>
-              <input type="checkbox" ref='close' id="close" className='filled-in' />
-              <label htmlFor="close">Closed Sale</label>
-            </p>
-            <p className='col s12'>
-              <input type="checkbox" ref='sitesurvey' id="sitesurvey" className='filled-in' />
-              <label htmlFor="sitesurvey">Site Survey</label>
-            </p>
-            <p className='col s12'>
-              <input type="checkbox" ref='cancel' id="cancel" className='filled-in' />
-              <label htmlFor="cancel">Cancelled</label>
-            </p>
-						<div className='col s12'>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12' style={styles.customLabel}>Customer First Name</p>
+              <input type='text' ref='firstName' required placeholder="First Name" />
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12' style={styles.customLabel}>Customer Last Name</p>
+              <input type='text' ref='lastName' required placeholder="Last Name" />
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12' style={styles.customLabel}>KW</p>
+              <input type='text' ref='kw' required placeholder="ex. 5.2"/>
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12'>
+                <input type="checkbox" ref='sitdown' id="sitdown" className='filled-in checkbox-blue' />
+                <label htmlFor="sitdown">Sit Down</label>
+              </p>
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12'>
+                <input type="checkbox" ref='close' id="close" className='filled-in checkbox-blue' />
+                <label htmlFor="close">Closed Sale</label>
+              </p>
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12'>
+                <input type="checkbox" ref='sitesurvey' id="sitesurvey" className='filled-in checkbox-blue' />
+                <label htmlFor="sitesurvey">Site Survey</label>
+              </p>
+            </div>
+            <div className='col s12 m10 offset-m1'>
+              <p className='col s12'>
+                <input type="checkbox" ref='cancel' id="cancel" className='filled-in checkbox-blue' />
+                <label htmlFor="cancel">Cancelled</label>
+              </p>
+              <br />
+              <br />
+            </div>
+						<div className='col s12 m10 offset-m1'>
               <label>Date</label>
               <input type="date" ref='date' className="datepicker" placeholder='click to select date' />
 						</div>
 					</div>
-					<div className="modal-footer">
+					<div className="modal-footer col s12 m10 offset-m1">
 						<button type="submit" className=" modal-action waves-effect waves-green btn-flat">Update</button>
 					</div>
 				</form>
@@ -256,9 +272,9 @@ class ReportOfficeSales extends React.Component {
       sitesurvey = this.props.officetotalsitesurvey['SS']
     }
     return(
-      <div>
+      <div style={styles.tableStyle}>
         <table className='striped'>
-          <thead>
+          <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s2'>Date</th>
                 <th className='col s2'>Customer</th>
@@ -271,17 +287,16 @@ class ReportOfficeSales extends React.Component {
                 <th className='col s1'>Delete</th>
             </tr>
           </thead>
-          <hr />
           <tbody id="products">
             {this.displaySales()}
-            <tr className='row'>
+            <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
               <td className='col s2'><b>TOTAL:</b></td>
               <td className='col s2'></td>
-              <td className='col s2'>{kilowatts}</td>
-              <td className='col s1'>{sitdown}</td>
-              <td className='col s1'>{close}</td>
-              <td className='col s1'>{sitesurvey}</td>
-              <td className='col s1'>{cancel}</td>
+              <td className='col s2'><b>{kilowatts}</b></td>
+              <td className='col s1'><b>{sitdown}</b></td>
+              <td className='col s1'><b>{close}</b></td>
+              <td className='col s1'><b>{sitesurvey}</b></td>
+              <td className='col s1'><b>{cancel}</b></td>
               <td className='col s1'></td>
               <td className='col s1'></td>
             </tr>
@@ -323,6 +338,9 @@ const styles = {
     borderBottom: '1px solid #333',
     boxShadow: '0 0 6px #000',
     position: 'relative',
+  },
+  tableStyle: {
+    minWidth: '600px'
   }
 }
 
