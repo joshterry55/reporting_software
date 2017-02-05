@@ -171,9 +171,8 @@ class ReportOfficeSales extends React.Component {
 		return(
 			<div>
 				<form className='row' ref='editSaleForm' onSubmit={this.submitEdittedSale}>
-          <div style={styles.modalHeader}>
-            <span>Add Shift</span>
-            <span style={styles.modalHeaderInfo}>blah<br />blah</span>
+          <div style={styles.modalHeader} className='center'>
+            <span>Edit Sale</span>
           </div>
 					<div className="modal-content">
             <p className='col s12' style={styles.customLabel}>Customer First Name</p>
@@ -307,7 +306,7 @@ const styles = {
     width: '80%',
     maxWidth: '500px',
     border: '1px solid #333',
-    borderRadius: '10px'
+    borderRadius: '10px',
   },
   modalFooter: {
     position: 'absolute',
@@ -317,24 +316,13 @@ const styles = {
     width: '100%',
     height: '60px',
     lineHeight: '61px',
-    color: '#fff',
+    color: '#f2f7f7',
     fontSize: '35px',
     textShadow: '0 0 5px rgba(0,0,0,0.50)',
-    backgroundColor: "#66f",
-    background: "linear-gradient(#1b7ff2, #1257a6)",
+    backgroundColor: "#60b9e8",
     borderBottom: '1px solid #333',
     boxShadow: '0 0 6px #000',
     position: 'relative',
-    paddingLeft: '10px'
-  },
-  modalHeaderInfo: {
-    color: '#fff',
-    fontSize: '20px',
-    lineHeight: '30px',
-    position: 'absolute',
-    right: '10px',
-    textAlign: 'right',
-    textShadow: '0 0 5px rgba(0,0,0,0.50)'
   }
 }
 

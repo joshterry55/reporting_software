@@ -59,32 +59,36 @@ class AddSale extends React.Component {
       cancel = 0
     }
     let input = this.refs.date.value
-    var test = new Date(input)
-    let date = this.dateFormat(test)
-    $.ajax({
-      url: '/api/sales',
-      type: 'POST',
-      dataType: 'JSON',
-      data: { sale: {
-        first_name: firstName,
-        last_name: lastName,
-        kw: kw,
-        user_id: employeeId,
-        region_id: regionId,
-        office_id: officeId,
-        sit_down: sitDown,
-        close: close,
-        site_survey: siteSurvey,
-        cancel: cancel,
-        date: date
-      }}
-    }).done( sale => {
-      let messageSuccess = `Sale Added`
-      this.props.dispatch(setFlash(messageSuccess, 'success'))
-      this.refs.saleForm.reset()
-    }).fail( data => {
-      debugger
-    })
+    if(input === '') {
+      alert("Please Select a Date")
+    } else {
+      var test = new Date(input)
+      let date = this.dateFormat(test)
+      $.ajax({
+        url: '/api/sales',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { sale: {
+          first_name: firstName,
+          last_name: lastName,
+          kw: kw,
+          user_id: employeeId,
+          region_id: regionId,
+          office_id: officeId,
+          sit_down: sitDown,
+          close: close,
+          site_survey: siteSurvey,
+          cancel: cancel,
+          date: date
+        }}
+      }).done( sale => {
+        let messageSuccess = `Sale Added`
+        this.props.dispatch(setFlash(messageSuccess, 'success'))
+        this.refs.saleForm.reset()
+      }).fail( data => {
+        debugger
+      })
+    }
   }
 
   dateFormat(day) {
