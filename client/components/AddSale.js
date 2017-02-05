@@ -129,19 +129,19 @@ class AddSale extends React.Component {
             <p style={styles.customLabel}>KW</p>
             <input type='text' ref='kw' required placeholder="ex. 5.2"/>
             <p>
-              <input type="checkbox" id="sitdown" className='filled-in' />
+              <input type="checkbox" id="sitdown" className='filled-in checkbox-blue' />
               <label htmlFor="sitdown">Sit Down</label>
             </p>
             <p>
-              <input type="checkbox" id="close" className='filled-in' />
+              <input type="checkbox" id="close" className='filled-in checkbox-blue' />
               <label htmlFor="close">Closed Sale</label>
             </p>
             <p>
-              <input type="checkbox" id="sitesurvey" className='filled-in' />
+              <input type="checkbox" id="sitesurvey" className='filled-in checkbox-blue' />
               <label htmlFor="sitesurvey">Site Survey</label>
             </p>
             <p>
-              <input type="checkbox" id="cancel" className='filled-in' />
+              <input type="checkbox" id="cancel" className='filled-in checkbox-blue' />
               <label htmlFor="cancel">Cancelled</label>
             </p>
             <label>Date</label>
