@@ -7,25 +7,64 @@ class LeaderboardDisplay extends React.Component {
   constructor(props) {
     super(props)
 
+    this.truePerc = this.truePerc.bind(this)
+    this.displaySales = this.displaySales.bind(this)
   }
 
+  truePerc(sale) {
+    let siteSurvey = sale.site_survey
+    let sitDown = sale.sit_down
+    if(sitDown === 0) {
+      return(
+        0
+      )
+    } else if(siteSurvey === 0) {
+      return(
+        0
+      )
+    } else {
+      return(
+      ((siteSurvey / sitDown) * 100).toFixed(2)
+      )
+    }
+
+  }
+
+  cancelPerc(sale) {
+    let cancel = sale.cancel
+    let siteSurvey = sale.site_survey
+    if(siteSurvey === 0) {
+      return(
+        0
+      )
+    } else if(cancel === 0) {
+      return(
+        0
+      )
+    } else {
+      return(
+      ((cancel / siteSurvey) * 100).toFixed(2)
+      )
+    }
+  }
 
   displaySales() {
     if(this.props.leaderboardtotals.length) {
-      return this.props.leaderboardtotals.map( user => {
+      return this.props.leaderboardtotals.map(function(user, i){
         return(
             <tr className='row' key={user.id}>
+              <td className='col s1'>{i + 1}</td>
               <td className='col s2'>{user.name}</td>
               <td className='col s2'>{user.kw} {user.last_name}</td>
               <td className='col s2'>{user.sit_down}</td>
-              <td className='col s2'>{user.close}</td>
+              <td className='col s1'>{user.close}</td>
               <td className='col s1'>{user.site_survey}</td>
               <td className='col s1'>{user.cancel}</td>
-              <td className='col s1'>{user.cancel}</td>
-              <td className='col s1'>{user.cancel}</td>
+              <td className='col s1'>{this.truePerc(user)}%</td>
+              <td className='col s1'>{this.cancelPerc(user)}%</td>
             </tr>
         );
-      });
+      }, this);
     }
   }
 
@@ -49,10 +88,11 @@ class LeaderboardDisplay extends React.Component {
         <table className='striped'>
           <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
             <tr className='row'>
+                <th className='col s1'>Rank</th>
                 <th className='col s2'>Salesman</th>
                 <th className='col s2'>KW</th>
                 <th className='col s2'>SD</th>
-                <th className='col s2'>CL</th>
+                <th className='col s1'>CL</th>
                 <th className='col s1'>SS</th>
                 <th className='col s1'>CA</th>
                 <th className='col s1'>T%</th>
@@ -63,9 +103,10 @@ class LeaderboardDisplay extends React.Component {
             {this.displaySales()}
             <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
               <td className='col s2'><b>TOTAL:</b></td>
+              <td className='col s1'></td>
               <td className='col s2'><b>{kilowatts}</b></td>
               <td className='col s2'><b>{sitdown}</b></td>
-              <td className='col s2'><b>{close}</b></td>
+              <td className='col s1'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
               <td className='col s1'></td>
