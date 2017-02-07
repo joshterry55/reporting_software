@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
 import Announcements from './components/Announcements'
 import Leaderboards from './components/Leaderboards'
+import LeaderboardEmployees from './components/LeaderboardEmployees'
 import Trainings from './components/Trainings'
 import Employee from './components/Employee'
 import Admin from './components/Admin'
@@ -48,6 +49,7 @@ export default (
       <Route component={AuthWrapper}>
         <Route path='/announcements' component={Announcements} />
         <Route path='/leaderboards' component={Leaderboards}/>
+        <Route path='/leaderboards/employees' component={LeaderboardEmployees}/>
         <Route path='/employee' component={Employee} />
         <Route path='/trainings' component={Trainings} />
         <Route component={AdminRoutes}>

@@ -29,13 +29,15 @@ class Region extends React.Component {
     e.preventDefault()
     let name = this.refs.officeName.value
     let regionId = this.props.currentregion.id
+    let companyId = this.props.assignedcompany.id
     $.ajax({
       url: '/api/offices',
       type: 'POST',
       dataType: 'JSON',
       data: { office: {
         name: name,
-        region_id: regionId
+        region_id: regionId,
+        company_id: companyId
       }}
     }).done( office => {
       this.props.dispatch({type: 'ADD_ASSIGNED_OFFICE', office})
@@ -156,8 +158,8 @@ class Region extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions, currentregion, assignedoffices } = state
-  return { user, assignedregions, currentregion, assignedoffices }
+  let { user, assignedregions, currentregion, assignedoffices, assignedcompany } = state
+  return { user, assignedregions, currentregion, assignedoffices, assignedcompany }
 }
 
 

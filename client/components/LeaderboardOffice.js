@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Button, NavItem } from 'react-materialize';
 import { employees } from '../actions/employees';
-import ReportContainer from './ReportContainer'
+import LeaderboardContainer from './LeaderboardContainer'
 
 
-class ReportOfficeSelect extends React.Component {
+class LeaderboardOffice extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -42,7 +42,7 @@ class ReportOfficeSelect extends React.Component {
         </div>
         <div className='col s12'>
         </div>
-        <ReportContainer />
+        <LeaderboardContainer />
       </div>
     )
   }
@@ -68,4 +68,4 @@ const mapStateToProps = (state) => {
   return { user, currentregion, currentoffice, assignedoffices, employees }
 }
 
-export default connect(mapStateToProps)(ReportOfficeSelect)
+export default connect(mapStateToProps)(LeaderboardOffice)

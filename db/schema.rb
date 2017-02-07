@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203073054) do
+ActiveRecord::Schema.define(version: 20170206182103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170203073054) do
     t.integer  "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_offices_on_company_id", using: :btree
     t.index ["region_id"], name: "index_offices_on_region_id", using: :btree
   end
 
@@ -146,6 +148,7 @@ ActiveRecord::Schema.define(version: 20170203073054) do
   add_foreign_key "announcements", "offices"
   add_foreign_key "cancels", "users"
   add_foreign_key "closes", "users"
+  add_foreign_key "offices", "companies"
   add_foreign_key "offices", "regions"
   add_foreign_key "regions", "companies"
   add_foreign_key "sales", "offices"

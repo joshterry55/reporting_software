@@ -50,3 +50,33 @@ export const officesetup = () => {
     });
 	}
 }
+
+export const setassignedregions = (companyId) => {
+	return(dispatch) => {
+    $.ajax({
+      url: `/api/company/${companyId}/regions`,
+      type: 'GET',
+      dataType: 'JSON',
+      async: false
+    }).done( regions => {
+      dispatch({ type: 'ASSIGNED_REGIONS', regions })
+    }).fail( data => {
+      console.log(data);
+    });
+	}
+}
+
+export const setassignedoffices = (companyId) => {
+	return(dispatch) => {
+    $.ajax({
+      url: `/api/company/${companyId}/offices`,
+      type: 'GET',
+      dataType: 'JSON',
+      async: false
+    }).done( offices => {
+      dispatch({ type: 'ASSIGNED_OFFICES', offices })
+    }).fail( data => {
+      console.log(data);
+    });
+	}
+}

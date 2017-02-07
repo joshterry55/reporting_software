@@ -6,6 +6,20 @@ class Api::CompaniesController < ApplicationController
     render json: @company
   end
 
+  def regions
+    @company = Company.find(params[:id])
+    @regions = @company.regions
+    render json: @regions
+
+  end
+
+  def offices
+    @company = Company.find(params[:id])
+    @offices = @company.offices
+    render json: @offices
+
+  end
+
   def show
   end
 

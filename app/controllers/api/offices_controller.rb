@@ -56,6 +56,6 @@ class Api::OfficesController < ApplicationController
   private
 
   def office_params
-    params.require(:office).permit(:name, :region_id)
+    params.require(:office).permit(:name, :region_id, :company_id)
   end
 end
