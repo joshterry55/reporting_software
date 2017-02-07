@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { leaderboardtotals } from '../actions/leaderboardtotals';
+import { leaderboardtotals, leaderboardtotalssite } from '../actions/leaderboardtotals';
 import { totalsales } from '../actions/totalsales';
 
 class LeaderboardSetup extends React.Component {
@@ -8,10 +8,17 @@ class LeaderboardSetup extends React.Component {
     super(props)
 
     this.leaderboardCalculations = this.leaderboardCalculations.bind(this)
+    this.leaderboardCalculationsSS = this.leaderboardCalculationsSS.bind(this)
   }
 
   componentDidUpdate() {
-    this.leaderboardCalculations()
+    if(this.props.currentfilter === "SS") {
+      this.leaderboardCalculationsSS()
+    } else if (this.props.currentfilter === "KW") {
+      this.leaderboardCalculations()
+    } else {
+      this.leaderboardCalculations()
+    }
   }
 
   // TODO remember to check the component did update to find a better way, i know its redundant at the moment
@@ -19,6 +26,12 @@ class LeaderboardSetup extends React.Component {
   leaderboardCalculations() {
     let currentSales = this.props.officesales
     this.props.dispatch(leaderboardtotals(currentSales));
+    this.props.dispatch(totalsales(currentSales))
+  }
+
+  leaderboardCalculationsSS() {
+    let currentSales = this.props.officesales
+    this.props.dispatch(leaderboardtotalssite(currentSales));
     this.props.dispatch(totalsales(currentSales))
   }
 
@@ -31,8 +44,8 @@ class LeaderboardSetup extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	let { setdate, currentoffice, officesales, employees } = state;
-  return { setdate, currentoffice, officesales, employees }
+	let { setdate, currentoffice, officesales, employees, currentfilter } = state;
+  return { setdate, currentoffice, officesales, employees, currentfilter }
 }
 
 export default connect(mapStateToProps)(LeaderboardSetup)

@@ -24,7 +24,7 @@ class LeaderboardDisplay extends React.Component {
       )
     } else {
       return(
-      ((siteSurvey / sitDown) * 100).toFixed(2)
+      ((siteSurvey / sitDown) * 100).toFixed(1)
       )
     }
 
@@ -43,7 +43,7 @@ class LeaderboardDisplay extends React.Component {
       )
     } else {
       return(
-      ((cancel / siteSurvey) * 100).toFixed(2)
+      ((cancel / siteSurvey) * 100).toFixed(1)
       )
     }
   }

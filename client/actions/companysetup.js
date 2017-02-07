@@ -59,7 +59,7 @@ export const setassignedregions = (companyId) => {
       dataType: 'JSON',
       async: false
     }).done( regions => {
-      dispatch({ type: 'ASSIGNED_REGIONS', regions })
+      dispatch({ type: 'LEADERBOARD_REGIONS', regions })
     }).fail( data => {
       console.log(data);
     });
@@ -74,7 +74,7 @@ export const setassignedoffices = (companyId) => {
       dataType: 'JSON',
       async: false
     }).done( offices => {
-      dispatch({ type: 'ASSIGNED_OFFICES', offices })
+      dispatch({ type: 'LEADERBOARD_OFFICES', offices })
     }).fail( data => {
       console.log(data);
     });

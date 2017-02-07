@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Button, NavItem } from 'react-materialize';
 import { employees } from '../actions/employees';
-import LeaderboardContainer from './LeaderboardContainer'
+import LeaderboardSelector from './LeaderboardSelector'
 
 
 class LeaderboardOffice extends React.Component {
@@ -11,12 +11,14 @@ class LeaderboardOffice extends React.Component {
   }
 
   showOffices() {
-    return this.props.assignedoffices.map( office => {
-      let regionId = this.props.currentregion.id
-      if(office.region_id === regionId) {
-        return(<NavItem key={office.id} value={office.id} onClick={() => this.officeInfo(office)}>{office.name}</NavItem>);
-      }
-    });
+    if(this.props.leaderboardoffices.length != undefined) {
+      return this.props.leaderboardoffices.map( office => {
+        let regionId = this.props.currentregion.id
+        if(office.region_id === regionId) {
+          return(<NavItem key={office.id} value={office.id} onClick={() => this.officeInfo(office)}>{office.name}</NavItem>);
+        }
+      });
+    }
   }
 
   officeInfo(office) {
@@ -42,7 +44,7 @@ class LeaderboardOffice extends React.Component {
         </div>
         <div className='col s12'>
         </div>
-        <LeaderboardContainer />
+        <LeaderboardSelector />
       </div>
     )
   }
@@ -64,8 +66,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, currentregion, currentoffice, assignedoffices, employees } = state
-  return { user, currentregion, currentoffice, assignedoffices, employees }
+  let { user, currentregion, currentoffice, assignedoffices, employees, leaderboardoffices } = state
+  return { user, currentregion, currentoffice, assignedoffices, employees, leaderboardoffices }
 }
 
 export default connect(mapStateToProps)(LeaderboardOffice)

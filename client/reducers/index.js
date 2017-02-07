@@ -18,6 +18,9 @@ import officetotalsitesurvey from './officetotalsitesurvey'
 import currentsale from './currentsale'
 import weekdates from './weekdates'
 import leaderboardtotals from './leaderboardtotals'
+import leaderboardregions from './leaderboardregions'
+import leaderboardoffices from './leaderboardoffices'
+import currentfilter from './currentfilter'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -38,7 +41,10 @@ const rootReducer = combineReducers({
   officetotalsitesurvey,
   currentsale,
   weekdates,
-  leaderboardtotals
+  leaderboardtotals,
+  leaderboardregions,
+  leaderboardoffices,
+  currentfilter
  });
 
 export default rootReducer;

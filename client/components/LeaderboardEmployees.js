@@ -19,9 +19,11 @@ class LeaderboardEmployees extends React.Component {
   }
 
   showRegions() {
-    return this.props.assignedregions.map( region => {
-      return(<NavItem key={region.id} value={region.id} onClick={() => this.regionInfo(region)}>{region.name}</NavItem>);
-    });
+    if(this.props.leaderboardregions.length != undefined) {
+      return this.props.leaderboardregions.map( region => {
+        return(<NavItem key={region.id} value={region.id} onClick={() => this.regionInfo(region)}>{region.name}</NavItem>);
+      });
+    }
   }
 
   regionInfo(region) {
@@ -74,8 +76,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions, currentregion, assignedcompany } = state
-  return { user, assignedregions, currentregion, assignedcompany }
+  let { user, assignedregions, currentregion, assignedcompany, leaderboardregions } = state
+  return { user, assignedregions, currentregion, assignedcompany, leaderboardregions }
 }
 
 export default connect(mapStateToProps)(LeaderboardEmployees)
