@@ -3,7 +3,7 @@ const leaderboardtotals = (state = [], action) => {
 		case 'LEADERBOARD_TOTALS':
 			return action.leaderboardArray
 		case 'RESET_LEADERBOARD':
-			return action.leaderboardArray = {}
+			return action.leaderboardArray = []
 		default:
 			return state;
 	}

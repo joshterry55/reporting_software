@@ -8,6 +8,7 @@ class AddSale extends React.Component {
     super(props)
 
     this.submitSale = this.submitSale.bind(this)
+    this.employeeFind = this.employeeFind.bind(this)
   }
   //
   // componentDidMount() {
@@ -26,9 +27,22 @@ class AddSale extends React.Component {
   });
 }
 
+employeeFind(id) {
+  let employeeName
+  this.props.employees.map( employee => {
+    if(employee.id === parseInt(id)) {
+     employeeName = `${employee.first_name} ${employee.last_name}`
+    }
+  });
+  return(
+      employeeName
+  )
+}
+
   submitSale(e) {
     e.preventDefault()
     let employeeId = this.refs.employee.value
+    let salesman = this.employeeFind(employeeId)
     let officeId = this.props.currentoffice.id
     let regionId = this.props.currentregion.id
     let kw = this.refs.kw.value
@@ -79,7 +93,8 @@ class AddSale extends React.Component {
           close: close,
           site_survey: siteSurvey,
           cancel: cancel,
-          date: date
+          date: date,
+          salesman: salesman
         }}
       }).done( sale => {
         let messageSuccess = `Sale Added`
@@ -93,7 +108,6 @@ class AddSale extends React.Component {
 
   dateFormat(day) {
     let fullDate = day
-    debugger
     let myDate = []
     myDate.push(fullDate.toDateString().substr(0, 3))
     let monthNumber = fullDate.getMonth();

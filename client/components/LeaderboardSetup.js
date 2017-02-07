@@ -13,11 +13,9 @@ class LeaderboardSetup extends React.Component {
     if(this.props.officesales.length) {
       this.leaderboardCalculations();
     } else {
+
       this.props.dispatch({type: 'RESET_KW'})
-      this.props.dispatch({type: 'RESET_SIT_DOWN'})
-      this.props.dispatch({type: 'RESET_CLOSE'})
-      this.props.dispatch({type: 'RESET_SITE_SURVEY'})
-      this.props.dispatch({type: 'RESET_CANCEL'})
+
     }
   }
 

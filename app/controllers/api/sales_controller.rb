@@ -29,7 +29,7 @@ class Api::SalesController < ApplicationController
   def edit
   end
 
-  def update 
+  def update
     @sale = Sale.find(params[:id])
     if @sale.update(sale_params)
       render json: @sale
@@ -39,6 +39,6 @@ class Api::SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :startday)
+    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :startday, :salesman)
   end
 end
