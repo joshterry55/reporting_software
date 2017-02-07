@@ -35,6 +35,7 @@ class LeaderboardContainer extends Component {
 		this.props.dispatch({type: 'SET_WEEK', weekOffset});
 	}
 
+
 	render() {
 		return(
 			<div>

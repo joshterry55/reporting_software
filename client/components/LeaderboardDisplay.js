@@ -7,232 +7,6 @@ class LeaderboardDisplay extends React.Component {
   constructor(props) {
     super(props)
 
-    this.editSale = this.editSale.bind(this)
-    this.editModal = this.editModal.bind(this)
-    this.deleteSale = this.deleteSale.bind(this)
-    this.submitEdittedSale = this.submitEdittedSale.bind(this)
-  }
-
-  componentDidMount() {
-    $('.modal').modal();
-  }
-
-  componentDidUpdate() {
-    $('select').material_select();
-    $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-    this.refs.firstName.value = this.props.currentsale.first_name;
-    this.refs.lastName.value = this.props.currentsale.last_name;
-    this.refs.kw.value = this.props.currentsale.kw.toString()
-    if(this.props.currentsale.sit_down === 1) {
-      this.refs.sitdown.checked = true
-    } else {
-      this.refs.sitdown.checked = false
-    }
-
-    if(this.props.currentsale.close === 1) {
-      this.refs.close.checked = true
-    } else {
-      this.refs.close.checked = false
-    }
-
-    if(this.props.currentsale.site_survey === 1) {
-      this.refs.sitesurvey.checked = true
-    } else {
-      this.refs.sitesurvey.checked = false
-    }
-
-    if(this.props.currentsale.cancel === 1) {
-      this.refs.cancel.checked = true
-    } else {
-      this.refs.cancel.checked = false
-    }
-
-  }
-
-  // truePerc(sale) {
-  //   let siteSurvey = sale.site_survey
-  //   let sitDown = sale.sit_down
-  //   if(sitDown === 0) {
-  //     return(
-  //       0
-  //     )
-  //   } else if(siteSurvey === 0) {
-  //     return(
-  //       0
-  //     )
-  //   } else {
-  //     debugger
-  //     return(
-  //     (siteSurvey / sitDown)
-  //     )
-  //   }
-  //
-  // }
-  //
-  // cancelPerc(sale) {
-  //   debugger
-  // }
-
-  submitEdittedSale(e) {
-    e.preventDefault()
-    let id = this.props.currentsale.id
-    let kw = this.refs.kw.value
-    let firstName = this.refs.firstName.value
-    let lastName = this.refs.lastName.value
-    let sitDown = $('#sitdown').is(':checked')
-    let close = $('#close').is(':checked')
-    let siteSurvey = $('#sitesurvey').is(':checked')
-    let cancel = $('#cancel').is(':checked')
-    if(sitDown === true) {
-      sitDown = 1
-    } else {
-      sitDown = 0
-    }
-    if(close === true) {
-      close = 1
-    } else {
-      close = 0
-    }
-    if(siteSurvey === true) {
-      siteSurvey = 1
-    } else {
-      siteSurvey = 0
-    }
-    if(cancel === true) {
-      cancel = 1
-    } else {
-      cancel = 0
-    }
-    let input = this.refs.date.value
-    if(input === '') {
-      alert("Please Select a Date")
-    } else {
-      let parseKw = parseFloat(kw)
-      if(parseKw == NaN) {
-        alert("KW must be a valid number")
-      } else {
-        $('.modal').modal('close');
-        var test = new Date(input)
-        let date = this.dateFormat(test)
-
-        $.ajax({
-          url: `api/sales/${id}`,
-          type: 'PUT',
-          dataType: 'JSON',
-          data: { sale: {
-            first_name: firstName,
-            last_name: lastName,
-            kw: kw,
-            sit_down: sitDown,
-            close: close,
-            site_survey: siteSurvey,
-            cancel: cancel,
-            date: date
-          }}
-        }).done( sale => {
-          let messageSuccess = `Sale Updated`
-          let hasDate = false
-          this.props.weekdates.map( date => {
-            if(date === sale.date) {
-              hasDate = true
-              this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
-            }
-          })
-          if(hasDate === false) {
-            this.props.dispatch({type: 'REMOVE_OFFICE_SALE', sale})
-          }
-          this.props.dispatch(setFlash(messageSuccess, 'success'))
-          this.refs.editSaleForm.reset()
-        }).fail( data => {
-          debugger
-        })
-      }
-    }
-  }
-
-  dateFormat(day) {
-    let fullDate = day
-    let myDate = []
-    myDate.push(fullDate.toDateString().substr(0, 3))
-    let monthNumber = fullDate.getMonth();
-    let monthNames = ["January", "February", "March", "April",
-                      "May", "June", "July", "August", "September",
-                      "October", "November", "December"]
-    myDate.push(monthNames[monthNumber] + ' ' + fullDate.getDate())
-    myDate.push(fullDate.getFullYear())
-
-    return `${myDate[1]}, ${myDate[2]}`
-  }
-
-  editModal() {
-
-		return(
-			<div>
-				<form className='row' ref='editSaleForm' onSubmit={this.submitEdittedSale}>
-          <div style={styles.modalHeader} className='center'>
-            <span>Edit Sale</span>
-          </div>
-					<div className="modal-content">
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12' style={styles.customLabel}>Customer First Name</p>
-              <input type='text' ref='firstName' required placeholder="First Name" />
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12' style={styles.customLabel}>Customer Last Name</p>
-              <input type='text' ref='lastName' required placeholder="Last Name" />
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12' style={styles.customLabel}>KW</p>
-              <input type='text' ref='kw' required placeholder="ex. 5.2"/>
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12'>
-                <input type="checkbox" ref='sitdown' id="sitdown" className='filled-in checkbox-blue' />
-                <label htmlFor="sitdown">Sit Down</label>
-              </p>
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12'>
-                <input type="checkbox" ref='close' id="close" className='filled-in checkbox-blue' />
-                <label htmlFor="close">Closed Sale</label>
-              </p>
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12'>
-                <input type="checkbox" ref='sitesurvey' id="sitesurvey" className='filled-in checkbox-blue' />
-                <label htmlFor="sitesurvey">Site Survey</label>
-              </p>
-            </div>
-            <div className='col s12 m10 offset-m1'>
-              <p className='col s12'>
-                <input type="checkbox" ref='cancel' id="cancel" className='filled-in checkbox-blue' />
-                <label htmlFor="cancel">Cancelled</label>
-              </p>
-              <br />
-              <br />
-            </div>
-						<div className='col s12 m10 offset-m1'>
-              <label>Date</label>
-              <input type="date" ref='date' className="datepicker" placeholder='click to select date' />
-						</div>
-					</div>
-					<div className="modal-footer col s12 m10 offset-m1">
-						<button type="submit" className=" modal-action waves-effect waves-green btn-flat">Update</button>
-					</div>
-				</form>
-			</div>
-		)
-	}
-
-  editSale(sale) {
-    this.props.dispatch({type: 'CURRENT_SALE', sale})
-  }
-
-  deleteSale(sale) {
-    alert('Do we need a delete option for sales?')
   }
 
 
@@ -255,7 +29,6 @@ class LeaderboardDisplay extends React.Component {
     }
   }
 
-  // <div key={sale.id}>{sale.first_name} {sale.last_name} {sale.kw}</div>
 
 
   render() {
@@ -290,19 +63,16 @@ class LeaderboardDisplay extends React.Component {
             {this.displaySales()}
             <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
               <td className='col s2'><b>TOTAL:</b></td>
-              <td className='col s2'></td>
               <td className='col s2'><b>{kilowatts}</b></td>
               <td className='col s2'><b>{sitdown}</b></td>
-              <td className='col s1'><b>{close}</b></td>
+              <td className='col s2'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
+              <td className='col s1'></td>
               <td className='col s1'></td>
             </tr>
           </tbody>
         </table>
-        <div id="modal1" className="modal modal-height" style={styles.modalStyling}>
-          {this.editModal()}
-        </div>
       </div>
     )
   }

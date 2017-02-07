@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { leaderboardtotals } from '../actions/leaderboardtotals';
+import { totalsales } from '../actions/totalsales';
 
 class LeaderboardSetup extends React.Component {
   constructor(props) {
@@ -10,13 +11,7 @@ class LeaderboardSetup extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.props.officesales.length) {
-      this.leaderboardCalculations();
-    } else {
-
-      this.props.dispatch({type: 'RESET_KW'})
-
-    }
+    this.leaderboardCalculations()
   }
 
   // TODO remember to check the component did update to find a better way, i know its redundant at the moment
@@ -24,10 +19,10 @@ class LeaderboardSetup extends React.Component {
   leaderboardCalculations() {
     let currentSales = this.props.officesales
     this.props.dispatch(leaderboardtotals(currentSales));
+    this.props.dispatch(totalsales(currentSales))
   }
 
   render() {
-
     return(
       <div>
       </div>
