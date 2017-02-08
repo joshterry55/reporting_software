@@ -1,5 +1,5 @@
 
-const companysales = (state = {}, action) => {
+const companysales = (state = [], action) => {
   switch(action.type) {
     case 'COMPANY_SALES':
       return action.sales

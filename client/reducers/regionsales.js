@@ -1,5 +1,5 @@
 
-const regionsales = (state = {}, action) => {
+const regionsales = (state = [], action) => {
   switch(action.type) {
     case 'REGION_SALES':
       return action.sales

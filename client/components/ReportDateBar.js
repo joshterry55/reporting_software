@@ -43,15 +43,12 @@ class ReportDateBar extends Component {
 		}
 		if(regionId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/offices') {
 			this.props.dispatch(regionsales(regionId, weekDates))
-			this.props.dispatch(weekdates(weekDates))
 		}
 		if(companyId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/regions') {
 			this.props.dispatch(companysales(companyId, weekDates))
-			this.props.dispatch(weekdates(weekDates))
 		}
 		if(companyId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/company') {
 			this.props.dispatch(companysales(companyId, weekDates))
-			this.props.dispatch(weekdates(weekDates))
 		}
 		return(
 			<div>
