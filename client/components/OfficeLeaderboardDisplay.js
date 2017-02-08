@@ -9,6 +9,7 @@ class OfficeLeaderboardDisplay extends React.Component {
 
     this.truePerc = this.truePerc.bind(this)
     this.displaySales = this.displaySales.bind(this)
+    this.officeName = this.officeName.bind(this)
   }
 
   truePerc(sale) {
@@ -48,13 +49,24 @@ class OfficeLeaderboardDisplay extends React.Component {
     }
   }
 
+
+  officeName(office) {
+    let officeName
+    this.props.leaderboardoffices.map( o => {
+      if(o.id === office.id) {
+        officeName = o.name
+      }
+    })
+    return(officeName)
+  }
+
   displaySales() {
     if(this.props.leaderboardofficetotals.length) {
       return this.props.leaderboardofficetotals.map(function(office, i){
         return(
             <tr className='row' key={office.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{office.name}</td>
+              <td className='col s2'>{this.officeName(office)}</td>
               <td className='col s2'>{office.kw} {office.last_name}</td>
               <td className='col s2'>{office.sit_down}</td>
               <td className='col s1'>{office.close}</td>
@@ -154,8 +166,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices }
 }
 
 export default connect(mapStateToProps)(OfficeLeaderboardDisplay)

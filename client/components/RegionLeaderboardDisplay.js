@@ -9,6 +9,7 @@ class RegionLeaderboardDisplay extends React.Component {
 
     this.truePerc = this.truePerc.bind(this)
     this.displaySales = this.displaySales.bind(this)
+    this.regionName = this.regionName.bind(this)
   }
 
   truePerc(sale) {
@@ -48,13 +49,23 @@ class RegionLeaderboardDisplay extends React.Component {
     }
   }
 
+  regionName(region) {
+    let regionName
+    this.props.leaderboardregions.map( r => {
+      if(r.id === region.id) {
+        regionName = r.name
+      }
+    })
+    return(regionName)
+  }
+
   displaySales() {
     if(this.props.leaderboardregiontotals.length) {
       return this.props.leaderboardregiontotals.map(function(region, i){
         return(
             <tr className='row' key={region.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{region.name}</td>
+              <td className='col s2'>{this.regionName(region)}</td>
               <td className='col s2'>{region.kw} {region.last_name}</td>
               <td className='col s2'>{region.sit_down}</td>
               <td className='col s1'>{region.close}</td>
@@ -154,8 +165,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales, leaderboardregions } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales, leaderboardregions }
 }
 
 export default connect(mapStateToProps)(RegionLeaderboardDisplay)
