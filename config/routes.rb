@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'office/:id/users', as: 'office/users', :to => 'users#index'
     get 'company/:id/users', as: 'company/users', :to => 'users#employees'
     get 'office/:id/sales', as: 'office/sales', :to => 'sales#office'
+    get 'region/:id/sales', as: 'region/sales', :to => 'sales#region'
     get 'company/:id/regions', as: 'company/regions', :to => 'companies#regions'
     get 'company/:id/offices', as: 'company/offices', :to => 'companies#offices'
     resources :users

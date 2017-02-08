@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router'
 import ReportDateBar from './ReportDateBar';
 import LeaderboardDisplay from './LeaderboardDisplay';
+import LeaderboardOfficeDisplay from './LeaderboardOfficeDisplay';
 import LeaderboardSetup from './LeaderboardSetup';
 let weekOffset = 0
 
@@ -35,6 +36,24 @@ class LeaderboardContainer extends Component {
 		this.props.dispatch({type: 'SET_WEEK', weekOffset});
 	}
 
+	urlCheck() {
+		if(window.location.pathname === '/leaderboards/employees') {
+			return(
+				<div>
+					<LeaderboardSetup />
+					<LeaderboardDisplay />
+				</div>
+			)
+		} else if(window.location.pathname === '/leaderboards/offices') {
+			return(
+				<div>
+					<LeaderboardSetup />
+					<LeaderboardOfficeDisplay />
+				</div>
+			)
+		}
+	}
+
 
 	render() {
 		return(
@@ -52,8 +71,7 @@ class LeaderboardContainer extends Component {
 					<ReportDateBar />
 					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
 						<div style={styles.calendar}>
-							<LeaderboardSetup />
-							<LeaderboardDisplay />
+							{this.urlCheck()}
 						</div>
 					</div>
 				</div>

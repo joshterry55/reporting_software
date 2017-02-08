@@ -12,6 +12,14 @@ class Api::SalesController < ApplicationController
 
   end
 
+  def region
+    @region = Region.find(params[:id])
+    @region_week_dates = params[:startday]
+    @sales = @region.sales.where(date: @region_week_dates)
+    render json: @sales
+
+  end
+
   def show
   end
 

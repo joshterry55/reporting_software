@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { officesales } from '../actions/officesales';
+import { officesales, regionsales } from '../actions/officesales';
 import weekdates from '../actions/weekdates';
 
 class ReportDateBar extends Component {
@@ -34,8 +34,14 @@ class ReportDateBar extends Component {
 			weekDates.push(todayDate)
 		})
 		let officeId = this.props.currentoffice.id
+		let regionId = this.props.currentregion.id
+		let pathName = window.location.pathname
 		if(officeId != undefined && weekDates[0] != "undefined NaN, NaN") {
 			this.props.dispatch(officesales(officeId, weekDates))
+			this.props.dispatch(weekdates(weekDates))
+		}
+		if(regionId != undefined && weekDates[0] != "undefined NaN, NaN") {
+			this.props.dispatch(regionsales(regionId, weekDates))
 			this.props.dispatch(weekdates(weekDates))
 		}
 		return(
@@ -57,8 +63,8 @@ class ReportDateBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-	let { setdate, currentoffice } = state;
-  return { setdate, currentoffice }
+	let { setdate, currentoffice, currentregion } = state;
+  return { setdate, currentoffice, currentregion }
 }
 
 const styles = {

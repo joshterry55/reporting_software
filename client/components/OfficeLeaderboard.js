@@ -3,12 +3,19 @@ import { connect } from 'react-redux'
 import LeaderboardSelector from './LeaderboardSelector'
 import Leaderboards from './Leaderboards'
 import { Dropdown, Button, NavItem } from 'react-materialize';
+import { setassignedregions, setassignedoffices } from '../actions/companysetup'
 
 class OfficeLeaderboard extends React.Component {
   constructor(props) {
     super(props)
 
     this.regionInfo = this.regionInfo.bind(this)
+  }
+
+  componentDidMount() {
+    let companyId = this.props.assignedcompany.id
+    this.props.dispatch(setassignedregions(companyId))
+    this.props.dispatch(setassignedoffices(companyId))
   }
 
   showRegions() {
