@@ -25,24 +25,6 @@ ActiveRecord::Schema.define(version: 20170208020459) do
     t.index ["office_id"], name: "index_announcements_on_office_id", using: :btree
   end
 
-  create_table "cancels", force: :cascade do |t|
-    t.string   "number",     null: false
-    t.string   "date",       null: false
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cancels_on_user_id", using: :btree
-  end
-
-  create_table "closes", force: :cascade do |t|
-    t.string   "number",     null: false
-    t.string   "date",       null: false
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_closes_on_user_id", using: :btree
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -89,24 +71,6 @@ ActiveRecord::Schema.define(version: 20170208020459) do
     t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 
-  create_table "sitdowns", force: :cascade do |t|
-    t.string   "number",     null: false
-    t.string   "date",       null: false
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sitdowns_on_user_id", using: :btree
-  end
-
-  create_table "sitesurveys", force: :cascade do |t|
-    t.string   "number",     null: false
-    t.string   "date",       null: false
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sitesurveys_on_user_id", using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                                  null: false
     t.string   "last_name",                                   null: false
@@ -149,8 +113,6 @@ ActiveRecord::Schema.define(version: 20170208020459) do
   end
 
   add_foreign_key "announcements", "offices"
-  add_foreign_key "cancels", "users"
-  add_foreign_key "closes", "users"
   add_foreign_key "offices", "companies"
   add_foreign_key "offices", "regions"
   add_foreign_key "regions", "companies"
@@ -158,8 +120,6 @@ ActiveRecord::Schema.define(version: 20170208020459) do
   add_foreign_key "sales", "offices"
   add_foreign_key "sales", "regions"
   add_foreign_key "sales", "users"
-  add_foreign_key "sitdowns", "users"
-  add_foreign_key "sitesurveys", "users"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "offices"
   add_foreign_key "users", "regions"

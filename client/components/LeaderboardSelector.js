@@ -32,9 +32,12 @@ class LeaderboardSelector extends React.Component {
       <div>
         <div className='col s10 offset-s1 m6 offset-m3'>
           <br />
-          <Dropdown  trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
-            { this.showFilters() }
-          </Dropdown>
+          <div className='col m6 offset-m3 center'>
+            Sort by:
+            <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
+              { this.showFilters() }
+            </Dropdown>
+          </div>
         </div>
         <div className='col s12'>
         </div>

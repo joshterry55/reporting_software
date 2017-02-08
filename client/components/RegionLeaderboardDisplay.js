@@ -76,7 +76,7 @@ class RegionLeaderboardDisplay extends React.Component {
     let close = 0
     let cancel = 0
     let sitesurvey = 0
-    if(this.props.currentoffice.id) {
+    if(this.props.companysales.length) {
       kilowatts = this.props.officetotalkw['KW'].toFixed(2)
       sitdown = this.props.officetotalsitdown['SD']
       close = this.props.officetotalclose['CL']
@@ -154,8 +154,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, companysales }
 }
 
 export default connect(mapStateToProps)(RegionLeaderboardDisplay)

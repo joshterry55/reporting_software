@@ -11,9 +11,7 @@ class CompanyLeaderboardDisplay extends React.Component {
   }
 
 
-  truePerc(sale) {
-    let siteSurvey = sale.site_survey
-    let sitDown = sale.sit_down
+  truePerc(siteSurvey, sitDown) {
     if(sitDown === 0) {
       return(
         0
@@ -30,9 +28,7 @@ class CompanyLeaderboardDisplay extends React.Component {
 
   }
 
-  cancelPerc(sale) {
-    let cancel = sale.cancel
-    let siteSurvey = sale.site_survey
+  cancelPerc(cancel, siteSurvey) {
     if(siteSurvey === 0) {
       return(
         0
@@ -87,8 +83,8 @@ class CompanyLeaderboardDisplay extends React.Component {
               <td className='col s1'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
-              <td className='col s1'>asfd</td>
-              <td className='col s1'>asfaf</td>
+              <td className='col s1'>{this.truePerc(sitesurvey, sitdown)}</td>
+              <td className='col s1'>{this.cancelPerc(cancel, sitesurvey)}</td>
               <td className='col s1'></td>
             </tr>
           </tbody>

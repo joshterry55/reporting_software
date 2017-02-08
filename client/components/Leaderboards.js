@@ -41,8 +41,8 @@ class Leaderboards extends React.Component {
   leaderboardTabs() {
     if(this.props.assignedcompany.id) {
       return(
-          <div className="col s12" style={{marginTop: '10px'}}>
-            <ul className="tabs tabs-fixed-width">
+          <div className="col s12" style={{marginTop: '10px', backgroundColor: "#f2f7f7"}}>
+            <ul className="tabs tabs-fixed-width" style={{backgroundColor: "#f2f7f7"}}>
               <li  className="tab col s3 admin-tabs" style={this.onPage("employees")}><Link style={styles.tabText} to='/leaderboards/employees'>Employees</Link></li>
               <li  className="tab col s3 admin-tabs" style={this.onPage("offices")}><Link style={styles.tabText} to='/leaderboards/offices'>Offices</Link></li>
               <li  className="tab col s3 admin-tabs" style={this.onPage("regions")}><Link style={styles.tabText} to='/leaderboards/regions'>Regions</Link></li>

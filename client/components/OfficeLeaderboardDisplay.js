@@ -76,7 +76,7 @@ class OfficeLeaderboardDisplay extends React.Component {
     let close = 0
     let cancel = 0
     let sitesurvey = 0
-    if(this.props.currentoffice.id) {
+    if(this.props.regionsales.length) {
       kilowatts = this.props.officetotalkw['KW'].toFixed(2)
       sitdown = this.props.officetotalsitdown['SD']
       close = this.props.officetotalclose['CL']
@@ -154,8 +154,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales }
 }
 
 export default connect(mapStateToProps)(OfficeLeaderboardDisplay)
