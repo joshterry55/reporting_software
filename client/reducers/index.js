@@ -52,7 +52,7 @@ const rootReducer = combineReducers({
   regionsales,
   leaderboardofficetotals,
   companysales,
-  leaderboardregiontotals
+  leaderboardregiontotals,
  });
 
 export default rootReducer;

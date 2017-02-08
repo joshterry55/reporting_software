@@ -38,11 +38,14 @@ class LeaderboardSetup extends React.Component {
       let currentSales = this.props.companysales
       this.props.dispatch(leaderboardregiontotals(currentSales))
       this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/company') {
+      let currentSales = this.props.companysales
+      this.props.dispatch(totalsales(currentSales))
     }
   }
 
   leaderboardCalculationsSS() {
-    if(window.location.pathname === '/leaderboard/employees') {
+    if(window.location.pathname === '/leaderboards/employees') {
       let currentSales = this.props.officesales
       this.props.dispatch(leaderboardtotalssite(currentSales));
       this.props.dispatch(totalsales(currentSales))
@@ -53,6 +56,9 @@ class LeaderboardSetup extends React.Component {
     } else if(window.location.pathname === '/leaderboards/regions') {
       let currentSales = this.props.companysales
       this.props.dispatch(leaderboardregiontotalssite(currentSales))
+      this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/company') {
+      let currentSales = this.props.companysales
       this.props.dispatch(totalsales(currentSales))
     }
   }

@@ -22,6 +22,7 @@ import RegionSelect from './components/RegionSelect'
 import ReportRegionSelect from './components/ReportRegionSelect'
 import OfficeLeaderboard from './components/OfficeLeaderboard'
 import RegionLeaderboard from './components/RegionLeaderboard'
+import CompanyLeaderboard from './components/CompanyLeaderboard'
 
 
 const AdminAccess = UserAuthWrapper({
@@ -54,6 +55,7 @@ export default (
         <Route path='/leaderboards/employees' component={LeaderboardEmployees}/>
         <Route path='/leaderboards/offices' component={OfficeLeaderboard}/>
         <Route path='/leaderboards/regions' component={RegionLeaderboard}/>
+        <Route path='/leaderboards/company' component={CompanyLeaderboard}/>
         <Route path='/employee' component={Employee} />
         <Route path='/trainings' component={Trainings} />
         <Route component={AdminRoutes}>

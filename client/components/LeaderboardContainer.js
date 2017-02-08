@@ -5,6 +5,7 @@ import ReportDateBar from './ReportDateBar';
 import LeaderboardDisplay from './LeaderboardDisplay';
 import OfficeLeaderboardDisplay from './OfficeLeaderboardDisplay';
 import RegionLeaderboardDisplay from './RegionLeaderboardDisplay';
+import CompanyLeaderboardDisplay from './CompanyLeaderboardDisplay';
 import LeaderboardSetup from './LeaderboardSetup';
 let weekOffset = 0
 
@@ -57,6 +58,13 @@ class LeaderboardContainer extends Component {
 				<div>
 					<LeaderboardSetup />
 					<RegionLeaderboardDisplay />
+				</div>
+			)
+		} else if(window.location.pathname === '/leaderboards/company') {
+			return(
+				<div>
+					<LeaderboardSetup />
+					<CompanyLeaderboardDisplay />
 				</div>
 			)
 		}

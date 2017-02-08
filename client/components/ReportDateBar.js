@@ -49,6 +49,10 @@ class ReportDateBar extends Component {
 			this.props.dispatch(companysales(companyId, weekDates))
 			this.props.dispatch(weekdates(weekDates))
 		}
+		if(companyId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/company') {
+			this.props.dispatch(companysales(companyId, weekDates))
+			this.props.dispatch(weekdates(weekDates))
+		}
 		return(
 			<div>
 				{weekDates[0]} - {weekDates[6]}
