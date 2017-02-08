@@ -29,6 +29,7 @@ class NavBar extends React.Component {
   clearCurrent() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+    this.props.dispatch({type: 'RESET_OFFICE_SALES'})
   }
 
   navs() {
