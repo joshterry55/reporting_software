@@ -2,12 +2,14 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { officesales, regionsales, companysales } from '../actions/officesales';
 import weekdates from '../actions/weekdates';
+import SetWeek from './SetWeek'
 
 class ReportDateBar extends Component {
 	constructor(props) {
 		super(props);
 
 		this.showDates = this.showDates.bind(this);
+		this.dispatchWeekDates = this.dispatchWeekDates.bind(this);
 	}
 
 	thisDate(day) {
@@ -39,7 +41,6 @@ class ReportDateBar extends Component {
 		let pathName = window.location.pathname
 		if(officeId != undefined && weekDates[0] != "undefined NaN, NaN") {
 			this.props.dispatch(officesales(officeId, weekDates))
-			this.props.dispatch({type: "WEEK_DATES", weekDates})
 		}
 		if(regionId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/offices') {
 			this.props.dispatch(regionsales(regionId, weekDates))
@@ -53,8 +54,19 @@ class ReportDateBar extends Component {
 		return(
 			<div>
 				{weekDates[0]} - {weekDates[6]}
+				{this.dispatchWeekDates(weekDates, pathName)}
 			</div>
 		)
+	}
+
+	dispatchWeekDates(weekDates, pathName) {
+		if(weekDates[0] != "undefined NaN, NaN" && pathName === '/reports') {
+			return(
+				<div>
+					<SetWeek date={weekDates} />
+				</div>
+			)
+		}
 	}
 
 	render() {

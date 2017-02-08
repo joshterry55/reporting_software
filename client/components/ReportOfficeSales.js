@@ -23,31 +23,34 @@ class ReportOfficeSales extends React.Component {
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
-    this.refs.firstName.value = this.props.currentsale.first_name;
-    this.refs.lastName.value = this.props.currentsale.last_name;
-    this.refs.kw.value = this.props.currentsale.kw.toString()
-    if(this.props.currentsale.sit_down === 1) {
-      this.refs.sitdown.checked = true
-    } else {
-      this.refs.sitdown.checked = false
-    }
+    if(this.props.currentsale.id) {
 
-    if(this.props.currentsale.close === 1) {
-      this.refs.close.checked = true
-    } else {
-      this.refs.close.checked = false
-    }
+      this.refs.firstName.value = this.props.currentsale.first_name;
+      this.refs.lastName.value = this.props.currentsale.last_name;
+      this.refs.kw.value = this.props.currentsale.kw.toString()
+      if(this.props.currentsale.sit_down === 1) {
+        this.refs.sitdown.checked = true
+      } else {
+        this.refs.sitdown.checked = false
+      }
 
-    if(this.props.currentsale.site_survey === 1) {
-      this.refs.sitesurvey.checked = true
-    } else {
-      this.refs.sitesurvey.checked = false
-    }
+      if(this.props.currentsale.close === 1) {
+        this.refs.close.checked = true
+      } else {
+        this.refs.close.checked = false
+      }
 
-    if(this.props.currentsale.cancel === 1) {
-      this.refs.cancel.checked = true
-    } else {
-      this.refs.cancel.checked = false
+      if(this.props.currentsale.site_survey === 1) {
+        this.refs.sitesurvey.checked = true
+      } else {
+        this.refs.sitesurvey.checked = false
+      }
+
+      if(this.props.currentsale.cancel === 1) {
+        this.refs.cancel.checked = true
+      } else {
+        this.refs.cancel.checked = false
+      }
     }
 
   }
