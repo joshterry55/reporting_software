@@ -31,18 +31,24 @@ class LeaderboardSetup extends React.Component {
       if(currentSales.length) {
         this.props.dispatch(leaderboardtotals(currentSales));
         this.props.dispatch(totalsales(currentSales))
+      } else {
+        this.props.dispatch({type: 'RESET_LEADERBOARD'})
       }
     } else if(window.location.pathname === '/leaderboards/offices') {
       let currentSales = this.props.regionsales
       if(currentSales.length) {
         this.props.dispatch(leaderboardofficetotals(currentSales))
         this.props.dispatch(totalsales(currentSales))
+      } else {
+        this.props.dispatch({type: 'RESET_OFFICE_LEADERBOARD'})
       }
     } else if(window.location.pathname === '/leaderboards/regions') {
       let currentSales = this.props.companysales
       if(currentSales.length) {
         this.props.dispatch(leaderboardregiontotals(currentSales))
         this.props.dispatch(totalsales(currentSales))
+      } else {
+        this.props.dispatch({type: 'RESET_REGION_LEADERBOARD'})
       }
     } else if(window.location.pathname === '/leaderboards/company') {
       let currentSales = this.props.companysales

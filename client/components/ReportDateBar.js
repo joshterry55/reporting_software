@@ -39,7 +39,7 @@ class ReportDateBar extends Component {
 		let pathName = window.location.pathname
 		if(officeId != undefined && weekDates[0] != "undefined NaN, NaN") {
 			this.props.dispatch(officesales(officeId, weekDates))
-			this.props.dispatch(weekdates(weekDates))
+			this.props.dispatch({type: "WEEKDATES", weekDates})
 		}
 		if(regionId != undefined && weekDates[0] != "undefined NaN, NaN" && pathName === '/leaderboards/offices') {
 			this.props.dispatch(regionsales(regionId, weekDates))
