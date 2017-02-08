@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router'
 import ReportDateBar from './ReportDateBar';
 import LeaderboardDisplay from './LeaderboardDisplay';
-import LeaderboardOfficeDisplay from './LeaderboardOfficeDisplay';
+import OfficeLeaderboardDisplay from './OfficeLeaderboardDisplay';
+import RegionLeaderboardDisplay from './RegionLeaderboardDisplay';
 import LeaderboardSetup from './LeaderboardSetup';
 let weekOffset = 0
 
@@ -48,7 +49,14 @@ class LeaderboardContainer extends Component {
 			return(
 				<div>
 					<LeaderboardSetup />
-					<LeaderboardOfficeDisplay />
+					<OfficeLeaderboardDisplay />
+				</div>
+			)
+		} else if(window.location.pathname === '/leaderboards/regions') {
+			return(
+				<div>
+					<LeaderboardSetup />
+					<RegionLeaderboardDisplay />
 				</div>
 			)
 		}

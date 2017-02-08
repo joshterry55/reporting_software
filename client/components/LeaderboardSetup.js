@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { leaderboardtotals, leaderboardtotalssite } from '../actions/leaderboardtotals';
 import { totalsales } from '../actions/totalsales';
-import { leaderboardofficetotals } from '../actions/leaderboardofficetotals'
+import { leaderboardofficetotals, leaderboardofficetotalssite } from '../actions/leaderboardofficetotals'
+import { leaderboardregiontotals, leaderboardregiontotalssite } from '../actions/leaderboardregiontotals'
 
 class LeaderboardSetup extends React.Component {
   constructor(props) {
@@ -33,6 +34,10 @@ class LeaderboardSetup extends React.Component {
       let currentSales = this.props.regionsales
       this.props.dispatch(leaderboardofficetotals(currentSales))
       this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/regions') {
+      let currentSales = this.props.companysales
+      this.props.dispatch(leaderboardregiontotals(currentSales))
+      this.props.dispatch(totalsales(currentSales))
     }
   }
 
@@ -42,7 +47,13 @@ class LeaderboardSetup extends React.Component {
       this.props.dispatch(leaderboardtotalssite(currentSales));
       this.props.dispatch(totalsales(currentSales))
     } else if(window.location.pathname === '/leaderboards/offices') {
-
+      let currentSales = this.props.regionsales
+      this.props.dispatch(leaderboardofficetotalssite(currentSales))
+      this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/regions') {
+      let currentSales = this.props.companysales
+      this.props.dispatch(leaderboardregiontotalssite(currentSales))
+      this.props.dispatch(totalsales(currentSales))
     }
   }
 
@@ -55,8 +66,8 @@ class LeaderboardSetup extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	let { setdate, currentoffice, officesales, employees, currentfilter, regionsales } = state;
-  return { setdate, currentoffice, officesales, employees, currentfilter, regionsales }
+	let { setdate, currentoffice, officesales, employees, currentfilter, regionsales, companysales } = state;
+  return { setdate, currentoffice, officesales, employees, currentfilter, regionsales, companysales }
 }
 
 export default connect(mapStateToProps)(LeaderboardSetup)

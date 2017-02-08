@@ -11,6 +11,7 @@ import employees from './employees'
 import setdate from './setdate'
 import officesales from './officesales'
 import regionsales from './regionsales'
+import companysales from './companysales'
 import officetotalcancel from './officetotalcancel'
 import officetotalclose from './officetotalclose'
 import officetotalkw from './officetotalkw'
@@ -20,6 +21,7 @@ import currentsale from './currentsale'
 import weekdates from './weekdates'
 import leaderboardtotals from './leaderboardtotals'
 import leaderboardofficetotals from './leaderboardofficetotals'
+import leaderboardregiontotals from './leaderboardregiontotals'
 import leaderboardregions from './leaderboardregions'
 import leaderboardoffices from './leaderboardoffices'
 import currentfilter from './currentfilter'
@@ -48,7 +50,9 @@ const rootReducer = combineReducers({
   leaderboardoffices,
   currentfilter,
   regionsales,
-  leaderboardofficetotals
+  leaderboardofficetotals,
+  companysales,
+  leaderboardregiontotals
  });
 
 export default rootReducer;

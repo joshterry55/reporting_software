@@ -45,6 +45,7 @@ employeeFind(id) {
     let salesman = this.employeeFind(employeeId)
     let officeId = this.props.currentoffice.id
     let regionId = this.props.currentregion.id
+    let companyId = this.props.assignedcompany.id
     let kw = this.refs.kw.value
     let firstName = this.refs.firstName.value
     let lastName = this.refs.lastName.value
@@ -89,6 +90,7 @@ employeeFind(id) {
           user_id: employeeId,
           region_id: regionId,
           office_id: officeId,
+          company_id: companyId,
           sit_down: sitDown,
           close: close,
           site_survey: siteSurvey,

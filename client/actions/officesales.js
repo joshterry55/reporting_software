@@ -23,3 +23,16 @@ export const regionsales = (regionId, weekDates) => {
 		})
 	}
 }
+
+export const companysales = (companyId, weekDates) => {
+	return(dispatch) => {
+		$.ajax({
+			url: `/api/company/${companyId}/sales`,
+			type: 'GET',
+			dataType: 'JSON',
+			data: { startday: weekDates}
+		}).done( sales => {
+			dispatch({ type: 'COMPANY_SALES', sales})
+		})
+	}
+}

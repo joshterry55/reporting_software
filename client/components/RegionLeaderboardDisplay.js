@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { setFlash } from '../actions/flash';
 import { totalsales } from '../actions/totalsales';
 
-class LeaderboardOfficeDisplay extends React.Component {
+class RegionLeaderboardDisplay extends React.Component {
   constructor(props) {
     super(props)
 
@@ -49,19 +49,19 @@ class LeaderboardOfficeDisplay extends React.Component {
   }
 
   displaySales() {
-    if(this.props.leaderboardofficetotals.length) {
-      return this.props.leaderboardofficetotals.map(function(office, i){
+    if(this.props.leaderboardregiontotals.length) {
+      return this.props.leaderboardregiontotals.map(function(region, i){
         return(
-            <tr className='row' key={office.id}>
+            <tr className='row' key={region.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{office.name}</td>
-              <td className='col s2'>{office.kw} {office.last_name}</td>
-              <td className='col s2'>{office.sit_down}</td>
-              <td className='col s1'>{office.close}</td>
-              <td className='col s1'>{office.site_survey}</td>
-              <td className='col s1'>{office.cancel}</td>
-              <td className='col s1'>{this.truePerc(office)}%</td>
-              <td className='col s1'>{this.cancelPerc(office)}%</td>
+              <td className='col s2'>{region.name}</td>
+              <td className='col s2'>{region.kw} {region.last_name}</td>
+              <td className='col s2'>{region.sit_down}</td>
+              <td className='col s1'>{region.close}</td>
+              <td className='col s1'>{region.site_survey}</td>
+              <td className='col s1'>{region.cancel}</td>
+              <td className='col s1'>{this.truePerc(region)}%</td>
+              <td className='col s1'>{this.cancelPerc(region)}%</td>
             </tr>
         );
       }, this);
@@ -89,7 +89,7 @@ class LeaderboardOfficeDisplay extends React.Component {
           <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s1'>Rank</th>
-                <th className='col s2'>Office</th>
+                <th className='col s2'>Region</th>
                 <th className='col s2'>KW</th>
                 <th className='col s2'>SD</th>
                 <th className='col s1'>CL</th>
@@ -154,8 +154,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals }
 }
 
-export default connect(mapStateToProps)(LeaderboardOfficeDisplay)
+export default connect(mapStateToProps)(RegionLeaderboardDisplay)

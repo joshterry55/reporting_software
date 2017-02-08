@@ -20,6 +20,14 @@ class Api::SalesController < ApplicationController
 
   end
 
+  def company
+    @company = Company.find(params[:id])
+    @company_week_dates = params[:startday]
+    @sales = @company.sales.where(date: @company_week_dates)
+    render json: @sales
+
+  end
+
   def show
   end
 
@@ -47,6 +55,6 @@ class Api::SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :startday, :salesman)
+    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :company_id, :startday, :salesman)
   end
 end
