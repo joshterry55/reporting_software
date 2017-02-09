@@ -66,7 +66,7 @@ class RegionLeaderboardDisplay extends React.Component {
             <tr className='row' key={region.id}>
               <td className='col s1'>{i + 1}</td>
               <td className='col s2'>{this.regionName(region)}</td>
-              <td className='col s2'>{region.kw} {region.last_name}</td>
+              <td className='col s2'>{region.kw.toFixed(2)}</td>
               <td className='col s2'>{region.sit_down}</td>
               <td className='col s1'>{region.close}</td>
               <td className='col s1'>{region.site_survey}</td>
