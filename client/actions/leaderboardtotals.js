@@ -11,6 +11,9 @@ export const leaderboardtotals = (currentSales) => {
           leaderboardTotals[sale.user_id].close += parseFloat(sale.close)
           leaderboardTotals[sale.user_id].site_survey += parseFloat(sale.site_survey)
           leaderboardTotals[sale.user_id].cancel += parseFloat(sale.cancel)
+          if(parseFloat(sale.site_survey) != 0) {
+            leaderboardTotals[sale.user_id].site_survey_kw += parseFloat(sale.kw)
+          }
       } else {
         leaderboardTotals[sale.user_id] = {}
         leaderboardTotals[sale.user_id].name = sale.salesman
@@ -20,6 +23,11 @@ export const leaderboardtotals = (currentSales) => {
         leaderboardTotals[sale.user_id].close = parseFloat(sale.close)
         leaderboardTotals[sale.user_id].site_survey = parseFloat(sale.site_survey)
         leaderboardTotals[sale.user_id].cancel = parseFloat(sale.cancel)
+        if(parseFloat(sale.site_survey) != 0) {
+          leaderboardTotals[sale.user_id].site_survey_kw = parseFloat(sale.kw)
+        } else {
+          leaderboardTotals[sale.user_id].site_survey_kw = 0
+        }
       }
   	})
 
@@ -51,6 +59,9 @@ export const leaderboardtotalssite = (currentSales) => {
           leaderboardTotals[sale.user_id].close += parseFloat(sale.close)
           leaderboardTotals[sale.user_id].site_survey += parseFloat(sale.site_survey)
           leaderboardTotals[sale.user_id].cancel += parseFloat(sale.cancel)
+          if(parseFloat(sale.site_survey) != 0) {
+            leaderboardTotals[sale.user_id].site_survey_kw += parseFloat(sale.kw)
+          }
       } else {
         leaderboardTotals[sale.user_id] = {}
         leaderboardTotals[sale.user_id].name = sale.salesman
@@ -60,6 +71,11 @@ export const leaderboardtotalssite = (currentSales) => {
         leaderboardTotals[sale.user_id].close = parseFloat(sale.close)
         leaderboardTotals[sale.user_id].site_survey = parseFloat(sale.site_survey)
         leaderboardTotals[sale.user_id].cancel = parseFloat(sale.cancel)
+        if(parseFloat(sale.site_survey) != 0) {
+          leaderboardTotals[sale.user_id].site_survey_kw = parseFloat(sale.kw)
+        } else {
+          leaderboardTotals[sale.user_id].site_survey_kw = 0
+        }
       }
   	})
 

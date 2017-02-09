@@ -52,12 +52,14 @@ class CompanyLeaderboardDisplay extends React.Component {
     let close = 0
     let cancel = 0
     let sitesurvey = 0
+    let sitesurveykw = 0
     if(this.props.companysales.length) {
       kilowatts = this.props.officetotalkw['KW'].toFixed(2)
       sitdown = this.props.officetotalsitdown['SD']
       close = this.props.officetotalclose['CL']
       cancel = this.props.officetotalcancel['CA']
       sitesurvey = this.props.officetotalsitesurvey['SS']
+      sitesurveykw = this.props.officetotalsitesurveykw['SSKW']
     }
     return(
       <div style={styles.tableStyle}>
@@ -66,7 +68,8 @@ class CompanyLeaderboardDisplay extends React.Component {
             <tr className='row'>
                 <th className='col s2'>Company</th>
                 <th className='col s2'>KW</th>
-                <th className='col s2'>SD</th>
+                <th className='col s1'>SS/KW</th>
+                <th className='col s1'>SD</th>
                 <th className='col s1'>CL</th>
                 <th className='col s1'>SS</th>
                 <th className='col s1'>CA</th>
@@ -79,7 +82,8 @@ class CompanyLeaderboardDisplay extends React.Component {
             <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
               <td className='col s2'><b>{this.props.assignedcompany.name}</b></td>
               <td className='col s2'><b>{kilowatts}</b></td>
-              <td className='col s2'><b>{sitdown}</b></td>
+              <td className='col s1'><b>{sitesurveykw}</b></td>
+              <td className='col s1'><b>{sitdown}</b></td>
               <td className='col s1'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
@@ -129,8 +133,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, assignedcompany, companysales } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, assignedcompany, companysales }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, assignedcompany, companysales, officetotalsitesurveykw } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardregiontotals, assignedcompany, companysales, officetotalsitesurveykw }
 }
 
 export default connect(mapStateToProps)(CompanyLeaderboardDisplay)

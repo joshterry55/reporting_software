@@ -68,7 +68,8 @@ class OfficeLeaderboardDisplay extends React.Component {
               <td className='col s1'>{i + 1}</td>
               <td className='col s2'>{this.officeName(office)}</td>
               <td className='col s2'>{office.kw} {office.last_name}</td>
-              <td className='col s2'>{office.sit_down}</td>
+              <td className='col s1'>{office.site_survey_kw}</td>
+              <td className='col s1'>{office.sit_down}</td>
               <td className='col s1'>{office.close}</td>
               <td className='col s1'>{office.site_survey}</td>
               <td className='col s1'>{office.cancel}</td>
@@ -88,12 +89,14 @@ class OfficeLeaderboardDisplay extends React.Component {
     let close = 0
     let cancel = 0
     let sitesurvey = 0
+    let sitesurveykw = 0
     if(this.props.regionsales.length) {
       kilowatts = this.props.officetotalkw['KW'].toFixed(2)
       sitdown = this.props.officetotalsitdown['SD']
       close = this.props.officetotalclose['CL']
       cancel = this.props.officetotalcancel['CA']
       sitesurvey = this.props.officetotalsitesurvey['SS']
+      sitesurveykw = this.props.officetotalsitesurveykw['SSKW']
     }
     return(
       <div style={styles.tableStyle}>
@@ -103,7 +106,8 @@ class OfficeLeaderboardDisplay extends React.Component {
                 <th className='col s1'>Rank</th>
                 <th className='col s2'>Office</th>
                 <th className='col s2'>KW</th>
-                <th className='col s2'>SD</th>
+                <th className='col s1'>SS/KW</th>
+                <th className='col s1'>SD</th>
                 <th className='col s1'>CL</th>
                 <th className='col s1'>SS</th>
                 <th className='col s1'>CA</th>
@@ -117,7 +121,8 @@ class OfficeLeaderboardDisplay extends React.Component {
               <td className='col s2'><b>TOTAL:</b></td>
               <td className='col s1'></td>
               <td className='col s2'><b>{kilowatts}</b></td>
-              <td className='col s2'><b>{sitdown}</b></td>
+              <td className='col s1'><b>{sitesurveykw}</b></td>
+              <td className='col s1'><b>{sitdown}</b></td>
               <td className='col s1'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
@@ -166,8 +171,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices, officetotalsitesurveykw } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardofficetotals, regionsales, leaderboardoffices, officetotalsitesurveykw }
 }
 
 export default connect(mapStateToProps)(OfficeLeaderboardDisplay)

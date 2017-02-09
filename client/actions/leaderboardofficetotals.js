@@ -11,6 +11,9 @@ export const leaderboardofficetotals = (currentSales) => {
           leaderboardTotals[sale.office_id].close += parseFloat(sale.close)
           leaderboardTotals[sale.office_id].site_survey += parseFloat(sale.site_survey)
           leaderboardTotals[sale.office_id].cancel += parseFloat(sale.cancel)
+          if(parseFloat(sale.site_survey) != 0) {
+            leaderboardTotals[sale.office_id].site_survey_kw += parseFloat(sale.kw)
+          }
       } else {
         leaderboardTotals[sale.office_id] = {}
         leaderboardTotals[sale.office_id].name = sale.office_id
@@ -20,6 +23,11 @@ export const leaderboardofficetotals = (currentSales) => {
         leaderboardTotals[sale.office_id].close = parseFloat(sale.close)
         leaderboardTotals[sale.office_id].site_survey = parseFloat(sale.site_survey)
         leaderboardTotals[sale.office_id].cancel = parseFloat(sale.cancel)
+        if(parseFloat(sale.site_survey) != 0) {
+          leaderboardTotals[sale.office_id].site_survey_kw = parseFloat(sale.kw)
+        } else {
+          leaderboardTotals[sale.office_id].site_survey_kw = 0
+        }
       }
   	})
 
@@ -51,6 +59,9 @@ export const leaderboardofficetotalssite = (currentSales) => {
           leaderboardTotals[sale.office_id].close += parseFloat(sale.close)
           leaderboardTotals[sale.office_id].site_survey += parseFloat(sale.site_survey)
           leaderboardTotals[sale.office_id].cancel += parseFloat(sale.cancel)
+          if(parseFloat(sale.site_survey) != 0) {
+            leaderboardTotals[sale.office_id].site_survey_kw += parseFloat(sale.kw)
+          }
       } else {
         leaderboardTotals[sale.office_id] = {}
         leaderboardTotals[sale.office_id].name = sale.office_id
@@ -60,6 +71,11 @@ export const leaderboardofficetotalssite = (currentSales) => {
         leaderboardTotals[sale.office_id].close = parseFloat(sale.close)
         leaderboardTotals[sale.office_id].site_survey = parseFloat(sale.site_survey)
         leaderboardTotals[sale.office_id].cancel = parseFloat(sale.cancel)
+        if(parseFloat(sale.site_survey) != 0) {
+          leaderboardTotals[sale.office_id].site_survey_kw = parseFloat(sale.kw)
+        } else {
+          leaderboardTotals[sale.office_id].site_survey_kw = 0
+        }
       }
   	})
 

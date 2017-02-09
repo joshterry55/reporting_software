@@ -17,6 +17,7 @@ import officetotalclose from './officetotalclose'
 import officetotalkw from './officetotalkw'
 import officetotalsitdown from './officetotalsitdown'
 import officetotalsitesurvey from './officetotalsitesurvey'
+import officetotalsitesurveykw from './officetotalsitesurveykw'
 import currentsale from './currentsale'
 import weekdates from './weekdates'
 import leaderboardtotals from './leaderboardtotals'
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   officetotalkw,
   officetotalsitdown,
   officetotalsitesurvey,
+  officetotalsitesurveykw,
   currentsale,
   weekdates,
   leaderboardtotals,
