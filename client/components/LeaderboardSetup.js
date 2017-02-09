@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { leaderboardtotals, leaderboardtotalssite } from '../actions/leaderboardtotals';
+import { leaderboardtotals, leaderboardtotalssite, leaderboardtotalssitekw } from '../actions/leaderboardtotals';
 import { totalsales } from '../actions/totalsales';
-import { leaderboardofficetotals, leaderboardofficetotalssite } from '../actions/leaderboardofficetotals'
-import { leaderboardregiontotals, leaderboardregiontotalssite } from '../actions/leaderboardregiontotals'
+import { leaderboardofficetotals, leaderboardofficetotalssite, leaderboardofficetotalssitekw } from '../actions/leaderboardofficetotals'
+import { leaderboardregiontotals, leaderboardregiontotalssite, leaderboardregiontotalssitekw } from '../actions/leaderboardregiontotals'
 
 class LeaderboardSetup extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class LeaderboardSetup extends React.Component {
 
     this.leaderboardCalculations = this.leaderboardCalculations.bind(this)
     this.leaderboardCalculationsSS = this.leaderboardCalculationsSS.bind(this)
+    this.leaderboardCalculationsSSKW = this.leaderboardCalculationsSSKW.bind(this)
   }
 
   componentDidUpdate() {
@@ -18,6 +19,8 @@ class LeaderboardSetup extends React.Component {
       this.leaderboardCalculationsSS()
     } else if (this.props.currentfilter === "KW") {
       this.leaderboardCalculations()
+    } else if(this.props.currentfilter === "SSKW") {
+      this.leaderboardCalculationsSSKW()
     } else {
       this.leaderboardCalculations()
     }
@@ -70,6 +73,25 @@ class LeaderboardSetup extends React.Component {
     } else if(window.location.pathname === '/leaderboards/regions') {
       let currentSales = this.props.companysales
       this.props.dispatch(leaderboardregiontotalssite(currentSales))
+      this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/company') {
+      let currentSales = this.props.companysales
+      this.props.dispatch(totalsales(currentSales))
+    }
+  }
+
+  leaderboardCalculationsSSKW() {
+    if(window.location.pathname === '/leaderboards/employees') {
+      let currentSales = this.props.officesales
+      this.props.dispatch(leaderboardtotalssitekw(currentSales));
+      this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/offices') {
+      let currentSales = this.props.regionsales
+      this.props.dispatch(leaderboardofficetotalssitekw(currentSales))
+      this.props.dispatch(totalsales(currentSales))
+    } else if(window.location.pathname === '/leaderboards/regions') {
+      let currentSales = this.props.companysales
+      this.props.dispatch(leaderboardregiontotalssitekw(currentSales))
       this.props.dispatch(totalsales(currentSales))
     } else if(window.location.pathname === '/leaderboards/company') {
       let currentSales = this.props.companysales

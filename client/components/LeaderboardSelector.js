@@ -13,6 +13,7 @@ class LeaderboardSelector extends React.Component {
       <div>
         <NavItem value="KW" onClick={() => this.filterInfo("KW")}>KW</NavItem>
         <NavItem value="SS" onClick={() => this.filterInfo("SS")}>Site Survey</NavItem>
+        <NavItem value="SSKW" onClick={() => this.filterInfo("SSKW")}>Site Survey KW</NavItem>
       </div>
     )
   }
