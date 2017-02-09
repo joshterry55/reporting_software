@@ -7,6 +7,7 @@ class Leaderboards extends React.Component {
     super(props)
 
     this.clearCurrent = this.clearCurrent.bind(this)
+    this.clearCurrentRegion = this.clearCurrentRegion.bind(this)
   }
 
   onPage(tab) {
@@ -45,13 +46,19 @@ class Leaderboards extends React.Component {
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
   }
 
+  clearCurrentRegion() {
+    this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
+    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+    this.props.dispatch({type: 'RESET_REGION_SALES'})
+  }
+
   leaderboardTabs() {
     if(this.props.assignedcompany.id) {
       return(
           <div className="col s12" style={{marginTop: '10px', backgroundColor: "#f2f7f7"}}>
             <ul className="tabs tabs-fixed-width" style={{backgroundColor: "#f2f7f7"}}>
               <li  className="tab col s3 admin-tabs" style={this.onPage("employees")}><Link style={styles.tabText} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
-              <li  className="tab col s3 admin-tabs" style={this.onPage("offices")}><Link style={styles.tabText} to='/leaderboards/offices'>Office</Link></li>
+              <li  className="tab col s3 admin-tabs" style={this.onPage("offices")}><Link style={styles.tabText} onClick={this.clearCurrentRegion} to='/leaderboards/offices'>Office</Link></li>
               <li  className="tab col s3 admin-tabs" style={this.onPage("regions")}><Link style={styles.tabText} to='/leaderboards/regions'>Region</Link></li>
               <li  className="tab col s3 admin-tabs" style={this.onPage("company")}><Link style={styles.tabText} to='/leaderboards/company'>Company</Link></li>
             </ul>
