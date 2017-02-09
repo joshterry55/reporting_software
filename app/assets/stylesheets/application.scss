@@ -75,3 +75,9 @@ input:focus {
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
   background-color: #60b9e8;
 }
+
+.board-tabs:hover {
+  background-color: #999 !important;
+  box-shadow: inset 0 0 5px black;
+
+}
