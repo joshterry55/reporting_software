@@ -26,6 +26,47 @@ class NavBar extends React.Component {
     this.props.dispatch(logout(this.props.history))
   }
 
+  // highlight(param) {
+  //   switch(param) {
+  //     case "Admin":
+  //       if(document.location.pathname.includes('/admin')) {
+  //         return styles.onTab
+  //       } else {
+  //         return styles.tab
+  //       }
+  //       break;
+  //     case "Reports":
+  //       if(document.location.pathname.includes('/report')) {
+  //         return styles.onTab
+  //       } else {
+  //         return styles.tab
+  //       }
+  //       break;
+  //     case "Training":
+  //       if(document.location.pathname.includes('/training')) {
+  //         return styles.onTab
+  //       } else {
+  //         return styles.tab
+  //       }
+  //       break;
+  //     case "Leaderboard":
+  //       if(document.location.pathname.includes('/leaderboard')) {
+  //         return styles.onTab
+  //       } else {
+  //         return styles.tab
+  //       }
+  //       break;
+  //     case "Announcements":
+  //       if(document.location.pathname.includes('/announcement')) {
+  //         return styles.onTab
+  //       } else {
+  //         return styles.tab
+  //       }
+  //       break;
+  //
+  //   }
+  // }
+
   clearCurrent() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
@@ -49,11 +90,11 @@ class NavBar extends React.Component {
       return(
         <div>
           <li><Link to='/'>Home</Link></li>
-          <li><Link to='/announcements'>Announcements</Link></li>
-          <li><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Boards</Link></li>
-          <li><Link to='/trainings'>Training</Link></li>
-          <li><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
-          <li><Link to='/admin'>Admin</Link></li>
+          <li className='off-tab'><Link to='/announcements' >Announcements</Link></li>
+          <li className='off-tab'><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Boards</Link></li>
+          <li className='off-tab'><Link to='/trainings'>Training</Link></li>
+          <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
+          <li className='off-tab'><Link to='/admin'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
@@ -92,6 +133,35 @@ class NavBar extends React.Component {
       </div>
     )
   }
+}
+
+const styles = {
+  adminTab: {
+    background: "linear-gradient(#666, #333)",
+    border: "1px solid #666",
+		backgroundColor: "#999",
+    margin: '5px',
+    lineHeight: '42px',
+    color: '#f2f7f7',
+    borderBottom: '6px solid #999',
+  },
+  onTabText: {
+    textShadow: "0 0 10px rgba(0,0,0,1)",
+    fontSize: '18px',
+    color: '#f2f7f7'
+  },
+  tabText: {
+    textShadow: "0 0 10px rgba(0,0,0,0.75)",
+    fontSize: '18px',
+    color: '#f2f7f7'
+  },
+  onTab: {
+    backgroundColor: '#5AA8D1'
+  },
+  tab: {
+    backgroundColor: '#60b9e8'
+  },
+
 }
 
 const mapStateToProps = (state) => {

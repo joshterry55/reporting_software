@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import ReportOfficeSelect from './ReportOfficeSelect'
 import { Dropdown, Button, NavItem } from 'react-materialize';
 
@@ -31,6 +32,9 @@ class ReportRegionSelect extends React.Component {
     }
     return(
       <div className='row container white-container'>
+        <div className='col s12'>
+          <span className='col s12 m3 offset-m9' style={{textAlign: 'right', paddingTop: '10px'}} ><Link className='add-sale' to='/addsale'>+ Add Sale</Link></span>
+        </div>
         <div className='col s12'>
           <div className = 'col s12'>
             <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>

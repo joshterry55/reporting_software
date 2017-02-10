@@ -78,6 +78,27 @@ input:focus {
 
 .board-tabs:hover {
   background-color: #999 !important;
-  box-shadow: inset 0 0 5px black;
+  box-shadow: inset 0 0 2px black;
 
+}
+
+.off-tab {
+  background-color: #60b9e8;
+}
+
+.off-tab:active {
+  background-color: #5AA8D1;
+}
+
+.on-tab {
+  background-color: #5AA8D1;
+}
+
+.add-sale {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.add-sale:hover {
+  background-color: #ddd
 }

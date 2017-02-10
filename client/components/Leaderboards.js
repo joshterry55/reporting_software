@@ -135,7 +135,7 @@ const styles = {
   },
   onTab: {
     border: "1px solid #666",
-    backgroundColor: "#CCC",
+    backgroundColor: "#999",
     margin: '5px',
     lineHeight: '42px',
     color: 'black',
@@ -143,7 +143,7 @@ const styles = {
     // borderTopLeftRadius: '5px',
     // borderTopRightRadius: '5px',
     borderBottom: '6px solid black',
-    boxShadow: 'inset 0 0 5px black',
+    boxShadow: 'inset 0 0 2px black',
     // borderRadius: '2px'
   },
 
