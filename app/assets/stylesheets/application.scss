@@ -102,3 +102,12 @@ input:focus {
 .add-sale:hover {
   background-color: #ddd
 }
+
+.cancel:hover {
+  background-color: #60b9e8;
+  color: #f2f7f7 !important;
+}
+
+.brio:after {
+  content: "BLAH"
+}

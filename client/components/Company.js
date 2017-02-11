@@ -49,20 +49,24 @@ class Company extends React.Component {
       let company = this.props.assignedcompany
       if(this.state.editCompany) {
         return(
-          <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
-            <div>
-              <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
+          <div className='col s12'>
+            <div className='col s12 m4 offset-m4'>
+              <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
+                <div className='col s10'>
+                  <input style={{fontSize: '30px'}} ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
+                </div>
+                <div className='col s2' style={{marginTop: '10px'}}>
+                  <button className='btn' type='submit' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+                </div>
+              </form>
             </div>
-            <div>
-              <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
-            </div>
-          </form>
+          </div>
         )
       } else {
         return(
-          <div>
-            <div>{company.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
-          </div>
+            <div className="center">
+              <div style={{fontSize: '35px', paddingTop: '10px'}}>{company.name} <i className="small material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
+            </div>
         )
       }
     }

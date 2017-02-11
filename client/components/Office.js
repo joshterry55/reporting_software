@@ -68,19 +68,23 @@ class Office extends React.Component {
     let office = this.props.currentoffice
     if(this.state.editOffice){
       return(
-        <form ref='editOfficeForm' onSubmit={(e) => this.submitEdittedOffice(e, office.id)}>
-          <div>
-            <input ref='newOfficeName' type='text' defaultValue={office.name} required placeholder={office.name} autoFocus />
+        <div className='col s12'>
+          <div className='col s12 m4 offset-m4'>
+            <form ref='editOfficeForm' onSubmit={(e) => this.submitEdittedOffice(e, office.id)}>
+              <div className='col s10'>
+                <input ref='newOfficeName' style={{fontSize: '30px'}} type='text' defaultValue={office.name} required placeholder={office.name} autoFocus />
+              </div>
+              <div className='col s2' style={{marginTop: '10px'}}>
+                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+              </div>
+            </form>
           </div>
-          <div>
-            <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
-          </div>
-        </form>
+        </div>
       )
     } else {
       return(
-        <div>
-          <div>{office.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Office'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteOffice(office.id)}>delete</i></div>
+        <div className='center'>
+          <div style={{fontSize: '35px', paddingTop: '10px'}}>{office.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Office'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteOffice(office.id)}>delete</i></div>
         </div>
       )
     }

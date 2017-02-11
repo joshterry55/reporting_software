@@ -18,7 +18,7 @@ class Employees extends React.Component {
     this.props.dispatch(employees(officeId))
   }
 
-  // alternative to this.props.urlParams 
+  // alternative to this.props.urlParams
   // let path = window.location.pathname
   // let officeId = path.replace(/\D/g, '')
 
@@ -57,22 +57,28 @@ class Employees extends React.Component {
   displayAdd() {
     if(this.state.addEmployee) {
       return(
-        <div>
-          <form ref={(input) => this.inviteForm = input} className='row center' onSubmit={this.inviteEmployee}>
-            <br />
-            <div className='col s6 offset-s3'>
-              <input ref='firstName' type='text' required placeholder='Employee First Name' autoFocus />
-              <input ref='lastName' type='text' required placeholder='Employee Last Name' />
-              <input ref='email' type='email' required placeholder='Employee Email' />
-              <input className='btn blue darken-3' type='submit' />
+        <div className='col s12'>
+          <div className='col s12 m4 offset-m4'>
+            <form ref={(input) => this.inviteForm = input} className='row center' onSubmit={this.inviteEmployee}>
+              <br />
+              <div className='col s12'>
+                <input ref='firstName' type='text' required placeholder='Employee First Name' autoFocus />
+                <input ref='lastName' type='text' required placeholder='Employee Last Name' />
+                <input ref='email' type='email' required placeholder='Employee Email' />
+                <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+              </div>
+            </form>
+            <div className='center col s12' style={{marginBottom: '10px'}}>
+              <span onClick={this.toggleAdd} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
             </div>
-          </form>
-          <button onClick={this.toggleAdd}>Cancel</button>
+          </div>
         </div>
       )
     } else {
       return(
-        <button onClick={this.toggleAdd}>Add Employee</button>
+        <div className='center'>
+          <span className='add-sale' onClick={this.toggleAdd} style={{cursor: 'pointer', color: '#60b9e8'}}>+ Add Employee</span>
+        </div>
       )
     }
   }
@@ -90,7 +96,6 @@ class Employees extends React.Component {
   render() {
     return(
       <div>
-        Employees Page
         {this.displayAdd()}
         <div className='collection'>
           {this.displayEmployees()}

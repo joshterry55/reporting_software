@@ -55,17 +55,27 @@ class Region extends React.Component {
   displayAdd() {
     if(this.state.addOffice) {
       return(
-        <div>
-          <form ref='officeForm' onSubmit={this.createOffice}>
-            <input ref='officeName' placeholder='Office Name' autoFocus/>
-            <input type='submit' />
-          </form>
-          <button onClick={this.toggleAdd}>Cancel</button>
+        <div className='col s12'>
+          <div className='col s12 m4 offset-m4'>
+            <form ref='officeForm' onSubmit={this.createOffice}>
+              <div className='col s10'>
+                <input ref='officeName' placeholder='Office Name' autoFocus/>
+              </div>
+              <div className='col s2'>
+                <input className='btn' style={{backgroundColor: '#444'}} type='submit' />
+              </div>
+            </form>
+            <div className='center col s12' style={{marginBottom: '10px'}}>
+              <span className='cancel' onClick={this.toggleAdd} style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+            </div>
+          </div>
         </div>
       )
     } else {
       return(
-        <button onClick={this.toggleAdd}>Add Office</button>
+        <div className='center'>
+          <span onClick={this.toggleAdd} style={{cursor: 'pointer', color: '#60b9e8'}} className='add-sale'>+ Add Office</span>
+        </div>
       )
     }
   }
@@ -125,19 +135,23 @@ class Region extends React.Component {
     let region = this.props.currentregion
     if(this.state.editRegion){
       return(
-        <form ref='editRegionForm' onSubmit={(e) => this.submitEdittedRegion(e, region.id)}>
-          <div>
-            <input ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
+        <div className='col s12'>
+          <div className='col s12 m4 offset-m4'>
+            <form ref='editRegionForm' onSubmit={(e) => this.submitEdittedRegion(e, region.id)}>
+              <div className='col s10'>
+                <input  style={{fontSize: '30px'}} ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
+              </div>
+              <div className='col s2' style={{marginTop: '10px'}}>
+                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+              </div>
+            </form>
           </div>
-          <div>
-            <button type='submit'><i className="tiny material-icons confirm-icon">done</i></button>
-          </div>
-        </form>
+        </div>
       )
     } else {
       return(
-        <div>
-          <div>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteRegion(region.id)}>delete</i></div>
+        <div className="center">
+          <div style={{fontSize: '35px', paddingTop: '10px'}}>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteRegion(region.id)}>delete</i></div>
         </div>
       )
     }

@@ -40,17 +40,27 @@ class Regions extends React.Component {
   display() {
     if(this.state.addRegion) {
       return(
-        <div>
-          <form ref='regionForm' onSubmit={this.createRegion}>
-            <input ref='regionName' placeholder='Region Name' autoFocus />
-            <input type='submit' />
-          </form>
-          <button onClick={this.toggleAdd}>Cancel</button>
+        <div className='col s12'>
+          <div className='col s12 m4 offset-m4'>
+            <form ref='regionForm' onSubmit={this.createRegion}>
+              <div className='col s10 '>
+                <input ref='regionName' placeholder='Region Name' autoFocus required />
+              </div>
+              <div className='col s2'>
+                <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+              </div>
+            </form>
+            <div className='center col s12' style={{marginBottom: '10px'}}>
+              <span onClick={this.toggleAdd} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+            </div>
+          </div>
         </div>
       )
     } else {
       return(
-        <button onClick={this.toggleAdd}>Add Region</button>
+        <div className="center">
+          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#60b9e8'}}>+ Add Region</span>
+        </div>
       )
     }
   }
