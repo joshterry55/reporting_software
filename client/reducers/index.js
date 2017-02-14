@@ -30,6 +30,8 @@ import trainingcategories from './trainingcategories'
 import trainingsections from './trainingsections'
 import currentcategory from './currentcategory'
 import currentsection from './currentsection'
+import currentvideo from './currentvideo'
+import trainingvideos from './trainingvideos'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -62,7 +64,9 @@ const rootReducer = combineReducers({
   trainingcategories,
   currentcategory,
   currentsection,
-  trainingsections
+  currentvideo,
+  trainingsections,
+  trainingvideos
  });
 
 export default rootReducer;

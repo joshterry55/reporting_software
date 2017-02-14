@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router';
+import { connect } from 'react-redux'
 
 class TrainingVideos extends React.Component {
   constructor(props) {
@@ -7,6 +8,15 @@ class TrainingVideos extends React.Component {
 
     this.state = { addVideo: false }
     this.state = { editVideo: false }
+
+    this.toggleAdd = this.toggleAdd.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
+    this.createVideo = this.createVideo.bind(this)
+    this.display = this.display.bind(this)
+    this.adminCheck = this.adminCheck.bind(this)
+    this.setVideo = this.setVideo.bind(this)
+    this.editVideo = this.editVideo.bind(this)
+    this.deleteVideo = this.deleteVideo.bind(this)
   }
 
   componentDidMount() {
@@ -16,16 +26,214 @@ class TrainingVideos extends React.Component {
       url: `/api/training_sections/${sectionId}/training_videos`,
       dataType: 'JSON'
     }).done( videos => {
-      debugger
+      this.props.dispatch({type: 'TRAINING_VIDEOS', videos})
     }).fail( data => {
       debugger
     })
   }
 
+  toggleAdd() {
+    this.setState({addVideo: !this.state.addVideo})
+  }
+
+  toggleEdit() {
+    this.setState({editVideo: !this.state.editVideo})
+  }
+
+  formatLink(url) {
+    let id = url.substring(url.indexOf("=") + 1);
+    let link = `https://www.youtube.com/embed/${id}`
+    return(
+      link
+    )
+  }
+
+  createVideo(e) {
+    e.preventDefault()
+    let name = this.refs.videoName.value
+    let sectionId = parseInt(this.props.params.id)
+    let url = this.refs.videoLink.value
+    let link = this.formatLink(url)
+
+    $.ajax({
+      url: '/api/training_videos',
+      type: 'POST',
+      dataType: 'JSON',
+      data: { training_video: {
+        name: name,
+        link: link,
+        training_section_id: sectionId,
+      }}
+    }).done( video => {
+      this.props.dispatch({type: 'ADD_TRAINING_VIDEO', video})
+      this.refs.videoForm.reset()
+      this.toggleAdd()
+    }).fail( data => {
+    })
+  }
+
+  display() {
+    if(this.props.user.role === 'Admin') {
+      if(this.state.addVideo) {
+        return(
+          <div className='col s12' style={{marginTop: '20px'}}>
+            <div className='col s12 m6 offset-m3 center'>
+              Go to YouTube and find your video. Copy the ENTIRE link and paste it in the 'Link' field.
+            </div>
+            <div className='col s12'><br /></div>
+            <div className='col s12 m6 offset-m3'>
+              <form ref='videoForm' onSubmit={(e) => this.createVideo(e)}>
+                <div className='col s12 '>
+                  <label>Video Name</label>
+                  <input ref='videoName' placeholder='New Video' autoFocus required />
+                </div>
+                <div className='col s12 '>
+                  <label>Link</label>
+                  <input ref='videoLink' placeholder='Video Link' required />
+                </div>
+                <div className='col s12 center' style={{marginBottom: '15px'}}>
+                  <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+                </div>
+              </form>
+              <div className='center col s12' style={{marginBottom: '10px'}}>
+                <span onClick={this.toggleAdd} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+              </div>
+            </div>
+          </div>
+        )
+      } else {
+        return(
+          <div className="center">
+            <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#60b9e8'}}>+ Add Video</span>
+          </div>
+        )
+      }
+    }
+  }
+
+  deleteVideo(id) {
+    let confirmed = confirm('Are you sure you want to delete this video?')
+    if(confirmed) {
+      $.ajax({
+        type: 'DELETE',
+        url: `/api/training_videos/${id}`,
+        dataType: 'JSON'
+      }).done( video => {
+        this.props.dispatch({type: 'REMOVE_TRAINING_VIDEO', video})
+      }).fail( data => {
+
+      })
+    }
+  }
+
+  editVideo(e, video) {
+    e.preventDefault()
+    let name = this.refs.editVideoName.value
+    let url = this.refs.editVideoLink.value
+    let link
+    if(video.link === url) {
+      link = url
+    } else {
+      link = this.formatLink(url)
+    }
+    let id = video.id
+    $.ajax({
+      url: `/api/training_videos/${id}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { training_video: {
+        name: name,
+        link: link
+      }}
+    }).done( video => {
+      this.props.dispatch({type: 'UPDATE_TRAINING_VIDEO', video})
+      this.refs.editVideoForm.reset()
+      this.toggleEdit()
+    }).fail( data => {
+    })
+  }
+
+  setVideo(video) {
+    this.props.dispatch({type: 'CURRENT_VIDEO', video})
+    this.toggleEdit()
+  }
+
+  adminCheck(video) {
+    if(this.props.user.role === 'Admin') {
+      return(
+        <span>
+          <i className="tiny material-icons edit-icon" onClick={() => this.setVideo(video)} style={{cursor: 'pointer'}} title='Edit Video'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Video" onClick={() => this.deleteVideo(video.id)}>delete</i>
+        </span>
+      )
+    }
+  }
+
+  displayVideos() {
+    if(this.props.trainingvideos.length) {
+      return this.props.trainingvideos.map( video => {
+        if(this.state.editVideo) {
+          if(this.props.currentvideo.id === video.id) {
+            return(
+              <div  key={video.id} className='col s12' style={{marginBottom: '50px'}}>
+                <div className='col s12 m6 offset-m3'>
+                  <form ref='editVideoForm' onSubmit={(e) => this.editVideo(e, video)}>
+                    <div className='col s12 '>
+                      <label>Video Name</label>
+                      <input ref='editVideoName' style={{fontSize: '15px'}} placeholder={video.name} defaultValue={video.name} autoFocus required />
+                    </div>
+                    <div className='col s12 '>
+                      <label>Link</label>
+                      <input ref='editVideoLink' style={{fontSize: '15px'}} placeholder={video.link} defaultValue={video.link} required />
+                    </div>
+                    <div className='col s12 center' style={{marginBottom: '15px'}}>
+                      <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
+                    </div>
+                  </form>
+                  <div className='center col s12' style={{marginBottom: '10px'}}>
+                    <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+                  </div>
+                </div>
+              </div>
+            )
+          } else {
+            return(
+              <div key={video.id} className='col s12' style={{marginBottom: '50px'}}>
+                <iframe className='col s12 m6 offset-m3'
+                  src={video.link} height="300" allowFullScreen>
+                </iframe>
+                <div className='col s12 m4 offset-m4 center'>
+                  <div style={{fontSize: '30px'}}>{video.name}</div>
+                </div>
+              </div>
+            )
+          }
+        } else {
+          return(
+            <div  key={video.id} className='col s12' style={{marginBottom: '50px'}}>
+              <iframe className='col s12 m6 offset-m3'
+                src={video.link} height="300" allowFullScreen>
+              </iframe>
+              <div className='col s12 center'>
+                <div style={{fontSize: '35px'}}>
+                  <span><b>{video.name}</b>  {this.adminCheck(video)}</span>
+                </div>
+              </div>
+            </div>
+          );
+        }
+      });
+    }
+  }
+
   render() {
     return(
       <div className='row container white-container'>
-        test
+        <div className='center' style={{fontSize: '50px'}}>
+          Training Videos
+        </div>
+        {this.display()}
+        <div className='col s12'><br/><br /></div>
+        {this.displayVideos()}
       </div>
     )
   }
@@ -55,4 +263,9 @@ class TrainingVideos extends React.Component {
   // }
 }
 
-export default TrainingVideos
+const mapStateToProps = (state) => {
+  let { user, trainingvideos, currentvideo } = state
+  return { user, trainingvideos, currentvideo }
+}
+
+export default connect(mapStateToProps)(TrainingVideos)
