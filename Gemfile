@@ -18,6 +18,7 @@ gem 'repack', '2.2.1'
 gem 'devise'
 gem 'materialize-sass'
 gem 'devise_invitable', '~> 1.7.0'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry'

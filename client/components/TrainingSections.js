@@ -1,5 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import DropZone from 'react-dropzone';
+import request from 'superagent';
+require('superagent-rails-csrf')(request)
 
 class TrainingSections extends React.Component {
   constructor(props) {
@@ -7,6 +10,7 @@ class TrainingSections extends React.Component {
 
     this.state = { addSection: false }
     this.state = { editSection: false }
+    this.state = { avatar: [this.props.user.avatar]}
 
     this.toggleAdd = this.toggleAdd.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
@@ -15,6 +19,7 @@ class TrainingSections extends React.Component {
     this.setSection = this.setSection.bind(this)
     this.deleteSection = this.deleteSection.bind(this)
     this.editSection = this.editSection.bind(this)
+    this.onDrop = this.onDrop.bind(this)
   }
 
   componentDidMount() {
@@ -140,6 +145,20 @@ class TrainingSections extends React.Component {
     }
   }
 
+  onDrop = (files) => {
+    let id = this.props.currentsection.id
+    let employee = this.props.user
+    let file = files[0];
+    let req = request.put(`api/training_sections/${id}/avatar`);
+    req.setCsrfToken();
+    req.attach('avatar', file)
+    req.end( (err, res) => {
+      if(res.body) {
+        this.setState({avatar: [res.body.avatar]})
+      }
+    })
+  }
+
   displaySections(current) {
     if(this.props.trainingsections.length) {
       return this.props.trainingsections.map( section => {
@@ -147,7 +166,7 @@ class TrainingSections extends React.Component {
           if(this.state.editSection) {
             if(this.props.currentsection.id === section.id) {
               return(
-                <div  key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
+                <div  key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px' }}>
                   <div className='col s12'>
                     <form ref='editSectionForm' onSubmit={(e) => this.editSection(e, section.id)}>
                       <div className='col s12 '>
@@ -159,6 +178,24 @@ class TrainingSections extends React.Component {
                     </form>
                     <div className='center col s12' style={{marginBottom: '10px'}}>
                       <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+                    </div>
+                    <div style={{height: '50px', marginBottom: '15px', position: 'relative'}}>
+                      <DropZone style={{
+                          backgroundColor: '#aaa',
+                          backgroundImage: `url("http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg")`,
+                          backgroundSize: 'contain',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center center',
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '50px',
+                          display: 'block',
+                          borderRadius: '10px',
+                          margin: '0px auto',
+                          position: 'relative',
+                          opacity: '0.65',
+                          zIndex: '2',
+                        }} multiple={false} onDrop={this.onDrop} />
                     </div>
                   </div>
                 </div>
@@ -194,7 +231,7 @@ class TrainingSections extends React.Component {
                       backgroundImage: `url(${section.avatar})`,
                       width: '100%',
                       height: '100%',
-                      maxWidth: '200px',
+                      maxWidth: '250px',
                       display: 'block',
                       backgroundSize: 'cover',
                       borderRadius: '5px',

@@ -33,6 +33,13 @@ class Api::TrainingSectionsController < ApplicationController
     end
   end
 
+  def add_avatar
+    @section = TrainingSection.find(params[:id])
+    u = Cloudinary::Uploader.upload(File.open(params[:avatar].tempfile))
+   @section.update(avatar: u['url'])
+   render json: { avatar: u['url'] }
+  end
+
 
   def destroy
     @section = TrainingSection.find(params[:id])

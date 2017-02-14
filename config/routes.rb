@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'company/:id/offices', as: 'company/offices', :to => 'companies#offices'
     get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
     get 'company/:id/sections', as: 'company/sections', :to => 'training_sections#index'
+    put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     resources :users
     resources :companies
     resources :regions
