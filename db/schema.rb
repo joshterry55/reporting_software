@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214002331) do
+ActiveRecord::Schema.define(version: 20170214040706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(version: 20170214002331) do
     t.index ["company_id"], name: "index_training_categories_on_company_id", using: :btree
   end
 
+  create_table "training_sections", force: :cascade do |t|
+    t.string   "name"
+    t.string   "avatar",               default: "http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg"
+    t.integer  "training_category_id"
+    t.datetime "created_at",                                                                                                       null: false
+    t.datetime "updated_at",                                                                                                       null: false
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_training_sections_on_company_id", using: :btree
+    t.index ["training_category_id"], name: "index_training_sections_on_training_category_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                                  null: false
     t.string   "last_name",                                   null: false
@@ -128,6 +139,8 @@ ActiveRecord::Schema.define(version: 20170214002331) do
   add_foreign_key "sales", "offices"
   add_foreign_key "sales", "regions"
   add_foreign_key "sales", "users"
+  add_foreign_key "training_sections", "companies"
+  add_foreign_key "training_sections", "training_categories"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "offices"
   add_foreign_key "users", "regions"

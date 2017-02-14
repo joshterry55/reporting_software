@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux'
+import TrainingSections from './TrainingSections'
 
 class Trainings extends React.Component {
   constructor(props) {
@@ -148,7 +149,7 @@ class Trainings extends React.Component {
                 <div className='col s12 m4 offset-m4'>
                   <form ref='editCategoryForm' onSubmit={(e) => this.editCategory(e, category.id)}>
                     <div className='col s10 '>
-                      <input ref='editCategoryName' style={{fontSize: '20px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
+                      <input ref='editCategoryName' style={{fontSize: '25px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
                     </div>
                     <div className='col s2'>
                       <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
@@ -158,13 +159,19 @@ class Trainings extends React.Component {
                     <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
                   </div>
                 </div>
+                <div className='col s12'>
+                  <TrainingSections current={category} />
+                </div>
               </div>
             )
           } else {
             return(
               <div key={category.id} className='col s12'>
                 <div className='col s12 m4 offset-m4 center'>
-                  <div style={{fontSize: '30px'}}>{category.name}</div>
+                  <div style={{fontSize: '35px'}}>{category.name}</div>
+                </div>
+                <div className='col s12'>
+                  <TrainingSections current={category} />
                 </div>
               </div>
             )
@@ -173,8 +180,11 @@ class Trainings extends React.Component {
           return(
             <div  key={category.id} className='col s12'>
               <div className='col s12 m4 offset-m4 center'>
-                <div style={{fontSize: '30px'}}>{category.name}</div>
+                <div style={{fontSize: '35px'}}>{category.name}</div>
                 {this.adminCheck(category)}
+              </div>
+              <div className='col s12'>
+                <TrainingSections current={category} />
               </div>
             </div>
           );
@@ -186,7 +196,7 @@ class Trainings extends React.Component {
   render() {
     return(
       <div  className='row container white-container'>
-        <div className='center'>
+        <div className='center' style={{paddingTop: '15px'}}>
           <span style={{fontSize: '50px'}}>Training Videos</span>
         </div>
         <div style={{marginBottom: '20px'}}>
@@ -195,6 +205,7 @@ class Trainings extends React.Component {
         <div>
           {this.displayCategories()}
         </div>
+        <div className='col s12'><br /><br /><br /></div>
       </div>
     )
   }

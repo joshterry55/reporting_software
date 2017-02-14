@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'company/:id/regions', as: 'company/regions', :to => 'companies#regions'
     get 'company/:id/offices', as: 'company/offices', :to => 'companies#offices'
     get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
+    get 'company/:id/sections', as: 'company/sections', :to => 'training_sections#index'
     resources :users
     resources :companies
     resources :regions
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     resources :announcements
     resources :sales
     resources :training_categories
-
+    resources :training_sections
   end
 
 

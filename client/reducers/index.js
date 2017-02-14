@@ -27,7 +27,9 @@ import leaderboardregions from './leaderboardregions'
 import leaderboardoffices from './leaderboardoffices'
 import currentfilter from './currentfilter'
 import trainingcategories from './trainingcategories'
+import trainingsections from './trainingsections'
 import currentcategory from './currentcategory'
+import currentsection from './currentsection'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -58,7 +60,9 @@ const rootReducer = combineReducers({
   companysales,
   leaderboardregiontotals,
   trainingcategories,
-  currentcategory
+  currentcategory,
+  currentsection,
+  trainingsections
  });
 
 export default rootReducer;
