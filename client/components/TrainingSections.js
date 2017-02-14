@@ -180,7 +180,7 @@ class TrainingSections extends React.Component {
                     <div className='center col s12' style={{marginBottom: '10px'}}>
                       <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
                     </div>
-                    <div style={{height: '50px', marginBottom: '15px', position: 'relative'}}>
+                    <div  className='col s12' style={{height: '75px', marginBottom: '15px', position: 'relative'}}>
                       <DropZone style={{
                           backgroundColor: '#aaa',
                           backgroundImage: `url("http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg")`,
@@ -189,13 +189,14 @@ class TrainingSections extends React.Component {
                           backgroundPosition: 'center center',
                           width: '100%',
                           height: '100%',
-                          maxWidth: '50px',
+                          maxWidth: '75px',
                           display: 'block',
                           borderRadius: '10px',
                           margin: '0px auto',
                           position: 'relative',
                           opacity: '0.65',
                           zIndex: '2',
+                          content: 'test'
                         }} multiple={false} onDrop={this.onDrop} />
                     </div>
                   </div>
