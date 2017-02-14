@@ -183,7 +183,7 @@ class TrainingSections extends React.Component {
                     <div  className='col s12' style={{height: '75px', marginBottom: '15px', position: 'relative'}}>
                       <DropZone style={{
                           backgroundColor: '#aaa',
-                          backgroundImage: `url("http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg")`,
+                          backgroundImage: `url(${section.avatar})`,
                           backgroundSize: 'contain',
                           backgroundRepeat: 'no-repeat',
                           backgroundPosition: 'center center',
@@ -196,7 +196,6 @@ class TrainingSections extends React.Component {
                           position: 'relative',
                           opacity: '0.65',
                           zIndex: '2',
-                          content: 'test'
                         }} multiple={false} onDrop={this.onDrop} />
                     </div>
                   </div>
