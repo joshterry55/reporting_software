@@ -16,12 +16,14 @@ Rails.application.routes.draw do
     get 'company/:id/sales', as: 'company/sales', :to => 'sales#company'
     get 'company/:id/regions', as: 'company/regions', :to => 'companies#regions'
     get 'company/:id/offices', as: 'company/offices', :to => 'companies#offices'
+    get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
     resources :users
     resources :companies
     resources :regions
     resources :offices
     resources :announcements
     resources :sales
+    resources :training_categories
 
   end
 

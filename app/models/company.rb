@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :users
   has_many :offices
   has_many :sales
+  has_many :training_categories
   validates_presence_of :name
 
 end

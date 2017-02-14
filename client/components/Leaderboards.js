@@ -49,7 +49,7 @@ class Leaderboards extends React.Component {
   clearCurrentRegion() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
-    this.props.dispatch({type: 'RESET_REGION_SALES'})
+    // this.props.dispatch({type: 'RESET_REGION_SALES'})
   }
 
   fontColor(param) {
