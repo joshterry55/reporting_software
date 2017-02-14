@@ -159,7 +159,7 @@ class Trainings extends React.Component {
                     <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
                   </div>
                 </div>
-                <div className='col s12'>
+                <div className='col s12' style={{marginBottom: '10px'}}>
                   <TrainingSections current={category} />
                 </div>
               </div>
@@ -170,7 +170,7 @@ class Trainings extends React.Component {
                 <div className='col s12 m4 offset-m4 center'>
                   <div style={{fontSize: '35px'}}>{category.name}</div>
                 </div>
-                <div className='col s12'>
+                <div className='col s12' style={{marginBottom: '10px'}}>
                   <TrainingSections current={category} />
                 </div>
               </div>
@@ -180,10 +180,10 @@ class Trainings extends React.Component {
           return(
             <div  key={category.id} className='col s12'>
               <div className='col s12 m4 offset-m4 center'>
-                <div style={{fontSize: '35px'}}>{category.name}</div>
+                <div style={{fontSize: '35px'}}><b>{category.name}</b></div>
                 {this.adminCheck(category)}
               </div>
-              <div className='col s12'>
+              <div className='col s12' style={{marginBottom: '10px'}}>
                 <TrainingSections current={category} />
               </div>
             </div>
@@ -194,10 +194,11 @@ class Trainings extends React.Component {
   }
 
   render() {
+    let companyName = this.props.assignedcompany.name
     return(
       <div  className='row container white-container'>
         <div className='center' style={{paddingTop: '15px'}}>
-          <span style={{fontSize: '50px'}}>Training Videos</span>
+          <span style={{fontSize: '50px'}}>{companyName} Training</span>
         </div>
         <div style={{marginBottom: '20px'}}>
           {this.display()}
@@ -205,7 +206,7 @@ class Trainings extends React.Component {
         <div>
           {this.displayCategories()}
         </div>
-        <div className='col s12'><br /><br /><br /></div>
+        <div className='col s12'><br /></div>
       </div>
     )
   }

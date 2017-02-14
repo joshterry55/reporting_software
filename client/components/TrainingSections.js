@@ -147,13 +147,13 @@ class TrainingSections extends React.Component {
           if(this.state.editSection) {
             if(this.props.currentsection.id === section.id) {
               return(
-                <div  key={section.id} className='col s12 l4' style={{marginBottom: '20px'}}>
+                <div  key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
                   <div className='col s12'>
                     <form ref='editSectionForm' onSubmit={(e) => this.editSection(e, section.id)}>
-                      <div className='col s10 '>
+                      <div className='col s12 '>
                         <input ref='editSectionName' style={{fontSize: '15px'}} placeholder={section.name} defaultValue={section.name} autoFocus required />
                       </div>
-                      <div className='col s2'>
+                      <div className='col s12 center' style={{marginBottom: '10px'}}>
                         <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
                       </div>
                     </form>
@@ -165,7 +165,7 @@ class TrainingSections extends React.Component {
               )
             } else {
               return(
-                <div key={section.id} className='col s12 l4' style={{marginBottom: '20px'}}>
+                <div key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
                   <div style={{height: '200px', marginBottom: '10px'}}>
                     <div style={{
                         backgroundImage: `url(${section.avatar})`,
@@ -181,14 +181,14 @@ class TrainingSections extends React.Component {
                     </div>
                   </div>
                   <div className='col s12 center'>
-                    <div style={{fontSize: '18px'}}>{section.name}</div>
+                    <div style={{fontSize: '18px'}}><b>{section.name}</b></div>
                   </div>
                 </div>
               )
             }
           } else {
             return(
-              <div  key={section.id} className='col s12 l4' style={{marginBottom: '20px'}}>
+              <div  key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
                 <div style={{height: '200px', marginBottom: '10px'}}>
                   <div style={{
                       backgroundImage: `url(${section.avatar})`,
@@ -197,14 +197,14 @@ class TrainingSections extends React.Component {
                       maxWidth: '200px',
                       display: 'block',
                       backgroundSize: 'cover',
-                      borderRadius: '10px',
+                      borderRadius: '5px',
                       boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
                       margin: '10px auto'
                     }}>
                   </div>
                 </div>
                 <div className='col s12 center'>
-                  <div style={{fontSize: '18px'}}>{section.name}</div>
+                  <div style={{fontSize: '18px'}}><b>{section.name}</b></div>
                   {this.adminCheck(section)}
                 </div>
               </div>
