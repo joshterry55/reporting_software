@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214040706) do
+ActiveRecord::Schema.define(version: 20170214195027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 20170214040706) do
     t.index ["training_category_id"], name: "index_training_sections_on_training_category_id", using: :btree
   end
 
+  create_table "training_videos", force: :cascade do |t|
+    t.string   "name",                null: false
+    t.text     "link",                null: false
+    t.integer  "training_section_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["training_section_id"], name: "index_training_videos_on_training_section_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                                  null: false
     t.string   "last_name",                                   null: false
@@ -141,6 +150,7 @@ ActiveRecord::Schema.define(version: 20170214040706) do
   add_foreign_key "sales", "users"
   add_foreign_key "training_sections", "companies"
   add_foreign_key "training_sections", "training_categories"
+  add_foreign_key "training_videos", "training_sections"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "offices"
   add_foreign_key "users", "regions"

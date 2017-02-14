@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
     get 'company/:id/sections', as: 'company/sections', :to => 'training_sections#index'
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
+    get 'training_sections/:id/training_videos', as: 'training_section/training_videos', :to => 'training_videos#show'
     resources :users
     resources :companies
     resources :regions
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     resources :sales
     resources :training_categories
     resources :training_sections
+    resources :training_videos
   end
 
 
