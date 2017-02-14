@@ -14,6 +14,7 @@ class Trainings extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this)
     this.displayCategories = this.displayCategories.bind(this)
     this.deleteCategory = this.deleteCategory.bind(this)
+    this.adminCheck = this.adminCheck.bind(this)
   }
 
   componentDidMount() {
@@ -74,30 +75,32 @@ class Trainings extends React.Component {
   }
 
   display() {
-    if(this.state.addCategory) {
-      return(
-        <div className='col s12'>
-          <div className='col s12 m4 offset-m4'>
-            <form ref='categoryForm' onSubmit={this.createCategory}>
-              <div className='col s10 '>
-                <input ref='categoryName' placeholder='New Category' autoFocus required />
+    if(this.props.user.role === 'Admin') {
+      if(this.state.addCategory) {
+        return(
+          <div className='col s12'>
+            <div className='col s12 m4 offset-m4'>
+              <form ref='categoryForm' onSubmit={this.createCategory}>
+                <div className='col s10 '>
+                  <input ref='categoryName' placeholder='New Category' autoFocus required />
+                </div>
+                <div className='col s2'>
+                  <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+                </div>
+              </form>
+              <div className='center col s12' style={{marginBottom: '10px'}}>
+                <span onClick={this.toggleAdd} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
               </div>
-              <div className='col s2'>
-                <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
-              </div>
-            </form>
-            <div className='center col s12' style={{marginBottom: '10px'}}>
-              <span onClick={this.toggleAdd} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
             </div>
           </div>
-        </div>
-      )
-    } else {
-      return(
-        <div className="center">
-          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#60b9e8'}}>+ Add Category</span>
-        </div>
-      )
+        )
+      } else {
+        return(
+          <div className="center">
+            <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#60b9e8'}}>+ Add Category</span>
+          </div>
+        )
+      }
     }
   }
 
@@ -125,17 +128,27 @@ class Trainings extends React.Component {
     this.toggleEdit()
   }
 
+  adminCheck(category) {
+    if(this.props.user.role === 'Admin') {
+      return(
+        <div>
+          <i className="tiny material-icons edit-icon" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}} title='Edit Category'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i>
+        </div>
+      )
+    }
+  }
+
   displayCategories() {
     if(this.props.trainingcategories.length) {
       return this.props.trainingcategories.map( category => {
         if(this.state.editCategory) {
           if(this.props.currentcategory.id === category.id) {
             return(
-              <div className='col s12'>
+              <div  key={category.id} className='col s12'>
                 <div className='col s12 m4 offset-m4'>
                   <form ref='editCategoryForm' onSubmit={(e) => this.editCategory(e, category.id)}>
                     <div className='col s10 '>
-                      <input ref='editCategoryName' placeholder={category.name} defaultValue={category.name} autoFocus required />
+                      <input ref='editCategoryName' style={{fontSize: '20px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
                     </div>
                     <div className='col s2'>
                       <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
@@ -149,18 +162,19 @@ class Trainings extends React.Component {
             )
           } else {
             return(
-              <div className='col s12'>
+              <div key={category.id} className='col s12'>
                 <div className='col s12 m4 offset-m4 center'>
-                  <div key={category.id}>{category.name}</div>
+                  <div style={{fontSize: '30px'}}>{category.name}</div>
                 </div>
               </div>
             )
           }
         } else {
           return(
-            <div className='col s12'>
+            <div  key={category.id} className='col s12'>
               <div className='col s12 m4 offset-m4 center'>
-                <div key={category.id}>{category.name}<i className="tiny material-icons confirm-icon" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}} title='Edit Category'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i></div>
+                <div style={{fontSize: '30px'}}>{category.name}</div>
+                {this.adminCheck(category)}
               </div>
             </div>
           );
@@ -175,16 +189,20 @@ class Trainings extends React.Component {
         <div className='center'>
           <span style={{fontSize: '50px'}}>Training Videos</span>
         </div>
-        {this.display()}
-        {this.displayCategories()}
+        <div style={{marginBottom: '20px'}}>
+          {this.display()}
+        </div>
+        <div>
+          {this.displayCategories()}
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  let { assignedcompany, trainingcategories, currentcategory } = state
-  return { assignedcompany, trainingcategories, currentcategory }
+  let { assignedcompany, trainingcategories, currentcategory, user } = state
+  return { assignedcompany, trainingcategories, currentcategory, user }
 }
 
 
