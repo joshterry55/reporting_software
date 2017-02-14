@@ -51,6 +51,24 @@ class Trainings extends React.Component {
     })
   }
 
+  editCategory(e, id) {
+    e.preventDefault()
+    let name = this.refs.editCategoryName.value
+    $.ajax({
+      url: `/api/training_categories/${id}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { training_category: {
+        name: name
+      }}
+    }).done( category => {
+      this.props.dispatch({type: 'UPDATE_TRAINING_CATEGORY', category})
+      this.refs.editCategoryForm.reset()
+      this.toggleEdit()
+    }).fail( data => {
+    })
+  }
+
   toggleAdd() {
     this.setState({addCategory: !this.state.addCategory})
   }
@@ -113,16 +131,38 @@ class Trainings extends React.Component {
         if(this.state.editCategory) {
           if(this.props.currentcategory.id === category.id) {
             return(
-              <div> worked </div>
+              <div className='col s12'>
+                <div className='col s12 m4 offset-m4'>
+                  <form ref='editCategoryForm' onSubmit={(e) => this.editCategory(e, category.id)}>
+                    <div className='col s10 '>
+                      <input ref='editCategoryName' placeholder={category.name} defaultValue={category.name} autoFocus required />
+                    </div>
+                    <div className='col s2'>
+                      <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
+                    </div>
+                  </form>
+                  <div className='center col s12' style={{marginBottom: '10px'}}>
+                    <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
+                  </div>
+                </div>
+              </div>
             )
           } else {
             return(
-              <div key={category.id}>{category.name}</div>
+              <div className='col s12'>
+                <div className='col s12 m4 offset-m4 center'>
+                  <div key={category.id}>{category.name}</div>
+                </div>
+              </div>
             )
           }
         } else {
           return(
-            <div key={category.id}>{category.name}<i className="tiny material-icons confirm-icon" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}} title='Edit Category'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i></div>
+            <div className='col s12'>
+              <div className='col s12 m4 offset-m4 center'>
+                <div key={category.id}>{category.name}<i className="tiny material-icons confirm-icon" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}} title='Edit Category'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i></div>
+              </div>
+            </div>
           );
         }
       });
@@ -136,9 +176,7 @@ class Trainings extends React.Component {
           <span style={{fontSize: '50px'}}>Training Videos</span>
         </div>
         {this.display()}
-        <div>
-          {this.displayCategories()}
-        </div>
+        {this.displayCategories()}
       </div>
     )
   }
