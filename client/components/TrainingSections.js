@@ -160,6 +160,8 @@ class TrainingSections extends React.Component {
     })
   }
 
+
+
   displaySections(current) {
     if(this.props.trainingsections.length) {
       return this.props.trainingsections.map( section => {
@@ -228,7 +230,7 @@ class TrainingSections extends React.Component {
             }
           } else {
             return(
-              <div  key={section.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
+              <div  key={section.id} className='col s12 m4 l3' style={{marginBottom: '20px'}}>
                 <div style={{height: '200px', marginBottom: '10px'}}>
                   <div style={{
                       backgroundImage: `url(${section.avatar})`,

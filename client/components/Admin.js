@@ -49,8 +49,10 @@ class Admin extends React.Component {
 
   render() {
     return(
-      <div className='row container white-container'>
-        {this.adminTabs()}
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>          
+          {this.adminTabs()}
+        </div>
       </div>
     )
   }

@@ -7,8 +7,10 @@ class Announcements extends React.Component {
 
   render() {
     return(
-      <div className='row container white-container'>
-        Announcement Page
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>
+          Announcement Page
+        </div>
       </div>
     )
   }

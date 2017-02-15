@@ -31,20 +31,22 @@ class ReportRegionSelect extends React.Component {
       regionName = 'Select Region'
     }
     return(
-      <div className='row container white-container'>
-        <div className='col s12' style={{zIndex: 2, marginBottom: '-15px', position: 'relative'}}>
-          <span className='col s12 m3 offset-m9' style={{textAlign: 'right', paddingTop: '10px'}} ><Link className='add-sale' to='/addsale'>+ Add Sale</Link></span>
-        </div>
-        <div className='col s12' style={{zIndex: 0}}>
-          <div className = 'col s12'>
-            <div className='col s10 offset-s1 m6 offset-m3'>
-              <h4 className='center'>Office Reports</h4>
-              <br />
-              <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                { this.showRegions() }
-              </Dropdown>
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>
+          <div className='col s12' style={{zIndex: 2, marginBottom: '-15px', position: 'relative'}}>
+            <span className='col s12 m3 offset-m9' style={{textAlign: 'right', paddingTop: '10px'}} ><Link className='add-sale' to='/addsale'>+ Add Sale</Link></span>
+          </div>
+          <div className='col s12' style={{zIndex: 0}}>
+            <div className = 'col s12'>
+              <div className='col s10 offset-s1 m6 offset-m3'>
+                <h4 className='center'>Office Reports</h4>
+                <br />
+                <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+                  { this.showRegions() }
+                </Dropdown>
+              </div>
+              <ReportOfficeSelect />
             </div>
-            <ReportOfficeSelect />
           </div>
         </div>
       </div>

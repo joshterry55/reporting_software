@@ -227,13 +227,15 @@ class TrainingVideos extends React.Component {
 
   render() {
     return(
-      <div className='row container white-container'>
-        <div className='center' style={{fontSize: '50px'}}>
-          Training Videos
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>
+          <div className='center' style={{fontSize: '50px'}}>
+            Training Videos
+          </div>
+          {this.display()}
+          <div className='col s12'><br/><br /></div>
+          {this.displayVideos()}
         </div>
-        {this.display()}
-        <div className='col s12'><br/><br /></div>
-        {this.displayVideos()}
       </div>
     )
   }

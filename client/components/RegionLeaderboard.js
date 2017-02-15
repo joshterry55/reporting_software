@@ -19,14 +19,16 @@ class RegionLeaderboard extends React.Component {
 
   render() {
     return(
-      <div className='row container white-container'>
-      <Leaderboards />
-        <div className='col s12'>
-          <div className = 'col s12'>
-            <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
-              <h4 className='center'>Leaderboard</h4>
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>
+          <Leaderboards />
+          <div className='col s12'>
+            <div className = 'col s12'>
+              <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
+                <h4 className='center'>Leaderboard</h4>
+              </div>
+              <LeaderboardSelector />
             </div>
-            <LeaderboardSelector />
           </div>
         </div>
       </div>

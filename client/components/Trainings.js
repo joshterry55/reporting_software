@@ -196,17 +196,19 @@ class Trainings extends React.Component {
   render() {
     let companyName = this.props.assignedcompany.name
     return(
-      <div  className='row container white-container'>
-        <div className='center' style={{paddingTop: '15px'}}>
-          <span style={{fontSize: '50px'}}>{companyName} Training</span>
+      <div  className='row '>
+        <div className='col s12 m10 offset-m1 white-container'>          
+          <div className='center' style={{paddingTop: '15px'}}>
+            <span style={{fontSize: '50px'}}>{companyName} Training</span>
+          </div>
+          <div style={{marginBottom: '20px'}}>
+            {this.display()}
+          </div>
+          <div>
+            {this.displayCategories()}
+          </div>
+          <div className='col s12'><br /></div>
         </div>
-        <div style={{marginBottom: '20px'}}>
-          {this.display()}
-        </div>
-        <div>
-          {this.displayCategories()}
-        </div>
-        <div className='col s12'><br /></div>
       </div>
     )
   }
