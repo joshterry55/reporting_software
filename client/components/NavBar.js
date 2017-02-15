@@ -80,7 +80,7 @@ class NavBar extends React.Component {
           <div>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/announcements'>Announcements</Link></li>
-            <li><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Boards</Link></li>
+            <li><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
             <li><Link to='/trainings'>Training</Link></li>
             <li><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
             <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
@@ -91,7 +91,7 @@ class NavBar extends React.Component {
         <div>
           <li><Link to='/'>Home</Link></li>
           <li className='off-tab'><Link to='/announcements' >Announcements</Link></li>
-          <li className='off-tab'><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Boards</Link></li>
+          <li className='off-tab'><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
           <li className='off-tab'><Link to='/trainings'>Training</Link></li>
           <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
           <li className='off-tab'><Link to='/admin'>Admin</Link></li>

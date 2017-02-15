@@ -42,7 +42,7 @@ class TrainingVideos extends React.Component {
 
   formatLink(url) {
     let id = url.substring(url.indexOf("=") + 1);
-    let link = `https://www.youtube.com/embed/${id}`
+    let link = `https://www.youtube.com/embed/${id}?rel=0`
     return(
       link
     )
@@ -199,7 +199,7 @@ class TrainingVideos extends React.Component {
             return(
               <div key={video.id} className='col s12' style={{marginBottom: '50px'}}>
                 <iframe className='col s12 m6 offset-m3'
-                  src={video.link} height="300" allowFullScreen>
+                  src={video.link} height="300" frameBorder="0" allowFullScreen>
                 </iframe>
                 <div className='col s12 m4 offset-m4 center'>
                   <div style={{fontSize: '30px'}}>{video.name}</div>
@@ -211,7 +211,7 @@ class TrainingVideos extends React.Component {
           return(
             <div  key={video.id} className='col s12' style={{marginBottom: '50px'}}>
               <iframe className='col s12 m6 offset-m3'
-                src={video.link} height="300" allowFullScreen>
+                src={video.link} height="300" frameBorder="0" allowFullScreen>
               </iframe>
               <div className='col s12 center'>
                 <div style={{fontSize: '35px'}}>
