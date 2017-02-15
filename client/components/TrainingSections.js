@@ -140,7 +140,7 @@ class TrainingSections extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <div>
-          <i className="tiny material-icons edit-icon" onClick={() => this.setSection(section)} style={{cursor: 'pointer'}} title='Edit Section'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteSection(section.id)}>delete</i>
+          <i className="tiny material-icons edit-icon" onClick={() => this.setSection(section)} style={{cursor: 'pointer'}} title='Edit Section'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Section" onClick={() => this.deleteSection(section.id)}>delete</i>
         </div>
       )
     }
@@ -181,7 +181,7 @@ class TrainingSections extends React.Component {
                       <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
                     </div>
                     <div  className='col s12' style={{height: '75px', marginBottom: '15px', position: 'relative'}}>
-                      <DropZone style={{
+                      <DropZone className='edit-icon' style={{
                           backgroundColor: '#aaa',
                           backgroundImage: `url(${section.avatar})`,
                           backgroundSize: 'contain',
@@ -196,6 +196,7 @@ class TrainingSections extends React.Component {
                           position: 'relative',
                           opacity: '0.65',
                           zIndex: '2',
+                          cursor: 'pointer'
                         }} multiple={false} onDrop={this.onDrop} />
                     </div>
                   </div>
@@ -209,10 +210,10 @@ class TrainingSections extends React.Component {
                         backgroundImage: `url(${section.avatar})`,
                         width: '100%',
                         height: '100%',
-                        maxWidth: '200px',
+                        maxWidth: '250px',
                         display: 'block',
                         backgroundSize: 'cover',
-                        borderRadius: '10px',
+                        borderRadius: '5px',
                         boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
                         margin: '10px auto'
                       }}>
@@ -220,6 +221,7 @@ class TrainingSections extends React.Component {
                   </div>
                   <div className='col s12 center'>
                     <div style={{fontSize: '18px'}}><b><Link className='section-link' to={`/trainingvideos/${section.id}`}>{section.name}</Link></b></div>
+                    {this.adminCheck(section)}
                   </div>
                 </div>
               )
