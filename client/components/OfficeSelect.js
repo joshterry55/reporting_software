@@ -40,6 +40,7 @@ class OfficeSelect extends React.Component {
           </Dropdown>
         </div>
         <div className='col s12'>
+          <br />
         </div>
         <AddSale />
       </div>
