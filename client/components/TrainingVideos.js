@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux'
+import { trainingvideos } from '../actions/trainingvideos'
 
 class TrainingVideos extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class TrainingVideos extends React.Component {
       url: `/api/training_sections/${sectionId}/training_videos`,
       dataType: 'JSON'
     }).done( videos => {
-      this.props.dispatch({type: 'TRAINING_VIDEOS', videos})
+      this.props.dispatch(trainingvideos(videos))
     }).fail( data => {
       debugger
     })

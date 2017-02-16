@@ -2,7 +2,7 @@
 const trainingvideos = (state = [], action) => {
   switch(action.type) {
     case 'TRAINING_VIDEOS':
-      return action.videos
+      return action.sortedVideos
     case 'ADD_TRAINING_VIDEO':
       return [...state, action.video]
     case 'UPDATE_TRAINING_VIDEO':
