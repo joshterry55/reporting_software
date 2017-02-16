@@ -119,3 +119,17 @@ input:focus {
 .section-link:hover {
   color: #60b9e8
 }
+
+.sidebar-link {
+  color: black
+}
+
+.sidebar-link:hover {
+  color: #60b9e8 !important;
+  background-color: #ccc;
+  border-radius: 3px
+}
+
+.link:hover {
+  color: #f2f7f7;
+}

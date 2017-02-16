@@ -17,6 +17,7 @@ class TrainingVideos extends React.Component {
     this.setVideo = this.setVideo.bind(this)
     this.editVideo = this.editVideo.bind(this)
     this.deleteVideo = this.deleteVideo.bind(this)
+    this.displaySideBar = this.displaySideBar.bind(this)
   }
 
   componentDidMount() {
@@ -175,7 +176,7 @@ class TrainingVideos extends React.Component {
           if(this.props.currentvideo.id === video.id) {
             return(
               <div  key={video.id} className='col s12' style={{marginBottom: '50px'}}>
-                <div className='col s12 m6 offset-m3'>
+                <div className='col s12 m10 offset-m1'>
                   <form ref='editVideoForm' onSubmit={(e) => this.editVideo(e, video)}>
                     <div className='col s12 '>
                       <label>Video Name</label>
@@ -198,8 +199,8 @@ class TrainingVideos extends React.Component {
           } else {
             return(
               <div key={video.id} className='col s12' style={{marginBottom: '50px'}}>
-                <iframe className='col s12 m6 offset-m3'
-                  src={video.link} height="300" frameBorder="0" allowFullScreen>
+                <iframe className='col s12 m10 offset-m1'
+                  src={video.link} height="350" frameBorder="0" allowFullScreen>
                 </iframe>
                 <div className='col s12 m4 offset-m4 center'>
                   <div style={{fontSize: '30px'}}>{video.name}</div>
@@ -209,9 +210,9 @@ class TrainingVideos extends React.Component {
           }
         } else {
           return(
-            <div  key={video.id} className='col s12' style={{marginBottom: '50px'}}>
-              <iframe className='col s12 m6 offset-m3'
-                src={video.link} height="300" frameBorder="0" allowFullScreen>
+            <div  key={video.id} name={video.id} id={video.id} className='col s12' style={{marginBottom: '50px', paddingRight: '22px'}}>
+              <iframe className='col s12'
+                src={video.link} height="400" frameBorder="0" allowFullScreen>
               </iframe>
               <div className='col s12 center'>
                 <div style={{fontSize: '35px'}}>
@@ -225,16 +226,42 @@ class TrainingVideos extends React.Component {
     }
   }
 
+  displaySideBar() {
+    if(this.props.trainingvideos.length) {
+      return this.props.trainingvideos.map( video => {
+        return(
+          <div  key={video.id} className='col s12' style={{marginBottom: '0px'}}>
+
+            <div className='col s12 center'>
+              <div className="sidebar-link" style={{fontSize: '20px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px'}}>
+                <a className="link" style={{color: 'black'}} href={`#${video.id}`}>{video.name}</a>
+              </div>
+            </div>
+          </div>
+        )
+      })
+    }
+  }
+
+  // <iframe className='col s12 m10 offset-m1' style={{position: 'relative', zIndex: "1"}}
+  //   src={video.link} height="50" frameBorder="0" allowFullScreen>
+  // </iframe>
+
   render() {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 white-container'>
-          <div className='center' style={{fontSize: '50px'}}>
+          <div className='center' style={{fontSize: '50px', paddingTop: '20px'}}>
             Training Videos
           </div>
           {this.display()}
-          <div className='col s12'><br/><br /></div>
-          {this.displayVideos()}
+          <div className='col s12 m9'>
+            <div className='col s12'><br/><br /></div>
+            {this.displayVideos()}
+          </div>
+          <div className='col s12 m3' style={{height: '700px', backgroundColor: '#ddd', marginTop: '42px', borderRadius: '5px', paddingTop: '20px', overflow: 'scroll'}}>
+            {this.displaySideBar()}
+          </div>
         </div>
       </div>
     )
