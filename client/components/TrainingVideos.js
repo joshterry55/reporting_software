@@ -235,15 +235,17 @@ class TrainingVideos extends React.Component {
           <div  key={video.id} className='col s12' style={{marginBottom: '0px'}}>
 
             <div className='col s12 center'>
-              <div className="sidebar-link" style={{fontSize: '20px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px'}}>
-                <a className="link" style={{color: 'black'}} href={`#${video.id}`}>{video.name}</a>
-              </div>
+                <a className="sidebar-link" style={{color: 'black', fontSize: '20px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block'}} href={`#${video.id}`}>{video.name}</a>
             </div>
           </div>
         )
       })
     }
   }
+
+  // <div className="sidebar-link" style={{fontSize: '20px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px'}}>
+  //   <a className="link" style={{color: 'black'}} href={`#${video.id}`}>{video.name}</a>
+  // </div>
 
   // <iframe className='col s12 m10 offset-m1' style={{position: 'relative', zIndex: "1"}}
   //   src={video.link} height="50" frameBorder="0" allowFullScreen>

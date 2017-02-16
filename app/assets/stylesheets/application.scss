@@ -125,11 +125,12 @@ input:focus {
 }
 
 .sidebar-link:hover {
-  color: #60b9e8 !important;
+  color: #f2f7f7 !important;
   background-color: #ccc;
-  border-radius: 3px
+  border-radius: 3px;
+  text-shadow: 1px 1px #333
 }
 
-.link:hover {
-  color: #f2f7f7;
-}
+// .link:hover {
+//   color: #f2f7f7 !important;
+// }
