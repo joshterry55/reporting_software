@@ -255,17 +255,22 @@ class TrainingVideos extends React.Component {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 white-container'>
-          <div className='center' style={{fontSize: '50px', paddingTop: '20px'}}>
+          <div className='center' id='toTop' name='toTop' style={{fontSize: '50px', paddingTop: '20px'}}>
             Training Videos
           </div>
           {this.display()}
           <div className='col s12 m9'>
             <div className='col s12'><br/><br /></div>
             {this.displayVideos()}
+            <div className='col s12 center'>
+              <a href='#toTop' className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Back to top</a>
+              <br />
+            </div>
           </div>
           <div className='col s12 m3' style={{height: '700px', backgroundColor: '#ddd', marginTop: '42px', borderRadius: '5px', paddingTop: '20px', overflow: 'scroll'}}>
             {this.displaySideBar()}
           </div>
+          <div className='col s12' style={{marginBottom: '20px'}}></div>
         </div>
       </div>
     )
