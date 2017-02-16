@@ -199,11 +199,13 @@ class TrainingVideos extends React.Component {
           } else {
             return(
               <div key={video.id} className='col s12' style={{marginBottom: '50px'}}>
-                <iframe className='col s12 m10 offset-m1'
-                  src={video.link} height="350" frameBorder="0" allowFullScreen>
+                <iframe className='col s12'
+                  src={video.link} height="400" frameBorder="0" allowFullScreen>
                 </iframe>
-                <div className='col s12 m4 offset-m4 center'>
-                  <div style={{fontSize: '30px'}}>{video.name}</div>
+                <div className='col s12'>
+                  <div style={{fontSize: '28px', border: '1px solid #bbb', borderTop: 'none', backgroundColor: '#ddd', paddingLeft: '10px'}}>
+                    <span>{video.name} {this.adminCheck(video)}</span>
+                  </div>
                 </div>
               </div>
             )
@@ -214,9 +216,9 @@ class TrainingVideos extends React.Component {
               <iframe className='col s12'
                 src={video.link} height="400" frameBorder="0" allowFullScreen>
               </iframe>
-              <div className='col s12 center'>
-                <div style={{fontSize: '35px'}}>
-                  <span><b>{video.name}</b>  {this.adminCheck(video)}</span>
+              <div className='col s12'>
+                <div style={{fontSize: '28px', border: '1px solid #bbb', borderTop: 'none', backgroundColor: '#ddd', paddingLeft: '10px'}}>
+                  <span>{video.name} {this.adminCheck(video)}</span>
                 </div>
               </div>
             </div>
