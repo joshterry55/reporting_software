@@ -52,7 +52,7 @@ class LeaderboardDisplay extends React.Component {
     if(this.props.leaderboardtotals.length) {
       return this.props.leaderboardtotals.map(function(user, i){
         return(
-            <tr className='row' key={user.id}>
+            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={user.id}>
               <td className='col s1'>{i + 1}</td>
               <td className='col s2'>{user.name}</td>
               <td className='col s2'>{user.kw.toFixed(2)}</td>
@@ -89,7 +89,7 @@ class LeaderboardDisplay extends React.Component {
     return(
       <div style={styles.tableStyle}>
         <table className='striped'>
-          <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
+          <thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s1'>Rank</th>
                 <th className='col s2'>Salesman</th>

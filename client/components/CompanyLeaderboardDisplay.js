@@ -64,7 +64,7 @@ class CompanyLeaderboardDisplay extends React.Component {
     return(
       <div style={styles.tableStyle}>
         <table className='striped'>
-          <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
+          <thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s2'>Company</th>
                 <th className='col s2'>KW</th>

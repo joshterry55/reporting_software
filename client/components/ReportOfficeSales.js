@@ -243,7 +243,7 @@ class ReportOfficeSales extends React.Component {
     if(this.props.officesales.length) {
       return this.props.officesales.map( sale => {
         return(
-            <tr className='row' key={sale.id}>
+            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={sale.id}>
               <td className='col s2'>{sale.date}</td>
               <td className='col s2'>{sale.first_name} {sale.last_name}</td>
               <td className='col s2'>{sale.kw}</td>
@@ -278,7 +278,7 @@ class ReportOfficeSales extends React.Component {
     return(
       <div style={styles.tableStyle}>
         <table className='striped'>
-          <thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
+          <thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s2'>Date</th>
                 <th className='col s2'>Customer</th>
