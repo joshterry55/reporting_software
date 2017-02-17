@@ -179,13 +179,26 @@ class TrainingSections extends React.Component {
                         <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
                       </div>
                     </form>
-                    <div className='center col s12' style={{marginBottom: '10px'}}>
+                    <div className='center col s12' style={{marginBottom: '0px'}}>
                       <span onClick={this.toggleEdit} className='cancel' style={{cursor: 'pointer', color: '#ccc', padding: '5px 10px', borderRadius: '3px'}}>Cancel</span>
                     </div>
-                    <div  className='col s12' style={{height: '75px', marginBottom: '15px', position: 'relative'}}>
+                    <div  className='col s12' style={{height: '75px', marginBottom: '15px', position: 'relative', paddingTop: '0px'}}>
+                      <div style={{
+                        backgroundImage: `url(${section.avatar})`,
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '75px',
+                        display: 'block',
+                        backgroundSize: 'cover',
+                        borderRadius: '10px',
+                        boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                        margin: '8px auto',
+                        backgroundColor: 'rgba(0,0,0,0.25)',
+                        zIndex: '1',
+                      }}>
                       <DropZone className='edit-icon' style={{
                           backgroundColor: '#aaa',
-                          backgroundImage: `url(${section.avatar})`,
+                          backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487276928/k8l3cfeaxmgdjja4yyah.jpg')`,
                           backgroundSize: 'contain',
                           backgroundRepeat: 'no-repeat',
                           backgroundPosition: 'center center',
@@ -196,10 +209,11 @@ class TrainingSections extends React.Component {
                           borderRadius: '10px',
                           margin: '0px auto',
                           position: 'relative',
-                          opacity: '0.65',
+                          opacity: '0.75',
                           zIndex: '2',
                           cursor: 'pointer'
                         }} multiple={false} onDrop={this.onDrop} />
+                      </div>
                     </div>
                   </div>
                 </div>
