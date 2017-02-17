@@ -23,6 +23,9 @@ class NavBar extends React.Component {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
     this.props.dispatch({type: 'RESET_EMPLOYEE'})
+    this.props.dispatch({type: 'RESET_TRAINING_CATEGORIES'})
+    this.props.dispatch({type: 'RESET_TRAINING_SECTIONS'})
+    this.props.dispatch({type: 'RESET_TRAINING_VIDEOS'})
     this.props.dispatch(logout(this.props.history))
   }
 
