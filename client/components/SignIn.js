@@ -42,7 +42,7 @@ class SignIn extends React.Component {
       <div className='row container'>
         <div className='col s12' style={{paddingTop: '75px'}}>
           <h3 className='center' style={{color: '#f2f7f7'}}>Login</h3>
-          <div className='col s12 m6 offset-m3 l4 offset-l4' style={{backgroundColor: '#ccc', padding: '20px', borderRadius: '5px'}}>
+          <div className='col s12 m6 offset-m3 l4 offset-l4' style={{backgroundColor: 'rgba(200,200,200,0.65)', padding: '20px', borderRadius: '5px'}}>
             <div className='center' style={{position: 'relative', height: '105px'}}>
               <div style={{
                   height: '100px',
