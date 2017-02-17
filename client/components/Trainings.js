@@ -197,7 +197,7 @@ class Trainings extends React.Component {
     let companyName = this.props.assignedcompany.name
     return(
       <div  className='row '>
-        <div className='col s12 m10 offset-m1 white-container'>          
+        <div className='col s12 m10 offset-m1 white-container'>
           <div className='center' style={{paddingTop: '15px'}}>
             <span style={{fontSize: '50px'}}>{companyName} Training</span>
           </div>

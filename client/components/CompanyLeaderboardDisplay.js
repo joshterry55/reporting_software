@@ -59,7 +59,7 @@ class CompanyLeaderboardDisplay extends React.Component {
       close = this.props.officetotalclose['CL']
       cancel = this.props.officetotalcancel['CA']
       sitesurvey = this.props.officetotalsitesurvey['SS']
-      sitesurveykw = this.props.officetotalsitesurveykw['SSKW']
+      sitesurveykw = this.props.officetotalsitesurveykw['SSKW'].toFixed(2)
     }
     return(
       <div style={styles.tableStyle}>

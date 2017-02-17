@@ -67,7 +67,7 @@ class RegionLeaderboardDisplay extends React.Component {
               <td className='col s1'>{i + 1}</td>
               <td className='col s2'>{this.regionName(region)}</td>
               <td className='col s2'>{region.kw.toFixed(2)}</td>
-              <td className='col s1'>{region.site_survey_kw}</td>
+              <td className='col s1'>{region.site_survey_kw.toFixed(2)}</td>
               <td className='col s1'>{region.sit_down}</td>
               <td className='col s1'>{region.close}</td>
               <td className='col s1'>{region.site_survey}</td>
@@ -95,7 +95,7 @@ class RegionLeaderboardDisplay extends React.Component {
       close = this.props.officetotalclose['CL']
       cancel = this.props.officetotalcancel['CA']
       sitesurvey = this.props.officetotalsitesurvey['SS']
-      sitesurveykw = this.props.officetotalsitesurveykw['SSKW']
+      sitesurveykw = this.props.officetotalsitesurveykw['SSKW'].toFixed(2)
     }
     return(
       <div style={styles.tableStyle}>

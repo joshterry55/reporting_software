@@ -28,6 +28,15 @@ class Api::SalesController < ApplicationController
 
   end
 
+  def search
+    @company = Company.find(params[:id])
+    @search = params[:search]
+    @sales = Sale.where('first_name LIKE ?', @search).all
+    binding.pry
+    @test = "test"
+    render json: @sales
+  end
+
   def show
   end
 
@@ -55,6 +64,6 @@ class Api::SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :company_id, :startday, :salesman)
+    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :company_id, :startday, :salesman, :search)
   end
 end
