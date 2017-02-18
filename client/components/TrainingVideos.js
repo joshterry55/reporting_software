@@ -229,14 +229,42 @@ class TrainingVideos extends React.Component {
     }
   }
 
+  thumbnail(url) {
+    let id = url.replace('https://www.youtube.com/embed/', '')
+    let link = id.replace('?rel=0','')
+    return(
+      link
+    )
+  }
+
   displaySideBar() {
     if(this.props.trainingvideos.length) {
       return this.props.trainingvideos.map( video => {
+        let code = this.thumbnail(video.link)
         return(
-          <div  key={video.id} className='col s12' style={{marginBottom: '0px'}}>
+          <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
 
-            <div className='col s12 center'>
-                <a className="sidebar-link" style={{color: 'black', fontSize: '20px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block'}} href={`#${video.id}`}>{video.name}</a>
+            <div className='col s12 left'>
+                <a className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} href={`#${video.id}`}>
+                  <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
+                    <div style={{
+                        backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '125px',
+                        display: 'block',
+                        backgroundSize: 'cover',
+                        borderRadius: '10px',
+                        boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                        margin: '8px 0',
+                        zIndex: '1',
+                      }}>
+                    </div>
+                  </div>
+                  <div className='col s12' style={{paddingLeft: '11px'}}>
+                    {video.name}
+                  </div>
+                </a>
             </div>
           </div>
         )

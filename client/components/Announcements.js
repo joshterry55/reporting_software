@@ -30,7 +30,20 @@ class Announcements extends React.Component {
 
   searchBar() {
     return(
-      <div></div>
+      <div style={{height: '75px'}}>
+        <div style={{
+          backgroundImage: `url('http://img.youtube.com/vi/UAWcs5H-qgQ/0.jpg')`,
+          width: '100%',
+          height: '100%',
+          maxWidth: '100px',
+          display: 'block',
+          backgroundSize: 'cover',
+          borderRadius: '10px',
+          boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+          margin: '8px auto',
+          zIndex: '1',
+        }}></div>
+      </div>
       // <nav>
       //   <div className="nav-wrapper">
       //     <form onSubmit={this.submitSearch}>
