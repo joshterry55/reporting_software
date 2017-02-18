@@ -261,7 +261,7 @@ class TrainingVideos extends React.Component {
                       }}>
                     </div>
                   </div>
-                  <div className='col s12' style={{paddingLeft: '11px'}}>
+                  <div className='col s12' style={{paddingLeft: '11px', paddingTop: '5px'}}>
                     {video.name}
                   </div>
                 </a>
