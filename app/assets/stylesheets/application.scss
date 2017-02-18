@@ -130,6 +130,9 @@ input:focus {
   background-color: #ccc;
   border-radius: 3px;
   // text-shadow: 1px 1px #333;
+}
+
+.sidebar-link:hover a:hover {
   text-decoration: underline !important;
 }
 
