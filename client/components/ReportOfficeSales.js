@@ -53,6 +53,13 @@ class ReportOfficeSales extends React.Component {
       }
     }
 
+    // let date = new Date
+    //
+    // $('#editDate').attr('defaultValue', date);
+    // debugger
+    let date = this.props.currentsale.date
+    var myDate = new Date(date);
+    $("#editDate").val(myDate);
   }
 
   // truePerc(sale) {
@@ -219,7 +226,7 @@ class ReportOfficeSales extends React.Component {
             </div>
 						<div className='col s12 m10 offset-m1'>
               <label>Date</label>
-              <input type="date" ref='date' className="datepicker" placeholder='click to select date' />
+              <input type="date" ref='date' className="datepicker" id='editDate' placeholder='click to select date' />
 						</div>
 					</div>
 					<div className="modal-footer col s12 m10 offset-m1">
