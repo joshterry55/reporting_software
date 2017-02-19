@@ -229,6 +229,7 @@ class TrainingVideos extends React.Component {
     }
   }
 
+
   thumbnail(url) {
     let id = url.replace('https://www.youtube.com/embed/', '')
     let link = id.replace('?rel=0','')

@@ -32,8 +32,12 @@ class Api::SalesController < ApplicationController
     @company = Company.find(params[:id])
     @search = params[:search]
     @sales = Sale.where('first_name LIKE ?', @search).all
-    binding.pry
     @test = "test"
+    # @company = Company.find(params[:id])
+    # @search = params[:search]
+    # @sales = Sale.where(first_name.include? @search).all
+    # binding.pry
+    # @test = "test"
     render json: @sales
   end
 

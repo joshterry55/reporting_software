@@ -61,13 +61,13 @@ export default (
         <Route path='/trainings' component={Trainings} />
         <Route path='/trainingvideos/:id' component={TrainingVideos} />
         <Route component={AdminRoutes}>
+          <Route path='/reports' component={ReportRegionSelect} />
           <Route path='/company' component={Company} />
           <Route path='/region/:id' component={Region} />
           <Route path='/office/:id' component={Office} />
           <Route path='/createcompany' component={CreateCompany} />
           <Route path='/admin' component={Admin} />
           <Route path='/addsale' component={RegionSelect} />
-          <Route path='/reports' component={ReportRegionSelect} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>
