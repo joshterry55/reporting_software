@@ -160,11 +160,13 @@ class Region extends React.Component {
 
   render() {
     return(
-      <div className='row container white-container'>
-        {this.display()}
-        {this.displayAdd()}
-        <div className='collection'>
-          {this.displayOffices()}
+      <div className='row'>
+        <div className='col s12 m10 offset-m1 white-container'>
+          {this.display()}
+          {this.displayAdd()}
+          <div className='collection'>
+            {this.displayOffices()}
+          </div>
         </div>
       </div>
     )
