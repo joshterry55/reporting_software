@@ -2,7 +2,12 @@
 
 body {
   // background-color: #ccc;
-  background-color: #3a3b3a;
+  // background-color: #3a3b3a;
+  background-image: url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487561985/ligtning_ffsfnw.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-family: Questrial
 }
 
@@ -138,14 +143,19 @@ input:focus {
 
 
 
-// .nav-logo {
-//   background-image: url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1483673783/dhrxufuyd18meh5kceef.jpg');
-//   width: 40px;
-//   height: 40px;
-//   display: inline-block;
-//   background-size: cover;
-//   margin-top: 10px
-// }
+.nav-logo {
+  background-image: url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487571022/Logomakr_3gZNsL_mrbshc.png');
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-size: cover;
+  margin-top: 10px
+}
+
+.logo-text {
+  padding-left: 25px;
+  text-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
 
 // .link:hover {
