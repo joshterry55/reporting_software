@@ -7,6 +7,8 @@ class Announcements extends React.Component {
     super(props)
 
     this.submitSearch = this.submitSearch.bind(this)
+    this.tester = this.tester.bind(this)
+    this.check = this.check.bind(this)
   }
 
   submitSearch(e) {
@@ -58,12 +60,27 @@ class Announcements extends React.Component {
     )
   }
 
+  check() {
+    let color = this.refs.colorpicked.value
+    debugger
+  }
+
+  tester( ) {
+    return(
+      <div>
+        <form onSubmit={this.check}>
+          <input type='color' ref='colorpicked' />
+          <input type='submit' />
+        </form>
+      </div>
+    )
+  }
+
   render() {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 white-container'>
           Announcement Page
-          {this.searchBar()}
         </div>
       </div>
     )
