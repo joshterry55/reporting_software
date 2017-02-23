@@ -1,29 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { lifetimekw } from '../actions/lifetimekw'
+import LifetimeKw from './LifetimeKw'
 
 class Employee extends React.Component {
   constructor(props) {
     super(props)
+
   }
 
   componentDidMount() {
-    let id = this.props.user.id
-    $.ajax({
-      url: `/api/user/${id}/sales`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( sales => {
-      this.props.dispatch(lifetimekw(sales))
-    }).fail( data => {
-      debugger
-    })
+    let user = this.props.user
+    this.props.dispatch({type: 'CURRENT_USER', user })
   }
 
   render() {
     let user = this.props.user
-    let lifetimeKw = this.props.lifetimekw
     let company = this.props.assignedcompany
+
     return(
       <div>
         <div style={{ width: '100%', backgroundColor: '#f2f7f7'}} className='row'>
@@ -50,15 +43,15 @@ class Employee extends React.Component {
           </div>
           <div style={{ height: '125px', borderRight: '2px solid #ccc', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
             <div className='col s12' style={{paddingTop: '10px'}}>
-              <span style={{textDecoration: 'underline'}}>BLAH BLAH BLAH</span><br/>
-              <span> test</span>
+              <span style={{fontSize: '20px', fontWeight: 'bold'}}>BLAH BLAH BLAH</span><br/>
+                <div style={{height: '40px'}}>
+                  <div className='left'><span style={{fontSize: '30px'}}>{Math.round(888.8)}</span><span>/1000 kw</span></div>
+
+                </div>
             </div>
           </div>
           <div style={{ height: '125px', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
-            <div className='col s12' style={{paddingTop: '10px'}}>
-              <span style={{textDecoration: 'underline'}}>{company.name} Lifetime KW Sold:</span><br/>
-              <span>{lifetimeKw.SSKW}</span>
-            </div>
+            <LifetimeKw />
           </div>
 
         </div>
@@ -69,8 +62,8 @@ class Employee extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, lifetimekw, assignedcompany } = state
-  return { user, lifetimekw, assignedcompany }
+  let { user, lifetimekw, assignedcompany, currentuser } = state
+  return { user, lifetimekw, assignedcompany, currentuser }
 }
 
 export default connect(mapStateToProps)(Employee)

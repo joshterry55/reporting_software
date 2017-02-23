@@ -63,7 +63,6 @@ class LeaderboardDisplay extends React.Component {
           width: '40px',
           borderRadius: '5px',
           boxShadow: '0 0 2px rgba(0,0,0,0.35)',
-          border: '1px solid #000',
           backgroundImage: `url(${picture})`,
           backgroundSize: 'cover',
           display: 'inline-block',
