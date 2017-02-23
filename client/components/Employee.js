@@ -9,12 +9,14 @@ class Employee extends React.Component {
   }
 
   componentDidMount() {
-    let user = this.props.user
-    this.props.dispatch({type: 'CURRENT_USER', user })
+    if(this.props.user.role === 'Employee') {
+      let user = this.props.user
+      this.props.dispatch({type: 'CURRENT_USER', user })
+    }
   }
 
   render() {
-    let user = this.props.user
+    let user = this.props.currentuser
     let company = this.props.assignedcompany
 
     return(
@@ -37,7 +39,8 @@ class Employee extends React.Component {
               </div>
             </div>
             <div className='col s6 l4' style={{paddingTop: '10px'}}>
-              <span style={{fontSize: '20px', fontWeight: 'bold'}}>{`${user.first_name} ${user.last_name}`}</span>
+              <span style={{fontSize: '20px', fontWeight: 'bold'}}>{`${user.first_name} ${user.last_name}`}</span><br />
+              <span style={{fontSize: '15px'}}>{company.name}</span>
             </div>
 
           </div>

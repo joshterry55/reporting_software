@@ -24,6 +24,7 @@ import OfficeLeaderboard from './components/OfficeLeaderboard'
 import RegionLeaderboard from './components/RegionLeaderboard'
 import CompanyLeaderboard from './components/CompanyLeaderboard'
 import TrainingVideos from './components/TrainingVideos'
+import EmployeeSelect from './components/EmployeeSelect'
 
 
 const AdminAccess = UserAuthWrapper({
@@ -67,6 +68,7 @@ export default (
           <Route path='/office/:id' component={Office} />
           <Route path='/createcompany' component={CreateCompany} />
           <Route path='/admin' component={Admin} />
+          <Route path='/employeeselect' component={EmployeeSelect} />
           <Route path='/addsale' component={RegionSelect} />
         </Route>
       </Route>

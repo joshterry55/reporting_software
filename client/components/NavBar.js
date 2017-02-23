@@ -98,6 +98,7 @@ class NavBar extends React.Component {
           <li className='off-tab'><Link to='/trainings'>Training</Link></li>
           <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
           <li className='off-tab'><Link to='/admin'>Admin</Link></li>
+          <li className='off-tab'><Link to='/employeeselect'>Reps</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )

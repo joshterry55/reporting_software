@@ -12,6 +12,11 @@ class LifetimeKw extends React.Component {
     this.goalCheck = this.goalCheck.bind(this)
   }
 
+  componentDidMount() {
+    this.setState({initial: true})
+
+  }
+
   componentDidUpdate() {
       if(this.state.initial) {
         let id = this.props.currentuser.id
@@ -45,7 +50,6 @@ class LifetimeKw extends React.Component {
       )
     }
   }
-
 
   render() {
     let company = this.props.assingedcompany
