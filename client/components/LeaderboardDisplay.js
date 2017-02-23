@@ -9,6 +9,7 @@ class LeaderboardDisplay extends React.Component {
 
     this.truePerc = this.truePerc.bind(this)
     this.displaySales = this.displaySales.bind(this)
+    this.salesman = this.salesman.bind(this)
   }
 
   truePerc(sale) {
@@ -48,13 +49,37 @@ class LeaderboardDisplay extends React.Component {
     }
   }
 
+  salesman(user) {
+    let picture
+    this.props.employees.map( employee => {
+      if(employee.id === user.id) {
+        picture = employee.avatar
+      }
+    })
+    if(this.props.employees.length) {
+      return(
+        <div className='col s0 l4 hide-on-med-and-down' style={{
+          height: '40px',
+          width: '40px',
+          borderRadius: '5px',
+          boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+          border: '1px solid #000',
+          backgroundImage: `url(${picture})`,
+          backgroundSize: 'cover',
+          display: 'inline-block',
+          marginTop: '5px'
+         }}></div>
+      )
+    }
+  }
+
   displaySales() {
     if(this.props.leaderboardtotals.length) {
       return this.props.leaderboardtotals.map(function(user, i){
         return(
-            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={user.id}>
+            <tr className='row' style={{height: '50px', lineHeight: '50px'}} key={user.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{user.name}</td>
+              <td className='col s2' style={{paddingLeft: '0px'}}>{this.salesman(user)} <div className='col s12 l7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{user.name}</span></div></td>
               <td className='col s2'>{user.kw.toFixed(2)}</td>
               <td className='col s1'>{user.site_survey_kw.toFixed(2)}</td>
               <td className='col s1'>{user.sit_down}</td>
@@ -159,8 +184,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardtotals, officetotalsitesurveykw } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardtotals, officetotalsitesurveykw }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardtotals, officetotalsitesurveykw, employees } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, leaderboardtotals, officetotalsitesurveykw, employees }
 }
 
 export default connect(mapStateToProps)(LeaderboardDisplay)
