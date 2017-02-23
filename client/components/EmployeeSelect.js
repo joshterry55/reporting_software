@@ -87,7 +87,7 @@ class EmployeeSelect extends React.Component {
           <form className='col s12 m4 offset-m4' onSubmit={this.setCurrent}>
             <div className='col s10' style={{marginTop: '15px'}}>
               <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}}>
-                <option value="" disabled selected>Select a salesman</option>
+                <option defaultValue="" disabled selected>Select a salesman</option>
                 {this.employeeSelector()}
               </select>
             </div>

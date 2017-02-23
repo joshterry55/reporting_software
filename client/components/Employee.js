@@ -21,7 +21,7 @@ class Employee extends React.Component {
 
     return(
       <div>
-        <div style={{ width: '100%', backgroundColor: '#f2f7f7'}} className='row'>
+        <div style={{ width: '100%', backgroundColor: '#f2f7f7', marginBottom: '0px', borderBottom: '2px solid #ccc'}} className='row'>
           <div style={{ height: '125px', borderRight: '2px solid #ccc', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
             <div className='col s6 l4' style={{paddingTop: '10px'}}>
               <div style={{height: '100px', marginBottom: '10px', paddingLeft: '10px'}}>
@@ -56,7 +56,12 @@ class Employee extends React.Component {
           <div style={{ height: '125px', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
             <LifetimeKw />
           </div>
-
+        </div>
+        <div className='col s12 l8' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
+          <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}></div>
+        </div>
+        <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
+          <div className='col s12' style={{height: '600px'}}></div>
         </div>
         TESSST
       </div>

@@ -4,7 +4,9 @@ export const lifetimekw = (sales) => {
 
     let LifetimeSiteSurveyKw = {SSKW: 0}
     sales.map(sale => {
-      LifetimeSiteSurveyKw["SSKW"] += parseFloat(sale.kw)
+      if(parseFloat(sale.cancel) != 1) {
+        LifetimeSiteSurveyKw["SSKW"] += parseFloat(sale.kw)
+      }
     })
     dispatch({type: 'LIFETIME_KW', LifetimeSiteSurveyKw})
   }
