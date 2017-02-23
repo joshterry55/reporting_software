@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     get 'training_sections/:id/training_videos', as: 'training_section/training_videos', :to => 'training_videos#show'
     get 'company/sales/search', as: 'sales/search', :to => 'sales#search'
+    put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
     resources :companies
     resources :regions

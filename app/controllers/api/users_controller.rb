@@ -25,6 +25,12 @@ class Api::UsersController < ApplicationController
   def new
   end
 
+  def add_avatar
+    u = Cloudinary::Uploader.upload(File.open(params[:avatar].tempfile))
+   current_user.update(avatar: u['url'])
+   render json: { avatar: u['url'] }
+  end
+
   def edit
     @user = User.find(params[:id])
   end
