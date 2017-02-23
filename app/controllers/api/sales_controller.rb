@@ -28,6 +28,12 @@ class Api::SalesController < ApplicationController
 
   end
 
+  def user
+    @user = User.find(params[:id])
+    @sales = @user.sales.where(site_survey: '1')
+    render json: @sales
+  end
+
   def search
     @company = Company.find(params[:id])
     @search = params[:search]

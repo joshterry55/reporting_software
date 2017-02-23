@@ -32,6 +32,7 @@ import currentcategory from './currentcategory'
 import currentsection from './currentsection'
 import currentvideo from './currentvideo'
 import trainingvideos from './trainingvideos'
+import lifetimekw from './lifetimekw'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -66,7 +67,8 @@ const rootReducer = combineReducers({
   currentsection,
   currentvideo,
   trainingsections,
-  trainingvideos
+  trainingvideos,
+  lifetimekw
  });
 
 export default rootReducer;
