@@ -31,7 +31,7 @@ class Employee extends React.Component {
             <div className='col s6 l4' style={{paddingTop: '10px'}}>
               <div style={{height: '100px', marginBottom: '10px', paddingLeft: '10px'}}>
                 <div style={{
-                    backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg')`,
+                    backgroundImage: `url(${user.avatar})`,
                     width: '100%',
                     height: '100%',
                     maxWidth: '100px',
