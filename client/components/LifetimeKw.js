@@ -44,7 +44,7 @@ class LifetimeKw extends React.Component {
 
       return(
         <div style={{height: '40px'}}>
-          <div style={{height: '75px', borderRadius: '50%', border: '2px solid black', width: '75px', marginLeft: '80px', marginTop: '7px', backgroundColor: '#ddd'}} className='center'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><br/><span>/1000</span></div>
+          <div className='left'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><span>/1000 kw</span></div>
 
         </div>
       )

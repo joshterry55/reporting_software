@@ -48,7 +48,7 @@ class Employee extends React.Component {
             <div className='col s12' style={{paddingTop: '10px'}}>
               <span style={{fontSize: '20px', fontWeight: 'bold'}}>BLAH BLAH BLAH</span><br/>
                 <div style={{height: '40px'}}>
-                  <div className='left'><span style={{fontSize: '30px'}}>{Math.round(888.8)}</span><span>/1000 kw</span></div>
+                  <div className='left'><span style={{fontSize: '30px'}}></span><span>Some stat here</span></div>
 
                 </div>
             </div>
