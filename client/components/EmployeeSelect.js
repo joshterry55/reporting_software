@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Employee from './Employee'
 import { lifetimekw } from '../actions/lifetimekw'
+import { threemonth } from '../actions/threemonth'
 
 class EmployeeSelect extends React.Component {
   constructor(props) {
@@ -75,6 +76,15 @@ class EmployeeSelect extends React.Component {
       this.props.dispatch(lifetimekw(sales))
     }).fail( data => {
       debugger
+    })
+    $.ajax({
+      url: `/api/user/${id}/three_month`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( sales => {
+      this.props.dispatch(threemonth(sales))
+    }).fail( data => {
+
     })
     this.props.dispatch({type: 'CURRENT_USER', user})
   }

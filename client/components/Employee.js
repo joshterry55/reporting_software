@@ -28,11 +28,11 @@ class Employee extends React.Component {
     if(this.props.user.id === this.props.currentuser.id) {
       if(this.state.edit) {
         return(
-          <div><i onClick={this.toggleEdit}>Cancel</i></div>
+          <div><i style={{cursor: 'pointer', color: '#bbb'}} className="picture-edit" onClick={this.toggleEdit}>Cancel</i></div>
         )
       } else {
         return(
-          <div><i onClick={this.toggleEdit}>Edit</i></div>
+          <div><i style={{cursor: 'pointer', color: '#bbb'}} className="picture-edit" onClick={this.toggleEdit}>Edit</i></div>
         )
       }
     }
@@ -119,11 +119,48 @@ class Employee extends React.Component {
     }
   }
 
+  truePerc(threemonth) {
+
+    let siteSurvey = threemonth.site_survey
+    let sitDown = threemonth.sit_down
+    if(sitDown === 0) {
+      return(
+        0
+      )
+    } else if(siteSurvey === 0) {
+      return(
+        0
+      )
+    } else {
+      return(
+      ((siteSurvey / sitDown) * 100).toFixed(1)
+      )
+    }
+  }
+
+  cancelPerc(threemonth) {
+    let cancel = threemonth.cancel
+    let siteSurvey = threemonth.site_survey
+    if(siteSurvey === 0) {
+      return(
+        0
+      )
+    } else if(cancel === 0) {
+      return(
+        0
+      )
+    } else {
+      return(
+      ((cancel / siteSurvey) * 100).toFixed(1)
+      )
+    }
+  }
+
 
   render() {
     let user = this.props.currentuser
     let company = this.props.assignedcompany
-
+    let threemonth = this.props.threemonth
     return(
       <div className='row'>
         <div style={{ width: '100%', backgroundColor: '#f2f7f7', marginBottom: '0px', borderBottom: '2px solid #ccc'}} className='row'>
@@ -138,12 +175,34 @@ class Employee extends React.Component {
 
           </div>
           <div style={{ height: '125px', borderRight: '2px solid #ccc', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
-            <div className='col s12' style={{paddingTop: '10px'}}>
-              <span style={{fontSize: '20px', fontWeight: 'bold'}}>BLAH BLAH BLAH</span><br/>
-                <div style={{height: '40px'}}>
-                  <div className='left'><span style={{fontSize: '30px'}}></span><span>Some stat here</span></div>
-
+            <div className='col s12 center' style={{paddingTop: '10px'}}>
+              <span style={{fontSize: '20px', fontWeight: 'bold'}}>Three Month Stats</span><br/>
+              <div style={{paddingTop: '5px'}}>
+                <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>Closed</div>
+                  <div>{threemonth.close}</div>
                 </div>
+                <div style={{height: '40px', paddingLeft: '0px',overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>Surveyed</div>
+                  <div>{threemonth.site_survey}</div>
+                </div>
+                <div style={{height: '40px', paddingLeft: '0px'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>SS kw</div>
+                  <div>{threemonth.site_survey_kw} kw</div>
+                </div>
+                <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>Cancelled</div>
+                  <div>{threemonth.cancel}</div>
+                </div>
+                <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>True %</div>
+                  <div>{this.truePerc(threemonth)}%</div>
+                </div>
+                <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
+                  <div style={{textDecoration: 'underline'}}>Cancel %</div>
+                  <div>{this.cancelPerc(threemonth)}%</div>
+                </div>
+              </div>
             </div>
           </div>
           <div style={{ height: '125px', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
@@ -163,8 +222,8 @@ class Employee extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, lifetimekw, assignedcompany, currentuser } = state
-  return { user, lifetimekw, assignedcompany, currentuser }
+  let { user, lifetimekw, assignedcompany, currentuser, threemonth } = state
+  return { user, lifetimekw, assignedcompany, currentuser, threemonth }
 }
 
 export default connect(mapStateToProps)(Employee)

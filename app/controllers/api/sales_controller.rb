@@ -34,6 +34,12 @@ class Api::SalesController < ApplicationController
     render json: @sales
   end
 
+  def three_month
+    @user = User.find(params[:id])
+    @sales = @user.sales.where(date: (Time.now.beginning_of_month - 2)..(Time.now.end_of_month))
+    render json: @sales 
+  end
+
   def search
     @company = Company.find(params[:id])
     @search = params[:search]
