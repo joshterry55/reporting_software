@@ -56,11 +56,14 @@ class ReportOfficeSales extends React.Component {
     // let date = new Date
     //
     // $('#editDate').attr('defaultValue', date);
-    let date = this.props.currentsale.date
-    let myDate = new Date(date);
-    var milliDate = myDate.setDate(myDate.getDate() + 1);
-    let adjustedDate = new Date(milliDate)
-    $("#editDate").val(adjustedDate);
+    if(this.props.currentsale.date) {
+      let date = this.props.currentsale.date
+      let formatDate = date.replace(/-/g, '/')
+      let myDate = new Date(formatDate);
+      // var milliDate = myDate.setDate(myDate.getDate() + 1);
+      // let adjustedDate = new Date(milliDate)
+      $("#editDate").val(myDate);
+    }
   }
 
   // truePerc(sale) {
