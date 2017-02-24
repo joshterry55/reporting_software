@@ -56,10 +56,11 @@ class ReportOfficeSales extends React.Component {
     // let date = new Date
     //
     // $('#editDate').attr('defaultValue', date);
-    // debugger
     let date = this.props.currentsale.date
-    var myDate = new Date(date);
-    $("#editDate").val(myDate);
+    let myDate = new Date(date);
+    var milliDate = myDate.setDate(myDate.getDate() + 1);
+    let adjustedDate = new Date(milliDate)
+    $("#editDate").val(adjustedDate);
   }
 
   // truePerc(sale) {
@@ -125,8 +126,9 @@ class ReportOfficeSales extends React.Component {
         alert("KW must be a valid number")
       } else {
         $('.modal').modal('close');
-        var test = new Date(input)
-        let date = this.dateFormat(test)
+        // var test = new Date(input)
+        // let date = this.dateFormat(test)
+        let date = input
 
         $.ajax({
           url: `api/sales/${id}`,

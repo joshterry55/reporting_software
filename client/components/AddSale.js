@@ -77,8 +77,9 @@ employeeFind(id) {
     if(input === '') {
       alert("Please Select a Date")
     } else {
-      var test = new Date(input)
-      let date = this.dateFormat(test)
+      // var test = new Date(input)
+      // let date = this.dateFormat(test)
+      let date = input
       $.ajax({
         url: '/api/sales',
         type: 'POST',
