@@ -19,6 +19,7 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'cloudinary'
+gem 'ransack'
 
 group :development, :test do
   gem 'pry'
