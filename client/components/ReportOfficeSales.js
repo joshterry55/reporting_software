@@ -149,16 +149,22 @@ class ReportOfficeSales extends React.Component {
           }}
         }).done( sale => {
           let messageSuccess = `Sale Updated`
-          let hasDate = false
-          this.props.weekdates.map( date => {
-            if(date === sale.date) {
-              hasDate = true
-              this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
-            }
-          })
-          if(hasDate === false) {
-            this.props.dispatch({type: 'REMOVE_OFFICE_SALE', sale})
+          // let hasDate = false
+          let weekDates = this.props.weekdates
+          let date = sale.date
+          let formatDate = date.replace(/-/g, '/')
+          if(Date.parse(formatDate) >= Date.parse(weekDates[0]) && Date.parse(formatDate) <= Date.parse(weekDates[6])){
+            this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
           }
+          // this.props.weekdates.map( date => {
+          //   if(date === sale.date) {
+          //     hasDate = true
+          //     this.props.dispatch({type: 'UPDATE_OFFICE_SALES', sale})
+          //   }
+          // })
+          // if(hasDate === false) {
+          //   this.props.dispatch({type: 'REMOVE_OFFICE_SALE', sale})
+          // }
           this.props.dispatch(setFlash(messageSuccess, 'success'))
           this.refs.editSaleForm.reset()
         }).fail( data => {
