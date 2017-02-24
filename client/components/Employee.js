@@ -4,6 +4,7 @@ import LifetimeKw from './LifetimeKw'
 import DropZone from 'react-dropzone';
 import request from 'superagent';
 require('superagent-rails-csrf')(request)
+import { threemonth } from '../actions/threemonth'
 
 class Employee extends React.Component {
   constructor(props) {
@@ -21,6 +22,16 @@ class Employee extends React.Component {
     if(this.props.user.role === 'Employee') {
       let user = this.props.user
       this.props.dispatch({type: 'CURRENT_USER', user })
+      let id = user.id
+      $.ajax({
+        url: `/api/user/${id}/three_month`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sales => {
+        this.props.dispatch(threemonth(sales))
+      }).fail( data => {
+
+      })
     }
   }
 
