@@ -32,6 +32,7 @@ class Admin extends React.Component {
             <ul className="tabs tabs-fixed-width">
               <li  className="tab col s3 admin-tabs" onClick={this.setForm}><Link to='/addsale'>Add Sale</Link></li>
               <li  className="tab col s3 admin-tabs"><Link to='/company'>{this.props.assignedcompany.name}</Link></li>
+              <li  className="tab col s3 admin-tabs"><Link to='/settings'>Settings</Link></li>
             </ul>
           </div>
       )
@@ -50,7 +51,7 @@ class Admin extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>          
+        <div className='col s12 m10 offset-m1 white-container'>
           {this.adminTabs()}
         </div>
       </div>
