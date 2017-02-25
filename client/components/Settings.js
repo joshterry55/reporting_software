@@ -8,6 +8,12 @@ class Settings extends React.Component {
 
   }
 
+  componentDidMount() {
+    // if(this.props.params.code) {
+    //   debugger
+    // }
+  }
+
 
   render() {
     return(
