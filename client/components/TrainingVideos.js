@@ -56,6 +56,7 @@ class TrainingVideos extends React.Component {
     let sectionId = parseInt(this.props.params.id)
     let url = this.refs.videoLink.value
     let link = this.formatLink(url)
+    let companyId = this.props.assignedcompany.id
 
     $.ajax({
       url: '/api/training_videos',
@@ -65,6 +66,7 @@ class TrainingVideos extends React.Component {
         name: name,
         link: link,
         training_section_id: sectionId,
+        company_id: companyId
       }}
     }).done( video => {
       this.props.dispatch({type: 'ADD_TRAINING_VIDEO', video})
@@ -332,8 +334,8 @@ class TrainingVideos extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, trainingvideos, currentvideo } = state
-  return { user, trainingvideos, currentvideo }
+  let { user, trainingvideos, currentvideo, assignedcompany } = state
+  return { user, trainingvideos, currentvideo, assignedcompany }
 }
 
 export default connect(mapStateToProps)(TrainingVideos)

@@ -16,6 +16,8 @@ class Employee extends React.Component {
     this.editCheck = this.editCheck.bind(this)
     this.onDrop = this.onDrop.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
+    this.suggestedCancelVideo = this.suggestedCancelVideo.bind(this)
+    this.suggestedTrueVideo = this.suggestedTrueVideo.bind(this)
   }
 
   componentDidMount() {
@@ -167,6 +169,61 @@ class Employee extends React.Component {
     }
   }
 
+  suggestedCancelVideo(threemonth) {
+    if(threemonth.cancel) {
+      let cancel = threemonth.cancel
+      let siteSurvey = threemonth.site_survey
+      let cancelPercentage
+      if(cancel === 0) {
+        cancelPercentage = 0
+      } else if(siteSurvey === 0) {
+        cancelPercentage = 0
+      } else {
+        cancelPercentage = ((cancel / siteSurvey) * 100)
+      }
+      if(cancelPercentage >= 10) {
+        if(this.props.trainingvideos.length) {
+          return this.props.trainingvideos.map( video => {
+            if(video.id === 13) {
+              return(
+                <div key={video.id}>
+                  cancel {video.name}
+                </div>
+              )
+            }
+          })
+        }
+      }
+    }
+  }
+  suggestedTrueVideo(threemonth) {
+    if(threemonth.sit_down) {
+      let sitdown = threemonth.sit_down
+      let siteSurvey = threemonth.site_survey
+      let truePercentage
+      if(sitdown === 0) {
+        truePercentage = 0
+      } else if(siteSurvey === 0) {
+        truePercentage = 0
+      } else {
+        truePercentage = ((siteSurvey / sitdown) * 100)
+      }
+      if(truePercentage <= 60) {
+        if(this.props.trainingvideos.length) {
+          return this.props.trainingvideos.map( video => {
+            if(video.id === 14) {
+              return(
+                <div key={video.id}>
+                  true percentage {video.name}
+                </div>
+              )
+            }
+          })
+        }
+      }
+    }
+  }
+
 
   render() {
     let user = this.props.currentuser
@@ -224,7 +281,10 @@ class Employee extends React.Component {
           <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}> blah</div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
-          <div className='col s12' style={{height: '600px'}}></div>
+          <div className='col s12' style={{height: '600px'}}>
+            {this.suggestedCancelVideo(threemonth)}
+            {this.suggestedTrueVideo(threemonth)}
+          </div>
         </div>
         TESSST
       </div>
@@ -233,8 +293,8 @@ class Employee extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, lifetimekw, assignedcompany, currentuser, threemonth } = state
-  return { user, lifetimekw, assignedcompany, currentuser, threemonth }
+  let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos } = state
+  return { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos }
 }
 
 export default connect(mapStateToProps)(Employee)

@@ -5,6 +5,7 @@ class Company < ApplicationRecord
   has_many :sales
   has_many :training_categories, dependent: :destroy
   has_many :training_sections, dependent: :destroy
+  has_many :training_videos, dependent: :destroy
   validates_presence_of :name
 
 end

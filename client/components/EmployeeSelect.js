@@ -25,8 +25,20 @@ class EmployeeSelect extends React.Component {
       }).fail( data => {
 
       })
+      $.ajax({
+        url: `/api/company/${id}/videos`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sortedVideos => {
+        this.props.dispatch({type: 'TRAINING_VIDEOS', sortedVideos })
+      }).fail( data => {
+
+      })
+
     }
   }
+
+
 
   componentDidUpdate() {
     $('select').material_select();

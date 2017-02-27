@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'company/:id/offices', as: 'company/offices', :to => 'companies#offices'
     get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
     get 'company/:id/sections', as: 'company/sections', :to => 'training_sections#index'
+    get 'company/:id/videos', as: 'company/videos', :to => 'training_videos#index'
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     get 'training_sections/:id/training_videos', as: 'training_section/training_videos', :to => 'training_videos#show'
     get 'company/sales/search', as: 'sales/search', :to => 'sales#search'

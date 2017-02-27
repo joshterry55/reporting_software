@@ -2,7 +2,9 @@ class Api::TrainingVideosController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-
+    @company = Company.find(params[:id])
+    @videos = @company.training_videos
+    render json: @videos
   end
 
   def show
@@ -40,6 +42,6 @@ class Api::TrainingVideosController < ApplicationController
   private
 
   def training_video_params
-    params.require(:training_video).permit(:name, :training_section_id, :link)
+    params.require(:training_video).permit(:name, :training_section_id, :link, :company_id)
   end
 end
