@@ -19,6 +19,8 @@ export const threemonth = (sales) => {
       }
   	})
 
+    threeMonthTotals.site_survey_kw = threeMonthTotals.site_survey_kw.toFixed(2)
+
     dispatch({type: 'THREE_MONTH_AVERAGE', threeMonthTotals})
   }
 }
