@@ -5,6 +5,7 @@ import DropZone from 'react-dropzone';
 import request from 'superagent';
 require('superagent-rails-csrf')(request)
 import { threemonth } from '../actions/threemonth'
+import { sixmonth } from '../actions/sixmonth'
 import ThreeGraph from './ThreeGraph'
 
 class Employee extends React.Component {
@@ -33,6 +34,15 @@ class Employee extends React.Component {
         dataType: 'JSON'
       }).done( sales => {
         this.props.dispatch(threemonth(sales))
+      }).fail( data => {
+
+      })
+      $.ajax({
+        url: `/api/user/${id}/six_month`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sales => {
+        this.props.dispatch(sixmonth(sales))
       }).fail( data => {
 
       })
@@ -365,10 +375,14 @@ class Employee extends React.Component {
     }
   }
 
-  graphSetup(threemonth) {
-    if(threemonth.site_survey_kw) {
+  graphSetup(sixmonth) {
+    let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let date = new Date
+    let d = date.getMonth()
+    let month = monthNames[d]
+    if(sixmonth[month]) {
       return(
-        <ThreeGraph threeMonth={threemonth} />
+        <ThreeGraph sixMonth={sixmonth} />
       )
     }
   }
@@ -377,6 +391,7 @@ class Employee extends React.Component {
     let user = this.props.currentuser
     let company = this.props.assignedcompany
     let threemonth = this.props.threemonth
+    let sixmonth = this.props.sixmonth
     return(
       <div className='row'>
         <div style={{ width: '100%', backgroundColor: '#f2f7f7', marginBottom: '0px', borderBottom: '2px solid #ccc'}} className='row'>
@@ -427,7 +442,7 @@ class Employee extends React.Component {
         </div>
         <div className='col s12 l8' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}>
-            {this.graphSetup(threemonth)}
+            {this.graphSetup(sixmonth)}
           </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
@@ -447,8 +462,8 @@ class Employee extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos } = state
-  return { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos }
+  let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth } = state
+  return { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth }
 }
 
 export default connect(mapStateToProps)(Employee)

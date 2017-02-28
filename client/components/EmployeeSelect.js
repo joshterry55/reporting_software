@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Employee from './Employee'
 import { lifetimekw } from '../actions/lifetimekw'
 import { threemonth } from '../actions/threemonth'
+import { sixmonth } from '../actions/sixmonth'
 
 class EmployeeSelect extends React.Component {
   constructor(props) {
@@ -95,6 +96,15 @@ class EmployeeSelect extends React.Component {
       dataType: 'JSON'
     }).done( sales => {
       this.props.dispatch(threemonth(sales))
+    }).fail( data => {
+
+    })
+    $.ajax({
+      url: `/api/user/${id}/six_month`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( sales => {
+      this.props.dispatch(sixmonth(sales))
     }).fail( data => {
 
     })

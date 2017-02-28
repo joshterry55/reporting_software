@@ -10,6 +10,7 @@ export const threemonth = (sales) => {
       threeMonthTotals.site_survey += parseFloat(sale.site_survey)
       threeMonthTotals.cancel += parseFloat(sale.cancel)
       if(parseFloat(sale.site_survey) != 0) {
+        debugger
         if(parseFloat(sale.cancel) != 1 ) {
           threeMonthTotals.site_survey_kw += parseFloat(sale.kw)
         }
