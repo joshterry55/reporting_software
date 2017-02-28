@@ -32,6 +32,11 @@ class TrainingVideos extends React.Component {
     }).fail( data => {
       debugger
     })
+    $('select').material_select();
+  }
+
+  componentDidUpdate() {
+    $('select').material_select();
   }
 
   toggleAdd() {
@@ -57,6 +62,7 @@ class TrainingVideos extends React.Component {
     let url = this.refs.videoLink.value
     let link = this.formatLink(url)
     let companyId = this.props.assignedcompany.id
+    let purpose = this.refs.videoPurpose.value
 
     $.ajax({
       url: '/api/training_videos',
@@ -66,9 +72,11 @@ class TrainingVideos extends React.Component {
         name: name,
         link: link,
         training_section_id: sectionId,
-        company_id: companyId
+        company_id: companyId,
+        video_purpose: purpose
       }}
     }).done( video => {
+      debugger
       this.props.dispatch({type: 'ADD_TRAINING_VIDEO', video})
       this.refs.videoForm.reset()
       this.toggleAdd()
@@ -94,6 +102,16 @@ class TrainingVideos extends React.Component {
                 <div className='col s12 '>
                   <label>Link</label>
                   <input ref='videoLink' placeholder='Video Link' required />
+                </div>
+                <div className='col s12 '>
+                  <label>Video Purpose</label>
+                    <select ref='videoPurpose'>
+                      <option value="general training">General Training</option>
+                      <option value="improve true percentage">Improve Closing Percentage</option>
+                      <option value="reduce cancellation percentage">Reduce Cancellation Percentage</option>
+                      <option value="motivation">Motivation</option>
+                    </select>
+                    <br />
                 </div>
                 <div className='col s12 center' style={{marginBottom: '15px'}}>
                   <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
@@ -134,6 +152,7 @@ class TrainingVideos extends React.Component {
     e.preventDefault()
     let name = this.refs.editVideoName.value
     let url = this.refs.editVideoLink.value
+    let purpose = this.refs.editVideoPurpose.value
     let link
     if(video.link === url) {
       link = url
@@ -147,7 +166,8 @@ class TrainingVideos extends React.Component {
       dataType: 'JSON',
       data: { training_video: {
         name: name,
-        link: link
+        link: link,
+        video_purpose: purpose
       }}
     }).done( video => {
       this.props.dispatch({type: 'UPDATE_TRAINING_VIDEO', video})
@@ -188,6 +208,16 @@ class TrainingVideos extends React.Component {
                     <div className='col s12 '>
                       <label>Link</label>
                       <input ref='editVideoLink' style={{fontSize: '15px'}} placeholder={video.link} defaultValue={video.link} required />
+                    </div>
+                    <div className='col s12 '>
+                      <label>Video Purpose</label>
+                        <select ref='editVideoPurpose' defaultValue={video.video_purpose}>
+                          <option value="general training">General Training</option>
+                          <option value="improve true percentage">Improve Closing Percentage</option>
+                          <option value="reduce cancellation percentage">Reduce Cancellation Percentage</option>
+                          <option value="motivation">Motivation</option>
+                        </select>
+                        <br />
                     </div>
                     <div className='col s12 center' style={{marginBottom: '15px'}}>
                       <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />

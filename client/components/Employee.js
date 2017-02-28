@@ -218,7 +218,7 @@ class Employee extends React.Component {
       if(cancelPercentage >= 35) {
         if(this.props.trainingvideos.length) {
           return this.props.trainingvideos.map( video => {
-            if(video.id === 13) {
+            if(video.video_purpose === 'reduce cancellation percentage') {
               let code = this.thumbnail(video.link)
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
@@ -269,7 +269,7 @@ class Employee extends React.Component {
         if(this.props.trainingvideos.length) {
 
           return this.props.trainingvideos.map( video => {
-            if(video.id === 14) {
+            if(video.video_purpose === 'improve true percentage') {
               let code = this.thumbnail(video.link)
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
@@ -329,7 +329,7 @@ class Employee extends React.Component {
       if((cancelPercentage < 35) && (truePercentage > 30)) {
         if(this.props.trainingvideos.length) {
           return this.props.trainingvideos.map( video => {
-            if(video.id === 15) {
+            if(video.video_purpose === 'motivation') {
               let code = this.thumbnail(video.link)
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>

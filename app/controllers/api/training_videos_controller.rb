@@ -42,6 +42,6 @@ class Api::TrainingVideosController < ApplicationController
   private
 
   def training_video_params
-    params.require(:training_video).permit(:name, :training_section_id, :link, :company_id)
+    params.require(:training_video).permit(:name, :training_section_id, :link, :company_id, :video_purpose)
   end
 end
