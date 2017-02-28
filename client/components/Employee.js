@@ -5,6 +5,7 @@ import DropZone from 'react-dropzone';
 import request from 'superagent';
 require('superagent-rails-csrf')(request)
 import { threemonth } from '../actions/threemonth'
+import ThreeGraph from './ThreeGraph'
 
 class Employee extends React.Component {
   constructor(props) {
@@ -364,6 +365,13 @@ class Employee extends React.Component {
     }
   }
 
+  graphSetup(threemonth) {
+    if(threemonth.site_survey_kw) {
+      return(
+        <ThreeGraph threeMonth={threemonth} />
+      )
+    }
+  }
 
   render() {
     let user = this.props.currentuser
@@ -418,7 +426,9 @@ class Employee extends React.Component {
           </div>
         </div>
         <div className='col s12 l8' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
-          <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}> blah</div>
+          <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}>
+            {this.graphSetup(threemonth)}
+          </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' style={{height: '600px', overflow: 'scroll'}}>

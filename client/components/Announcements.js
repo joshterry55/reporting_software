@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Chart from 'chart.js'
 
 
 class Announcements extends React.Component {
@@ -9,6 +10,45 @@ class Announcements extends React.Component {
     this.submitSearch = this.submitSearch.bind(this)
     this.tester = this.tester.bind(this)
     this.check = this.check.bind(this)
+  }
+
+  componentDidMount() {
+    let mytest = 2
+    let ctx = this.refs.myChart
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple"],
+          datasets: [{
+              label: '# of Site Surveys',
+              data: [mytest, 25, 3, 5, 2],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
   }
 
   submitSearch(e) {
@@ -80,7 +120,7 @@ class Announcements extends React.Component {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 white-container'>
-          Announcement Page
+          <canvas ref="myChart" width="400" height="50px"></canvas>
         </div>
       </div>
     )
