@@ -7,6 +7,7 @@ class ThreeGraph extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {myChart: 0}
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class ThreeGraph extends React.Component {
     let sixMonthKw = this.props.sixMonth
     let mytest = 2
     let ctx = this.refs.myChart
-    var myChart = new Chart(ctx, {
+    window.myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: [sixMonths[0], sixMonths[1], sixMonths[2], sixMonths[3], sixMonths[4], sixMonths[5]],
@@ -62,6 +63,7 @@ class ThreeGraph extends React.Component {
           }
       }
   });
+  this.setState({myChart: myChart})
   }
 
   componentDidUpdate() {
@@ -79,8 +81,10 @@ class ThreeGraph extends React.Component {
       sixMonths.push(month)
     }
     let sixMonthKw = this.props.sixMonth
+
     let ctx = this.refs.myChart
-    var myChart = new Chart(ctx, {
+    window.myChart.destroy()
+    window.myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: [sixMonths[0], sixMonths[1], sixMonths[2], sixMonths[3], sixMonths[4], sixMonths[5]],
@@ -116,14 +120,15 @@ class ThreeGraph extends React.Component {
           }
       }
   });
+
   }
 
 
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
-          <canvas ref="myChart" width="400" height="200px"></canvas>
+        <div className='col s12 m10 offset-m1 white-container' id='graph-container'>
+          <canvas ref="myChart" id='myGraph' width="400" height="200px"></canvas>
         </div>
       </div>
     )
