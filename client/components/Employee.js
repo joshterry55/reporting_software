@@ -183,7 +183,7 @@ class Employee extends React.Component {
 
   cancelPerc(threemonth) {
     let cancel = threemonth.cancel
-    let siteSurvey = threemonth.site_survey
+    let siteSurvey = threemonth.total_ss
     if(siteSurvey === 0) {
       return(
         <span> 0%</span>
@@ -217,7 +217,7 @@ class Employee extends React.Component {
   suggestedCancelVideo(threemonth) {
     if(threemonth.cancel) {
       let cancel = threemonth.cancel
-      let siteSurvey = threemonth.site_survey
+      let siteSurvey = threemonth.total_ss
       let cancelPercentage
       if(cancel === 0) {
         cancelPercentage = 0
@@ -318,7 +318,7 @@ class Employee extends React.Component {
   suggestedMotivationVideo(threemonth) {
     if(threemonth.sit_down) {
       let cancel = threemonth.cancel
-      let siteSurvey = threemonth.site_survey
+      let siteSurvey = threemonth.total_ss
       let trueSiteSurvey = threemonth.site_survey
       let sitdown = threemonth.sit_down
       let cancelPercentage

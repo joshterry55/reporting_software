@@ -1,13 +1,14 @@
 export const threemonth = (sales) => {
   return(dispatch) => {
 
-    let threeMonthTotals = {id: 0, kw: 0, sit_down: 0, close: 0, site_survey: 0, site_survey_kw: 0, cancel: 0}
+    let threeMonthTotals = {id: 0, kw: 0, sit_down: 0, close: 0, site_survey: 0, site_survey_kw: 0, cancel: 0, total_ss: 0}
 
   	sales.map(sale => {
       threeMonthTotals.kw += parseFloat(sale.kw)
       threeMonthTotals.sit_down += parseFloat(sale.sit_down)
       threeMonthTotals.close += parseFloat(sale.close)
       threeMonthTotals.cancel += parseFloat(sale.cancel)
+      threeMonthTotals.total_ss += parseFloat(sale.site_survey)
       if(parseFloat(sale.site_survey) != 0) {
         if(parseFloat(sale.cancel) != 1 ) {
           threeMonthTotals.site_survey += parseFloat(sale.site_survey)
