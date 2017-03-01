@@ -7,6 +7,8 @@ require('superagent-rails-csrf')(request)
 import { threemonth } from '../actions/threemonth'
 import { sixmonth } from '../actions/sixmonth'
 import ThreeGraph from './ThreeGraph'
+import { Link } from 'react-router';
+
 
 class Employee extends React.Component {
   constructor(props) {
@@ -234,7 +236,7 @@ class Employee extends React.Component {
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
                   <div className='col s12 left'>
-                      <a className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} href={`#${video.id}`}>
+                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
                         <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
                           <div style={{
                               backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
@@ -253,7 +255,7 @@ class Employee extends React.Component {
                         <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
                           <span>{video.name}</span>
                         </div>
-                      </a>
+                      </Link>
                   </div>
                 </div>
               )
@@ -285,7 +287,7 @@ class Employee extends React.Component {
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
                   <div className='col s12 left'>
-                      <a className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} href={`#${video.id}`}>
+                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
                         <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
                           <div style={{
                               backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
@@ -304,7 +306,7 @@ class Employee extends React.Component {
                         <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
                           <span>{video.name}</span>
                         </div>
-                      </a>
+                      </Link>
                   </div>
                 </div>
               )
@@ -345,7 +347,7 @@ class Employee extends React.Component {
               return(
                 <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
                   <div className='col s12 left'>
-                      <a className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} href={`#${video.id}`}>
+                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
                         <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
                           <div style={{
                               backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
@@ -364,7 +366,7 @@ class Employee extends React.Component {
                         <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
                           <span>{video.name}</span>
                         </div>
-                      </a>
+                      </Link>
                   </div>
                 </div>
               )
