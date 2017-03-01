@@ -383,7 +383,7 @@ class Employee extends React.Component {
     let date = new Date
     let d = date.getMonth()
     let month = monthNames[d]
-    if(sixmonth[month]) {
+    if(sixmonth[month] >= 0) {
       return(
         <ThreeGraph sixMonth={sixmonth} />
       )

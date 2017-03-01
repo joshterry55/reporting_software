@@ -23,7 +23,6 @@ export const sixmonth = (sales) => {
   	sales.map(sale => {
       if(sale.site_survey === 1) {
         if(sale.cancel != 1) {
-          debugger
           date = sale.date
           formatDate = date.replace(/-/g, '/')
           currentSaleDate = new Date(formatDate)
@@ -36,7 +35,6 @@ export const sixmonth = (sales) => {
 
   	})
 
-    debugger
     dispatch({type: 'SIX_MONTH_AVERAGE', sixMonthTotals})
   }
 }
