@@ -407,7 +407,7 @@ class Employee extends React.Component {
           </div>
           <div style={{ height: '125px', borderRight: '2px solid #ccc', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
             <div className='col s12 center' style={{paddingTop: '10px'}}>
-              <span style={{fontSize: '20px', fontWeight: 'bold'}}>Current Month Stats</span><br/>
+              <span style={{fontSize: '20px', fontWeight: 'bold'}}>Three Month Stats</span><br/>
               <div style={{paddingTop: '5px'}}>
                 <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
                   <div style={{textDecoration: 'underline'}}>Closed</div>
