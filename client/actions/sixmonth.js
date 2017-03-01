@@ -18,10 +18,15 @@ export const sixmonth = (sales) => {
     let currentSaleDate
     let currentMonth
     let monthName
+    let formatDate
+    let date
   	sales.map(sale => {
       if(sale.site_survey === 1) {
         if(sale.cancel != 1) {
-          currentSaleDate = new Date(sale.date)
+          debugger
+          date = sale.date
+          formatDate = date.replace(/-/g, '/')
+          currentSaleDate = new Date(formatDate)
           currentMonth = currentSaleDate.getMonth()
           monthName = monthNames[currentMonth]
           sixMonthTotals[monthName] += parseFloat(sale.site_survey)
@@ -31,6 +36,7 @@ export const sixmonth = (sales) => {
 
   	})
 
+    debugger
     dispatch({type: 'SIX_MONTH_AVERAGE', sixMonthTotals})
   }
 }
