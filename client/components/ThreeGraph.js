@@ -28,23 +28,23 @@ class ThreeGraph extends React.Component {
     let mytest = 2
     let ctx = this.refs.myChart
     window.myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
           labels: [sixMonths[0], sixMonths[1], sixMonths[2], sixMonths[3], sixMonths[4], sixMonths[5]],
           datasets: [{
               label: '# of Site Surveys',
               data: [sixMonthKw[sixMonths[0]], sixMonthKw[sixMonths[1]], sixMonthKw[sixMonths[2]], sixMonthKw[sixMonths[3]], sixMonthKw[sixMonths[4]], sixMonthKw[sixMonths[5]]],
               backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
                   'rgba(75, 192, 192, 0.2)',
                   'rgba(153, 102, 255, 0.2)',
                   'rgba(255, 159, 64, 0.2)'
               ],
               borderColor: [
+                'rgba(54, 162, 235, 1)',
                   'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
                   'rgba(255, 206, 86, 1)',
                   'rgba(75, 192, 192, 1)',
                   'rgba(153, 102, 255, 1)',
@@ -54,6 +54,8 @@ class ThreeGraph extends React.Component {
           }]
       },
       options: {
+        maintainAspectRatio: false,
+        responsive: true,
           scales: {
               yAxes: [{
                   ticks: {
@@ -85,23 +87,23 @@ class ThreeGraph extends React.Component {
     let ctx = this.refs.myChart
     window.myChart.destroy()
     window.myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
           labels: [sixMonths[0], sixMonths[1], sixMonths[2], sixMonths[3], sixMonths[4], sixMonths[5]],
           datasets: [{
               label: '# of Site Surveys',
               data: [sixMonthKw[sixMonths[0]], sixMonthKw[sixMonths[1]], sixMonthKw[sixMonths[2]], sixMonthKw[sixMonths[3]], sixMonthKw[sixMonths[4]], sixMonthKw[sixMonths[5]]],
               backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
                   'rgba(75, 192, 192, 0.2)',
                   'rgba(153, 102, 255, 0.2)',
                   'rgba(255, 159, 64, 0.2)'
               ],
               borderColor: [
+                'rgba(54, 162, 235, 1)',
                   'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
                   'rgba(255, 206, 86, 1)',
                   'rgba(75, 192, 192, 1)',
                   'rgba(153, 102, 255, 1)',
@@ -111,6 +113,8 @@ class ThreeGraph extends React.Component {
           }]
       },
       options: {
+        maintainAspectRatio: false,
+        responsive: true,
           scales: {
               yAxes: [{
                   ticks: {
@@ -127,8 +131,8 @@ class ThreeGraph extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container' id='graph-container'>
-          <canvas ref="myChart" id='myGraph' width="400" height="200px"></canvas>
+        <div className='col s12 white-container' id='graph-container' style={{border: '2px solid #aaa', padding: '0px', margin: '0px'}}>
+          <canvas ref="myChart" id='myGraph' width="500" height="400px"></canvas>
         </div>
       </div>
     )

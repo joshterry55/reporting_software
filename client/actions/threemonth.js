@@ -7,10 +7,10 @@ export const threemonth = (sales) => {
       threeMonthTotals.kw += parseFloat(sale.kw)
       threeMonthTotals.sit_down += parseFloat(sale.sit_down)
       threeMonthTotals.close += parseFloat(sale.close)
-      threeMonthTotals.site_survey += parseFloat(sale.site_survey)
       threeMonthTotals.cancel += parseFloat(sale.cancel)
       if(parseFloat(sale.site_survey) != 0) {
         if(parseFloat(sale.cancel) != 1 ) {
+          threeMonthTotals.site_survey += parseFloat(sale.site_survey)
           threeMonthTotals.site_survey_kw += parseFloat(sale.kw)
         }
       }
