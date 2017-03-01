@@ -44,7 +44,7 @@ class LifetimeKw extends React.Component {
 
       return(
         <div style={{height: '40px'}}>
-          <div className='left'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><span>/1000 kw</span></div>
+          <div className='center'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><span>/1000 kw</span></div>
 
         </div>
       )
@@ -55,7 +55,7 @@ class LifetimeKw extends React.Component {
     let company = this.props.assingedcompany
     return(
       <div className='row'>
-        <div className='col s12' style={{paddingTop: '10px'}}>
+        <div className='col s12 center' style={{paddingTop: '10px'}}>
           <span style={{fontSize: '20px', fontWeight: 'bold'}}> Lifetime KW Sold:</span><br/>
           {this.goalCheck()}
         </div>

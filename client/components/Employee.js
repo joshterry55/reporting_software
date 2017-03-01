@@ -23,6 +23,7 @@ class Employee extends React.Component {
     this.suggestedCancelVideo = this.suggestedCancelVideo.bind(this)
     this.suggestedTrueVideo = this.suggestedTrueVideo.bind(this)
     this.suggestedMotivationVideo = this.suggestedMotivationVideo.bind(this)
+    this.office = this.office.bind(this)
   }
 
   componentDidMount() {
@@ -345,7 +346,7 @@ class Employee extends React.Component {
             if(video.video_purpose === 'motivation') {
               let code = this.thumbnail(video.link)
               return(
-                <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
+                <div key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
                   <div className='col s12 left'>
                       <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
                         <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
@@ -389,6 +390,26 @@ class Employee extends React.Component {
     }
   }
 
+  office() {
+    if(this.props.user.role === 'Employee') {
+      let officeName = this.props.assignedoffices[0].name
+      return(
+        <span>{officeName}</span>
+      )
+    } else if(this.props.user.role === 'Admin') {
+      let officeId = this.props.currentuser.office_id
+      let officeName
+      this.props.assignedoffices.map(office => {
+        if(officeId === office.id) {
+          officeName = office.name
+        }
+      })
+      return(
+        <span>{officeName}</span>
+      )
+    }
+  }
+
   render() {
     let user = this.props.currentuser
     let company = this.props.assignedcompany
@@ -403,13 +424,14 @@ class Employee extends React.Component {
             </div>
             <div className='col s6 l4' style={{paddingTop: '10px'}}>
               <span style={{fontSize: '20px', fontWeight: 'bold'}}>{`${user.first_name} ${user.last_name}`}</span><br />
-              <span style={{fontSize: '15px'}}>{company.name}</span>
+              <span style={{fontSize: '15px'}}>{company.name}</span><br />
+              {this.office()}
             </div>
 
           </div>
           <div style={{ height: '125px', borderRight: '2px solid #ccc', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
             <div className='col s12 center' style={{paddingTop: '10px'}}>
-              <span style={{fontSize: '20px', fontWeight: 'bold'}}>Three Month Stats</span><br/>
+              <span style={{fontSize: '20px', fontWeight: 'bold'}}>Current Month</span><br/>
               <div style={{paddingTop: '5px'}}>
                 <div style={{height: '40px', paddingLeft: '0px', overflow: 'hidden', whiteSpace: 'nowrap'}} className='col s2 center'>
                   <div style={{textDecoration: 'underline'}}>Closed</div>
@@ -438,7 +460,7 @@ class Employee extends React.Component {
               </div>
             </div>
           </div>
-          <div style={{ height: '125px', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4'>
+          <div style={{ height: '125px', marginTop: '10px', marginBottom: '10px'}} className='col s12 m4 center'>
             <LifetimeKw />
           </div>
         </div>
@@ -449,7 +471,7 @@ class Employee extends React.Component {
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' style={{height: '600px', overflow: 'scroll'}}>
-            <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px', fontWeight: 'bold'}}>
+            <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px'}}>
               Suggested Videos
             </div>
             {this.suggestedMotivationVideo(threemonth)}
@@ -464,8 +486,8 @@ class Employee extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth } = state
-  return { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth }
+  let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth, assignedoffices } = state
+  return { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth, assignedoffices }
 }
 
 export default connect(mapStateToProps)(Employee)
