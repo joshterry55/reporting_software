@@ -95,7 +95,6 @@ class EmployeeSelect extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( sales => {
-      debugger
       this.props.dispatch(threemonth(sales))
     }).fail( data => {
 
