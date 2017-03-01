@@ -40,6 +40,12 @@ class Api::SalesController < ApplicationController
     render json: @sales
   end
 
+  def this_month
+    @user = User.find(params[:id])
+    @sales = @user.sales.where(date: (Time.now.beginning_of_month)..(Time.now.end_of_month))
+    render json: @sales
+  end
+
   def six_month
     @user = User.find(params[:id])
     @sales = @user.sales.where(date: (Time.now.beginning_of_month - 5.months)..(Time.now.end_of_month))

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'office/:id/sales', as: 'office/sales', :to => 'sales#office'
     get 'region/:id/sales', as: 'region/sales', :to => 'sales#region'
     get 'user/:id/sales', as: 'user/sales', :to => 'sales#user'
-    get 'user/:id/three_month', as: 'user/three_month', :to => 'sales#three_month'
+    get 'user/:id/three_month', as: 'user/three_month', :to => 'sales#this_month'
     get 'user/:id/six_month', as: 'user/six_month', :to => 'sales#six_month'
     get 'company/:id/sales', as: 'company/sales', :to => 'sales#company'
     get 'company/:id/regions', as: 'company/regions', :to => 'companies#regions'
