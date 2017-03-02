@@ -235,7 +235,9 @@ class Employee extends React.Component {
       if(cancelPercentage >= 35) {
         return(
           <div>
-            cancel
+            <div className='center' style={{marginTop: '5px'}}>
+              <span style={{fontSize: '15px' }}>High Cancellation Rate </span>
+            </div>
             {this.suggestedCancelVideo()}
           </div>
         )
@@ -294,7 +296,9 @@ class Employee extends React.Component {
       if(truePercentage <= 30) {
         return(
           <div>
-            true percentage
+            <div className='center' style={{marginTop: '5px'}}>
+              <span style={{fontSize: '15px'}}>Low Close Rate</span>
+            </div>
             {this.suggestedTrueVideo()}
           </div>
         )
@@ -363,7 +367,9 @@ class Employee extends React.Component {
       if((cancelPercentage < 35) && (truePercentage > 30)) {
         return(
           <div>
-            motivation
+            <div className='center' style={{marginTop: '5px'}}>
+              <span style={{fontSize: '15px'}}>Motivation</span>
+            </div>
             {this.suggestedMotivationVideo()}
           </div>
         )
@@ -499,16 +505,17 @@ class Employee extends React.Component {
           </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
-          <div className='col s12' style={{height: '600px', overflow: 'scroll'}}>
+          <div className='col s12' >
             <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px', marginBottom: '10px'}}>
               Suggested Videos
             </div>
-            {this.motivation(threemonth)}
-            {this.cancelVideos(threemonth)}
-            {this.trueVideos(threemonth)}
+            <div style={{height: '560px', overflow: 'scroll'}}>
+              {this.motivation(threemonth)}
+              {this.cancelVideos(threemonth)}
+              {this.trueVideos(threemonth)}
+            </div>
           </div>
         </div>
-        TESSST
       </div>
     )
   }
