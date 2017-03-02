@@ -30,8 +30,8 @@ class EmployeeSelect extends React.Component {
         url: `/api/company/${id}/videos`,
         type: 'GET',
         dataType: 'JSON'
-      }).done( sortedVideos => {
-        this.props.dispatch({type: 'TRAINING_VIDEOS', sortedVideos })
+      }).done( videos => {
+        this.props.dispatch({type: 'SHUFFLE_TRAINING_VIDEOS', videos })
       }).fail( data => {
 
       })

@@ -24,6 +24,9 @@ class Employee extends React.Component {
     this.suggestedTrueVideo = this.suggestedTrueVideo.bind(this)
     this.suggestedMotivationVideo = this.suggestedMotivationVideo.bind(this)
     this.office = this.office.bind(this)
+    this.motivation = this.motivation.bind(this)
+    this.cancelVideos = this.cancelVideos.bind(this)
+    this.trueVideos = this.trueVideos.bind(this)
   }
 
   componentDidMount() {
@@ -54,9 +57,9 @@ class Employee extends React.Component {
         url: `/api/company/${companyId}/videos`,
         type: 'GET',
         dataType: 'JSON'
-      }).done( sortedVideos => {
+      }).done( videos => {
 
-        this.props.dispatch({type: 'TRAINING_VIDEOS', sortedVideos })
+        this.props.dispatch({type: 'SHUFFLE_TRAINING_VIDEOS', videos })
       }).fail( data => {
 
       })
@@ -217,8 +220,8 @@ class Employee extends React.Component {
     )
   }
 
-  suggestedCancelVideo(threemonth) {
-    if(threemonth.cancel) {
+  cancelVideos(threemonth) {
+    if(threemonth.id) {
       let cancel = threemonth.cancel
       let siteSurvey = threemonth.total_ss
       let cancelPercentage
@@ -230,45 +233,54 @@ class Employee extends React.Component {
         cancelPercentage = ((cancel / siteSurvey) * 100)
       }
       if(cancelPercentage >= 35) {
-        if(this.props.trainingvideos.length) {
-          return this.props.trainingvideos.map( video => {
-            if(video.video_purpose === 'reduce cancellation percentage') {
-              let code = this.thumbnail(video.link)
-              return(
-                <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
-                  <div className='col s12 left'>
-                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
-                        <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
-                          <div style={{
-                              backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
-                              width: '100%',
-                              height: '100%',
-                              maxWidth: '125px',
-                              display: 'block',
-                              backgroundSize: 'cover',
-                              borderRadius: '10px',
-                              boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                              margin: '8px 0',
-                              zIndex: '1',
-                            }}>
-                          </div>
-                        </div>
-                        <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
-                          <span>{video.name}</span>
-                        </div>
-                      </Link>
-                  </div>
-                </div>
-              )
-            }
-          })
-        }
+        return(
+          <div>
+            cancel
+            {this.suggestedCancelVideo()}
+          </div>
+        )
       }
     }
   }
 
-  suggestedTrueVideo(threemonth) {
-    if(threemonth.sit_down) {
+  suggestedCancelVideo() {
+    if(this.props.trainingvideos.length) {
+      return this.props.trainingvideos.map( video => {
+        if(video.video_purpose === 'reduce cancellation percentage') {
+          let code = this.thumbnail(video.link)
+          return(
+            <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
+              <div className='col s12 left'>
+                  <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
+                    <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
+                      <div style={{
+                          backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '125px',
+                          display: 'block',
+                          backgroundSize: 'cover',
+                          borderRadius: '10px',
+                          boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                          margin: '8px 0',
+                          zIndex: '1',
+                        }}>
+                      </div>
+                    </div>
+                    <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
+                      <span>{video.name}</span>
+                    </div>
+                  </Link>
+              </div>
+            </div>
+          )
+        }
+      })
+    }
+  }
+
+  trueVideos(threemonth) {
+    if(threemonth.id) {
       let sitdown = threemonth.sit_down
       let siteSurvey = threemonth.site_survey
       let truePercentage
@@ -280,51 +292,60 @@ class Employee extends React.Component {
         truePercentage = ((siteSurvey / sitdown) * 100)
       }
       if(truePercentage <= 30) {
-        if(this.props.trainingvideos.length) {
-
-          return this.props.trainingvideos.map( video => {
-            if(video.video_purpose === 'improve true percentage') {
-              let code = this.thumbnail(video.link)
-              return(
-                <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
-                  <div className='col s12 left'>
-                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
-                        <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
-                          <div style={{
-                              backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
-                              width: '100%',
-                              height: '100%',
-                              maxWidth: '125px',
-                              display: 'block',
-                              backgroundSize: 'cover',
-                              borderRadius: '10px',
-                              boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                              margin: '8px 0',
-                              zIndex: '1',
-                            }}>
-                          </div>
-                        </div>
-                        <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
-                          <span>{video.name}</span>
-                        </div>
-                      </Link>
-                  </div>
-                </div>
-              )
-            }
-          })
-        }
+        return(
+          <div>
+            true percentage
+            {this.suggestedTrueVideo()}
+          </div>
+        )
       }
     }
   }
 
-  suggestedMotivationVideo(threemonth) {
-    if(threemonth.sit_down) {
+  suggestedTrueVideo() {
+    if(this.props.trainingvideos.length) {
+      return this.props.trainingvideos.map( video => {
+        if(video.video_purpose === 'improve true percentage') {
+          let code = this.thumbnail(video.link)
+          return(
+            <div  key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
+              <div className='col s12 left'>
+                  <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
+                    <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
+                      <div style={{
+                          backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '125px',
+                          display: 'block',
+                          backgroundSize: 'cover',
+                          borderRadius: '10px',
+                          boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                          margin: '8px 0',
+                          zIndex: '1',
+                        }}>
+                      </div>
+                    </div>
+                    <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
+                      <span>{video.name}</span>
+                    </div>
+                  </Link>
+              </div>
+            </div>
+          )
+        }
+      })
+    }
+  }
+
+  motivation(threemonth) {
+    if(threemonth.id) {
       let cancel = threemonth.cancel
       let siteSurvey = threemonth.total_ss
       let trueSiteSurvey = threemonth.site_survey
       let sitdown = threemonth.sit_down
       let cancelPercentage
+      let truePercentage
       if(cancel === 0) {
         cancelPercentage = 0
       } else if(siteSurvey === 0) {
@@ -332,7 +353,6 @@ class Employee extends React.Component {
       } else {
         cancelPercentage = ((cancel / siteSurvey) * 100)
       }
-      let truePercentage
       if(sitdown === 0) {
         truePercentage = 0
       } else if(trueSiteSurvey === 0) {
@@ -341,40 +361,49 @@ class Employee extends React.Component {
         truePercentage = ((trueSiteSurvey / sitdown) * 100)
       }
       if((cancelPercentage < 35) && (truePercentage > 30)) {
-        if(this.props.trainingvideos.length) {
-          return this.props.trainingvideos.map( video => {
-            if(video.video_purpose === 'motivation') {
-              let code = this.thumbnail(video.link)
-              return(
-                <div key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
-                  <div className='col s12 left'>
-                      <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
-                        <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
-                          <div style={{
-                              backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
-                              width: '100%',
-                              height: '100%',
-                              maxWidth: '125px',
-                              display: 'block',
-                              backgroundSize: 'cover',
-                              borderRadius: '10px',
-                              boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                              margin: '8px 0',
-                              zIndex: '1',
-                            }}>
-                          </div>
-                        </div>
-                        <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
-                          <span>{video.name}</span>
-                        </div>
-                      </Link>
-                  </div>
-                </div>
-              )
-            }
-          })
-        }
+        return(
+          <div>
+            motivation
+            {this.suggestedMotivationVideo()}
+          </div>
+        )
       }
+    }
+  }
+
+  suggestedMotivationVideo() {
+    if(this.props.trainingvideos.length) {
+      return this.props.trainingvideos.map( video => {
+        if(video.video_purpose === 'motivation') {
+          let code = this.thumbnail(video.link)
+          return(
+            <div key={video.id} className='col s12' style={{margin: '0px', padding: '0px'}}>
+              <div className='col s12 left'>
+                  <Link className="sidebar-link col s12 left" style={{color: 'black', fontSize: '15px', borderBottom: '1px solid #bbb', paddingBottom: '10px', paddingTop: '10px', display: 'block', paddingLeft: '0px'}} to={`/suggestedvideo/${video.id}`}>
+                    <div className='col s12' style={{height: '100px', paddingLeft: '10px', paddingBottom: '10px', display: 'block'}}>
+                      <div style={{
+                          backgroundImage: `url('http://img.youtube.com/vi/${code}/0.jpg')`,
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '125px',
+                          display: 'block',
+                          backgroundSize: 'cover',
+                          borderRadius: '10px',
+                          boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                          margin: '8px 0',
+                          zIndex: '1',
+                        }}>
+                      </div>
+                    </div>
+                    <div className='col s12 link' style={{paddingLeft: '11px', paddingTop: '5px'}}>
+                      <span>{video.name}</span>
+                    </div>
+                  </Link>
+              </div>
+            </div>
+          )
+        }
+      })
     }
   }
 
@@ -474,9 +503,9 @@ class Employee extends React.Component {
             <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px', marginBottom: '10px'}}>
               Suggested Videos
             </div>
-            {this.suggestedMotivationVideo(threemonth)}
-            {this.suggestedCancelVideo(threemonth)}
-            {this.suggestedTrueVideo(threemonth)}
+            {this.motivation(threemonth)}
+            {this.cancelVideos(threemonth)}
+            {this.trueVideos(threemonth)}
           </div>
         </div>
         TESSST

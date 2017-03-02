@@ -76,7 +76,7 @@ class TrainingVideos extends React.Component {
         video_purpose: purpose
       }}
     }).done( video => {
-      debugger
+      
       this.props.dispatch({type: 'ADD_TRAINING_VIDEO', video})
       this.refs.videoForm.reset()
       this.toggleAdd()
