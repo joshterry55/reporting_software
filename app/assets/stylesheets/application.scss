@@ -1,5 +1,9 @@
 @import 'materialize';
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #F9FAE3 inset;
+}
+
 body {
   // background-color: #f2f7f7;
   background-color: #3a3b3a;
