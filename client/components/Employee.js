@@ -164,11 +164,11 @@ class Employee extends React.Component {
     let sitDown = threemonth.sit_down
     if(sitDown === 0) {
       return(
-        <span> 0%</span>
+        <span style={{backgroundColor: '#ffcdd2', padding: '0px 2px'}}> 0%</span>
       )
     } else if(siteSurvey === 0) {
       return(
-        <span> 0%</span>
+        <span style={{backgroundColor: '#ffcdd2', padding: '0px 2px'}}> 0%</span>
       )
     } else {
       let percentage = ((siteSurvey / sitDown) * 100).toFixed(1)
@@ -471,7 +471,7 @@ class Employee extends React.Component {
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' style={{height: '600px', overflow: 'scroll'}}>
-            <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px'}}>
+            <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px', marginBottom: '10px'}}>
               Suggested Videos
             </div>
             {this.suggestedMotivationVideo(threemonth)}
