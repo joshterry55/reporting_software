@@ -50,8 +50,8 @@ class SignIn extends React.Component {
                   borderRadius: '50%',
                   display: 'inline-block',
                   boxShadow: '0 0 2px rgba(0,0,0,0.35)',
-                  border: '1px solid #000',
-                  backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg')`,
+                  border: '1px solid #777',
+                  backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1488493338/anon3_ozafcv.jpg')`,
                   backgroundSize: 'cover'
                 }}></div>
             </div>
