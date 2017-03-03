@@ -263,14 +263,17 @@ class ReportOfficeSales extends React.Component {
         return(
             <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={sale.id}>
               <td className='col s2'>{sale.date}</td>
+              <td className='col s2'>{sale.salesman}</td>
               <td className='col s2'>{sale.first_name} {sale.last_name}</td>
-              <td className='col s2'>{sale.kw}</td>
+              <td className='col s1'>{sale.kw}</td>
               <td className='col s1'>{sale.sit_down}</td>
               <td className='col s1'>{sale.close}</td>
               <td className='col s1'>{sale.site_survey}</td>
               <td className='col s1'>{sale.cancel}</td>
-              <td className='col s1 edit-icon'><i className="tiny material-icons confirm-icon" data-target="modal1" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
-              <td className='col s1'><i className="tiny material-icons confirm-icon delete-icon" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}} title='Delete Sale'>delete</i></td>
+              <div className='col s1'>
+                <td className='col s6 edit-icon'><i className="tiny material-icons confirm-icon" data-target="modal1" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
+                <td className='col s6'><i className="tiny material-icons confirm-icon delete-icon" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}} title='Delete Sale'>delete</i></td>
+              </div>
             </tr>
         );
       });
@@ -299,14 +302,14 @@ class ReportOfficeSales extends React.Component {
           <thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
             <tr className='row'>
                 <th className='col s2'>Date</th>
+                <th className='col s2'>Salesman</th>
                 <th className='col s2'>Customer</th>
-                <th className='col s2'>Kw</th>
+                <th className='col s1'>KW</th>
                 <th className='col s1'>SD</th>
                 <th className='col s1'>CL</th>
                 <th className='col s1'>SS</th>
                 <th className='col s1'>CA</th>
-                <th className='col s1'>Edit</th>
-                <th className='col s1'>Delete</th>
+                <th className='col s1'></th>
             </tr>
           </thead>
           <tbody id="products">
@@ -362,7 +365,8 @@ const styles = {
     position: 'relative',
   },
   tableStyle: {
-    minWidth: '600px'
+    minWidth: '700px',
+
   }
 }
 
