@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     this.navs = this.navs.bind(this)
     this.logout = this.logout.bind(this)
     this.clearCurrent = this.clearCurrent.bind(this)
+    this.highlightNav = this.highlightNav.bind(this)
   }
 
   logout(e) {
@@ -70,6 +71,14 @@ class NavBar extends React.Component {
   //   }
   // }
 
+  // $('#header-content li').on('click', function(){
+  //    $(this).addClass('selected').siblings().removeClass('selected');
+  //  });
+
+  highlightNav(id) {
+    $(`#${id}`).addClass('selected').siblings().removeClass('selected')
+  }
+
   clearCurrent() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
@@ -81,25 +90,25 @@ class NavBar extends React.Component {
       case 'Employee':
         return(
           <div>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/announcements'>Announcements</Link></li>
-            <li><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
-            <li><Link to='/trainings'>Training</Link></li>
-            <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
-            <li><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
-            <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
+            <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/'>Home</Link></li>
+            <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements'>Announcements</Link></li>
+            <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
+            <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings'>Training</Link></li>
+            <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
+            <li onClick={() => this.highlightNav('employeePage')} id="employeePage"><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
+            <li onClick={() => this.highlightNav('announcements')} id="announcements"><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
           </div>
         )
       case 'Admin':
       return(
         <div>
-          <li><Link to='/'>Home</Link></li>
-          <li className='off-tab'><Link to='/announcements' >Announcements</Link></li>
-          <li className='off-tab'><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
-          <li className='off-tab'><Link to='/trainings'>Training</Link></li>
-          <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
-          <li className='off-tab'><Link to='/company'>Admin</Link></li>
-          <li className='off-tab'><Link to='/employeeselect'>Reps</Link></li>
+          <li onClick={() => this.highlightNav('home')} id="home"><Link to='/'>Home</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' >Announcements</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings'>Training</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('company')} id="company"><Link to='/company'>Admin</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('employee')} id="employee"><Link to='/employeeselect'>Reps</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
