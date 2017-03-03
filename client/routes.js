@@ -64,8 +64,8 @@ export default (
         <Route path='/trainings' component={Trainings} />
         <Route path='/trainingvideos/:id' component={TrainingVideos} />
         <Route path='/suggestedvideo/:id' component={SuggestedVideo} />
+        <Route path='/reports' component={ReportRegionSelect} />
         <Route component={AdminRoutes}>
-          <Route path='/reports' component={ReportRegionSelect} />
           <Route path='/company' component={Company} />
           <Route path='/region/:id' component={Region} />
           <Route path='/office/:id' component={Office} />

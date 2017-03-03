@@ -11,6 +11,7 @@ class ReportOfficeSales extends React.Component {
     this.editModal = this.editModal.bind(this)
     this.deleteSale = this.deleteSale.bind(this)
     this.submitEdittedSale = this.submitEdittedSale.bind(this)
+    this.editDelete = this.editDelete.bind(this)
   }
 
   componentDidMount() {
@@ -256,6 +257,23 @@ class ReportOfficeSales extends React.Component {
     alert('Do we need a delete option for sales?')
   }
 
+  editDelete(sale) {
+    if(this.props.user.role === 'Admin') {
+      return(
+        <div className='col s1'>
+          <td className='col s6 edit-icon'><i className="tiny material-icons confirm-icon" data-target="modal1" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
+          <td className='col s6'><i className="tiny material-icons confirm-icon delete-icon" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}} title='Delete Sale'>delete</i></td>
+        </div>
+      )
+    } else {
+      return(
+        <div className='col s1'>
+
+        </div>
+      )
+    }
+  }
+
 
   displaySales() {
     if(this.props.officesales.length) {
@@ -270,10 +288,7 @@ class ReportOfficeSales extends React.Component {
               <td className='col s1'>{sale.close}</td>
               <td className='col s1'>{sale.site_survey}</td>
               <td className='col s1'>{sale.cancel}</td>
-              <div className='col s1'>
-                <td className='col s6 edit-icon'><i className="tiny material-icons confirm-icon" data-target="modal1" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
-                <td className='col s6'><i className="tiny material-icons confirm-icon delete-icon" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}} title='Delete Sale'>delete</i></td>
-              </div>
+              {this.editDelete(sale)}
             </tr>
         );
       });
@@ -371,8 +386,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates } = state
-  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates }
+  let { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, user } = state
+  return { officesales, currentoffice, officetotalcancel, officetotalclose, officetotalkw, officetotalsitesurvey, officetotalsitdown, currentsale, weekdates, user }
 }
 
 export default connect(mapStateToProps)(ReportOfficeSales)

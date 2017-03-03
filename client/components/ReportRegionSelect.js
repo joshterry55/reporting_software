@@ -9,6 +9,7 @@ class ReportRegionSelect extends React.Component {
     super(props)
 
     this.regionInfo = this.regionInfo.bind(this)
+    this.adminCheck = this.adminCheck.bind(this)
   }
 
   showRegions() {
@@ -23,6 +24,22 @@ class ReportRegionSelect extends React.Component {
     this.props.dispatch({type: 'RESET_OFFICE_SALES'})
   }
 
+  adminCheck() {
+    if(this.props.user.role === 'Admin') {
+      return(
+        <div className='col s12' style={{zIndex: 2, marginBottom: '-15px', position: 'relative'}}>
+          <span className='col s12 m3 offset-m9' style={{textAlign: 'right', paddingTop: '10px'}} ><Link className='add-sale' to='/addsale'>+ Add Sale</Link></span>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+
+        </div>
+      )
+    }
+  }
+
   render() {
     let regionName
     if (this.props.currentregion.name) {
@@ -33,9 +50,7 @@ class ReportRegionSelect extends React.Component {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 white-container'>
-          <div className='col s12' style={{zIndex: 2, marginBottom: '-15px', position: 'relative'}}>
-            <span className='col s12 m3 offset-m9' style={{textAlign: 'right', paddingTop: '10px'}} ><Link className='add-sale' to='/addsale'>+ Add Sale</Link></span>
-          </div>
+          {this.adminCheck()}
           <div className='col s12' style={{zIndex: 0}}>
             <div className = 'col s12'>
               <div className='col s10 offset-s1 m6 offset-m3'>

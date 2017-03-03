@@ -85,6 +85,7 @@ class NavBar extends React.Component {
             <li><Link to='/announcements'>Announcements</Link></li>
             <li><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
             <li><Link to='/trainings'>Training</Link></li>
+            <li className='off-tab'><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
             <li><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
             <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
           </div>
