@@ -56,7 +56,7 @@ class Admin extends React.Component {
 
   render() {
     return(
-      <div className='row' style={{marginBottom: '0px', boxShadow: '0 4px 2px -2px #444'}}>
+      <div className='row' style={{marginBottom: '0px'}}>
         <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
           {this.adminTabs()}
         </div>

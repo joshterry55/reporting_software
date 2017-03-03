@@ -77,7 +77,7 @@ class Company extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 m10 offset-m1 white-container' style={{ position: 'relative', zIndex: '-1'}}>
+        <div className='col s12 m10 offset-m1 white-container'>
           {this.display()}
           <Regions />
         </div>
