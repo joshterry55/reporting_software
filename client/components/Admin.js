@@ -28,17 +28,23 @@ class Admin extends React.Component {
   adminTabs() {
     if(this.props.assignedcompany.id) {
       return(
-          <div className="col s12">
-            <ul className="tabs tabs-fixed-width">
-              <li  className="tab col s3 admin-tabs" onClick={this.setForm}><Link to='/addsale'>Add Sale</Link></li>
-              <li  className="tab col s3 admin-tabs"><Link to='/company'>{this.props.assignedcompany.name}</Link></li>
-              <li  className="tab col s3 admin-tabs"><Link to='/settings'>Settings</Link></li>
+          <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '13px'}}>
+            <ul className="tabs tabs-fixed-width" style={{backgroundColor: 'gray'}}>
+              <div className="tab col s3">
+                <li className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: '#555'}}>Add Sale</Link></li>
+              </div>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link to='/company' className='admin' style={{color: '#555'}}>{this.props.assignedcompany.name}</Link></li>
+              </div>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link to='/settings' className='admin' style={{color: '#555'}}>Settings</Link></li>
+              </div>
             </ul>
           </div>
       )
     } else {
       return(
-          <div className="col s12">
+          <div className="col s12" style={{marginTop: '10px'}}>
             <ul className="tabs tabs-fixed-width">
               <li  className="tab col s3 admin-tabs"><Link to='/'>Home</Link></li>
               <li  className="tab col s3 admin-tabs"><Link to='/createcompany'>Company Setup</Link></li>
@@ -50,8 +56,8 @@ class Admin extends React.Component {
 
   render() {
     return(
-      <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
+      <div className='row' style={{marginBottom: '0px', boxShadow: '0 4px 2px -2px #444'}}>
+        <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
           {this.adminTabs()}
         </div>
       </div>

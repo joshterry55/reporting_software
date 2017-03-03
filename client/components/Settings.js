@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Admin from './Admin'
 
 
 class Settings extends React.Component {
@@ -18,7 +19,8 @@ class Settings extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
+        <Admin />
+        <div className='col s12 m10 offset-m1 white-container' style={{ position: 'relative', zIndex: '-1'}}>
           Settings
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Regions from './Regions'
+import Admin from './Admin'
 
 class Company extends React.Component {
   constructor(props) {
@@ -75,7 +76,8 @@ class Company extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
+        <Admin />
+        <div className='col s12 m10 offset-m1 white-container' style={{ position: 'relative', zIndex: '-1'}}>
           {this.display()}
           <Regions />
         </div>

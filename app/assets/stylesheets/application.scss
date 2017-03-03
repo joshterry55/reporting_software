@@ -5,8 +5,8 @@ input:-webkit-autofill {
 }
 
 body {
-  // background-color: #f2f7f7;
-  background-color: #3a3b3a;
+  background-color: #f2f7f7;
+  // background-color: #3a3b3a;
   // background-image: url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487561985/ligtning_ffsfnw.png');
   // -webkit-background-size: cover;
   // -moz-background-size: cover;
@@ -164,6 +164,12 @@ input:focus {
 
 .picture-edit:hover {
   color: #60b9e8 !important
+}
+
+.admin:hover {
+  background-color: #eee !important;
+  border-radius: 5px;
+  box-shadow: inset 0 0 2px #3a3b3a;
 }
 
 

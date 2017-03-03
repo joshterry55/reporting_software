@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import OfficeSelect from './OfficeSelect'
 import { Dropdown, Button, NavItem } from 'react-materialize';
+import Admin from './Admin'
 
 class RegionSelect extends React.Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class RegionSelect extends React.Component {
     }
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>           
+        <Admin />
+        <div className='col s12 m10 offset-m1 white-container' style={{ position: 'relative', zIndex: '-1'}}>
           <div className='container'>
             <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
               <h4 className='center'>New Sale</h4>

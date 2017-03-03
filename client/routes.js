@@ -70,7 +70,7 @@ export default (
           <Route path='/region/:id' component={Region} />
           <Route path='/office/:id' component={Office} />
           <Route path='/createcompany' component={CreateCompany} />
-          <Route path='/admin' component={Admin} />
+          <Route path='/admin' component={Company} />
           <Route path='/settings' component={Settings} />
           <Route path='/employeeselect' component={EmployeeSelect} />
           <Route path='/addsale' component={RegionSelect} />
