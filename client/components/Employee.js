@@ -189,8 +189,8 @@ class Employee extends React.Component {
 
   cancelPerc(threemonth) {
     let cancel = threemonth.cancel
-    let siteSurvey = threemonth.total_ss
-    if(siteSurvey === 0) {
+    let close = threemonth.close
+    if(close === 0) {
       return(
         <span> 0%</span>
       )
@@ -199,7 +199,7 @@ class Employee extends React.Component {
         <span> 0%</span>
       )
     } else {
-      let percentage = ((cancel / siteSurvey) * 100).toFixed(1)
+      let percentage = ((cancel / close) * 100).toFixed(1)
       if(percentage >= 35) {
         return(
           <span style={{backgroundColor: '#ffcdd2', padding: '0px 2px'}}>{percentage}%</span>
@@ -223,14 +223,14 @@ class Employee extends React.Component {
   cancelVideos(threemonth) {
     if(threemonth.id) {
       let cancel = threemonth.cancel
-      let siteSurvey = threemonth.total_ss
+      let close = threemonth.close
       let cancelPercentage
       if(cancel === 0) {
         cancelPercentage = 0
-      } else if(siteSurvey === 0) {
+      } else if(close === 0) {
         cancelPercentage = 0
       } else {
-        cancelPercentage = ((cancel / siteSurvey) * 100)
+        cancelPercentage = ((cancel / close) * 100)
       }
       if(cancelPercentage >= 35) {
         return(
@@ -345,17 +345,17 @@ class Employee extends React.Component {
   motivation(threemonth) {
     if(threemonth.id) {
       let cancel = threemonth.cancel
-      let siteSurvey = threemonth.total_ss
+      let close = threemonth.close
       let trueSiteSurvey = threemonth.site_survey
       let sitdown = threemonth.sit_down
       let cancelPercentage
       let truePercentage
       if(cancel === 0) {
         cancelPercentage = 0
-      } else if(siteSurvey === 0) {
+      } else if(close === 0) {
         cancelPercentage = 0
       } else {
-        cancelPercentage = ((cancel / siteSurvey) * 100)
+        cancelPercentage = ((cancel / close) * 100)
       }
       if(sitdown === 0) {
         truePercentage = 0
