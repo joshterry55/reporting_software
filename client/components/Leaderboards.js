@@ -10,37 +10,6 @@ class Leaderboards extends React.Component {
     this.clearCurrentRegion = this.clearCurrentRegion.bind(this)
   }
 
-  onPage(tab) {
-    switch(tab) {
-      case "employees":
-        if(document.location.pathname === "/leaderboards/employees") {
-          return styles.onTab
-        } else {
-          return styles.adminTab
-        }
-        break;
-      case "offices":
-        if(document.location.pathname === "/leaderboards/offices") {
-          return styles.onTab
-        } else {
-          return styles.adminTab
-        }
-      case "regions":
-        if(document.location.pathname === "/leaderboards/regions") {
-          return styles.onTab
-        } else {
-          return styles.adminTab
-        }
-        break;
-      case "company":
-        if(document.location.pathname === "/leaderboards/company") {
-          return styles.onTab
-        } else {
-          return styles.adminTab
-        }
-    }
-  }
-
   clearCurrent() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
@@ -50,37 +19,6 @@ class Leaderboards extends React.Component {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
     this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
     // this.props.dispatch({type: 'RESET_REGION_SALES'})
-  }
-
-  fontColor(param) {
-    switch(param) {
-      case "employees":
-        if(document.location.pathname === "/leaderboards/employees") {
-          return styles.onTabText
-        } else {
-          return styles.tabText
-        }
-        break;
-      case "offices":
-        if(document.location.pathname === "/leaderboards/offices") {
-          return styles.onTabText
-        } else {
-          return styles.tabText
-        }
-      case "regions":
-        if(document.location.pathname === "/leaderboards/regions") {
-          return styles.onTabText
-        } else {
-          return styles.tabText
-        }
-        break;
-      case "company":
-        if(document.location.pathname === "/leaderboards/company") {
-          return styles.onTabText
-        } else {
-          return styles.tabText
-        }
-    }
   }
 
   leaderboardTabs() {
