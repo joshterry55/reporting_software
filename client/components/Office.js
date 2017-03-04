@@ -4,6 +4,7 @@ import { currentregion } from '../actions/currentregion'
 import { Link, browserHistory } from 'react-router'
 import { setFlash } from '../actions/flash';
 import Employees from './Employees'
+import Admin from './Admin'
 
 class Office extends React.Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class Office extends React.Component {
     let officeId = parseInt(this.props.params.id)
     return(
       <div className='row'>
+        <Admin />
         <div className='col s12 m10 offset-m1 white-container'>
           {this.display()}
           <Employees urlParams={officeId}/>

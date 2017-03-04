@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { Link, browserHistory } from 'react-router'
 import { setFlash } from '../actions/flash';
+import Admin from './Admin'
 
 class Region extends React.Component {
   constructor(props) {
@@ -161,6 +162,7 @@ class Region extends React.Component {
   render() {
     return(
       <div className='row'>
+        <Admin />
         <div className='col s12 m10 offset-m1 white-container'>
           {this.display()}
           {this.displayAdd()}

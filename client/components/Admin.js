@@ -9,30 +9,52 @@ class Admin extends React.Component {
     this.setForm = this.setForm.bind(this)
   }
 
+  // highlightNav(tab) {
+  //    switch(tab) {
+  //      case "addsale":
+  //        if(document.location.pathname === "/addsale") {
+  //          return styles.adminNavActiveTab
+  //        } else {
+  //          return styles.adminNavTab
+  //        }
+  //        break;
+  //     case "company":
+  //        if(document.location.pathname === "/company") {
+  //          return styles.adminNavActiveTab
+  //        } else {
+  //          return styles.adminNavTab
+  //        }
+  //      case "settings":
+  //        if(document.location.pathname === "/settings") {
+  //          return styles.adminNavActiveTab
+  //        } else {
+  //          return styles.adminNavTab
+  //        }
+  //        break;
+  //    }
+  //  }
+
   highlightNav(tab) {
-     switch(tab) {
-       case "addsale":
-         if(document.location.pathname === "/addsale") {
-           return styles.adminNavActiveTab
-         } else {
-           return styles.adminNavTab
-         }
-         break;
-      case "company":
-         if(document.location.pathname === "/company") {
-           return styles.adminNavActiveTab
-         } else {
-           return styles.adminNavTab
-         }
-       case "settings":
-         if(document.location.pathname === "/settings") {
-           return styles.adminNavActiveTab
-         } else {
-           return styles.adminNavTab
-         }
-         break;
-     }
-   }
+    if(tab === 'addsale') {
+      if(document.location.pathname === "/addsale") {
+        return styles.adminNavActiveTab
+      } else {
+        return styles.adminNavTab
+      }
+    } else if(tab === 'company') {
+      if(document.location.pathname === "/company") {
+      return styles.adminNavActiveTab
+      } else {
+        return styles.adminNavTab
+      }
+    } else if(tab === 'settings') {
+      if(document.location.pathname === "/settings") {
+        return styles.adminNavActiveTab
+      } else {
+        return styles.adminNavTab
+      }
+    }
+  }
 
   setForm() {
     this.props.dispatch({type: 'REMOVE_CURRENT_REGION'})
