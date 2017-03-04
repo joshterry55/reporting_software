@@ -86,18 +86,27 @@ class Leaderboards extends React.Component {
   leaderboardTabs() {
     if(this.props.assignedcompany.id) {
       return(
-          <div className="col s12" style={{marginTop: '10px', backgroundColor: "#f2f7f7"}}>
-            <ul className="tabs tabs-fixed-width" style={{backgroundColor: "#f2f7f7"}}>
-              <li  className="tab col s3 admin-tabs" style={this.onPage("employees")}><Link className='board-tabs' style={this.fontColor("employees")} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
-              <li  className="tab col s3 admin-tabs" style={this.onPage("offices")}><Link className='board-tabs' style={this.fontColor("offices")} onClick={this.clearCurrentRegion} to='/leaderboards/offices'>Office</Link></li>
-              <li  className="tab col s3 admin-tabs" style={this.onPage("regions")}><Link className='board-tabs' style={this.fontColor("regions")} to='/leaderboards/regions'>Region</Link></li>
-              <li  className="tab col s3 admin-tabs" style={this.onPage("company")}><Link className='board-tabs' style={this.fontColor("company")} to='/leaderboards/company'>Company</Link></li>
+          <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '13px'}}>
+            <ul className="tabs tabs-fixed-width" style={{backgroundColor: 'gray'}}>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link className='admin' style={{color: '#555'}} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
+              </div>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link className='admin' style={{color: '#555'}} onClick={this.clearCurrentRegion} to='/leaderboards/offices'>Office</Link></li>
+              </div>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link className='admin' style={{color: '#555'}} to='/leaderboards/regions'>Region</Link></li>
+              </div>
+              <div className="tab col s3">
+                <li  className="tab col s10 offset-s1 admin-tabs" style={{border: '1px solid #3a3b3a', borderRadius: '5px', backgroundColor: '#f2f7f7', boxShadow: 'inset 0 0 2px #3a3b3a'}}><Link className='admin' style={{color: '#555'}} to='/leaderboards/company'>Company</Link></li>
+              </div>
             </ul>
           </div>
       )
     } else {
       return(
           <div className="col s12">
+
             NO LEADERBOARDS
           </div>
       )
@@ -107,7 +116,9 @@ class Leaderboards extends React.Component {
   render() {
     return(
       <div>
-        {this.leaderboardTabs()}
+        <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
+          {this.leaderboardTabs()}
+        </div>
       </div>
     )
   }
