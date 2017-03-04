@@ -56,7 +56,6 @@ class EmployeeSelect extends React.Component {
       return(
         <div>
 
-          no current
         </div>
       )
     }
