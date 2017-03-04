@@ -76,7 +76,7 @@ class NavBar extends React.Component {
   //  });
 
   highlightNav(id) {
-    $(`#${id}`).addClass('selected').siblings().removeClass('selected')
+    $(`#${id}`).addClass('selectedNav').siblings().removeClass('selectedNav')
   }
 
   clearCurrent() {

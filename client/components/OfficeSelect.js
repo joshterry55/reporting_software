@@ -33,7 +33,7 @@ class OfficeSelect extends React.Component {
     }
     return(
       <div>
-        <div className='col s10 offset-s1 m6 offset-m3'>
+        <div className='col s10 offset-s1 m8 offset-m2'>
           <br />
           <Dropdown  trigger={<Button style={styles.employeeButton}>{officeName}</Button>}>
             { this.showOffices() }

@@ -35,7 +35,7 @@ class RegionSelect extends React.Component {
         <Admin />
         <div className='col s12 m10 offset-m1 white-container'>
           <div className='container'>
-            <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
+            <div className='col s10 offset-s1 m8 offset-m2' style={{marginTop: '15px'}}>
               <h4 className='center'>New Sale</h4>
               <br />
               <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>

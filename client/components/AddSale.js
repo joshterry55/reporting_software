@@ -125,28 +125,34 @@ employeeFind(id) {
 
   employeeOptions() {
     return this.props.employees.map( employee => {
-      return(<option key={employee.id} value={employee.id}>{`${employee.first_name} ${employee.last_name}`}</option>);
+      return(<option key={employee.id} value={employee.id} className='add-sale-input'>{`${employee.first_name} ${employee.last_name}`}</option>);
     });
   }
 
   addSale() {
     if(this.props.employees.length) {
       return(
-        <form ref='saleForm' onSubmit={this.submitSale}>
+        <form ref='saleForm' style={{padding: '15px'}} onSubmit={this.submitSale}>
           <div>
             <label>Select a salesman</label>
-            <select ref='employee'>
+            <select ref='employee' className="browser-default add-sale-box">
               { this.employeeOptions() }
             </select>
             <br />
-            <p style={styles.customLabel}>Customer First Name</p>
-            <input type='text' ref='firstName' required placeholder="First Name" />
-            <p style={styles.customLabel}>Customer Last Name</p>
-            <input type='text' ref='lastName' required placeholder="Last Name" />
-            <p style={styles.customLabel}>KW</p>
-            <input type='text' ref='kw' required placeholder="ex. 5.2"/>
+            <div className='col s12 m5' >
+              <p style={styles.customLabel}>Customer First Name</p>
+              <input type='text' ref='firstName' className="add-sale-box" required placeholder="First Name" />
+            </div>
+            <div className='col s12 m5' >
+              <p style={styles.customLabel}>Customer Last Name</p>
+              <input type='text' ref='lastName' className="add-sale-box" required placeholder="Last Name" />
+            </div>
+            <div className='col s12 m2'>              
+              <p style={styles.customLabel}>KW</p>
+              <input type='text' ref='kw' className="add-sale-box" required placeholder="ex. 5.2"/>
+            </div>
             <p>
-              <input type="checkbox" id="sitdown" className='filled-in checkbox-blue' />
+              <input type="checkbox" id="sitdown" className='filled-in checkbox-blue add-sale-box' />
               <label htmlFor="sitdown">Sit Down</label>
             </p>
             <p>
@@ -162,7 +168,7 @@ employeeFind(id) {
               <label htmlFor="cancel">Cancelled</label>
             </p>
             <label>Date</label>
-            <input type="date" ref='date' className="datepicker" placeholder='click to select date' />
+            <input type="date" ref='date' className="datepicker add-sale-box" placeholder='click to select date' />
           </div>
           <div className='col s6 offset-s3 l4 offset-l4' style={{marginBottom: '30px', marginTop: '10px'}}>
             <button type='submit' className='btn' style={{backgroundColor: '#60b9e8', width: '100%', textAlign: 'center'}}>Add Sale</button>
@@ -180,7 +186,7 @@ employeeFind(id) {
 
   render() {
     return(
-      <div className="col s12" style={{marginTop: '15px'}}>
+      <div className="col s12 row" style={{marginTop: '15px', backgroundColor: '#ddd', borderRadius: '10px'}}>
         {this.addSale()}
       </div>
     )
