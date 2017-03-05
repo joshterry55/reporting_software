@@ -117,8 +117,14 @@ class Announcements extends React.Component {
   render() {
     return(
       <div className='row'>
+        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>
+              Announcements
+            </span>
+          </div>
+        </div>
         <div className='col s12 m10 offset-m1 white-container'>
-          announcements
         </div>
       </div>
     )
