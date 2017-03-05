@@ -20,8 +20,12 @@ class Settings extends React.Component {
     return(
       <div className='row'>
         <Admin />
+        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>Settings</span>
+          </div>
+        </div>
         <div className='col s12 m10 offset-m1 white-container'>
-          Settings
         </div>
       </div>
     )

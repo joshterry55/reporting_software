@@ -54,7 +54,7 @@ class Company extends React.Component {
             <div className='col s12 m4 offset-m4'>
               <form ref='editCompanyForm' onSubmit={(e) => this.submitEdittedCompany(e, company.id)}>
                 <div className='col s10'>
-                  <input style={{fontSize: '30px'}} ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
+                  <input style={{fontSize: '20px'}} ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
                 </div>
                 <div className='col s2' style={{marginTop: '10px'}}>
                   <button className='btn' type='submit' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
@@ -66,7 +66,7 @@ class Company extends React.Component {
       } else {
         return(
             <div className="center">
-              <div style={{fontSize: '35px', paddingTop: '10px'}}>{company.name} <i className="small material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
+              <div>{company.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i></div>
             </div>
         )
       }
@@ -77,8 +77,14 @@ class Company extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 m10 offset-m1 white-container'>
-          {this.display()}
+          <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+            <div style={{marginTop: '10px', marginBottom: '10px'}}>
+              <span style={{fontSize: '20px'}}>
+                {this.display()}
+              </span>
+            </div>
+          </div>
+        <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
           <Regions />
         </div>
       </div>

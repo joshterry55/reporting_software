@@ -182,7 +182,7 @@ employeeFind(id) {
     } else {
       return(
         <div className="center">
-          <h4>No Employees</h4>
+          <div style={{fontSize: '20px', height: '200px', lineHeight: '200px'}}>No Employees</div>
         </div>
       )
     }

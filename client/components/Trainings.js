@@ -200,7 +200,6 @@ class Trainings extends React.Component {
         <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>{companyName} Training</span>
-
           </div>
         </div>
         <div className='col s12' style={{paddingLeft: '45px', paddingRight: '45px'}}>

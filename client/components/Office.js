@@ -73,7 +73,7 @@ class Office extends React.Component {
           <div className='col s12 m4 offset-m4'>
             <form ref='editOfficeForm' onSubmit={(e) => this.submitEdittedOffice(e, office.id)}>
               <div className='col s10'>
-                <input ref='newOfficeName' style={{fontSize: '30px'}} type='text' defaultValue={office.name} required placeholder={office.name} autoFocus />
+                <input ref='newOfficeName' style={{fontSize: '20px'}} type='text' defaultValue={office.name} required placeholder={office.name} autoFocus />
               </div>
               <div className='col s2' style={{marginTop: '10px'}}>
                 <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
@@ -85,7 +85,7 @@ class Office extends React.Component {
     } else {
       return(
         <div className='center'>
-          <div style={{fontSize: '35px', paddingTop: '10px'}}>{office.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Office'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteOffice(office.id)}>delete</i></div>
+          <div>{office.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Office'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteOffice(office.id)}>delete</i></div>
         </div>
       )
     }
@@ -96,8 +96,14 @@ class Office extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 m10 offset-m1 white-container'>
-          {this.display()}
+        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>
+              {this.display()}
+            </span>
+          </div>
+        </div>
+        <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
           <Employees urlParams={officeId}/>
         </div>
       </div>

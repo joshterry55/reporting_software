@@ -140,7 +140,7 @@ class Region extends React.Component {
           <div className='col s12 m4 offset-m4'>
             <form ref='editRegionForm' onSubmit={(e) => this.submitEdittedRegion(e, region.id)}>
               <div className='col s10'>
-                <input  style={{fontSize: '30px'}} ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
+                <input  style={{fontSize: '20px'}} ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
               </div>
               <div className='col s2' style={{marginTop: '10px'}}>
                 <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
@@ -152,7 +152,7 @@ class Region extends React.Component {
     } else {
       return(
         <div className="center">
-          <div style={{fontSize: '35px', paddingTop: '10px'}}>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteRegion(region.id)}>delete</i></div>
+          <div>{region.name} <i className="tiny material-icons confirm-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Company'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Region" onClick={() => this.deleteRegion(region.id)}>delete</i></div>
         </div>
       )
     }
@@ -163,8 +163,14 @@ class Region extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 m10 offset-m1 white-container'>
-          {this.display()}
+          <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+            <div style={{marginTop: '10px', marginBottom: '10px'}}>
+              <span style={{fontSize: '20px'}}>
+                {this.display()}
+              </span>
+            </div>
+          </div>
+        <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
           {this.displayAdd()}
           <div className='collection'>
             {this.displayOffices()}
