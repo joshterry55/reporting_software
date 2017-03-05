@@ -153,19 +153,19 @@ employeeFind(id) {
               <p style={styles.customLabel}>KW</p>
               <input type='text' ref='kw' className="add-sale-box" required placeholder="ex. 5.2"/>
             </div>
-            <p className='col s12 l3 center'>
+            <p className='col s6 l3 center'>
               <input type="checkbox" id="sitdown" className='filled-in checkbox-blue add-sale-box' />
               <label htmlFor="sitdown">Sit Down</label>
             </p>
-            <p className='col s12 l3 center'>
+            <p className='col s6 l3 center'>
               <input type="checkbox" id="close" className='filled-in checkbox-blue' />
               <label htmlFor="close">Closed Sale</label>
             </p>
-            <p className='col s12 l3 center'>
+            <p className='col s6 l3 center'>
               <input type="checkbox" id="sitesurvey" className='filled-in checkbox-blue' />
               <label htmlFor="sitesurvey">Site Survey</label>
             </p>
-            <p className='col s12 l3 center'>
+            <p className='col s6 l3 center'>
               <input type="checkbox" id="cancel" className='filled-in checkbox-blue' />
               <label htmlFor="cancel">Cancelled</label>
             </p>
