@@ -40,16 +40,18 @@ class OfficeLeaderboard extends React.Component {
     return(
       <div className='row'>
         <Leaderboards />
-            <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
-              <div className='col s10 offset-s1 m6 offset-m3' style={{marginTop: '15px'}}>
-                <br />
-                <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                  { this.showRegions() }
-                </Dropdown>
-              </div>
-              <br />
-              <LeaderboardSelector />
-            </div>
+        <div className='col s12 center' style={{height: '50px', backgroundColor: '#ccc', lineHeight: '50px', fontSize: '20px'}}>
+          Leaderboard
+        </div>
+        <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+          <div className='col s12 m4 offset-m3' style={{marginTop: '10px'}}>
+            <span>Region:</span>
+            <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+              { this.showRegions() }
+            </Dropdown>
+          </div>
+          <LeaderboardSelector />
+        </div>
       </div>
     )
   }

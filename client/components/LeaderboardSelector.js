@@ -22,6 +22,28 @@ class LeaderboardSelector extends React.Component {
     this.props.dispatch({type: 'CURRENT_FILTER', choice})
   }
 
+  urlCheck(selectName) {
+    if(window.location.pathname === '/leaderboards/regions') {
+      return(
+        <div className='col m2 offset-m5' style={{marginTop: '10px'}}>
+          Sort by:
+          <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
+            { this.showFilters() }
+          </Dropdown>
+        </div>
+      )
+    } else {
+      return(
+        <div className='col s12 m2' style={{marginTop: '10px'}}>
+          Sort by:
+          <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
+            { this.showFilters() }
+          </Dropdown>
+        </div>
+      )
+    }
+  }
+
   render() {
     let selectName
     if (this.props.currentfilter.length != 0) {
@@ -31,15 +53,7 @@ class LeaderboardSelector extends React.Component {
     }
     return(
       <div>
-        <div className='col s10 offset-s1 m6 offset-m3'>
-          <br />
-          <div className='col m6 offset-m3 center'>
-            Sort by:
-            <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
-              { this.showFilters() }
-            </Dropdown>
-          </div>
-        </div>
+        {this.urlCheck(selectName)}
         <div className='col s12'>
         </div>
         <LeaderboardContainer />

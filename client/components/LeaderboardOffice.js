@@ -36,13 +36,11 @@ class LeaderboardOffice extends React.Component {
     }
     return(
       <div>
-        <div className='col s10 offset-s1 m6 offset-m3'>
-          <br />
+        <div className='col s12 m5' style={{marginTop: '10px'}}>
+          <span>Office:</span>
           <Dropdown  trigger={<Button style={styles.employeeButton}>{officeName}</Button>}>
             { this.showOffices() }
           </Dropdown>
-        </div>
-        <div className='col s12'>
         </div>
         <LeaderboardSelector />
       </div>
@@ -60,7 +58,7 @@ const styles = {
     height: '40px',
     backgroundColor: '#60b9e8',
     color: '#f2f7f7',
-    borderRadius: '0',
+    borderRadius: '5px',
     textShadow: '1px 1px 1px rgba(0,0,0,0.5)'
   }
 }

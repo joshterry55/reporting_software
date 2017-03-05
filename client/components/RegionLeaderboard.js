@@ -21,7 +21,10 @@ class RegionLeaderboard extends React.Component {
     return(
       <div className='row'>
         <Leaderboards />
-        <div className='col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+        <div className='col s12 center' style={{height: '50px', backgroundColor: '#ccc', lineHeight: '50px', fontSize: '20px'}}>
+          Leaderboard
+        </div>
+        <div className='col s12 m10 offset-m1 center' style={{paddingLeft: '0px', paddingRight: '0px'}}>
           <LeaderboardSelector />
         </div>
       </div>
