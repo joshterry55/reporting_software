@@ -42,9 +42,11 @@ class LeaderboardEmployees extends React.Component {
     return(
       <div className='row'>
         <Leaderboards />
-        <div className='col s12 center' style={{height: '50px', backgroundColor: '#ccc', lineHeight: '50px', fontSize: '20px'}}>
-          Leaderboard
-        </div>
+          <div className='col s12 center' style={{backgroundColor: '#ccc', fontSize: '20px'}}>
+            <div style={{marginTop: '10px', marginBottom: '10px'}}>
+              Leaderboard
+            </div>
+          </div>
         <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
           <div className='col s12 m5' style={{marginTop: '10px'}}>
             <span>Region:</span>

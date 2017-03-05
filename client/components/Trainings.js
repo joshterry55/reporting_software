@@ -149,7 +149,7 @@ class Trainings extends React.Component {
                 <div className='col s12 m4 offset-m4'>
                   <form ref='editCategoryForm' onSubmit={(e) => this.editCategory(e, category.id)}>
                     <div className='col s10 '>
-                      <input ref='editCategoryName' style={{fontSize: '25px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
+                      <input ref='editCategoryName' style={{fontSize: '20px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
                     </div>
                     <div className='col s2'>
                       <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
@@ -168,7 +168,7 @@ class Trainings extends React.Component {
             return(
               <div key={category.id} className='col s12'>
                 <div className='col s12 m4 offset-m4 center'>
-                  <div style={{fontSize: '35px'}}>{category.name}</div>
+                  <div style={{fontSize: '20px'}}>{category.name}</div>
                 </div>
                 <div className='col s12' style={{marginBottom: '10px'}}>
                   <TrainingSections current={category} />
@@ -180,7 +180,7 @@ class Trainings extends React.Component {
           return(
             <div  key={category.id} className='col s12'>
               <div className='col s12 m4 offset-m4 center'>
-                <div style={{fontSize: '35px'}}><b>{category.name}</b></div>
+                <div style={{fontSize: '20px'}}><b>{category.name}</b></div>
                 {this.adminCheck(category)}
               </div>
               <div className='col s12' style={{marginBottom: '10px'}}>
@@ -197,11 +197,14 @@ class Trainings extends React.Component {
     let companyName = this.props.assignedcompany.name
     return(
       <div  className='row '>
-        <div className='col s12 m10 offset-m1 white-container'>
-          <div className='center' style={{paddingTop: '15px'}}>
-            <span style={{fontSize: '50px'}}>{companyName} Training</span>
+        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>{companyName} Training</span>
+
           </div>
-          <div style={{marginBottom: '20px'}}>
+        </div>
+        <div className='col s12' style={{paddingLeft: '45px', paddingRight: '45px'}}>
+          <div style={{marginBottom: '20px', marginTop: '10px'}}>
             {this.display()}
           </div>
           <div>
