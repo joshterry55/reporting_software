@@ -30,8 +30,8 @@ class SuggestedVideo extends React.Component {
       return this.props.trainingvideos.map( video => {
         if(videoId === video.id) {
           return(
-            <div className='col s12 m10 offset-m1 center' style={{marginTop: '30px', marginBottom: '40px'}}>
-              <span style={{fontSize: '30px'}}>{video.name}</span><br />
+            <div className='col s12 m10 offset-m1 center' style={{marginTop: '20px', marginBottom: '40px'}}>
+              <span style={{fontSize: '20px'}}>{video.name}</span><br />
               <span style={{fontSize: '20px'}}>- {video.video_purpose}</span>
               <iframe className='col s12' style={{marginTop: '20px', borderRadius: '5px'}}
                 src={video.link} height="600" frameBorder="0" allowFullScreen>
@@ -46,7 +46,14 @@ class SuggestedVideo extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
+        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>
+              Suggested Video
+            </span>
+          </div>
+        </div>
+        <div className='col s12'>
           {this.showVideo()}
         </div>
       </div>

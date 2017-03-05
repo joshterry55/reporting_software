@@ -114,7 +114,7 @@ class EmployeeSelect extends React.Component {
     let company = this.props.assingedcompany
     return(
       <div className='row'>
-        <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
+        <div style={{height: '75px', backgroundColor: 'gray'}}>
           <form className='col s12 m4 offset-m4' onSubmit={this.setCurrent}>
             <div className='col s10' style={{marginTop: '15px'}}>
               <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}}>
