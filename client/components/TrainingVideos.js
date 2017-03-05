@@ -76,7 +76,7 @@ class TrainingVideos extends React.Component {
         video_purpose: purpose
       }}
     }).done( video => {
-      
+
       this.props.dispatch({type: 'ADD_TRAINING_VIDEO', video})
       this.refs.videoForm.reset()
       this.toggleAdd()
@@ -316,10 +316,12 @@ class TrainingVideos extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
-          <div className='center' id='toTop' name='toTop' style={{fontSize: '50px', paddingTop: '20px'}}>
-            Training Videos
+        <div className='col s12 center' id='toTop' name='toTop' style={{backgroundColor: '#ccc'}}>
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px'}}>Training Videos</span>
           </div>
+        </div>
+        <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
           {this.display()}
           <div className='col s12 m9'>
             <div className='col s12'><br/><br /></div>

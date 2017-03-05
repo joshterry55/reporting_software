@@ -221,6 +221,33 @@ class TrainingSections extends React.Component {
             } else {
               return(
                 <div key={section.id} className='col s12 m4 l3' style={{marginBottom: '20px'}}>
+                  <Link to={`/trainingvideos/${section.id}`}>
+                    <div style={{height: '200px', marginBottom: '10px'}}>
+                      <div style={{
+                          backgroundImage: `url(${section.avatar})`,
+                          width: '100%',
+                          height: '100%',
+                          maxWidth: '250px',
+                          display: 'block',
+                          backgroundSize: 'cover',
+                          borderRadius: '5px',
+                          boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                          margin: '10px auto'
+                        }}>
+                      </div>
+                    </div>
+                  </Link>  
+                  <div className='col s12 center'>
+                    <div style={{fontSize: '18px'}}><b><Link className='section-link' to={`/trainingvideos/${section.id}`}>{section.name}</Link></b></div>
+                    {this.adminCheck(section)}
+                  </div>
+                </div>
+              )
+            }
+          } else {
+            return(
+              <div  key={section.id} className='col s12 m4 l3' style={{marginBottom: '20px'}}>
+                <Link to={`/trainingvideos/${section.id}`}>
                   <div style={{height: '200px', marginBottom: '10px'}}>
                     <div style={{
                         backgroundImage: `url(${section.avatar})`,
@@ -235,30 +262,7 @@ class TrainingSections extends React.Component {
                       }}>
                     </div>
                   </div>
-                  <div className='col s12 center'>
-                    <div style={{fontSize: '18px'}}><b><Link className='section-link' to={`/trainingvideos/${section.id}`}>{section.name}</Link></b></div>
-                    {this.adminCheck(section)}
-                  </div>
-                </div>
-              )
-            }
-          } else {
-            return(
-              <div  key={section.id} className='col s12 m4 l3' style={{marginBottom: '20px'}}>
-                <div style={{height: '200px', marginBottom: '10px'}}>
-                  <div style={{
-                      backgroundImage: `url(${section.avatar})`,
-                      width: '100%',
-                      height: '100%',
-                      maxWidth: '250px',
-                      display: 'block',
-                      backgroundSize: 'cover',
-                      borderRadius: '5px',
-                      boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                      margin: '10px auto'
-                    }}>
-                  </div>
-                </div>
+                </Link>
                 <div className='col s12 center'>
                   <div style={{fontSize: '18px'}}><b><Link className='section-link' to={`/trainingvideos/${section.id}`}>{section.name}</Link></b></div>
                   {this.adminCheck(section)}
