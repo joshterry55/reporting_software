@@ -20,12 +20,8 @@ class CompanyLeaderboard extends React.Component {
     return(
       <div className='row'>
         <Leaderboards />
-        <div className='col s12 m10 offset-m1 white-container'>
-          <div className='col s12'>
-            <div className = 'col s12'>
-              <LeaderboardContainer />
-            </div>
-          </div>
+        <div className='col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+          <LeaderboardContainer />
         </div>
       </div>
     )

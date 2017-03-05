@@ -74,7 +74,7 @@ class CompanyLeaderboardDisplay extends React.Component {
                 <th className='col s1'>SS</th>
                 <th className='col s1'>CA</th>
                 <th className='col s1'>T%</th>
-                <th className='col s1'>C%</th>
+                <th className='col s1'>CA%</th>
                 <th className='col s1'></th>
             </tr>
           </thead>
