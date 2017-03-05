@@ -49,19 +49,19 @@ class ReportRegionSelect extends React.Component {
     }
     return(
       <div className='row'>
-        <div className='col s12 m10 offset-m1 white-container'>
+        <div className='col s12 center' style={{height: '50px', backgroundColor: '#ccc', lineHeight: '50px', fontSize: '20px'}}>
+          Office Reports
+        </div>
+        <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
           {this.adminCheck()}
-          <div className='col s12' style={{zIndex: 0}}>
-            <div className = 'col s12'>
-              <div className='col s10 offset-s1 m6 offset-m3'>
-                <h4 className='center'>Office Reports</h4>
-                <br />
-                <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                  { this.showRegions() }
-                </Dropdown>
-              </div>
-              <ReportOfficeSelect />
+          <div className='col s12' style={{zIndex: '0', paddingLeft: '0px', paddingRight: '0px'}}>
+            <div className='col s10 offset-s1 m6 offset-m3'>
+              <br />
+              <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+                { this.showRegions() }
+              </Dropdown>
             </div>
+            <ReportOfficeSelect />
           </div>
         </div>
       </div>

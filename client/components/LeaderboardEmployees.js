@@ -45,16 +45,14 @@ class LeaderboardEmployees extends React.Component {
         <div className='col s12 center' style={{height: '50px', backgroundColor: '#ccc', lineHeight: '50px', fontSize: '20px'}}>
           Leaderboard
         </div>
-        <div className='col s12' style={{backgroundColor: '#f2f7f7'}}>
-          <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
-            <div className='col s12 m5' style={{marginTop: '10px'}}>
-              <span>Region:</span>
-              <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                { this.showRegions() }
-              </Dropdown>
-            </div>
-            <LeaderboardOffice />
+        <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+          <div className='col s12 m5' style={{marginTop: '10px'}}>
+            <span>Region:</span>
+            <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+              { this.showRegions() }
+            </Dropdown>
           </div>
+          <LeaderboardOffice />
         </div>
       </div>
     )
