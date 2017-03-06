@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  name: MyString
+  start_date: 2017-03-06
+  end_date: 2017-03-06
+  competition_type: MyString
+  grouped_by: MyString
+
+two:
+  company: two
+  name: MyString
+  start_date: 2017-03-06
+  end_date: 2017-03-06
+  competition_type: MyString
+  grouped_by: MyString

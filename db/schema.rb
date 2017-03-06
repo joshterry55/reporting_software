@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302222709) do
+ActiveRecord::Schema.define(version: 20170306232520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,27 @@ ActiveRecord::Schema.define(version: 20170302222709) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "competition_groups", force: :cascade do |t|
+    t.integer  "competition_id"
+    t.string   "avatar"
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["competition_id"], name: "index_competition_groups_on_competition_id", using: :btree
+  end
+
+  create_table "competitions", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "competition_type"
+    t.string   "grouped_by"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["company_id"], name: "index_competitions_on_company_id", using: :btree
+  end
+
   create_table "offices", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "region_id"
@@ -39,6 +60,16 @@ ActiveRecord::Schema.define(version: 20170302222709) do
     t.integer  "company_id"
     t.index ["company_id"], name: "index_offices_on_company_id", using: :btree
     t.index ["region_id"], name: "index_offices_on_region_id", using: :btree
+  end
+
+  create_table "prizes", force: :cascade do |t|
+    t.integer  "competition_id"
+    t.string   "name"
+    t.string   "avatar"
+    t.string   "rank"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["competition_id"], name: "index_prizes_on_competition_id", using: :btree
   end
 
   create_table "regions", force: :cascade do |t|
@@ -145,8 +176,11 @@ ActiveRecord::Schema.define(version: 20170302222709) do
   end
 
   add_foreign_key "announcements", "offices"
+  add_foreign_key "competition_groups", "competitions"
+  add_foreign_key "competitions", "companies"
   add_foreign_key "offices", "companies"
   add_foreign_key "offices", "regions"
+  add_foreign_key "prizes", "competitions"
   add_foreign_key "regions", "companies"
   add_foreign_key "sales", "companies"
   add_foreign_key "sales", "offices"
