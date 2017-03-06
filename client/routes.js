@@ -27,7 +27,7 @@ import TrainingVideos from './components/TrainingVideos'
 import EmployeeSelect from './components/EmployeeSelect'
 import Settings from './components/Settings'
 import SuggestedVideo from './components/SuggestedVideo'
-
+import Competitions from './components/Competitions'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -65,6 +65,7 @@ export default (
         <Route path='/trainingvideos/:id' component={TrainingVideos} />
         <Route path='/suggestedvideo/:id' component={SuggestedVideo} />
         <Route path='/reports' component={ReportRegionSelect} />
+        <Route path='/competitions' component={Competitions} />
         <Route component={AdminRoutes}>
           <Route path='/company' component={Company} />
           <Route path='/region/:id' component={Region} />

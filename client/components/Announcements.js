@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Chart from 'chart.js'
+import AnnouncementsNav from './AnnouncementsNav'
 
 
 class Announcements extends React.Component {
@@ -117,7 +118,8 @@ class Announcements extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+        <AnnouncementsNav />
+        <div className='col s12 center' style={{backgroundColor: '#ccc', marginTop: '0px'}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>
               Announcements

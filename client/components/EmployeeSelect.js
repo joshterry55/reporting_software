@@ -111,21 +111,23 @@ class EmployeeSelect extends React.Component {
   }
 
   render() {
-    let company = this.props.assingedcompany
+    let company = this.props.assignedcompany
     return(
       <div className='row'>
         <div style={{height: '75px', backgroundColor: 'gray'}}>
-          <form className='col s12 m4 offset-m4' onSubmit={this.setCurrent}>
-            <div className='col s10' style={{marginTop: '15px'}}>
-              <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}}>
-                <option defaultValue="" disabled selected>Select a salesman</option>
-                {this.employeeSelector()}
-              </select>
-            </div>
-            <div className='col s2' style={{marginTop: '20px'}}>
-              <input type='submit' className='btn' value='search' style={{backgroundColor: '#60b9e8',    textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}/>
-            </div>
-          </form>
+          <div className='col s12 m4 offset-m4'>
+            <form onSubmit={this.setCurrent} className='col s12'>
+              <div className='col s9' style={{marginTop: '15px'}}>
+                <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}}>
+                  <option defaultValue="" disabled selected>Select a salesman</option>
+                  {this.employeeSelector()}
+                </select>
+              </div>
+              <div className='col s3' style={{marginTop: '20px'}}>
+                <input type='submit' className='btn' value='search' style={{backgroundColor: '#60b9e8',    textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}/>
+              </div>
+            </form>
+          </div>
           <div className='col s12'></div>
         </div>
         {this.check()}
