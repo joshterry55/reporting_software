@@ -54,6 +54,6 @@ class Api::CompetitionsController < ApplicationController
   private
 
   def competition_params
-    params.require(:sale).permit(:company_id, :name, :start_date, :end_date, :competition_type, :grouped_by)
+    params.require(:competition).permit(:company_id, :name, :start_date, :end_date, :competition_type, :grouped_by)
   end
 end

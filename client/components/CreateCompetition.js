@@ -8,6 +8,7 @@ class CreateCompetition extends React.Component {
   constructor(props) {
     super(props)
 
+    this.submitCompetition = this.submitCompetition.bind(this)
   }
 
   componentDidMount() {
@@ -29,16 +30,66 @@ class CreateCompetition extends React.Component {
     });
   }
 
+  submitCompetition(e) {
+    e.preventDefault()
+    let start = this.refs.startDate.value
+    let end = this.refs.endDate.value
+    let name = this.refs.name.value
+    let competitionType = this.refs.compType.value
+    let group = this.refs.groupedBy.value
+    let id = this.props.assignedcompany.id
+    if(group === 'Select Option') {
+      confirm('Please select a grouped by option')
+    } else {
+      if(competitionType === 'Select Option') {
+        confirm('Please select a competition type')
+      } else {
+        if(start === '') {
+          confirm('Please select a start date for your competition')
+        } else {
+          if(end === '') {
+            confirm('Please select an end date for your competition')
+          } else {
+            let newStart = new Date(start)
+            let startCheck = newStart.getTime()
+            let newEnd = new Date(end)
+            let endCheck = newEnd.getTime()
+            if(endCheck < startCheck) {
+              confirm('End date must be after start date')
+            } else {
+              $.ajax({
+                url: '/api/competitions',
+                type: 'POST',
+                dataType: 'JSON',
+                data: { competition: {
+                  company_id: id,
+                  name: name,
+                  start_date: start,
+                  end_date: end,
+                  competition_type: competitionType,
+                  grouped_by: group
+                }}
+              }).done( competition => {
+                debugger
+              }).fail( data => {
+              })
+            }
+          }
+        }
+      }
+    }
+  }
+
   addCompetition() {
     return(
-      <form style={{marginTop: '20px'}}>
+      <form style={{marginTop: '20px'}} onSubmit={this.submitCompetition}>
         <div className='col s12 m4 offset-m4'>
           <label>Name</label>
-          <input type="text" />
+          <input ref='name' type="text" required />
         </div>
         <div className='col s12 m4 offset-m4'>
           <label>Grouped By (Company-wide, region vs region, office vs office)</label>
-          <select ref='employee' className="browser-default add-sale-box">
+          <select ref='groupedBy' className="browser-default add-sale-box">
             <option defaultValue="" disabled selected>Select Option</option>
             <option value='office' className='add-sale-input'>Office</option>
             <option value='region' className='add-sale-input'>Region</option>
@@ -48,7 +99,7 @@ class CreateCompetition extends React.Component {
         </div>
         <div className='col s12 m4 offset-m4'>
           <label>Competition Type</label>
-          <select ref='employee' className="browser-default add-sale-box">
+          <select ref='compType' className="browser-default add-sale-box" required>
             <option defaultValue="" disabled selected>Select Option</option>
             <option value='Team' className='add-sale-input'>Team</option>
             <option value='Individual' className='add-sale-input'>Individual</option>
@@ -57,13 +108,16 @@ class CreateCompetition extends React.Component {
         </div>
         <div className='col s12 m4 offset-m4'>
           <div className='col s6' style={{color: 'white'}}>
-            <label>Date</label>
-            <input type="date" ref='startDate' className="datepicker add-sale-box green-back" placeholder='click to select date' />
+            <label>Start Date</label>
+            <input type="date" ref='startDate' className="datepicker add-sale-box green-back" placeholder='click to select date' required />
           </div>
           <div className='col s6'>
-            <label>Date</label>
-            <input type="date" ref='endDate' className="datepicker add-sale-box red-back" placeholder='click to select date' />
+            <label>End Date</label>
+            <input type="date" ref='endDate' className="datepicker add-sale-box red-back" placeholder='click to select date' required />
           </div>
+        </div>
+        <div className='col s12 center'>
+          <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
         </div>
       </form>
     )
