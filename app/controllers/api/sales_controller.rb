@@ -52,6 +52,14 @@ class Api::SalesController < ApplicationController
     render json: @sales
   end
 
+  def competition_sales
+    @company = Company.find(params[:id])
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @sales = @company.sales.where(date: (@start_date)..(@end_date)).where(site_survey: '1')
+    render json: @sales
+  end
+
   def search
     @company = Company.find(params[:id])
     @search = params[:search]
@@ -92,6 +100,6 @@ class Api::SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :company_id, :startday, :salesman, :search)
+    params.require(:sale).permit(:first_name, :last_name, :kw, :sit_down, :close, :site_survey, :cancel, :date, :user_id, :office_id, :region_id, :company_id, :startday, :salesman, :search, :start_date, :end_date)
   end
 end

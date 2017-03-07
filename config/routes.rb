@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'company/:id/not_started_competitions', as: 'company/not_started_competitions', :to => 'competitions#not_started'
     get 'company/:id/completed_competitions', as: 'company/completed_competitions', :to => 'competitions#completed'
     get 'competition/:id/prizes', as: 'competition/prizes', :to => 'prizes#show'
+    get 'competition/:id/competition_groups', as: 'competition/competition_groups', :to => 'competition_groups#show'
+    get 'company/:id/competition_sales', as: 'company/competition_sales', :to => 'sales#competition_sales'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
     resources :companies

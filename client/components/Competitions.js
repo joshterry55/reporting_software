@@ -70,6 +70,29 @@ class Competitions extends React.Component {
     }).fail( data => {
 
     })
+    $.ajax({
+      url: `/api/competition/${competition.id}/competition_groups`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( groups => {
+      this.props.dispatch({type: 'CURRENT_GROUPS', groups})
+    }).fail( data => {
+
+    })
+    let id = this.props.assignedcompany.id
+    $.ajax({
+      url: `/api/company/${id}/competition_sales`,
+      type: 'GET',
+      dataType: 'JSON',
+      data: {
+        start_date: competition.start_date,
+        end_date: competition.end_date
+      }
+    }).done( sales => {
+      
+    }).fail( data => {
+
+    })
   }
 
   competitions() {
@@ -132,8 +155,8 @@ class Competitions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, competitions, currentcompetition } = state
-  return { user, assignedcompany, competitions, currentcompetition }
+  let { user, assignedcompany, competitions, currentcompetition, currentgroups } = state
+  return { user, assignedcompany, competitions, currentcompetition, currentgroups }
 }
 
 export default connect(mapStateToProps)(Competitions)
