@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AnnouncementsNav from './AnnouncementsNav'
+import CurrentCompetition from './CurrentCompetition'
 import { setassignedregions, setassignedoffices } from '../actions/companysetup'
 import { Link } from 'react-router';
 
@@ -10,6 +11,7 @@ class Competitions extends React.Component {
 
     this.competitionFilter = this.competitionFilter.bind(this)
     this.competitions = this.competitions.bind(this)
+    this.currentCompetition = this.currentCompetition.bind(this)
   }
 
   componentDidMount() {
@@ -59,6 +61,15 @@ class Competitions extends React.Component {
 
   setCurrentComp(competition) {
     this.props.dispatch({type: 'CURRENT_COMPETITION', competition})
+    $.ajax({
+      url: `/api/competition/${competition.id}/prizes`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( prizes => {
+      this.props.dispatch({type: 'CURRENT_PRIZES', prizes})
+    }).fail( data => {
+
+    })
   }
 
   competitions() {
@@ -70,6 +81,14 @@ class Competitions extends React.Component {
           </div>
         )
       })
+    }
+  }
+
+  currentCompetition() {
+    if(this.props.currentcompetition.id) {
+      return(
+        <CurrentCompetition />
+      )
     }
   }
 
@@ -105,7 +124,7 @@ class Competitions extends React.Component {
           </div>
         </div>
         <div className='col s12 l9' style={{height: '600px', backgroundColor: '#f2f7f7'}}>
-          test
+          {this.currentCompetition()}
         </div>
       </div>
     )
@@ -113,8 +132,8 @@ class Competitions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, competitions } = state
-  return { user, assignedcompany, competitions }
+  let { user, assignedcompany, competitions, currentcompetition } = state
+  return { user, assignedcompany, competitions, currentcompetition }
 }
 
 export default connect(mapStateToProps)(Competitions)
