@@ -14,12 +14,57 @@ class CreateCompetition extends React.Component {
     let companyId = this.props.assignedcompany.id
     this.props.dispatch(setassignedregions(companyId))
     this.props.dispatch(setassignedoffices(companyId))
+    $('select').material_select();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
   }
 
   componentDidUpdate() {
     $('select').material_select();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
   }
 
+  addCompetition() {
+    return(
+      <form>
+        <div className='col s12 m4 offset-m4'>
+          <label>Name</label>
+          <input type="text" />
+        </div>
+        <div className='col s12 m4 offset-m4'>
+          <label>Select a salesman</label>
+          <select ref='employee' className="browser-default add-sale-box">
+            <option value='office' className='add-sale-input'>Office</option>
+            <option value='region' className='add-sale-input'>Region</option>
+            <option value='company' className='add-sale-input'>Company</option>
+          </select>
+          <br />
+        </div>
+        <div className='col s12 m4 offset-m4'>
+          <div className='col s6' style={{color: 'white'}}>
+            <label>Date</label>
+            <input type="date" ref='startDate' className="datepicker add-sale-box green-back" placeholder='click to select date' />
+          </div>
+          <div className='col s6'>
+            <label>Date</label>
+            <input type="date" ref='endDate' className="datepicker add-sale-box red-back" placeholder='click to select date' />
+          </div>
+        </div>
+      </form>
+    )
+  }
+
+  // t.integer  "company_id"
+  // t.string   "name"
+  // t.datetime "start_date"
+  // t.datetime "end_date"
+  // t.string   "competition_type"
+  // t.string   "grouped_by"
 
   render() {
     return(
@@ -31,6 +76,9 @@ class CreateCompetition extends React.Component {
               Create Competition
             </span>
           </div>
+        </div>
+        <div className='col s12'>
+          {this.addCompetition()}
         </div>
       </div>
     )
