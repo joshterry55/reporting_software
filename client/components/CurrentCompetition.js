@@ -16,7 +16,7 @@ class CurrentCompetition extends React.Component {
     if(this.props.currentprizes.length) {
       return this.props.currentprizes.map( prize => {
         return(
-          <div className='col s6 m4'>
+          <div key={prize.id} className='col s6 m4'>
             {prize.name}
           </div>
         )
@@ -24,12 +24,18 @@ class CurrentCompetition extends React.Component {
     }
   }
 
-  getTotals() {
-    return(
-      <div>
-        5
-      </div>
-    )
+  getTotals(group) {
+    if(this.props.grouptotals['office']) {
+      let selection = this.props.currentcompetition.grouped_by
+      let id = parseInt(group.group_id)
+      let groups = this.props.grouptotals
+      let total = groups[selection][id]
+      return(
+        <div>
+          {total}
+        </div>
+      )
+    }
   }
 
   groups() {
@@ -54,7 +60,7 @@ class CurrentCompetition extends React.Component {
             <div className='col s4 center' style={{marginTop: '10px'}}>
               <span style={{borderBottom: '1px solid #ccc'}}>{group.name}</span>
               <div className='center' style={{fontSize: '30px'}}>
-                {this.getTotals()}
+                {this.getTotals(group)}
               </div>
             </div>
           </div>
@@ -81,8 +87,8 @@ class CurrentCompetition extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, currentcompetition, currentprizes, currentgroups } = state
-  return { user, assignedcompany, currentcompetition, currentprizes, currentgroups }
+  let { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals } = state
+  return { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals }
 }
 
 export default connect(mapStateToProps)(CurrentCompetition)

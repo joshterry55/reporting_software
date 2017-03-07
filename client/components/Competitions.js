@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import AnnouncementsNav from './AnnouncementsNav'
 import CurrentCompetition from './CurrentCompetition'
 import { setassignedregions, setassignedoffices } from '../actions/companysetup'
+import { competitionsales } from '../actions/competitionsales'
 import { Link } from 'react-router';
 
 class Competitions extends React.Component {
@@ -89,7 +90,7 @@ class Competitions extends React.Component {
         end_date: competition.end_date
       }
     }).done( sales => {
-      
+      this.props.dispatch(competitionsales(sales))
     }).fail( data => {
 
     })
@@ -99,7 +100,7 @@ class Competitions extends React.Component {
     if(this.props.competitions.length) {
       return this.props.competitions.map( competition => {
         return(
-          <div className="col s12" style={{height: '50px', lineHeight: '50px', fontSize: '20px', borderBottom: '1px solid #ccc'}}>
+          <div key={competition.id} className="col s12" style={{height: '50px', lineHeight: '50px', fontSize: '20px', borderBottom: '1px solid #ccc'}}>
             <span style={{cursor: 'pointer'}} onClick={() => this.setCurrentComp(competition)}>{competition.name}</span>
           </div>
         )
