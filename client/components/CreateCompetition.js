@@ -31,17 +31,27 @@ class CreateCompetition extends React.Component {
 
   addCompetition() {
     return(
-      <form>
+      <form style={{marginTop: '20px'}}>
         <div className='col s12 m4 offset-m4'>
           <label>Name</label>
           <input type="text" />
         </div>
         <div className='col s12 m4 offset-m4'>
-          <label>Select a salesman</label>
+          <label>Grouped By (Company-wide, region vs region, office vs office)</label>
           <select ref='employee' className="browser-default add-sale-box">
+            <option defaultValue="" disabled selected>Select Option</option>
             <option value='office' className='add-sale-input'>Office</option>
             <option value='region' className='add-sale-input'>Region</option>
             <option value='company' className='add-sale-input'>Company</option>
+          </select>
+          <br />
+        </div>
+        <div className='col s12 m4 offset-m4'>
+          <label>Competition Type</label>
+          <select ref='employee' className="browser-default add-sale-box">
+            <option defaultValue="" disabled selected>Select Option</option>
+            <option value='Team' className='add-sale-input'>Team</option>
+            <option value='Individual' className='add-sale-input'>Individual</option>
           </select>
           <br />
         </div>
