@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     get 'training_sections/:id/training_videos', as: 'training_section/training_videos', :to => 'training_videos#show'
     get 'company/sales/search', as: 'sales/search', :to => 'sales#search'
+    get 'company/:id/active_competitions', as: 'company/active_competitions', :to => 'competitions#active'
+    get 'company/:id/not_started_competitions', as: 'company/not_started_competitions', :to => 'competitions#not_started'
+    get 'company/:id/completed_competitions', as: 'company/completed_competitions', :to => 'competitions#completed'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
     resources :companies
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
     resources :training_categories
     resources :training_sections
     resources :training_videos
+    resources :competitions
   end
 
 

@@ -2,11 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import AnnouncementsNav from './AnnouncementsNav'
 import { setassignedregions, setassignedoffices } from '../actions/companysetup'
+import { Link } from 'react-router';
 
 class Competitions extends React.Component {
   constructor(props) {
     super(props)
 
+    this.competitionFilter = this.competitionFilter.bind(this)
+    this.competitions = this.competitions.bind(this)
   }
 
   componentDidMount() {
@@ -20,7 +23,54 @@ class Competitions extends React.Component {
   }
 
   competitionFilter() {
-    debugger
+    let companyId = this.props.assignedcompany.id
+    if($('#active').is(':selected') === true) {
+      $.ajax({
+        url: `/api/company/${companyId}/active_competitions`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( competitions => {
+        this.props.dispatch({type: 'COMPETITIONS', competitions})
+      }).fail( data => {
+
+      })
+    } else if($('#notStarted').is(':selected') === true) {
+      $.ajax({
+        url: `/api/company/${companyId}/not_started_competitions`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( competitions => {
+        this.props.dispatch({type: 'COMPETITIONS', competitions})
+      }).fail( data => {
+
+      })
+    } else if($('#completed').is(':selected') === true) {
+      $.ajax({
+        url: `/api/company/${companyId}/completed_competitions`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( competitions => {
+        this.props.dispatch({type: 'COMPETITIONS', competitions})
+      }).fail( data => {
+
+      })
+    }
+  }
+
+  setCurrentComp(competition) {
+    this.props.dispatch({type: 'CURRENT_COMPETITION', competition})
+  }
+
+  competitions() {
+    if(this.props.competitions.length) {
+      return this.props.competitions.map( competition => {
+        return(
+          <div className="col s12" style={{height: '50px', lineHeight: '50px', fontSize: '20px', borderBottom: '1px solid #ccc'}}>
+            <span style={{cursor: 'pointer'}} onClick={() => this.setCurrentComp(competition)}>{competition.name}</span>
+          </div>
+        )
+      })
+    }
   }
 
   render() {
@@ -35,18 +85,27 @@ class Competitions extends React.Component {
           </div>
         </div>
         <div className='col s12 l3' style={{height: '600px', backgroundColor: '#eee', overflow: 'scroll', paddingLeft: '0px', paddingRight: '0px'}}>
+          <div className='col s12 center' style={{height: '40px', lineHeight: '40px'}}>
+            <span style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', padding: '5px 10px', borderRadius: '5px'}}><Link to='/createcompetition' style={{color: '#f2f7f7'}}>+ Create Competition</Link></span>
+          </div>
           <div className='col s12' style={{height: '75px', backgroundColor: '#777'}}>
             <form className='col s12'>
               <div className='col s12' style={{marginTop: '15px'}}>
                 <select className='browser-default' style={{backgroundColor: '#f2f7f'}} onChange={this.competitionFilter}>
                   <option defaultValue="" disabled selected>Select a Filter</option>
-                  <option defaultValue="">Active</option>
-                  <option defaultValue="">Not Started</option>
-                  <option defaultValue="">Completed</option>
+                  <option id='active' value='active'>Active</option>
+                  <option id='notStarted' value='not started'>Not Started</option>
+                  <option id='completed' value='completed'>Completed</option>
                 </select>
               </div>
             </form>
           </div>
+          <div className='col s12'>
+            {this.competitions()}
+          </div>
+        </div>
+        <div className='col s12 l9' style={{height: '600px', backgroundColor: '#f2f7f7'}}>
+          test
         </div>
       </div>
     )
@@ -54,8 +113,8 @@ class Competitions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany } = state
-  return { user, assignedcompany }
+  let { user, assignedcompany, competitions } = state
+  return { user, assignedcompany, competitions }
 }
 
 export default connect(mapStateToProps)(Competitions)

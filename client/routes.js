@@ -28,6 +28,7 @@ import EmployeeSelect from './components/EmployeeSelect'
 import Settings from './components/Settings'
 import SuggestedVideo from './components/SuggestedVideo'
 import Competitions from './components/Competitions'
+import CreateCompetition from './components/CreateCompetition'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -75,6 +76,7 @@ export default (
           <Route path='/settings' component={Settings} />
           <Route path='/employeeselect' component={EmployeeSelect} />
           <Route path='/addsale' component={RegionSelect} />
+          <Route path='/createcompetition' component={CreateCompetition} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>
