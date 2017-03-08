@@ -51,6 +51,7 @@ class Api::CompetitionsController < ApplicationController
   def destroy
     @competition = Competition.find(params[:id])
     @competition.destroy
+    render json: @competition
   end
 
   private

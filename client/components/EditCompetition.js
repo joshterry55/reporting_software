@@ -14,6 +14,7 @@ class EditCompetition extends React.Component {
     this.submitEdittedCompetition = this.submitEdittedCompetition.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
     this.dateFormat = this.dateFormat.bind(this)
+    this.deleteCompetition = this.deleteCompetition.bind(this)
   }
 
   componentDidMount() {
@@ -127,6 +128,24 @@ class EditCompetition extends React.Component {
     }
   }
 
+  deleteCompetition() {
+    let confirmed = confirm('are you sure you want to delete this competition?')
+    if(confirmed) {
+      let competitionId = this.props.currentcompetition.id
+      $.ajax({
+        url: `/api/competitions/${competitionId}`,
+        type: 'DELETE',
+        dataType: 'JSON'
+      }).done( competition => {
+        this.props.dispatch({type: 'REMOVE_CURRENT_COMPETITION'})
+        this.props.dispatch({type: 'REMOVE_COMPETITION', competition})
+        this.props.history.push('/competitions')
+      }).fail( data => {
+
+      })
+    }
+  }
+
   dateString(day) {
     let fullDate = day
     let myDate = []
@@ -215,7 +234,7 @@ class EditCompetition extends React.Component {
             <span>Grouped By: {currentCompetition.grouped_by}</span>
           </div>
           <div className='col s12 center' style={{fontSize: '15px', cursor: 'pointer'}}>
-            <span onClick={this.toggleEdit}>Edit</span>
+            <i className="tiny material-icons confirm-icon edit-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Competition'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Competition" onClick={this.deleteCompetition}>delete</i>
           </div>
         </div>
       )

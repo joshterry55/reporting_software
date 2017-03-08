@@ -292,7 +292,7 @@ class CompetitionPrizes extends React.Component {
         <div className='col s12'>
           <div className='center'>
             <span style={{fontSize: '20px'}}>Prizes</span><br/>
-            <span onClick={this.toggleAdd} style={{fontSize: '15px', cursor: 'pointer'}}>+ Add Prize</span>
+            <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#60b9e8', fontSize: '15px'}} >+ Add Prize</span>
           </div>
           {this.displayAdd()}
           <div className='col s12' style={{marginTop: '15px'}}>
