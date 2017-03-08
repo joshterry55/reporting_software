@@ -42,6 +42,7 @@ import currentprizes from './currentprizes'
 import currentgroups from './currentgroups'
 import grouptotals from './grouptotals'
 import competitiontotals from './competitiontotals'
+import currentprize from './currentprize'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -86,7 +87,8 @@ const rootReducer = combineReducers({
   currentprizes,
   currentgroups,
   grouptotals,
-  competitiontotals
+  competitiontotals,
+  currentprize
  });
 
 export default rootReducer;

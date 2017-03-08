@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     get 'company/:id/categories', as: 'company/categories', :to => 'training_categories#show'
     get 'company/:id/sections', as: 'company/sections', :to => 'training_sections#index'
     get 'company/:id/videos', as: 'company/videos', :to => 'training_videos#index'
-    put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     get 'training_sections/:id/training_videos', as: 'training_section/training_videos', :to => 'training_videos#show'
     get 'company/sales/search', as: 'sales/search', :to => 'sales#search'
     get 'company/:id/active_competitions', as: 'company/active_competitions', :to => 'competitions#active'
@@ -31,6 +30,8 @@ Rails.application.routes.draw do
     get 'competition/:id/prizes', as: 'competition/prizes', :to => 'prizes#show'
     get 'competition/:id/competition_groups', as: 'competition/competition_groups', :to => 'competition_groups#show'
     get 'company/:id/competition_sales', as: 'company/competition_sales', :to => 'sales#competition_sales'
+    put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
+    put 'prizes/:id/avatar', as: 'prizes/avatar', :to => 'prizes#add_avatar'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
     resources :companies
