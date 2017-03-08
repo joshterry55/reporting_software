@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :training_sections
     resources :training_videos
     resources :competitions
+    resources :prizes
   end
 
 

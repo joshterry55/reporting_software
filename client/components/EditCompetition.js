@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AnnouncementsNav from './AnnouncementsNav'
+import CompetitionPrizes from './CompetitionPrizes'
 import { setassignedregions, setassignedoffices } from '../actions/companysetup'
 import { Link } from 'react-router';
 
@@ -116,7 +117,8 @@ class EditCompetition extends React.Component {
                 competition_type: competitionType,
               }}
             }).done( competition => {
-              debugger
+              this.props.dispatch({type: 'CURRENT_COMPETITION', competition})
+              this.toggleEdit()
             }).fail( data => {
             })
           }
@@ -162,33 +164,38 @@ class EditCompetition extends React.Component {
       if(this.props.currentcompetition.start_date) {
         let currentCompEdit = this.props.currentcompetition
         return(
-          <form style={{marginTop: '20px'}} onSubmit={this.submitEdittedCompetition}>
-            <div className='col s12 m4 offset-m4'>
-              <label>Name</label>
-              <input ref='editName' type="text" defaultValue={currentCompEdit.name} required />
-            </div>
-            <div className='col s12 m4 offset-m4'>
-              <label>Competition Type</label>
-              <select ref='editCompType' className="browser-default add-sale-box" defaultValue={currentCompEdit.competition_type} required>
-                <option value='Team' className='add-sale-input'>Team</option>
-                <option value='Individual' className='add-sale-input'>Individual</option>
-              </select>
-              <br />
-            </div>
-            <div className='col s12 m4 offset-m4'>
-              <div className='col s6' style={{color: 'white'}}>
-                <label>Start Date</label>
-                <input type="date" ref='editStartDate' id='editStartDate' className="datepicker add-sale-box green-back" placeholder='click to select date' required />
+          <div>
+            <form style={{marginTop: '20px'}} onSubmit={this.submitEdittedCompetition}>
+              <div className='col s12 m4 offset-m4'>
+                <label>Name</label>
+                <input ref='editName' type="text" defaultValue={currentCompEdit.name} required />
               </div>
-              <div className='col s6'>
-                <label>End Date</label>
-                <input type="date" ref='editEndDate' id='editEndDate' className="datepicker add-sale-box red-back" placeholder='click to select date' required />
+              <div className='col s12 m4 offset-m4'>
+                <label>Competition Type</label>
+                <select ref='editCompType' className="browser-default add-sale-box" defaultValue={currentCompEdit.competition_type} required>
+                  <option value='Team' className='add-sale-input'>Team</option>
+                  <option value='Individual' className='add-sale-input'>Individual</option>
+                </select>
+                <br />
               </div>
+              <div className='col s12 m4 offset-m4'>
+                <div className='col s6' style={{color: 'white'}}>
+                  <label>Start Date</label>
+                  <input type="date" ref='editStartDate' id='editStartDate' className="datepicker add-sale-box green-back" placeholder='click to select date' required />
+                </div>
+                <div className='col s6'>
+                  <label>End Date</label>
+                  <input type="date" ref='editEndDate' id='editEndDate' className="datepicker add-sale-box red-back" placeholder='click to select date' required />
+                </div>
+              </div>
+              <div className='col s12 center'>
+                <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
+              </div>
+            </form>
+            <div className='col s12 center' style={{fontSize: '15px', marginTop: '10px', cursor: 'pointer'}}>
+              <span onClick={this.toggleEdit}>Cancel</span>
             </div>
-            <div className='col s12 center'>
-              <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
-            </div>
-          </form>
+          </div>
         )
       }
     } else {
@@ -207,7 +214,7 @@ class EditCompetition extends React.Component {
           <div className='col s12 center' style={{fontSize: '15px'}}>
             <span>Grouped By: {currentCompetition.grouped_by}</span>
           </div>
-          <div className='col s12 center' style={{fontSize: '15px'}}>
+          <div className='col s12 center' style={{fontSize: '15px', cursor: 'pointer'}}>
             <span onClick={this.toggleEdit}>Edit</span>
           </div>
         </div>
@@ -215,12 +222,12 @@ class EditCompetition extends React.Component {
     }
   }
 
-  // t.integer  "company_id"
-  // t.string   "name"
-  // t.datetime "start_date"
-  // t.datetime "end_date"
-  // t.string   "competition_type"
-  // t.string   "grouped_by"
+  prizes() {
+    let id = parseInt(this.props.params.id)
+    return(
+      <CompetitionPrizes competitionId={id} />
+    )
+  }
 
   render() {
     return(
@@ -235,6 +242,9 @@ class EditCompetition extends React.Component {
         </div>
         <div className='col s12'>
           {this.display()}
+        </div>
+        <div className='col s12'>
+          {this.prizes()}
         </div>
       </div>
     )
