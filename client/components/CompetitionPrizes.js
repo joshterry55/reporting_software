@@ -18,6 +18,7 @@ class CompetitionPrizes extends React.Component {
     this.toggleAdd = this.toggleAdd.bind(this)
     this.setPrize = this.setPrize.bind(this)
     this.onDrop = this.onDrop.bind(this)
+    this.deletePrize = this.deletePrize.bind(this)
   }
 
   componentDidMount() {
@@ -68,6 +69,22 @@ class CompetitionPrizes extends React.Component {
     }).fail( data => {
 
     })
+  }
+
+  deletePrize(prize) {
+    let confirmed = confirm('Delete Prize?')
+    if(confirmed) {
+      let id = prize.id
+      $.ajax({
+        url: `/api/prizes/${id}`,
+        type: 'DELETE',
+        dataType: 'JSON'
+      }).done( prize => {
+        this.props.dispatch({type: 'REMOVE_PRIZE', prize})
+      }).fail( data => {
+
+      })
+    }
   }
 
   submitPrize(e) {
@@ -239,6 +256,7 @@ class CompetitionPrizes extends React.Component {
               <div className='center'>
                 {this.prizeRank(prize)}
                 <i className="tiny material-icons edit-icon" onClick={() => this.setPrize(prize)} style={{cursor: 'pointer'}} title='Edit Prize'>edit</i>
+                <i className="tiny material-icons delete-icon" onClick={() => this.deletePrize(prize)} style={{cursor: 'pointer'}} title='Delete Prize'>delete</i>
               </div>
             </div>
           )

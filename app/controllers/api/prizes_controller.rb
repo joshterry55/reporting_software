@@ -39,6 +39,7 @@ class Api::PrizesController < ApplicationController
   def destroy
     @prize = Prize.find(params[:id])
     @prize.destroy
+    render json: @prize
   end
 
   private

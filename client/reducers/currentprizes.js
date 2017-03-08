@@ -23,7 +23,13 @@ const currentprizes = (state = {}, action) => {
         return a.rank - b.rank;
       })
       return sortedUpdatedPrizes
-    case 'REMOVE_CURRENT_PRIZES':
+    case 'REMOVE_PRIZE':
+    let index = state.findIndex( s => s.id === action.prize.id)
+      return [
+      ...state.slice(0, index),
+      ...state.slice(index + 1)
+      ]
+    case 'RESET_CURRENT_PRIZES':
       return action.prizes = []
     default:
       return state;

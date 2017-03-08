@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import AnnouncementsNav from './AnnouncementsNav'
 import CompetitionPrizes from './CompetitionPrizes'
+import CompetitionGroups from './CompetitionGroups'
 import { setassignedregions, setassignedoffices } from '../actions/companysetup'
 import { Link } from 'react-router';
 
@@ -138,8 +139,8 @@ class EditCompetition extends React.Component {
         dataType: 'JSON'
       }).done( competition => {
         this.props.dispatch({type: 'REMOVE_CURRENT_COMPETITION'})
-        this.props.dispatch({type: 'REMOVE_COMPETITION', competition})
         this.props.history.push('/competitions')
+        this.props.dispatch({type: 'REMOVE_COMPETITION', competition})
       }).fail( data => {
 
       })
@@ -248,6 +249,13 @@ class EditCompetition extends React.Component {
     )
   }
 
+  groups() {
+    let id = parseInt(this.props.params.id)
+    return(
+      <CompetitionGroups competitionId={id} />
+    )
+  }
+
   render() {
     return(
       <div className='row'>
@@ -264,6 +272,9 @@ class EditCompetition extends React.Component {
         </div>
         <div className='col s12'>
           {this.prizes()}
+        </div>
+        <div className='col s12'>
+          {this.groups()}
         </div>
       </div>
     )

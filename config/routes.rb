@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'company/:id/competition_sales', as: 'company/competition_sales', :to => 'sales#competition_sales'
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     put 'prizes/:id/avatar', as: 'prizes/avatar', :to => 'prizes#add_avatar'
+    put 'groups/:id/avatar', as: 'groups/avatar', :to => 'groups#add_avatar'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
     resources :companies
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     resources :training_videos
     resources :competitions
     resources :prizes
+    resources :competition_groups
   end
 
 
