@@ -9,6 +9,8 @@ class CurrentCompetition extends React.Component {
     this.groups = this.groups.bind(this)
     this.prizeModal = this.prizeModal.bind(this)
     this.prizeModalContent = this.prizeModalContent.bind(this)
+    this.dateFormat = this.dateFormat.bind(this)
+    this.dateString = this.dateString.bind(this)
   }
 
   componentDidMount() {
@@ -21,8 +23,8 @@ class CurrentCompetition extends React.Component {
   prizes() {
     if(this.props.currentprizes.length) {
       return(
-        <div>
-          <span data-target="modal1" >View Prizes</span>
+        <div style={{marginTop: '10px', marginBottom: '10px'}}>
+          <button data-target="modal1" style={{color: '#f2f7f7', backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}>View Prizes</button>
         </div>
       )
     }
@@ -105,6 +107,38 @@ class CurrentCompetition extends React.Component {
     }
   }
 
+  dateString(day) {
+    let fullDate = day
+    let myDate = []
+    myDate.push(fullDate.toDateString().substr(0, 3))
+    let monthNumber = fullDate.getMonth();
+    let monthNames = ["January", "February", "March", "April",
+                      "May", "June", "July", "August", "September",
+                      "October", "November", "December"]
+    myDate.push(monthNames[monthNumber] + ' ' + fullDate.getDate())
+    myDate.push(fullDate.getFullYear())
+
+    return `${myDate[1]}, ${myDate[2]}`
+  }
+
+  dateFormat(currentCompetition) {
+    if(currentCompetition.start_date) {
+      let newStart = new Date(currentCompetition.start_date)
+      newStart = newStart.setDate(newStart.getDate() + 1)
+      let reformat = new Date(newStart)
+      let start = this.dateString(reformat)
+      let newEnd = new Date(currentCompetition.end_date)
+      newEnd = newEnd.setDate(newEnd.getDate())
+      let reformatEnd = new Date(newEnd)
+      let end = this.dateString(reformatEnd)
+      return(
+        <div>
+          <span>{start} - {end}</span>
+        </div>
+      )
+    }
+  }
+
   groups() {
     if(this.props.currentgroups.length) {
       return this.props.currentgroups.map( group => {
@@ -140,10 +174,17 @@ class CurrentCompetition extends React.Component {
     return(
       <div className='row'>
         <div className='col s12 center'>
-          {this.props.currentcompetition.name}
-        </div>
-        <div className='col s12'>
+          <span style={{fontSize: '20px'}}>{this.props.currentcompetition.name}</span>
+          <span style={{fontSize: '15px', marginBottom: '10px'}}>{this.dateFormat(this.props.currentcompetition)}</span>
           {this.prizes()}
+          <div style={{height: '30px', backgroundColor: '#ccc', lineHeight: '30px'}}>
+            <div className='col s12 m6 center'>
+              <span>Competition Type: {this.props.currentcompetition.competition_type}</span>
+            </div>
+            <div className='col s12 m6 center'>
+              <span>Grouped By: {this.props.currentcompetition.grouped_by}</span>
+            </div>
+          </div>
         </div>
         <div className='col s12'>
           {this.groups()}
