@@ -20,7 +20,7 @@ class CreateCompetition extends React.Component {
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
-    
+
   }
 
   componentDidUpdate() {
@@ -86,44 +86,49 @@ class CreateCompetition extends React.Component {
 
   addCompetition() {
     return(
-      <form style={{marginTop: '20px'}} onSubmit={this.submitCompetition}>
-        <div className='col s12 m4 offset-m4'>
-          <label>Name</label>
-          <input ref='name' type="text" required />
-        </div>
-        <div className='col s12 m4 offset-m4'>
-          <label>Grouped By (Company-wide, region vs region, office vs office)</label>
-          <select ref='groupedBy' className="browser-default add-sale-box">
-            <option defaultValue="" disabled selected>Select Option</option>
-            <option value='office' className='add-sale-input'>Office</option>
-            <option value='region' className='add-sale-input'>Region</option>
-            <option value='company' className='add-sale-input'>Company</option>
-          </select>
-          <br />
-        </div>
-        <div className='col s12 m4 offset-m4'>
-          <label>Competition Type</label>
-          <select ref='compType' className="browser-default add-sale-box" required>
-            <option defaultValue="" disabled selected>Select Option</option>
-            <option value='Team' className='add-sale-input'>Team</option>
-            <option value='Individual' className='add-sale-input'>Individual</option>
-          </select>
-          <br />
-        </div>
-        <div className='col s12 m4 offset-m4'>
-          <div className='col s6' style={{color: 'white'}}>
-            <label>Start Date</label>
-            <input type="date" ref='startDate' className="datepicker add-sale-box green-back" placeholder='click to select date' required />
+      <div className='col s12'>
+        <form style={{marginTop: '20px'}} onSubmit={this.submitCompetition}>
+          <div className='col s12 m4 offset-m4'>
+            <label>Name</label>
+            <input ref='name' type="text" required />
           </div>
-          <div className='col s6'>
-            <label>End Date</label>
-            <input type="date" ref='endDate' className="datepicker add-sale-box red-back" placeholder='click to select date' required />
+          <div className='col s12 m4 offset-m4'>
+            <label>Grouped By (Company-wide, region vs region, office vs office)</label>
+            <select ref='groupedBy' className="browser-default add-sale-box">
+              <option defaultValue="" disabled selected>Select Option</option>
+              <option value='office' className='add-sale-input'>Office</option>
+              <option value='region' className='add-sale-input'>Region</option>
+              <option value='company' className='add-sale-input'>Company</option>
+            </select>
+            <br />
           </div>
+          <div className='col s12 m4 offset-m4'>
+            <label>Competition Type</label>
+            <select ref='compType' className="browser-default add-sale-box" required>
+              <option defaultValue="" disabled selected>Select Option</option>
+              <option value='Team' className='add-sale-input'>Team</option>
+              <option value='Individual' className='add-sale-input'>Individual</option>
+            </select>
+            <br />
+          </div>
+          <div className='col s12 m4 offset-m4'>
+            <div className='col s6' style={{color: 'white'}}>
+              <label>Start Date</label>
+              <input type="date" ref='startDate' className="datepicker add-sale-box green-back" placeholder='click to select date' required />
+            </div>
+            <div className='col s6'>
+              <label>End Date</label>
+              <input type="date" ref='endDate' className="datepicker add-sale-box red-back" placeholder='click to select date' required />
+            </div>
+          </div>
+          <div className='col s12 center'>
+            <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
+          </div>
+        </form>
+        <div className='col s12 m4 offset-m4 center' style={{marginTop: '10px'}}>
+          <span><Link to='/competitions'>Cancel</Link></span>
         </div>
-        <div className='col s12 center'>
-          <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
-        </div>
-      </form>
+      </div>
     )
   }
 

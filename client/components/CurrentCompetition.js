@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router';
 
 class CurrentCompetition extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class CurrentCompetition extends React.Component {
     this.prizeModalContent = this.prizeModalContent.bind(this)
     this.dateFormat = this.dateFormat.bind(this)
     this.dateString = this.dateString.bind(this)
+    this.adminCheck = this.adminCheck.bind(this)
   }
 
   componentDidMount() {
@@ -170,11 +172,23 @@ class CurrentCompetition extends React.Component {
     }
   }
 
+  adminCheck() {
+    let competitionId
+    if(this.props.currentcompetition.id) {
+      competitionId = this.props.currentcompetition.id
+      if(this.props.user.role === 'Admin') {
+        return(
+          <i className="tiny material-icons edit-icon" style={{cursor: 'pointer'}} title='Edit Prize'><Link to={`/editcompetition/${competitionId}`}>edit</Link></i>
+        )
+      }
+    }
+  }
+
   render() {
     return(
       <div className='row'>
         <div className='col s12 center'>
-          <span style={{fontSize: '20px'}}>{this.props.currentcompetition.name}</span>
+          <span style={{fontSize: '20px'}}>{this.props.currentcompetition.name} {this.adminCheck()}</span>
           <span style={{fontSize: '15px', marginBottom: '10px'}}>{this.dateFormat(this.props.currentcompetition)}</span>
           {this.prizes()}
           <div style={{height: '30px', backgroundColor: '#ccc', lineHeight: '30px'}}>

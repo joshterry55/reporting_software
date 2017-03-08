@@ -116,6 +116,16 @@ class Competitions extends React.Component {
     }
   }
 
+  adminCheck() {
+    if(this.props.user.role === 'Admin') {
+      return(
+        <div className='col s12 center' style={{height: '40px', lineHeight: '40px'}}>
+          <span style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', padding: '5px 10px', borderRadius: '5px'}}><Link to='/createcompetition' style={{color: '#f2f7f7'}}>+ Create Competition</Link></span>
+        </div>
+      )
+    }
+  }
+
   render() {
     return(
       <div className='row'>
@@ -127,10 +137,8 @@ class Competitions extends React.Component {
             </span>
           </div>
         </div>
-        <div className='col s12 l3' style={{height: '600px', backgroundColor: '#eee', overflow: 'scroll', paddingLeft: '0px', paddingRight: '0px'}}>
-          <div className='col s12 center' style={{height: '40px', lineHeight: '40px'}}>
-            <span style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', padding: '5px 10px', borderRadius: '5px'}}><Link to='/createcompetition' style={{color: '#f2f7f7'}}>+ Create Competition</Link></span>
-          </div>
+        <div className='col s12 l3' style={{backgroundColor: '#eee', paddingLeft: '0px', paddingRight: '0px'}}>
+          {this.adminCheck()}
           <div className='col s12' style={{height: '75px', backgroundColor: '#777'}}>
             <form className='col s12'>
               <div className='col s12' style={{marginTop: '15px'}}>
@@ -143,7 +151,7 @@ class Competitions extends React.Component {
               </div>
             </form>
           </div>
-          <div className='col s12'>
+          <div className='col s12' style={{height: '500px', backgroundColor: '#eee', overflow: 'scroll', paddingLeft: '0px', paddingRight: '0px'}}>
             {this.competitions()}
           </div>
         </div>
