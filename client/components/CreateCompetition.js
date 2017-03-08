@@ -20,6 +20,7 @@ class CreateCompetition extends React.Component {
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
+    
   }
 
   componentDidUpdate() {
@@ -34,6 +35,9 @@ class CreateCompetition extends React.Component {
     e.preventDefault()
     let start = this.refs.startDate.value
     let end = this.refs.endDate.value
+    let endHours = new Date(end)
+    let endOfDay = endHours.setHours(23,59,59,999)
+    let endOfDate = new Date(endOfDay)
     let name = this.refs.name.value
     let competitionType = this.refs.compType.value
     let group = this.refs.groupedBy.value
@@ -65,12 +69,12 @@ class CreateCompetition extends React.Component {
                   company_id: id,
                   name: name,
                   start_date: start,
-                  end_date: end,
+                  end_date: endOfDate,
                   competition_type: competitionType,
                   grouped_by: group
                 }}
               }).done( competition => {
-                debugger
+                this.props.history.push(`/editcompetition/${competition.id}`)
               }).fail( data => {
               })
             }

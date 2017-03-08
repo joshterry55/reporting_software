@@ -29,6 +29,7 @@ import Settings from './components/Settings'
 import SuggestedVideo from './components/SuggestedVideo'
 import Competitions from './components/Competitions'
 import CreateCompetition from './components/CreateCompetition'
+import EditCompetition from './components/EditCompetition'
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -77,6 +78,7 @@ export default (
           <Route path='/employeeselect' component={EmployeeSelect} />
           <Route path='/addsale' component={RegionSelect} />
           <Route path='/createcompetition' component={CreateCompetition} />
+          <Route path='/editcompetition/:id' component={EditCompetition} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>

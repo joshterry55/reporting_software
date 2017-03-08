@@ -23,6 +23,8 @@ class Api::CompetitionsController < ApplicationController
   end
 
   def show
+    @competition = Competition.find(params[:id])
+    render json: @competition
   end
 
   def new

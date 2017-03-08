@@ -53,6 +53,6 @@ class Api::CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name)
+    params.require(:company).permit(:name, :avatar)
   end
 end
