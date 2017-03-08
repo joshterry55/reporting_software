@@ -13,9 +13,21 @@ class CurrentCompetition extends React.Component {
     this.dateFormat = this.dateFormat.bind(this)
     this.dateString = this.dateString.bind(this)
     this.adminCheck = this.adminCheck.bind(this)
+    this.leaderboardStats = this.leaderboardStats.bind(this)
+    this.salesman = this.salesman.bind(this)
   }
 
   componentDidMount() {
+    let id = this.props.assignedcompany.id
+    $.ajax({
+      url: `/api/company/${id}/users`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( users => {
+      this.props.dispatch({ type: 'EMPLOYEES', users })
+    }).fail( data => {
+
+    })
   }
 
   componentDidUpdate() {
@@ -184,6 +196,72 @@ class CurrentCompetition extends React.Component {
     }
   }
 
+  salesman(user) {
+    if(this.props.employees.length) {
+      let salesrep
+      this.props.employees.map( employee => {
+        if(user === employee.id) {
+          salesrep = employee
+        }
+      })
+      if(salesrep) {
+        return salesrep
+      }
+    }
+  }
+
+  salesmanPicture(picture) {
+    return(
+      <div className='col s0 l4 hide-on-small-and-down' style={{
+        height: '60px',
+        width: '60px',
+        borderRadius: '5px',
+        boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+        backgroundImage: `url(${picture})`,
+        backgroundSize: 'cover',
+        display: 'inline-block',
+        marginTop: '10px'
+       }}></div>
+    )
+  }
+
+  leaderboardStats() {
+    if(this.props.competitiontotals.length) {
+      let salesMan
+      return this.props.competitiontotals.map(function(user, i){
+        salesMan = this.salesman(user.id)
+        if(salesMan) {
+          return(
+            <tr className='row' style={{height: '80px', lineHeight: '80px', paddingTop: '10px', paddingBottom: '10px'}} key={user.id}>
+              <td className='col s2 center'><span style={{fontSize: '20px'}}>{i + 1}</span></td>
+              <td className='col s4 center' style={{paddingLeft: '0px'}}>{this.salesmanPicture(salesMan.avatar)} <div className='col s12 m7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{salesMan.first_name} {salesMan.last_name}</span></div></td>
+              <td className='col s3 center'>Office</td>
+              <td className='col s3 center'>{user.site_survey}</td>
+            </tr>
+          );
+        }
+      }, this);
+    }
+  }
+
+  leaderboardTable() {
+    return(
+      <table className='striped'>
+        <thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
+          <tr className='row'>
+            <th className='col s2 center'>Rank</th>
+            <th className='col s4 center'>Salesman</th>
+            <th className='col s3 center'>Office</th>
+            <th className='col s3 center'>Site Surveys</th>
+          </tr>
+        </thead>
+        <tbody id="products">
+          {this.leaderboardStats()}
+        </tbody>
+      </table>
+    )
+  }
+
   render() {
     return(
       <div className='row'>
@@ -200,8 +278,18 @@ class CurrentCompetition extends React.Component {
             </div>
           </div>
         </div>
-        <div className='col s12'>
+        <div className='col s12' style={{paddingTop: '10px'}}>
           {this.groups()}
+        </div>
+        <div className='col s12' style={{padding: '20px 0px'}}>
+          <div className=' col s12 m10 offset-m1 ' style={{backgroundColor: '#eee', minHeight: '100px', padding: '0px', borderRadius: '5px', border: '1px solid #bbb'}}>
+            <div className='col s12 center' style={{height: '40px', backgroundColor: '#bbb', fontSize: '20px', lineHeight: '40px'}}>
+              <span>{this.props.currentcompetition.name} Leaderboard</span>
+            </div>
+            <div className='col s12'>
+              {this.leaderboardTable()}
+            </div>
+          </div>
         </div>
         <div id="modal1" className="modal modal-height" style={styles.modalStyling}>
           {this.prizeModal()}
@@ -243,8 +331,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals } = state
-  return { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals }
+  let { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals, employees } = state
+  return { user, assignedcompany, currentcompetition, currentprizes, currentgroups, grouptotals, competitiontotals, employees }
 }
 
 export default connect(mapStateToProps)(CurrentCompetition)

@@ -11,13 +11,6 @@ class Api::CompetitionGroupsController < ApplicationController
   def new
   end
 
-  def add_avatar
-    @group = CompetitionGroup.find(params[:id])
-    u = Cloudinary::Uploader.upload(File.open(params[:avatar].tempfile))
-   @group.update(avatar: u['url'])
-   render json: { avatar: u['url'] }
-  end
-
   def create
     @group = CompetitionGroup.new(competition_group_params)
     if @group.save

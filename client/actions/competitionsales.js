@@ -6,10 +6,11 @@ export const competitionsales = (sales) => {
   	sales.map(sale => {
       if(parseFloat(sale.cancel) === 0) {
         if(sale.user_id in competitionTotals) {
-          competitionTotals[sale.user_id] += parseFloat(sale.site_survey)
+          competitionTotals[sale.user_id].site_survey += parseFloat(sale.site_survey)
         } else {
-          competitionTotals[sale.user_id] = 0
-          competitionTotals[sale.user_id] += parseFloat(sale.site_survey)
+          competitionTotals[sale.user_id] = {}
+          competitionTotals[sale.user_id].id = sale.user_id
+          competitionTotals[sale.user_id].site_survey = parseFloat(sale.site_survey)
         }
         if(sale.office_id in groupTotals['office']) {
           groupTotals['office'][sale.office_id] += parseFloat(sale.site_survey)
@@ -36,9 +37,8 @@ export const competitionsales = (sales) => {
     }
 
     let competitionArray = newArray.sort(function(a, b) {
-      return b - a;
+      return b.site_survey - a.site_survey;
     });
-
 
     let groupArray = groupTotals
 
