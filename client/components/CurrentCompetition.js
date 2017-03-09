@@ -197,32 +197,93 @@ class CurrentCompetition extends React.Component {
 
   groups() {
     if(this.props.currentgroups.length) {
-      return this.props.currentgroups.map( group => {
-        return(
-          <div  key={group.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
-            <div className='col s8' style={{height: '150px', marginBottom: '10px'}}>
-              <div style={{
-                  backgroundImage: `url(${group.avatar})`,
-                  width: '100%',
-                  height: '100%',
-                  maxWidth: '150px',
-                  display: 'block',
-                  backgroundSize: 'cover',
-                  borderRadius: '5px',
-                  boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                  margin: '10px auto'
-                }}>
+      let competition = this.props.currentcompetition
+      if(competition.competition_type === 'Team') {
+        if(this.props.currentgroups.length >= 3) {
+          return this.props.currentgroups.map( group => {
+            return(
+              <div  key={group.id} className='col s12 m6 l4' style={{marginBottom: '20px'}}>
+                <div className='col s8' style={{height: '150px', marginBottom: '10px'}}>
+                  <div style={{
+                      backgroundImage: `url(${group.avatar})`,
+                      width: '100%',
+                      height: '100%',
+                      maxWidth: '150px',
+                      display: 'block',
+                      backgroundSize: 'cover',
+                      borderRadius: '5px',
+                      boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                      margin: '10px auto'
+                    }}>
+                  </div>
+                </div>
+                <div className='col s4 center' style={{marginTop: '10px'}}>
+                  <span style={{borderBottom: '1px solid #ccc'}}>{group.name}</span>
+                  <div className='center' style={{fontSize: '30px'}}>
+                    {this.getTotals(group)}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className='col s4 center' style={{marginTop: '10px'}}>
-              <span style={{borderBottom: '1px solid #ccc'}}>{group.name}</span>
-              <div className='center' style={{fontSize: '30px'}}>
-                {this.getTotals(group)}
+            )
+          })
+        } else if(this.props.currentgroups.length === 2) {
+          return this.props.currentgroups.map( group => {
+            return(
+              <div  key={group.id} className='col s12 m6' style={{marginBottom: '20px'}}>
+                <div className='col s12' style={{paddingLeft: '20px', paddingRight: '20px'}}>
+                  <div className='col s8' style={{height: '150px', marginBottom: '10px'}}>
+                    <div style={{
+                        backgroundImage: `url(${group.avatar})`,
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '150px',
+                        display: 'block',
+                        backgroundSize: 'cover',
+                        borderRadius: '5px',
+                        boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                        margin: '10px auto'
+                      }}>
+                    </div>
+                  </div>
+                  <div className='col s4 center' style={{marginTop: '10px'}}>
+                    <span style={{borderBottom: '1px solid #ccc'}}>{group.name}</span>
+                    <div className='center' style={{fontSize: '30px'}}>
+                      {this.getTotals(group)}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        )
-      })
+            )
+          })
+        } else if(this.props.currentgroups.length === 1) {
+          return this.props.currentgroups.map( group => {
+            return(
+              <div  key={group.id} className='col s12 m8 offset-m2 l6 offset-l3' style={{marginBottom: '20px'}}>
+                <div className='col s6' style={{height: '150px', marginBottom: '10px'}}>
+                  <div style={{
+                      backgroundImage: `url(${group.avatar})`,
+                      width: '100%',
+                      height: '100%',
+                      maxWidth: '150px',
+                      display: 'block',
+                      backgroundSize: 'cover',
+                      borderRadius: '5px',
+                      boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                      margin: '10px auto'
+                    }}>
+                  </div>
+                </div>
+                <div className='col s6 center' style={{marginTop: '10px'}}>
+                  <span style={{borderBottom: '1px solid #ccc'}}>{group.name}</span>
+                  <div className='center' style={{fontSize: '30px'}}>
+                    {this.getTotals(group)}
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
+      }
     }
   }
 
@@ -329,7 +390,7 @@ class CurrentCompetition extends React.Component {
             <div className='col s12 center' style={{height: '40px', backgroundColor: '#bbb', fontSize: '20px', lineHeight: '40px'}}>
               <span>{this.props.currentcompetition.name} Leaderboard</span>
             </div>
-            <div className='col s12'>
+            <div className='col s12' style={{maxHeight: '600px', overflow: 'scroll'}}>
               <CompetitionLeaderboard groups={groups}/>
             </div>
           </div>
