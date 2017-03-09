@@ -8,6 +8,10 @@ class CompetitionLeaderboard extends React.Component {
 
     this.leaderboardStats = this.leaderboardStats.bind(this)
     this.salesman = this.salesman.bind(this)
+    this.groupedBy = this.groupedBy.bind(this)
+    this.salesmanFilter = this.salesmanFilter.bind(this)
+    this.offices = this.offices.bind(this)
+    this.regions = this.regions.bind(this)
   }
 
   componentDidUpdate() {
@@ -61,7 +65,7 @@ class CompetitionLeaderboard extends React.Component {
               <tr className='row' style={{height: '80px', lineHeight: '80px', paddingTop: '10px', paddingBottom: '10px'}} key={user.id}>
                 <td className='col s2 center'><span style={{fontSize: '20px'}}>{ranked}</span></td>
                 <td className='col s4 center' style={{paddingLeft: '0px'}}>{this.salesmanPicture(salesMan.avatar)} <div className='col s12 m7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{salesMan.first_name} {salesMan.last_name}</span></div></td>
-                <td className='col s3 center'>Office</td>
+                <td className='col s3 center'>{this.salesmanFilter(salesMan)}</td>
                 <td className='col s3 center'>{user.site_survey}</td>
               </tr>
             );
@@ -77,6 +81,78 @@ class CompetitionLeaderboard extends React.Component {
     }
   }
 
+
+  regions(id) {
+    if(this.props.leaderboardregions.length) {
+      let regionName
+      this.props.leaderboardregions.map( region => {
+        if(region.id === id) {
+          regionName = region.name
+        }
+      })
+      if(regionName) {
+        return(
+          regionName
+        )
+      }
+    }
+  }
+
+  offices(id) {
+    if(this.props.leaderboardoffices.length) {
+      let officeName
+      this.props.leaderboardoffices.map( office => {
+        if(office.id === id) {
+          officeName = office.name
+        }
+      })
+      if(officeName) {
+        return(
+          officeName
+        )
+      }
+    }
+  }
+
+
+  salesmanFilter(salesMan) {
+    if(this.props.currentcompetition.id) {
+      let competition = this.props.currentcompetition
+      if(competition.grouped_by === 'office') {
+        return(
+          <span>{this.offices(salesMan.office_id)}</span>
+        )
+      } else if(competition.grouped_by === 'region') {
+        return(
+          <span>{this.regions(salesMan.region_id)}</span>
+        )
+      } else if(competition.grouped_by === 'company') {
+        return(
+          <span>{this.offices(salesMan.office_id)}</span>
+        )
+      }
+    }
+  }
+
+  groupedBy() {
+    if(this.props.currentcompetition.id) {
+      let competition = this.props.currentcompetition
+      if(competition.grouped_by === 'office') {
+        return(
+          <span>Office</span>
+        )
+      } else if(competition.grouped_by === 'region') {
+        return(
+          <span>Region</span>
+        )
+      } else if(competition.grouped_by === 'company') {
+        return(
+          <span>Company</span>
+        )
+      }
+    }
+  }
+
   leaderboardTable() {
     return(
       <table className='striped'>
@@ -84,7 +160,7 @@ class CompetitionLeaderboard extends React.Component {
           <tr className='row'>
             <th className='col s2 center'>Rank</th>
             <th className='col s4 center'>Salesman</th>
-            <th className='col s3 center'>Office</th>
+            <th className='col s3 center'>{this.groupedBy()}</th>
             <th className='col s3 center'>Site Surveys</th>
           </tr>
         </thead>
@@ -136,8 +212,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedcompany, currentcompetition, currentgroups, grouptotals, competitiontotals, employees } = state
-  return { user, assignedcompany, currentcompetition, currentgroups, grouptotals, competitiontotals, employees }
+  let { user, assignedcompany, currentcompetition, currentgroups, grouptotals, competitiontotals, employees, leaderboardregions, leaderboardoffices } = state
+  return { user, assignedcompany, currentcompetition, currentgroups, grouptotals, competitiontotals, employees, leaderboardregions, leaderboardoffices }
 }
 
 export default connect(mapStateToProps)(CompetitionLeaderboard)
