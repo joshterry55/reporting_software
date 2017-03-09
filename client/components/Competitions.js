@@ -71,6 +71,8 @@ class Competitions extends React.Component {
     }).fail( data => {
 
     })
+
+    let test
     $.ajax({
       url: `/api/competition/${competition.id}/competition_groups`,
       type: 'GET',

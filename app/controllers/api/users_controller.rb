@@ -19,6 +19,20 @@ class Api::UsersController < ApplicationController
     render json: @employees
   end
 
+  def competition_employees
+    @company = Company.find(params[:id])
+    @selection = params[:selection]
+    @groups = params[:groups]
+    if(@selection == 'office')
+      @employees = @company.users.where(office_id: @groups)
+    elsif @selection == 'region'
+      @employees = @company.users.where(region_id: @groups)
+    else 
+      @employees = @company.users
+    end
+    render json: @employees
+  end
+
   def show
     @user = User.find(params[:id])
     render json: @user
@@ -48,7 +62,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :role, :phone_number, :company_id, :region_id, :office_id, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :role, :phone_number, :company_id, :region_id, :office_id, :avatar, :groups, :selection)
   end
 
 end

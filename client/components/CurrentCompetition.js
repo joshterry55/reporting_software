@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router';
+import CompetitionLeaderboard from './CompetitionLeaderboard'
 
 class CurrentCompetition extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {initial: true, competition_id: 0}
 
     this.prizes = this.prizes.bind(this)
     this.groups = this.groups.bind(this)
@@ -16,22 +19,61 @@ class CurrentCompetition extends React.Component {
     this.leaderboardStats = this.leaderboardStats.bind(this)
     this.salesman = this.salesman.bind(this)
   }
-
-  componentDidMount() {
-    let id = this.props.assignedcompany.id
-    $.ajax({
-      url: `/api/company/${id}/users`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( users => {
-      this.props.dispatch({ type: 'EMPLOYEES', users })
-    }).fail( data => {
-
-    })
-  }
+  //
+  // componentDidUpdate() {
+  //   let companyId = this.props.assignedcompany.id
+  //   debugger
+  //   // $.ajax({
+  //   //   url: `/api/company/${companyId}/users`,
+  //   //   type: 'GET',
+  //   //   dataType: 'JSON'
+  //   // }).done( users => {
+  //   //   this.props.dispatch({ type: 'EMPLOYEES', users })
+  //   // }).fail( data => {
+  //   //
+  //   // })
+  // }
 
   componentDidUpdate() {
     $('.modal').modal();
+    let companyId = this.props.assignedcompany.id
+    if(this.props.currentcompetition.id === this.state.competition_id) {
+      if(!this.state.initial) {
+
+      } else {
+        this.setState({initial: false})
+      }
+    } else {
+      if(this.state.initial) {
+
+      } else {
+        this.setState({initial: true})
+      }
+    }
+    if(this.state.initial) {
+      if(this.props.currentgroups.length) {
+        let groupArray = []
+        let selection = this.props.currentcompetition.grouped_by
+        this.props.currentgroups.map( group => {
+          groupArray.push(parseInt(group.group_id))
+        })
+        let competitionId = this.props.currentcompetition.id
+        $.ajax({
+          url: `/api/company/${companyId}/comp_users`,
+          type: 'GET',
+          dataType: 'JSON',
+          data: {
+            groups: groupArray,
+            selection: selection
+          }
+        }).done( users => {
+          this.props.dispatch({ type: 'EMPLOYEES', users })
+          this.setState({initial: false, competition_id: competitionId})
+        }).fail( data => {
+
+        })
+      }
+    }
   }
 
   prizes() {
@@ -263,6 +305,7 @@ class CurrentCompetition extends React.Component {
   }
 
   render() {
+    let groups = this.props.currentgroups
     return(
       <div className='row'>
         <div className='col s12 center'>
@@ -287,7 +330,7 @@ class CurrentCompetition extends React.Component {
               <span>{this.props.currentcompetition.name} Leaderboard</span>
             </div>
             <div className='col s12'>
-              {this.leaderboardTable()}
+              <CompetitionLeaderboard groups={groups}/>
             </div>
           </div>
         </div>

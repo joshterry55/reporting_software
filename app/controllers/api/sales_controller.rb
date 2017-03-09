@@ -25,7 +25,6 @@ class Api::SalesController < ApplicationController
     @company_week_dates = params[:startday]
     @sales = @company.sales.where(date: @company_week_dates)
     render json: @sales
-
   end
 
   def user
