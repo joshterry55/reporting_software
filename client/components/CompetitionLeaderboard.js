@@ -48,12 +48,18 @@ class CompetitionLeaderboard extends React.Component {
     if(this.props.currentgroups.length) {
       if(this.props.competitiontotals.length) {
         let salesMan
+        let ranked = 0
         return this.props.competitiontotals.map(function(user, i){
           salesMan = this.salesman(user.id)
           if(salesMan) {
+            if(ranked === 0) {
+              ranked = 1
+            } else {
+              ranked = (1 + parseInt(ranked))
+            }
             return(
               <tr className='row' style={{height: '80px', lineHeight: '80px', paddingTop: '10px', paddingBottom: '10px'}} key={user.id}>
-                <td className='col s2 center'><span style={{fontSize: '20px'}}>{i + 1}</span></td>
+                <td className='col s2 center'><span style={{fontSize: '20px'}}>{ranked}</span></td>
                 <td className='col s4 center' style={{paddingLeft: '0px'}}>{this.salesmanPicture(salesMan.avatar)} <div className='col s12 m7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{salesMan.first_name} {salesMan.last_name}</span></div></td>
                 <td className='col s3 center'>Office</td>
                 <td className='col s3 center'>{user.site_survey}</td>
