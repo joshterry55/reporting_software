@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
   def employees
     @company = Company.find(params[:id])
     @employees = @company.users
-    render json: @employees
+    # render json: @employees
   end
 
   def competition_employees

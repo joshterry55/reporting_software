@@ -58,6 +58,7 @@ class CurrentCompetition extends React.Component {
           groupArray.push(parseInt(group.group_id))
         })
         let competitionId = this.props.currentcompetition.id
+        let employeeTest = this.props.employees
         $.ajax({
           url: `/api/company/${companyId}/comp_users`,
           type: 'GET',

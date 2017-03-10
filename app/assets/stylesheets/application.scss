@@ -215,6 +215,14 @@ input:focus {
   color: white !important;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5) !important
 }
+
+.region-hover:hover {
+  background-color: #ccc !important;
+}
+
+// .region-text:hover {
+//   text-decoration: underline !important;
+// }
 // .link:hover {
 //   color: #f2f7f7 !important;
 // }

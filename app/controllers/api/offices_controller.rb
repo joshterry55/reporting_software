@@ -32,7 +32,7 @@ class Api::OfficesController < ApplicationController
         if o['id'] == @office.id
           current_user.assigned_offices.delete(o)
           current_user.assigned_offices << @office
-          current_user.assigned_offices.flatten
+          current_user.assigned_offices = current_user.assigned_offices.uniq
           current_user.save
         end
       end
