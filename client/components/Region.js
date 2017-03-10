@@ -15,6 +15,7 @@ class Region extends React.Component {
     this.toggleAdd = this.toggleAdd.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
     this.displayOffices = this.displayOffices.bind(this)
+    this.repCount = this.repCount.bind(this)
   }
 
   componentDidMount() {
@@ -23,6 +24,16 @@ class Region extends React.Component {
       if(region.id === regionId) {
         this.props.dispatch({type: 'CURRENT_REGION', region })
       }
+      let companyId = this.props.assignedcompany.id
+      $.ajax({
+        url: `/api/company/${companyId}/users`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( users => {
+        this.props.dispatch({type: 'EMPLOYEES', users})
+      }).fail( data => {
+
+      })
     });
   }
 
@@ -81,17 +92,59 @@ class Region extends React.Component {
     }
   }
 
+  repCount(id) {
+    if(this.props.employees.length) {
+      let number = 0
+      this.props.employees.map( employee => {
+        if(id === employee.office_id) {
+          number += 1
+        }
+      })
+      return(
+        number
+      )
+    } else {
+      return 0
+    }
+  }
+
   displayOffices() {
     if(this.props.assignedoffices.length) {
       return this.props.assignedoffices.map( office => {
         if(this.props.currentregion.id === office.region_id) {
           return(
-            <div key={office.id}><Link to={`/office/${office.id}`}>{office.name}</Link></div>
+            <div key={office.id} className='col s12 l6' style={{marginBottom: '20px'}}>
+              <Link to={`/office/${office.id}`} className='col s12 region-hover' style={{backgroundColor: '#ddd', borderRadius: '5px', border: '1px solid #ccc', paddingTop: '10px', paddingBottom: '10px', paddingLeft: '5px'}}>
+                <div className='col s6 l7'>
+                  <div style={{height: '200px', marginBottom: '10px'}}>
+                    <div style={{
+                        backgroundImage: `url(${office.avatar})`,
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '200px',
+                        display: 'block',
+                        backgroundSize: 'cover',
+                        borderRadius: '5px',
+                        boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                        margin: '10px auto'
+                      }}>
+                    </div>
+                  </div>
+                </div>
+                <div className='col s6 l5' style={{paddingTop: '15px'}}>
+                  <span style={{fontSize: '20px', color: 'black'}}>{office.name}</span><br />
+                  <span style={{color: 'black'}}>Rep Count: {this.repCount(office.id)}</span><br />
+                </div>
+              </Link>
+            </div>
           );
         }
       });
     }
   }
+
+  // <div key={office.id}><Link to={`/office/${office.id}`}>{office.name}</Link></div>
+
 
   toggleEdit() {
     this.setState({editRegion: !this.state.editRegion})
@@ -172,7 +225,7 @@ class Region extends React.Component {
           </div>
         <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
           {this.displayAdd()}
-          <div className='collection'>
+          <div style={{marginTop: '20px'}}>
             {this.displayOffices()}
           </div>
         </div>
@@ -182,8 +235,8 @@ class Region extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions, currentregion, assignedoffices, assignedcompany } = state
-  return { user, assignedregions, currentregion, assignedoffices, assignedcompany }
+  let { user, assignedregions, currentregion, assignedoffices, assignedcompany, employees } = state
+  return { user, assignedregions, currentregion, assignedoffices, assignedcompany, employees }
 }
 
 
