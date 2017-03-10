@@ -27,10 +27,10 @@ class Api::UsersController < ApplicationController
       @employees = @company.users.where(office_id: @groups)
     elsif @selection == 'region'
       @employees = @company.users.where(region_id: @groups)
-    else 
+    else
       @employees = @company.users
     end
-    render json: @employees
+    # render json: @employees
   end
 
   def show
