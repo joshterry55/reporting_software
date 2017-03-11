@@ -103,7 +103,7 @@ class Office extends React.Component {
             </span>
           </div>
         </div>
-        <div className='col s12 m10 offset-m1 white-container' style={{marginTop: '10px'}}>
+        <div className='col s12' style={{marginTop: '10px'}}>
           <Employees urlParams={officeId}/>
         </div>
       </div>

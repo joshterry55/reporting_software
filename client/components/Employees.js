@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { employees } from '../actions/employees';
 import { setFlash } from '../actions/flash';
+import EmployeeInfo from './EmployeeInfo'
 
 class Employees extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Employees extends React.Component {
     this.state = { addEmployee: false }
 
     this.toggleAdd = this.toggleAdd.bind(this)
+    this.setCurrent = this.setCurrent.bind(this)
     this.inviteEmployee = this.inviteEmployee.bind(this)
   }
 
@@ -83,13 +85,59 @@ class Employees extends React.Component {
     }
   }
 
-  displayEmployees() {
+  // displayEmployees() {
+  //   if(this.props.employees.length) {
+  //     return this.props.employees.map( employee => {
+  //       return(
+  //         <div key={employee.id}>{employee.first_name} {employee.last_name}</div>
+  //       );
+  //     });
+  //   }
+  // }
+
+  employeeSelector() {
     if(this.props.employees.length) {
       return this.props.employees.map( employee => {
-        return(
-          <div key={employee.id}>{employee.first_name} {employee.last_name}</div>
-        );
+        return(<option key={employee.id} value={employee.id} id={employee.id}>{`${employee.first_name} ${employee.last_name}`}</option>);
       });
+    }
+  }
+
+  setCurrent() {
+
+    let user
+    this.props.employees.map( employee => {
+      if($(`#${employee.id}`).is(':selected') === true) {
+        user = employee
+      }
+    })
+    if(user) {
+      this.props.dispatch({type: 'CURRENT_USER', user})
+    }
+  }
+
+  displayEmployees() {
+    return(
+      <div>
+        <form className='col s12'>
+          <div className='col s12 m4 offset-m4' style={{marginTop: '15px'}}>
+            <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f', border: '1px solid #bbb'}} onChange={this.setCurrent}>
+              <option defaultValue="" disabled selected>Select a salesman</option>
+              {this.employeeSelector()}
+            </select>
+          </div>
+        </form>
+      </div>
+    )
+  }
+
+  currentEmployeeInfo() {
+    if(this.props.currentuser.id) {
+      return(
+        <div style={{paddingTop: '10px'}}>
+          <EmployeeInfo />
+        </div>
+      )
     }
   }
 
@@ -97,17 +145,18 @@ class Employees extends React.Component {
     return(
       <div>
         {this.displayAdd()}
-        <div className='collection'>
+        <div className='col s12'>
           {this.displayEmployees()}
         </div>
+        {this.currentEmployeeInfo()}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  let { user, currentregion, currentoffice, assignedcompany, employees } = state
-  return { user, currentregion, currentoffice, assignedcompany, employees }
+  let { user, currentregion, currentoffice, assignedcompany, employees, currentuser } = state
+  return { user, currentregion, currentoffice, assignedcompany, employees, currentuser }
 }
 
 export default connect(mapStateToProps)(Employees)
