@@ -64,7 +64,7 @@ class EmployeeSelect extends React.Component {
   employeeSelector() {
     if(this.props.employees.length) {
       return this.props.employees.map( employee => {
-        return(<option key={employee.id} value={employee.id} id={employee.id}>{`${employee.first_name} ${employee.last_name}`}</option>);
+        return(<option key={employee.id} value={employee.id} id={`rep${employee.id}`}>{`${employee.first_name} ${employee.last_name}`}</option>);
       });
     }
   }
@@ -74,7 +74,7 @@ class EmployeeSelect extends React.Component {
 
     let user
     this.props.employees.map( employee => {
-      if($(`#${employee.id}`).is(':selected') === true) {
+      if($(`#rep${employee.id}`).is(':selected') === true) {
         user = employee
       }
     })
@@ -124,7 +124,7 @@ class EmployeeSelect extends React.Component {
                   {this.employeeSelector()}
                 </select>
               </div>
-            
+
             </form>
           </div>
           <div className='col s12'></div>

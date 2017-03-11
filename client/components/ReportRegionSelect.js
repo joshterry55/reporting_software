@@ -14,14 +14,22 @@ class ReportRegionSelect extends React.Component {
 
   showRegions() {
     return this.props.assignedregions.map( region => {
-      return(<NavItem key={region.id} value={region.id} onClick={() => this.regionInfo(region)}>{region.name}</NavItem>);
+      return(<option key={region.id} value={region.id} id={`region${region.id}`}>{region.name}</option>);
     });
   }
 
-  regionInfo(region) {
-    this.props.dispatch({type: 'CURRENT_REGION', region})
-    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
-    this.props.dispatch({type: 'RESET_OFFICE_SALES'})
+  regionInfo(currentRegion) {
+    let region
+    this.props.assignedregions.map( r => {
+      if($(`#region${r.id}`).is(':selected') === true) {
+        region = r
+      }
+    })
+    if(region) {
+      this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+      this.props.dispatch({type: 'CURRENT_REGION', region})
+      this.props.dispatch({type: 'RESET_OFFICE_SALES'})
+    }
   }
 
   adminCheck() {
@@ -57,12 +65,13 @@ class ReportRegionSelect extends React.Component {
         <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
           {this.adminCheck()}
           <div className='col s12' style={{zIndex: '0', paddingLeft: '0px', paddingRight: '0px'}}>
-            <div className='col s10 offset-s1 m6 offset-m3'>
+            <form className='col s10 offset-s1 m6 offset-m3'>
               <br />
-              <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                { this.showRegions() }
-              </Dropdown>
-            </div>
+              <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+                <option defaultValue="" disabled selected style={{textAlign: 'center'}}>Select Region</option>
+                {this.showRegions()}
+              </select>
+            </form>
             <ReportOfficeSelect />
           </div>
         </div>
@@ -70,6 +79,13 @@ class ReportRegionSelect extends React.Component {
     )
   }
 }
+
+// <div className='col s10 offset-s1 m6 offset-m3'>
+//   <br />
+//   <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+//     { this.showRegions() }
+//   </Dropdown>
+// </div>
 
 const styles = {
   employeeButton: {
@@ -87,8 +103,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions, currentregion } = state
-  return { user, assignedregions, currentregion }
+  let { user, assignedregions, currentregion, assignedoffices, currentoffice } = state
+  return { user, assignedregions, currentregion, assignedoffices, currentoffice }
 }
 
 export default connect(mapStateToProps)(ReportRegionSelect)
