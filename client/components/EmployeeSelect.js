@@ -64,50 +64,51 @@ class EmployeeSelect extends React.Component {
   employeeSelector() {
     if(this.props.employees.length) {
       return this.props.employees.map( employee => {
-        return(<option key={employee.id} value={employee.id}>{`${employee.first_name} ${employee.last_name}`}</option>);
+        return(<option key={employee.id} value={employee.id} id={employee.id}>{`${employee.first_name} ${employee.last_name}`}</option>);
       });
     }
   }
 
   setCurrent(e) {
     e.preventDefault()
-    let userId = this.refs.user.value
-    let user
-    this.props.employees.map(employee => {
 
-      if(employee.id === parseInt(userId)) {
+    let user
+    this.props.employees.map( employee => {
+      if($(`#${employee.id}`).is(':selected') === true) {
         user = employee
       }
     })
-    let id = user.id
-    $.ajax({
-      url: `/api/user/${id}/sales`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( sales => {
-      this.props.dispatch(lifetimekw(sales))
-    }).fail( data => {
-      debugger
-    })
-    $.ajax({
-      url: `/api/user/${id}/three_month`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( sales => {
-      this.props.dispatch(threemonth(sales))
-    }).fail( data => {
+    if(user) {
+      let id = user.id
+      $.ajax({
+        url: `/api/user/${id}/sales`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sales => {
+        this.props.dispatch(lifetimekw(sales))
+      }).fail( data => {
+        debugger
+      })
+      $.ajax({
+        url: `/api/user/${id}/three_month`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sales => {
+        this.props.dispatch(threemonth(sales))
+      }).fail( data => {
 
-    })
-    $.ajax({
-      url: `/api/user/${id}/six_month`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( sales => {
-      this.props.dispatch(sixmonth(sales))
-    }).fail( data => {
+      })
+      $.ajax({
+        url: `/api/user/${id}/six_month`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( sales => {
+        this.props.dispatch(sixmonth(sales))
+      }).fail( data => {
 
-    })
-    this.props.dispatch({type: 'CURRENT_USER', user})
+      })
+      this.props.dispatch({type: 'CURRENT_USER', user})
+    }
   }
 
   render() {
@@ -117,15 +118,13 @@ class EmployeeSelect extends React.Component {
         <div style={{height: '75px', backgroundColor: 'gray'}}>
           <div className='col s12 m4 offset-m4'>
             <form onSubmit={this.setCurrent} className='col s12'>
-              <div className='col s9' style={{marginTop: '15px'}}>
-                <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}}>
+              <div className='col s12' style={{marginTop: '15px'}}>
+                <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}} onChange={this.setCurrent}>
                   <option defaultValue="" disabled selected>Select a salesman</option>
                   {this.employeeSelector()}
                 </select>
               </div>
-              <div className='col s3' style={{marginTop: '20px'}}>
-                <input type='submit' className='btn' value='search' style={{backgroundColor: '#60b9e8',    textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}/>
-              </div>
+            
             </form>
           </div>
           <div className='col s12'></div>
