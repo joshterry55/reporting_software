@@ -54,7 +54,7 @@ class EmployeeInfo extends React.Component {
       )
     } else {
       return(
-        <span>Haven't accepted invite</span>
+        <span>Waiting for invitation to be accepted</span>
       )
     }
   }
@@ -88,15 +88,31 @@ class EmployeeInfo extends React.Component {
                 </div>
                 <div className='col s12 center' style={{fontSize: '20px'}}>{employee.first_name} {employee.last_name}</div>
               </div>
-              <div className='col s12 m8 l9 test-test' style={{backgroundColor: '#f27f7', minHeight: '500px', paddingLeft: '30px'}}>
-                <div style={{marginBottom: '10px'}}><b>First Name:</b> {employee.first_name}</div>
-                <div style={{marginBottom: '10px'}}><b>Last Name:</b> {employee.last_name}</div>
-                <div style={{marginBottom: '10px'}}><b>Email:</b> {employee.email}</div>
-                <div style={{marginBottom: '10px'}}><b>Phone Number:</b> {employee.phone_number ? employee.phone_number : 'None'}</div>
-                <div style={{marginBottom: '10px'}}><b>Company Role:</b> {employee.role}</div>
-                <div style={{marginBottom: '10px'}}><b>Invitation Sent:</b> {this.joinedDate(employee.invitation_sent_at)}</div>
-                <div style={{marginBottom: '10px'}}><b>Invitation Accepted:</b> {this.acceptedInvite(employee.invitation_accepted_at)}</div>
-                <div style={{marginBottom: '10px'}}><b>Joined SalesMend:</b> {this.joined(employee.invitation_accepted_at)}</div>
+              <div className='col s12 m8 l9 test-test' style={{backgroundColor: '#f27f7', minHeight: '500px', paddingLeft: '30px', fontSize: '13px'}}>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>First Name:</b> <br />
+                  <span style={{fontSize: '18px'}}>{employee.first_name}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Last Name:</b> <br />
+                  <span style={{fontSize: '18px'}}>{employee.last_name}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Email:</b> <br />
+                  <span style={{fontSize: '18px'}}>{employee.email}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Phone Number:</b> <br />
+                  <span style={{fontSize: '18px'}}>{employee.phone_number ? employee.phone_number : 'None'}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Company Role:</b> <br />
+                  <span style={{fontSize: '18px'}}>{employee.role}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Invitation Sent:</b> <br />
+                  <span style={{fontSize: '18px'}}>{this.joinedDate(employee.invitation_sent_at)}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Invitation Accepted:</b> <br />
+                  <span style={{fontSize: '18px'}}>{this.acceptedInvite(employee.invitation_accepted_at)}</span>
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '10px', height: '60px', border: '1px solid #ddd'}}><b>Joined SalesMend:</b> <br />
+                  <span style={{fontSize: '18px'}}>{this.joined(employee.invitation_accepted_at)}</span>
+                </div>
               </div>
 
             </div>
