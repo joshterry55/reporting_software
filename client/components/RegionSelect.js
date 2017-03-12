@@ -13,14 +13,22 @@ class RegionSelect extends React.Component {
 
   showRegions() {
     return this.props.assignedregions.map( region => {
-      return(<NavItem key={region.id} value={region.id} onClick={() => this.regionInfo(region)}>{region.name}</NavItem>);
+      return(<option key={region.id} value={region.id} id={`regionAdd${region.id}`}>{region.name}</option>);
     });
   }
 
-  regionInfo(region) {
-    this.props.dispatch({type: 'CURRENT_REGION', region})
-    this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
-    this.props.dispatch({type: 'RESET_EMPLOYEE'})
+  regionInfo(currentRegion) {
+    let region
+    this.props.assignedregions.map( r => {
+      if($(`#regionAdd${r.id}`).is(':selected') === true) {
+        region = r
+      }
+    })
+    if(region) {
+      this.props.dispatch({type: 'CURRENT_REGION', region})
+      this.props.dispatch({type: 'REMOVE_CURRENT_OFFICE'})
+      this.props.dispatch({type: 'RESET_EMPLOYEE'})
+    }
   }
 
   render() {
@@ -40,11 +48,12 @@ class RegionSelect extends React.Component {
         </div>
         <div className='col s12 m10 offset-m1 white-container'>
           <div className='container'>
-            <div className='col s10 offset-s1 m8 offset-m2' style={{marginTop: '20px'}}>
-              <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-                { this.showRegions() }
-              </Dropdown>
-            </div>
+            <form className='col s10 offset-s1 m8 offset-m2' style={{marginTop: '20px'}}>
+              <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+                <option defaultValue="" selected style={{textAlign: 'center'}}>Select Region</option>
+                {this.showRegions()}
+              </select>
+            </form>
             <br />
             <OfficeSelect />
           </div>
@@ -53,6 +62,10 @@ class RegionSelect extends React.Component {
     )
   }
 }
+
+// <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+//   { this.showRegions() }
+// </Dropdown>
 
 const styles = {
   employeeButton: {

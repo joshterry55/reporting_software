@@ -7,21 +7,31 @@ import { employees } from '../actions/employees';
 class OfficeSelect extends React.Component {
   constructor(props) {
     super(props)
+
+    this.officeInfo = this.officeInfo.bind(this)
   }
 
   showOffices() {
     return this.props.assignedoffices.map( office => {
       let regionId = this.props.currentregion.id
       if(office.region_id === regionId) {
-        return(<NavItem key={office.id} value={office.id} onClick={() => this.officeInfo(office)}>{office.name}</NavItem>);
+        return(<option key={office.id} value={office.id} id={`officeAdd${office.id}`} >{office.name}</option>);
       }
     });
   }
 
-  officeInfo(office) {
-    this.props.dispatch({type: 'CURRENT_OFFICE', office})
-    let officeId = office.id
-    this.props.dispatch(employees(officeId))
+  officeInfo(currentOffice) {
+    let office
+    this.props.assignedoffices.map( o => {
+      if($(`#officeAdd${o.id}`).is(':selected') === true) {
+        office = o
+      }
+    })
+    if(office) {
+      this.props.dispatch({type: 'CURRENT_OFFICE', office})
+      let officeId = office.id
+      this.props.dispatch(employees(officeId))
+    }
   }
 
   render() {
@@ -33,12 +43,13 @@ class OfficeSelect extends React.Component {
     }
     return(
       <div>
-        <div className='col s10 offset-s1 m8 offset-m2'>
+        <form className='col s10 offset-s1 m8 offset-m2'>
           <br />
-          <Dropdown  trigger={<Button style={styles.employeeButton}>{officeName}</Button>}>
-            { this.showOffices() }
-          </Dropdown>
-        </div>
+          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.officeInfo}>
+            <option defaultValue="" selected id='office-default' style={{textAlign: 'center'}}>Select Office</option>
+            {this.showOffices()}
+          </select>
+        </form>
         <div className='col s12'>
           <br />
         </div>
@@ -47,6 +58,10 @@ class OfficeSelect extends React.Component {
     )
   }
 }
+
+// <Dropdown  trigger={<Button style={styles.employeeButton}>{officeName}</Button>}>
+//   { this.showOffices() }
+// </Dropdown>
 
 const styles = {
   employeeButton: {
