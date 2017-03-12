@@ -21,13 +21,21 @@ class OfficeLeaderboard extends React.Component {
   showRegions() {
     if(this.props.leaderboardregions.length != undefined) {
       return this.props.leaderboardregions.map( region => {
-        return(<NavItem key={region.id} value={region.id} onClick={() => this.regionInfo(region)}>{region.name}</NavItem>);
+        return(<option key={region.id} value={region.id} id={`officeRegion${region.id}`}>{region.name}</option>);
       });
     }
   }
 
-  regionInfo(region) {
-    this.props.dispatch({type: 'CURRENT_REGION', region})
+  regionInfo(currentRegion) {
+    let region
+    this.props.assignedregions.map( r => {
+      if($(`#officeRegion${r.id}`).is(':selected') === true) {
+        region = r
+      }
+    })
+    if(region) {
+      this.props.dispatch({type: 'CURRENT_REGION', region})
+    }
   }
 
   render() {
@@ -46,18 +54,23 @@ class OfficeLeaderboard extends React.Component {
             </div>
           </div>
         <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
-          <div className='col s12 m4 offset-m3' style={{marginTop: '10px'}}>
+          <form className='col s12 m4 offset-m3' style={{marginTop: '10px'}}>
             <span>Region:</span>
-            <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
-              { this.showRegions() }
-            </Dropdown>
-          </div>
+            <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+              <option defaultValue="" selected style={{textAlign: 'center'}}>Select Region</option>
+              {this.showRegions()}
+            </select>
+          </form>
           <LeaderboardSelector />
         </div>
       </div>
     )
   }
 }
+
+// <Dropdown trigger={<Button style={styles.employeeButton}>{regionName}</Button>}>
+//   { this.showRegions() }
+// </Dropdown>
 
 const styles = {
   employeeButton: {
