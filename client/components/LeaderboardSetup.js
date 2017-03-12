@@ -22,7 +22,7 @@ class LeaderboardSetup extends React.Component {
     } else if(this.props.currentfilter === "SSKW") {
       this.leaderboardCalculationsSSKW()
     } else {
-      this.leaderboardCalculations()
+      this.leaderboardCalculationsSS()
     }
   }
 

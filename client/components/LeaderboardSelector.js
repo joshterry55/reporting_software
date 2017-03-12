@@ -6,43 +6,67 @@ import LeaderboardContainer from './LeaderboardContainer'
 class LeaderboardSelector extends React.Component {
   constructor(props) {
     super(props)
+
+    this.filterInfo = this.filterInfo.bind(this)
   }
 
-  showFilters() {
-    return(
-      <div>
-        <NavItem value="KW" onClick={() => this.filterInfo("KW")}>KW</NavItem>
-        <NavItem value="SS" onClick={() => this.filterInfo("SS")}>Site Survey</NavItem>
-        <NavItem value="SSKW" onClick={() => this.filterInfo("SSKW")}>Site Survey KW</NavItem>
-      </div>
-    )
-  }
+  //
+  // showFilters() {
+  //   // return(
+  //   //       <option value="SS" id="SS">Site Survey</option>
+  //   // )
+  //   return(
+  //     <div>
+  //       <option value="SS" id="SS">Site Survey</option>
+  //       <option value="KW"  id="KW">KW</option>
+  //       <option value="SSKW" id="SSKW">Site Survey KW</option>
+  //     </div>
+  //   )
+  // }
 
-  filterInfo(choice) {
-    this.props.dispatch({type: 'CURRENT_FILTER', choice})
+  filterInfo(currentChoice) {
+    let choice
+    if($(`#KW`).is(':selected') === true) {
+      choice = 'KW'
+    } else if($(`#SS`).is(':selected') === true) {
+      choice = 'SS'
+    } else if($(`#SSKW`).is(':selected') === true) {
+      choice = 'SSKW'
+    }
+    if(choice) {
+      this.props.dispatch({type: 'CURRENT_FILTER', choice})
+    }
   }
 
   urlCheck(selectName) {
     if(window.location.pathname === '/leaderboards/regions') {
       return(
-        <div className='col m2 offset-m5' style={{marginTop: '10px'}}>
+        <form className='col m2 offset-m5' style={{marginTop: '10px'}}>
           Sort by:
-          <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
-            { this.showFilters() }
-          </Dropdown>
-        </div>
+          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
+            <option value="SS" id="SS">Site Survey</option>
+            <option value="SSKW" id="SSKW">Site Survey KW</option>
+            <option value="KW"  id="KW">KW</option>
+          </select>
+        </form>
       )
     } else {
       return(
-        <div className='col s12 m2' style={{marginTop: '10px'}}>
+        <form className='col s12 m2' style={{marginTop: '10px'}}>
           Sort by:
-          <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
-            { this.showFilters() }
-          </Dropdown>
-        </div>
+          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
+              <option value="SS" id="SS">Site Survey</option>
+              <option value="SSKW" id="SSKW">Site Survey KW</option>
+              <option value="KW"  id="KW">KW</option>
+          </select>
+        </form>
       )
     }
   }
+
+  // <Dropdown trigger={<Button style={styles.employeeButton}>{selectName}</Button>}>
+  //   { this.showFilters() }
+  // </Dropdown>
 
   render() {
     let selectName
