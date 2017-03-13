@@ -72,12 +72,14 @@ class Competitions extends React.Component {
 
     })
 
-    let test
+    let compGroups
     $.ajax({
       url: `/api/competition/${competition.id}/competition_groups`,
       type: 'GET',
-      dataType: 'JSON'
+      dataType: 'JSON',
+      async: false
     }).done( groups => {
+      compGroups = groups
       this.props.dispatch({type: 'CURRENT_GROUPS', groups})
     }).fail( data => {
 

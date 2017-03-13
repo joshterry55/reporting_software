@@ -63,6 +63,7 @@ class CurrentCompetition extends React.Component {
           url: `/api/company/${companyId}/comp_users`,
           type: 'GET',
           dataType: 'JSON',
+          async: false,
           data: {
             groups: groupArray,
             selection: selection

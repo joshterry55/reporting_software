@@ -213,6 +213,7 @@ class Region extends React.Component {
 
 
   render() {
+    let region = this.props.currentregion
     return(
       <div className='row'>
         <Admin />
@@ -224,6 +225,7 @@ class Region extends React.Component {
             </div>
           </div>
         <div className='col s12' style={{marginTop: '10px'}}>
+
           {this.displayAdd()}
           <div style={{marginTop: '20px'}}>
             {this.displayOffices()}
@@ -233,6 +235,21 @@ class Region extends React.Component {
     )
   }
 }
+
+// <div style={{height: '200px', marginBottom: '10px'}}>
+//   <div style={{
+//       backgroundImage: `url(${region.avatar})`,
+//       width: '100%',
+//       height: '100%',
+//       maxWidth: '250px',
+//       display: 'block',
+//       backgroundSize: 'cover',
+//       borderRadius: '5px',
+//       boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+//       margin: '10px auto'
+//     }}>
+//   </div>
+// </div>
 
 const mapStateToProps = (state) => {
   let { user, assignedregions, currentregion, assignedoffices, assignedcompany, employees } = state
