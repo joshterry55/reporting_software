@@ -44,6 +44,21 @@ class CompanyLeaderboardDisplay extends React.Component {
     }
   }
 
+  companyAvatar(pic) {
+    return(
+      <div className='col s0 l4 hide-on-med-and-down' style={{
+        height: '40px',
+        width: '40px',
+        borderRadius: '5px',
+        boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+        backgroundImage: `url(${pic})`,
+        backgroundSize: 'cover',
+        display: 'inline-block',
+        marginTop: '5px',
+        marginLeft: '5px'
+       }}></div>
+    )
+  }
 
 
   render() {
@@ -61,6 +76,7 @@ class CompanyLeaderboardDisplay extends React.Component {
       sitesurvey = this.props.officetotalsitesurvey['SS']
       sitesurveykw = this.props.officetotalsitesurveykw['SSKW'].toFixed(2)
     }
+    let company = this.props.assignedcompany
     return(
       <div style={styles.tableStyle}>
         <table className='striped'>
@@ -79,8 +95,8 @@ class CompanyLeaderboardDisplay extends React.Component {
             </tr>
           </thead>
           <tbody id="products">
-            <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
-              <td className='col s2'><b>{this.props.assignedcompany.name}</b></td>
+            <tr className='row' style={{ height: '50px', lineHeight: '50px'}}>
+              <td className='col s2' style={{paddingLeft: '0px'}}>{this.companyAvatar(company.avatar)} <div className='col s12 l7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{company.name}</span></div></td>
               <td className='col s2'><b>{kilowatts}</b></td>
               <td className='col s1'><b>{sitesurveykw}</b></td>
               <td className='col s1'><b>{sitdown}</b></td>

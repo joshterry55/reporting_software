@@ -10,6 +10,7 @@ class RegionLeaderboardDisplay extends React.Component {
     this.truePerc = this.truePerc.bind(this)
     this.displaySales = this.displaySales.bind(this)
     this.regionName = this.regionName.bind(this)
+    this.regionInfo = this.regionInfo.bind(this)
   }
 
   truePerc(sale) {
@@ -59,13 +60,39 @@ class RegionLeaderboardDisplay extends React.Component {
     return(regionName)
   }
 
+  regionInfo(region) {
+    let currentRegion
+    this.props.leaderboardregions.map( r => {
+      if(r.id === region.id) {
+        currentRegion = r
+      }
+    })
+    return(currentRegion)
+  }
+
+  regionAvatar(region) {
+    return(
+      <div className='col s0 l4 hide-on-med-and-down' style={{
+        height: '40px',
+        width: '40px',
+        borderRadius: '5px',
+        boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+        backgroundImage: `url(${region.avatar})`,
+        backgroundSize: 'cover',
+        display: 'inline-block',
+        marginTop: '5px'
+       }}></div>
+    )
+  }
+
   displaySales() {
     if(this.props.leaderboardregiontotals.length) {
       return this.props.leaderboardregiontotals.map(function(region, i){
+        let currentRegion = this.regionInfo(region)
         return(
-            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={region.id}>
+            <tr className='row' style={{height: '50px', lineHeight: '50px'}} key={region.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{this.regionName(region)}</td>
+              <td className='col s2' style={{paddingLeft: '0px'}}>{this.regionAvatar(currentRegion)} <div className='col s12 l7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{currentRegion.name}</span></div></td>
               <td className='col s2'>{region.kw.toFixed(2)}</td>
               <td className='col s1'>{region.site_survey_kw.toFixed(2)}</td>
               <td className='col s1'>{region.sit_down}</td>

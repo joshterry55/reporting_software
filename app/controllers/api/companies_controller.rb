@@ -2,8 +2,13 @@ class Api::CompaniesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    # @company = current_user.assigned_company[0]
+    # binding.pry
+    # render json: @company
     @company = current_user.assigned_company[0]
-    render json: @company
+    company_id = @company['id']
+    @current_company = Company.find(company_id)
+    render json: @current_company
   end
 
   def regions

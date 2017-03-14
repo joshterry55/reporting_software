@@ -10,6 +10,7 @@ class OfficeLeaderboardDisplay extends React.Component {
     this.truePerc = this.truePerc.bind(this)
     this.displaySales = this.displaySales.bind(this)
     this.officeName = this.officeName.bind(this)
+    this.officeInfo = this.officeInfo.bind(this)
   }
 
   truePerc(sale) {
@@ -60,13 +61,39 @@ class OfficeLeaderboardDisplay extends React.Component {
     return(officeName)
   }
 
+  officeInfo(office) {
+    let currentOffice
+    this.props.leaderboardoffices.map( o => {
+      if(o.id === office.id) {
+        currentOffice = o
+      }
+    })
+    return(currentOffice)
+  }
+
+  officeAvatar(office) {
+    return(
+      <div className='col s0 l4 hide-on-med-and-down' style={{
+        height: '40px',
+        width: '40px',
+        borderRadius: '5px',
+        boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+        backgroundImage: `url(${office.avatar})`,
+        backgroundSize: 'cover',
+        display: 'inline-block',
+        marginTop: '5px'
+       }}></div>
+    )
+  }
+
   displaySales() {
     if(this.props.leaderboardofficetotals.length) {
       return this.props.leaderboardofficetotals.map(function(office, i){
+        let currentOffice = this.officeInfo(office)
         return(
-            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={office.id}>
+            <tr className='row' style={{height: '50px', lineHeight: '50px'}} key={office.id}>
               <td className='col s1'>{i + 1}</td>
-              <td className='col s2'>{this.officeName(office)}</td>
+              <td className='col s2' style={{paddingLeft: '0px'}}>{this.officeAvatar(currentOffice)} <div className='col s12 l7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{currentOffice.name}</span></div></td>
               <td className='col s2'>{office.kw.toFixed(2)} {office.last_name}</td>
               <td className='col s1'>{office.site_survey_kw.toFixed(2)}</td>
               <td className='col s1'>{office.sit_down}</td>
@@ -81,6 +108,7 @@ class OfficeLeaderboardDisplay extends React.Component {
     }
   }
 
+  // <td className='col s2' style={{paddingLeft: '0px'}}>{this.salesman(user)} <div className='col s12 l7'><span style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>{user.name}</span></div></td>
 
 
   render() {
