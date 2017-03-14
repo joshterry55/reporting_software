@@ -104,8 +104,8 @@ class Competitions extends React.Component {
     if(this.props.competitions.length) {
       return this.props.competitions.map( competition => {
         return(
-          <div key={competition.id} className="col s12" style={{height: '50px', lineHeight: '50px', fontSize: '20px', borderBottom: '1px solid #ccc'}}>
-            <span style={{cursor: 'pointer'}} onClick={() => this.setCurrentComp(competition)}>{competition.name}</span>
+          <div key={competition.id} className="col s12 sidebar-link" style={{height: '50px', lineHeight: '50px', fontSize: '20px', borderBottom: '1px solid #ccc'}}  onClick={() => this.setCurrentComp(competition)}>
+            <span style={{cursor: 'pointer'}}>{competition.name}</span>
           </div>
         )
       })
