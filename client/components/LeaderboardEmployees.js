@@ -28,7 +28,7 @@ class LeaderboardEmployees extends React.Component {
 
   regionInfo(currentRegion) {
     let region
-    this.props.assignedregions.map( r => {
+    this.props.leaderboardregions.map( r => {
       if($(`#empRegion${r.id}`).is(':selected') === true) {
         region = r
       }

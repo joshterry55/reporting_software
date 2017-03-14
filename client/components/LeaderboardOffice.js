@@ -25,7 +25,7 @@ class LeaderboardOffice extends React.Component {
 
   officeInfo(currentOffice) {
     let office
-    this.props.assignedoffices.map( o => {
+    this.props.leaderboardoffices.map( o => {
       if($(`#empOffice${o.id}`).is(':selected') === true) {
         office = o
       }
