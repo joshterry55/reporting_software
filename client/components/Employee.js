@@ -175,7 +175,7 @@ class Employee extends React.Component {
       )
     } else {
       let percentage = ((siteSurvey / sitDown) * 100).toFixed(1)
-      if(percentage <= 30) {
+      if(percentage <= parseInt(this.props.assignedcompany.true_percentage)) {
         return(
           <span style={{backgroundColor: '#ffcdd2', padding: '0px 2px'}}>{percentage}%</span>
         )
@@ -200,7 +200,7 @@ class Employee extends React.Component {
       )
     } else {
       let percentage = ((cancel / close) * 100).toFixed(1)
-      if(percentage >= 35) {
+      if(percentage >= parseInt(this.props.assignedcompany.cancel_percentage)) {
         return(
           <span style={{backgroundColor: '#ffcdd2', padding: '0px 2px'}}>{percentage}%</span>
         )
@@ -232,7 +232,7 @@ class Employee extends React.Component {
       } else {
         cancelPercentage = ((cancel / close) * 100)
       }
-      if(cancelPercentage >= 35) {
+      if(cancelPercentage >= parseInt(this.props.assignedcompany.cancel_percentage)) {
         return(
           <div>
             <div className='center' style={{marginTop: '5px'}}>
@@ -293,7 +293,7 @@ class Employee extends React.Component {
       } else {
         truePercentage = ((siteSurvey / sitdown) * 100)
       }
-      if(truePercentage <= 30) {
+      if(truePercentage <= parseInt(this.props.assignedcompany.true_percentage)) {
         return(
           <div>
             <div className='center' style={{marginTop: '5px'}}>
@@ -364,7 +364,7 @@ class Employee extends React.Component {
       } else {
         truePercentage = ((trueSiteSurvey / sitdown) * 100)
       }
-      if((cancelPercentage < 35) && (truePercentage > 30)) {
+      if((cancelPercentage < parseInt(this.props.assignedcompany.cancel_percentage)) && (truePercentage > parseInt(this.props.assignedcompany.true_percentage))) {
         return(
           <div>
             <div className='center' style={{marginTop: '5px'}}>
@@ -502,6 +502,7 @@ class Employee extends React.Component {
         <div className='col s12 l8' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}>
             {this.graphSetup(sixmonth)}
+
           </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307225843) do
+ActiveRecord::Schema.define(version: 20170314190404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20170307225843) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",                                                                                                 null: false
-    t.datetime "created_at",                                                                                           null: false
-    t.datetime "updated_at",                                                                                           null: false
-    t.string   "avatar",     default: "http://res.cloudinary.com/dk2bj79p0/image/upload/v1488493338/anon3_ozafcv.jpg"
+    t.string   "name",                                                                                                        null: false
+    t.datetime "created_at",                                                                                                  null: false
+    t.datetime "updated_at",                                                                                                  null: false
+    t.string   "avatar",            default: "http://res.cloudinary.com/dk2bj79p0/image/upload/v1488493338/anon3_ozafcv.jpg"
+    t.string   "cancel_percentage", default: "35"
+    t.string   "true_percentage",   default: "30"
   end
 
   create_table "competition_groups", force: :cascade do |t|
