@@ -60,6 +60,7 @@ class EditCompetition extends React.Component {
 
   componentDidUpdate() {
     $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
@@ -79,6 +80,7 @@ class EditCompetition extends React.Component {
   }
 
   toggleEdit() {
+    $('.tooltipped').tooltip('remove');
     this.setState({ edit: !this.state.edit})
   }
 
@@ -235,7 +237,7 @@ class EditCompetition extends React.Component {
             <span>Grouped By: {currentCompetition.grouped_by}</span>
           </div>
           <div className='col s12 center' style={{fontSize: '15px', cursor: 'pointer'}}>
-            <i className="tiny material-icons confirm-icon edit-icon" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Competition'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Competition" onClick={this.deleteCompetition}>delete</i>
+            <i className="tiny material-icons confirm-icon edit-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Competition" onClick={this.toggleEdit} style={{cursor: 'pointer'}} title='Edit Competition'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Competition" onClick={this.deleteCompetition}>delete</i>
           </div>
         </div>
       )

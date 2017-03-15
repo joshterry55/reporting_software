@@ -20,6 +20,7 @@ class ReportOfficeSales extends React.Component {
 
   componentDidUpdate() {
     $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
@@ -261,8 +262,8 @@ class ReportOfficeSales extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <div className='col s1'>
-          <td className='col s6 edit-icon'><i className="tiny material-icons confirm-icon" data-target="modal1" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
-          <td className='col s6'><i className="tiny material-icons confirm-icon delete-icon" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}} title='Delete Sale'>delete</i></td>
+          <td className='col s6 edit-icon'><i className="tiny material-icons confirm-icon tooltipped" data-target="modal1" data-position="top" data-delay="50" data-tooltip="Edit Sale" onClick={() => this.editSale(sale)} style={{cursor: 'pointer'}} title='Edit Sale'>edit</i></td>
+          <td className='col s6'><i className="tiny material-icons confirm-icon delete-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Sale" onClick={() => this.deleteSale(sale)} style={{cursor: 'pointer'}}>delete</i></td>
         </div>
       )
     } else {
@@ -273,6 +274,8 @@ class ReportOfficeSales extends React.Component {
       )
     }
   }
+
+  // class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"
 
 
   displaySales() {

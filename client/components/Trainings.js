@@ -20,6 +20,7 @@ class Trainings extends React.Component {
 
   componentDidMount() {
     if(!this.props.trainingcategories.length) {
+      $('.tooltipped').tooltip({delay: 50});
       let companyId = this.props.assignedcompany.id
       $.ajax({
         url: `/api/company/${companyId}/categories`,
@@ -31,6 +32,10 @@ class Trainings extends React.Component {
         console.log(data);
       });
     }
+  }
+
+  componentDidUpdate() {
+    $('.tooltipped').tooltip({delay: 50});
   }
 
   createCategory(e) {
@@ -125,6 +130,7 @@ class Trainings extends React.Component {
   }
 
   setCategory(category) {
+    $('.tooltipped').tooltip('remove');
     this.props.dispatch({type: 'CURRENT_CATEGORY', category})
     this.toggleEdit()
   }
@@ -133,7 +139,7 @@ class Trainings extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <div>
-          <i className="tiny material-icons edit-icon" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}} title='Edit Category'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i>
+          <i className="tiny material-icons edit-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit Category" onClick={() => this.setCategory(category)} style={{cursor: 'pointer'}}>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Category" onClick={() => this.deleteCategory(category.id)}>delete</i>
         </div>
       )
     }

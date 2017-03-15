@@ -22,6 +22,7 @@ class TrainingVideos extends React.Component {
   }
 
   componentDidMount() {
+    $('.tooltipped').tooltip({delay: 50});
     let sectionId = parseInt(this.props.params.id)
     $.ajax({
       type: 'GET',
@@ -37,6 +38,7 @@ class TrainingVideos extends React.Component {
 
   componentDidUpdate() {
     $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
   }
 
   toggleAdd() {
@@ -178,6 +180,7 @@ class TrainingVideos extends React.Component {
   }
 
   setVideo(video) {
+    $('.tooltipped').tooltip('remove');
     this.props.dispatch({type: 'CURRENT_VIDEO', video})
     this.toggleEdit()
   }
@@ -186,7 +189,7 @@ class TrainingVideos extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <span>
-          <i className="tiny material-icons edit-icon" onClick={() => this.setVideo(video)} style={{cursor: 'pointer'}} title='Edit Video'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Video" onClick={() => this.deleteVideo(video.id)}>delete</i>
+          <i className="tiny material-icons edit-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit Video" onClick={() => this.setVideo(video)} style={{cursor: 'pointer'}}>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Video" onClick={() => this.deleteVideo(video.id)}>delete</i>
         </span>
       )
     }

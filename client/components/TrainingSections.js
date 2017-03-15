@@ -25,6 +25,7 @@ class TrainingSections extends React.Component {
 
   componentDidMount() {
     if(!this.props.trainingsections.length) {
+      $('.tooltipped').tooltip({delay: 50});
       let companyId = this.props.assignedcompany.id
       $.ajax({
         url: `/api/company/${companyId}/sections`,
@@ -36,6 +37,10 @@ class TrainingSections extends React.Component {
         console.log(data);
       });
     }
+  }
+
+  componentDidUpdate() {
+    $('.tooltipped').tooltip({delay: 50});
   }
 
   createSection(e) {
@@ -132,6 +137,7 @@ class TrainingSections extends React.Component {
   }
 
   setSection(section) {
+    $('.tooltipped').tooltip('remove');
     this.props.dispatch({type: 'CURRENT_SECTION', section})
     this.toggleEdit()
   }
@@ -140,7 +146,7 @@ class TrainingSections extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <div>
-          <i className="tiny material-icons edit-icon" onClick={() => this.setSection(section)} style={{cursor: 'pointer'}} title='Edit Section'>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon" title="Delete Section" onClick={() => this.deleteSection(section.id)}>delete</i>
+          <i className="tiny material-icons edit-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit Section" onClick={() => this.setSection(section)} style={{cursor: 'pointer'}}>edit</i><i style={{cursor: 'pointer'}} className="tiny material-icons delete-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Section" onClick={() => this.deleteSection(section.id)}>delete</i>
         </div>
       )
     }
@@ -236,7 +242,7 @@ class TrainingSections extends React.Component {
                         }}>
                       </div>
                     </div>
-                  </Link>  
+                  </Link>
                   <div className='col s12 center'>
                     <div style={{fontSize: '18px'}}><b><Link className='section-link' to={`/trainingvideos/${section.id}`}>{section.name}</Link></b></div>
                     {this.adminCheck(section)}

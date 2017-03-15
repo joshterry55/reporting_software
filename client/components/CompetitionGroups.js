@@ -41,6 +41,7 @@ class CompetitionGroups extends React.Component {
   }
 
   componentDidUpdate() {
+    $('.tooltipped').tooltip({delay: 50});
     $('select').material_select();
   }
 
@@ -190,6 +191,7 @@ class CompetitionGroups extends React.Component {
   }
 
   setGroup(group) {
+    $('.tooltipped').tooltip('remove');
     this.props.dispatch({type: 'CURRENT_GROUP', group})
     this.toggleEdit()
   }
@@ -262,8 +264,8 @@ class CompetitionGroups extends React.Component {
               </div>
               <div className='center'>
                 {group.name}
-                <i className="tiny material-icons edit-icon" onClick={() => this.setGroup(group)} style={{cursor: 'pointer'}} title='Edit Team'>edit</i>
-                <i className="tiny material-icons delete-icon" onClick={() => this.deleteGroup(group)} style={{cursor: 'pointer'}} title='Delete Team'>delete</i>
+                <i className="tiny material-icons edit-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit Team" onClick={() => this.setGroup(group)} style={{cursor: 'pointer'}} title='Edit Team'>edit</i>
+                <i className="tiny material-icons delete-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Team" onClick={() => this.deleteGroup(group)} style={{cursor: 'pointer'}} title='Delete Team'>delete</i>
               </div>
             </div>
           )

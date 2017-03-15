@@ -39,6 +39,7 @@ class CompetitionPrizes extends React.Component {
 
   componentDidUpdate() {
     $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
   }
 
 
@@ -110,6 +111,7 @@ class CompetitionPrizes extends React.Component {
   }
 
   setPrize(prize) {
+    $('.tooltipped').tooltip('remove');
     this.props.dispatch({type: 'CURRENT_PRIZE', prize})
     this.toggleEdit()
   }
@@ -255,8 +257,8 @@ class CompetitionPrizes extends React.Component {
               </div>
               <div className='center'>
                 {this.prizeRank(prize)}
-                <i className="tiny material-icons edit-icon" onClick={() => this.setPrize(prize)} style={{cursor: 'pointer'}} title='Edit Prize'>edit</i>
-                <i className="tiny material-icons delete-icon" onClick={() => this.deletePrize(prize)} style={{cursor: 'pointer'}} title='Delete Prize'>delete</i>
+                <i className="tiny material-icons edit-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Prize" onClick={() => this.setPrize(prize)} style={{cursor: 'pointer'}} title='Edit Prize'>edit</i>
+                <i className="tiny material-icons delete-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Prize" onClick={() => this.deletePrize(prize)} style={{cursor: 'pointer'}} title='Delete Prize'>delete</i>
               </div>
             </div>
           )

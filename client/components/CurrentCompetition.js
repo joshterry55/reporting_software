@@ -36,6 +36,8 @@ class CurrentCompetition extends React.Component {
 
   componentDidUpdate() {
     $('.modal').modal();
+    $('.tooltipped').tooltip({delay: 50});
+
     let companyId = this.props.assignedcompany.id
     if(this.props.currentcompetition.id === this.state.competition_id) {
       if(!this.state.initial) {
@@ -94,6 +96,9 @@ class CurrentCompetition extends React.Component {
       let id = parseInt(group.group_id)
       let groups = this.props.grouptotals
       let total = groups[selection][id]
+      if(total === undefined) {
+        total = 0
+      }
       return(
         <div>
           {total}
@@ -289,13 +294,17 @@ class CurrentCompetition extends React.Component {
     }
   }
 
+  removeTooltip() {
+    $('.tooltipped').tooltip('remove');
+  }
+
   adminCheck() {
     let competitionId
     if(this.props.currentcompetition.id) {
       competitionId = this.props.currentcompetition.id
       if(this.props.user.role === 'Admin') {
         return(
-          <i className="tiny material-icons edit-icon" style={{cursor: 'pointer'}} title='Edit Prize'><Link to={`/editcompetition/${competitionId}`}>edit</Link></i>
+          <i className="tiny material-icons edit-icon tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Competition" onClick={this.removeTooltip} style={{cursor: 'pointer'}}><Link to={`/editcompetition/${competitionId}`}>edit</Link></i>
         )
       }
     }
