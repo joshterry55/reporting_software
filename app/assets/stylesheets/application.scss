@@ -92,20 +92,23 @@ input:focus {
 
 }
 
-.off-tab {
-  background-color: #60b9e8;
-}
+// .off-tab {
+//   background-color: #60b9e8;
+// }
+//
+// .off-tab:active {
+//   background-color: #5AA8D1;
+// }
+//
+// .on-tab {
+//   background-color: #5AA8D1;
+// }
 
-.off-tab:active {
-  background-color: #5AA8D1;
-}
-
-.on-tab {
-  background-color: #5AA8D1;
-}
-
+// .selectedNav {
+//   background-color: #5AA8D1 !important;
+// }
 .selectedNav {
-  background-color: #5AA8D1 !important;
+  background-color: #455366 !important;
 }
 
 .add-sale {
