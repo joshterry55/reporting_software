@@ -127,7 +127,7 @@ class NavBar extends React.Component {
   render() {
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#364150'}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#0C98CF'}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"></span><span className="logo-text"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
@@ -148,6 +148,15 @@ class NavBar extends React.Component {
     )
   }
 }
+
+// 3EB6D1 -- light blue/green
+// 008BBA -- royal blue
+// 364150 -- current one
+// 354458 -- almost same dark blue as current
+// 3A9AD9 -- works with blue above
+// 53BBF4 -- another light blue to test
+// 53BBF4 -- almost the same as our light blue
+// 0C98CF -- i dont hate this one
 
 const styles = {
   adminTab: {
