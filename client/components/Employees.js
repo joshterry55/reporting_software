@@ -122,7 +122,7 @@ class Employees extends React.Component {
         <form className='col s12'>
           <div className='col s12 m4 offset-m4' style={{marginTop: '15px'}}>
             <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f', border: '1px solid #bbb'}} onChange={this.setCurrent}>
-              <option defaultValue="" disabled selected>Select a salesman</option>
+              <option defaultValue="" selected>Select a salesman</option>
               {this.employeeSelector()}
             </select>
           </div>

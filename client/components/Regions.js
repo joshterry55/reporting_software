@@ -28,6 +28,10 @@ class Regions extends React.Component {
     })
   }
 
+  componentDidUpdate() {
+    this.props.dispatch({type: 'RESET_CURRENT_USER'})
+  }
+
   createRegion(e) {
     e.preventDefault()
     let name = this.refs.regionName.value
