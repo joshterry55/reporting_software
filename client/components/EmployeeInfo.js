@@ -152,7 +152,7 @@ class EmployeeInfo extends React.Component {
                 <div className='col s12 m6 l4' style={{marginBottom: '30px', paddingRight: '0px'}}><b>Email:</b> <br />
                   <div style={{fontSize: '18px', height: '42px', paddingLeft: '12px', border: '1px solid #ddd', lineHeight: '42px'}}>{employee.email}</div>
                 </div>
-                <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Phone Number:</b> <br />
+                <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Phone Number: </b>(8005557777) <br />
                   <input type='text' ref='phoneNumber' style={{backgroundColor: 'white'}} className='employee-info' defaultValue={employee.phone_number ? employee.phone_number : 'None'} />
                 </div>
                 <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px'}}><b>Company Role:</b> <br />

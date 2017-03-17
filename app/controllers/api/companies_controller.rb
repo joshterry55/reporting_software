@@ -58,6 +58,6 @@ class Api::CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :avatar, :true_percentage, :cancel_percentage, :color)
+    params.require(:company).permit(:name, :avatar, :true_percentage, :cancel_percentage, :color, :lifetime_kw)
   end
 end

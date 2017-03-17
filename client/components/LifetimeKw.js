@@ -36,7 +36,7 @@ class LifetimeKw extends React.Component {
 
   goalCheck() {
     let lifetime = this.props.lifetimekw.SSKW
-    if(lifetime >= 1000) {
+    if(lifetime >= this.props.assignedcompany.lifetime_kw) {
       return(
         <div>CONGRATS {lifetime}</div>
       )
@@ -44,7 +44,7 @@ class LifetimeKw extends React.Component {
 
       return(
         <div style={{height: '40px'}}>
-          <div className='center'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><span>/1000 kw</span></div>
+          <div className='center'><span style={{fontSize: '30px'}}>{Math.round(`${lifetime}`)}</span><span>/{this.props.assignedcompany.lifetime_kw} kw</span></div>
 
         </div>
       )

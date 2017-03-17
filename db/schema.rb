@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317000743) do
+ActiveRecord::Schema.define(version: 20170317174828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170317000743) do
     t.string   "cancel_percentage", default: "35"
     t.string   "true_percentage",   default: "30"
     t.string   "color",             default: "#354458"
+    t.string   "lifetime_kw",       default: "1000"
   end
 
   create_table "competition_groups", force: :cascade do |t|

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Admin from './Admin'
+import { setFlash } from '../actions/flash';
 
 
 class Settings extends React.Component {
@@ -12,10 +13,11 @@ class Settings extends React.Component {
     this.updateCompany = this.updateCompany.bind(this)
   }
 
-  componentDidMount() {
-    // if(this.props.params.code) {
-    //   debugger
-    // }
+  componentDidUpdate() {
+    this.refs.truePercentage.value = this.props.assignedcompany.true_percentage
+    this.refs.cancelPercentage.value = this.props.assignedcompany.cancel_percentage
+    this.refs.color.value = this.props.assignedcompany.color
+    this.refs.lifetimeKw.value = this.props.assignedcompany.lifetime_kw
   }
 
   updateCompany(e) {
@@ -24,6 +26,7 @@ class Settings extends React.Component {
     let cancelPerc = this.refs.cancelPercentage.value
     let id = this.props.assignedcompany.id
     let color = this.refs.color.value
+    let kw = this.refs.lifetimeKw.value
     $.ajax({
       url: `/api/companies/${id}`,
       type: 'PUT',
@@ -31,9 +34,12 @@ class Settings extends React.Component {
       data: { company: {
         true_percentage: truePerc,
         cancel_percentage: cancelPerc,
-        color: color
+        color: color,
+        lifetime_kw: kw
       }}
     }).done( company => {
+      let messageSuccess = `${company.name} Updated`
+      this.props.dispatch(setFlash(messageSuccess, 'success'))
       this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
     }).fail( data => {
 
@@ -50,6 +56,9 @@ class Settings extends React.Component {
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Cancel percentage less than:</b>
             <input type='text' ref='cancelPercentage' style={{backgroundColor: 'white'}} className='employee-info' defaultValue={company.cancel_percentage} required/>
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Lifetime Kw goal:</b>
+            <input type='text' ref='lifetimeKw' style={{backgroundColor: 'white'}} className='employee-info' placeholder='100, 1000 etc.' defaultValue={company.lifetime_kw} required/>
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px'}}><b>Company Color (for navbar)</b> <br />
             <select ref='color' className="browser-default employee-info" defaultValue={company.color}>
