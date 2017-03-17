@@ -125,9 +125,15 @@ class NavBar extends React.Component {
   }
 
   render() {
+    let navColor
+    if(this.props.assignedcompany.id) {
+      navColor = this.props.assignedcompany.color
+    } else {
+      navColor = '#354458'
+    }
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: `${this.props.assignedcompany.color}`}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: `${navColor}`}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"></span><span className="logo-text"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
