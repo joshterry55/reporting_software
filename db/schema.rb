@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314190404) do
+ActiveRecord::Schema.define(version: 20170317000743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170314190404) do
     t.string   "avatar",            default: "http://res.cloudinary.com/dk2bj79p0/image/upload/v1488493338/anon3_ozafcv.jpg"
     t.string   "cancel_percentage", default: "35"
     t.string   "true_percentage",   default: "30"
+    t.string   "color",             default: "#354458"
   end
 
   create_table "competition_groups", force: :cascade do |t|
