@@ -68,8 +68,6 @@ class Settings extends React.Component {
       alert('Invalid hex code for company color, please use 6-digit format (000000)')
     }
 
-
-
   }
 
   display() {
@@ -79,6 +77,9 @@ class Settings extends React.Component {
     return(
       <div>
         <form className='col s12 test-test' style={{backgroundColor: '#f27f7', minHeight: '500px', fontSize: '13px'}} onSubmit={this.updateCompany}>
+          <div className='col s12' style={{fontSize: '20px', fontWeight: 'bold', marginBottom: '10px'}}>
+            Goals
+          </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Closing percentage above:</b>
             <input type='text' ref='truePercentage' style={{backgroundColor: 'white'}} className='employee-info' defaultValue={company.true_percentage} required/>
           </div>
@@ -88,13 +89,16 @@ class Settings extends React.Component {
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Lifetime Kw goal:</b>
             <input type='text' ref='lifetimeKw' style={{backgroundColor: 'white'}} className='employee-info' placeholder='100, 1000 etc.' defaultValue={company.lifetime_kw} required/>
           </div>
+          <div className='col s12' style={{ marginBottom: '10px', marginTop: '20px'}}>
+            <span style={{fontSize: '20px', fontWeight: 'bold'}}>Customize Colors</span> (defaults: Company: #354458, Secondary: #60B9E8)
+          </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Company Color (hex code for navbar)</b> <br />
-            <input ref='color' style={{backgroundColor: `${company.color}`}} className="browser-default employee-info" defaultValue={companyColor} required/>
+            <input ref='color' style={{backgroundColor: `${company.color}`, color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,1.5)'}} className="browser-default employee-info" defaultValue={companyColor} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Color (hex code for buttons, links)</b> <br />
-            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
+            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,1.5)'}} className="browser-default employee-info" defaultValue={companyAccent} required />
           </div>
-          <div className='col s12'> </div>
+          <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>
             <input type='submit' className='btn' style={{backgroundColor: '#60b9e8'}} value='Update'/> &nbsp;
           </div>
