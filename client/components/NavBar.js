@@ -90,26 +90,26 @@ class NavBar extends React.Component {
       case 'Employee':
         return(
           <div>
-            <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/'>Home</Link></li>
-            <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements'>Announcements</Link></li>
-            <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
-            <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings'>Training</Link></li>
-            <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
-            <li onClick={() => this.highlightNav('employeePage')} id="employeePage"><Link to='/employee'>{`${this.props.user.first_name}`}</Link></li>
-            <li onClick={() => this.highlightNav('announcements')} id="announcements"><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
+            <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/' style={styles.textShadow}>Home</Link></li>
+            <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements' style={styles.textShadow}>Announcements</Link></li>
+            <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={styles.textShadow}>Leaderboard</Link></li>
+            <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings' style={styles.textShadow}>Training</Link></li>
+            <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent} style={styles.textShadow}>Reports</Link></li>
+            <li onClick={() => this.highlightNav('employeePage')} id="employeePage"><Link to='/employee' style={styles.textShadow}>{`${this.props.user.first_name}`}</Link></li>
+            <li onClick={() => this.highlightNav('announcements')} id="announcements"><a onClick={this.logout} style={styles.textShadow}>Logout</a></li>
           </div>
         )
       case 'Admin':
       return(
         <div>
-          <li onClick={() => this.highlightNav('home')} id="home"><Link to='/'>Home</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' >Announcements</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent}>Leaderboard</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings'>Training</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent}>Reports</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('company')} id="company"><Link to='/company'>Admin</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('employee')} id="employee"><Link to='/employeeselect'>Reps</Link></li>
-          <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
+          <li onClick={() => this.highlightNav('home')} id="home"><Link to='/' style={styles.textShadow}>Home</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' style={styles.textShadow}>Announcements</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={styles.textShadow}>Leaderboard</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings' style={styles.textShadow}>Training</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent} style={styles.textShadow}>Reports</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('company')} id="company"><Link to='/company' style={styles.textShadow}>Admin</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('employee')} id="employee"><Link to='/employeeselect' style={styles.textShadow}>Reps</Link></li>
+          <li><a style={styles.textShadow} onClick={this.logout}>Logout</a></li>
         </div>
       )
       default:
@@ -184,6 +184,10 @@ const styles = {
     fontSize: '18px',
     color: '#f2f7f7'
   },
+  textShadow: {
+    textShadow: '1px 1px 1px rgba(0,0,0,0.35)',
+    cursor: 'pointer'
+  }
   // onTab: {
   //   backgroundColor: '#5AA8D1'
   // },

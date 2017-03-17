@@ -39,10 +39,10 @@ class HomePage extends React.Component {
 			return(
 				<div>
 					<div className="col s6 center" style={{padding: '0px'}}>
-						<Link to='/signup' className='btn' style={{backgroundColor: '#60b9e8'}}>Sign Up</Link>
+						<Link to='/signup' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}>Sign Up</Link>
 					</div>
 					<div className="col s6 center" style={{padding: '0px'}}>
-						<Link to='/signin' className='btn' style={{backgroundColor: '#60b9e8'}} >Sign In</Link>
+						<Link to='/signin' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} >Sign In</Link>
 					</div>
 				</div>
 			)

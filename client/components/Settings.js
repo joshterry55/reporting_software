@@ -53,8 +53,18 @@ class Settings extends React.Component {
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px'}}><b>Company Color (for navbar)</b> <br />
             <select ref='color' className="browser-default employee-info" defaultValue={company.color}>
+              <option value='#000'>Black</option>
+              <option value='#007034'>Dark Green</option>
+              <option value='#008080'>Dark Turquoise</option>
               <option value='#354458'>Navy Blue</option>
+              <option value='#F07818'>Orange</option>
+              <option value='#ffc0cb'>Pink</option>
+              <option value='#5C2D50'>Purple (eggplant)</option>
+              <option value='#DC403B'>Red</option>
+              <option value='#D96459'>Red-Orange</option>
               <option value='#0C98CF'>Royal Blue</option>
+              <option value='#00C8F8'>Sky Blue</option>
+              <option value='#3EB6D1'>Turquoise</option>
             </select>
           </div>
           <div className='col s12'> </div>
