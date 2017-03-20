@@ -25,27 +25,47 @@ class Leaderboards extends React.Component {
      switch(tab) {
        case "employees":
          if(document.location.pathname === "/leaderboards/employees") {
-           return styles.leaderboardActiveTab
+           return {
+             border: '1px solid #666',
+             borderRadius: '5px',
+             backgroundColor: `#ccc`,
+             boxShadow: 'inset 0 0 2px #3a3b3a'
+           }
          } else {
            return styles.leaderboardTab
          }
          break;
       case "offices":
          if(document.location.pathname === "/leaderboards/offices") {
-           return styles.leaderboardActiveTab
+           return {
+             border: '1px solid #666',
+             borderRadius: '5px',
+             backgroundColor: `#ccc`,
+             boxShadow: 'inset 0 0 2px #3a3b3a'
+           }
          } else {
            return styles.leaderboardTab
          }
        case "regions":
          if(document.location.pathname === "/leaderboards/regions") {
-           return styles.leaderboardActiveTab
+           return {
+             border: '1px solid #666',
+             borderRadius: '5px',
+             backgroundColor: `#ccc`,
+             boxShadow: 'inset 0 0 2px #3a3b3a'
+           }
          } else {
            return styles.leaderboardTab
          }
          break;
        case "company":
          if(document.location.pathname === "/leaderboards/company") {
-           return styles.leaderboardActiveTab
+           return {
+             border: '1px solid #666',
+             borderRadius: '5px',
+             backgroundColor: `#ccc`,
+             boxShadow: 'inset 0 0 2px #3a3b3a'
+           }
          } else {
            return styles.leaderboardTab
          }

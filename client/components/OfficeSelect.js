@@ -45,7 +45,7 @@ class OfficeSelect extends React.Component {
       <div>
         <form className='col s10 offset-s1 m8 offset-m2'>
           <br />
-          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.officeInfo}>
+          <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.officeInfo}>
             <option defaultValue="" selected id='office-default' style={{textAlign: 'center'}}>Select Office</option>
             {this.showOffices()}
           </select>

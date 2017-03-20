@@ -58,7 +58,7 @@ class LeaderboardEmployees extends React.Component {
         <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
           <form className='col s12 m5' style={{marginTop: '10px'}}>
             <span>Region:</span>
-            <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+            <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
               <option defaultValue="" selected style={{textAlign: 'center'}}>Select Region</option>
               {this.showRegions()}
             </select>

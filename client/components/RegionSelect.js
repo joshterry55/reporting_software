@@ -49,7 +49,7 @@ class RegionSelect extends React.Component {
         <div className='col s12 m10 offset-m1 white-container'>
           <div className='container'>
             <form className='col s10 offset-s1 m8 offset-m2' style={{marginTop: '20px'}}>
-              <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+              <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
                 <option defaultValue="" selected style={{textAlign: 'center'}}>Select Region</option>
                 {this.showRegions()}
               </select>

@@ -42,7 +42,7 @@ class ReportContainer extends Component {
 				<div style={styles.topBarContainer}>
 					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-						<button type='button' className='btn' style={styles.buttonCurrent} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' className='btn' style={{ background: `${this.props.assignedcompany.color}`, color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)' }} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
 				</div>
@@ -117,8 +117,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user } = state;
-  return { user }
+  let { user, assignedcompany } = state;
+  return { user, assignedcompany }
 }
 
 export default connect(mapStateToProps)(ReportContainer);

@@ -107,7 +107,7 @@ class TrainingVideos extends React.Component {
                 </div>
                 <div className='col s12 '>
                   <label>Video Purpose</label>
-                    <select ref='videoPurpose'>
+                    <select ref='videoPurpose' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', margin: '0 auto'}}>
                       <option value="general training">General Training</option>
                       <option value="improve true percentage">Improve Closing Percentage</option>
                       <option value="reduce cancellation percentage">Reduce Cancellation Percentage</option>

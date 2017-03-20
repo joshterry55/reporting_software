@@ -43,7 +43,7 @@ class LeaderboardSelector extends React.Component {
       return(
         <form className='col m2 offset-m5' style={{marginTop: '10px'}}>
           Sort by:
-          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
+          <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
             <option value="SS" id="SS">Site Survey</option>
             <option value="SSKW" id="SSKW">Site Survey KW</option>
             <option value="KW"  id="KW">KW</option>
@@ -54,7 +54,7 @@ class LeaderboardSelector extends React.Component {
       return(
         <form className='col s12 m2' style={{marginTop: '10px'}}>
           Sort by:
-          <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
+          <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.filterInfo}>
               <option value="SS" id="SS">Site Survey</option>
               <option value="SSKW" id="SSKW">Site Survey KW</option>
               <option value="KW"  id="KW">KW</option>

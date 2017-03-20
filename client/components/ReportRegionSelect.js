@@ -67,7 +67,7 @@ class ReportRegionSelect extends React.Component {
           <div className='col s12' style={{zIndex: '0', paddingLeft: '0px', paddingRight: '0px'}}>
             <form className='col s10 offset-s1 m6 offset-m3'>
               <br />
-              <select ref='user' className='browser-default' style={{backgroundColor: '#60b9e8', border: '1px solid #bbb', color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
+              <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
                 <option defaultValue="" disabled selected style={{textAlign: 'center'}}>Select Region</option>
                 {this.showRegions()}
               </select>
