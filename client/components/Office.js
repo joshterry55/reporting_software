@@ -76,7 +76,7 @@ class Office extends React.Component {
                 <input ref='newOfficeName' style={{fontSize: '20px'}} type='text' defaultValue={office.name} required placeholder={office.name} autoFocus />
               </div>
               <div className='col s2' style={{marginTop: '10px'}}>
-                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: `${this.props.assignedcompany.accent_color}`}}><i className="tiny material-icons confirm-icon">done</i></button>
               </div>
             </form>
           </div>
@@ -112,8 +112,8 @@ class Office extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { assignedoffices, currentoffice, currentregion } = state
-  return { assignedoffices, currentoffice, currentregion }
+  let { assignedoffices, currentoffice, currentregion, assignedcompany } = state
+  return { assignedoffices, currentoffice, currentregion, assignedcompany }
 }
 
 export default connect(mapStateToProps)(Office)

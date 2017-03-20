@@ -122,7 +122,7 @@ class CreateCompetition extends React.Component {
             </div>
           </div>
           <div className='col s12 center'>
-            <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
+            <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} value='Create'/>
           </div>
         </form>
         <div className='col s12 m4 offset-m4 center' style={{marginTop: '10px'}}>

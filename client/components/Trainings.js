@@ -91,7 +91,7 @@ class Trainings extends React.Component {
                   <input ref='categoryName' placeholder='New Category' autoFocus required />
                 </div>
                 <div className='col s2'>
-                  <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+                  <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Add' />
                 </div>
               </form>
               <div className='center col s12' style={{marginBottom: '10px'}}>
@@ -158,7 +158,7 @@ class Trainings extends React.Component {
                       <input ref='editCategoryName' style={{fontSize: '20px'}} placeholder={category.name} defaultValue={category.name} autoFocus required />
                     </div>
                     <div className='col s2'>
-                      <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
+                      <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Update' />
                     </div>
                   </form>
                   <div className='center col s12' style={{marginBottom: '10px'}}>

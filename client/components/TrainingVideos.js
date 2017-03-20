@@ -116,7 +116,7 @@ class TrainingVideos extends React.Component {
                     <br />
                 </div>
                 <div className='col s12 center' style={{marginBottom: '15px'}}>
-                  <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+                  <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Add' />
                 </div>
               </form>
               <div className='center col s12' style={{marginBottom: '10px'}}>
@@ -223,7 +223,7 @@ class TrainingVideos extends React.Component {
                         <br />
                     </div>
                     <div className='col s12 center' style={{marginBottom: '15px'}}>
-                      <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Update' />
+                      <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Update' />
                     </div>
                   </form>
                   <div className='center col s12' style={{marginBottom: '10px'}}>

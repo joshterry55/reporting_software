@@ -74,7 +74,7 @@ class Region extends React.Component {
                 <input ref='officeName' placeholder='Office Name' autoFocus/>
               </div>
               <div className='col s2'>
-                <input className='btn' style={{backgroundColor: '#444'}} type='submit' />
+                <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' />
               </div>
             </form>
             <div className='center col s12' style={{marginBottom: '10px'}}>
@@ -196,7 +196,7 @@ class Region extends React.Component {
                 <input  style={{fontSize: '20px'}} ref='newRegionName' type='text' defaultValue={region.name} required placeholder={region.name} autoFocus />
               </div>
               <div className='col s2' style={{marginTop: '10px'}}>
-                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+                <button type='submit' className='btn' style={{ borderRadius: '3px', backgroundColor: `${this.props.assignedcompany.accent_color}`}}><i className="tiny material-icons confirm-icon">done</i></button>
               </div>
             </form>
           </div>

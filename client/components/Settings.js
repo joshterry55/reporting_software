@@ -100,7 +100,7 @@ class Settings extends React.Component {
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>
-            <input type='submit' className='btn' style={{backgroundColor: '#60b9e8'}} value='Update'/> &nbsp;
+            <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} value='Update'/> &nbsp;
           </div>
         </form>
       </div>

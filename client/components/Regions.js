@@ -66,7 +66,7 @@ class Regions extends React.Component {
                 <input ref='regionName' placeholder='Region Name' autoFocus required />
               </div>
               <div className='col s2'>
-                <input className='btn' style={{backgroundColor: '#444'}} type='submit' value='Add' />
+                <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Add' />
               </div>
             </form>
             <div className='center col s12' style={{marginBottom: '10px'}}>

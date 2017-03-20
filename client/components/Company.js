@@ -57,7 +57,7 @@ class Company extends React.Component {
                   <input style={{fontSize: '20px'}} ref='newCompanyName' type='text' defaultValue={company.name} required placeholder={company.name} autoFocus/>
                 </div>
                 <div className='col s2' style={{marginTop: '10px'}}>
-                  <button className='btn' type='submit' style={{ borderRadius: '3px', backgroundColor: '#444'}}><i className="tiny material-icons confirm-icon">done</i></button>
+                  <button className='btn' type='submit' style={{ borderRadius: '3px', backgroundColor: `${this.props.assignedcompany.accent_color}`}}><i className="tiny material-icons confirm-icon">done</i></button>
                 </div>
               </form>
             </div>

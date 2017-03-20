@@ -83,8 +83,14 @@ class CurrentCompetition extends React.Component {
   prizes() {
     if(this.props.currentprizes.length) {
       return(
-        <div style={{marginTop: '10px', marginBottom: '10px'}}>
-          <button data-target="modal1" style={{color: '#f2f7f7', backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}>View Prizes</button>
+        <div style={{marginTop: '10px', marginBottom: '10px', height: '30px'}}>
+          <button data-target="modal1" style={{color: '#f2f7f7', backgroundColor: `${this.props.assignedcompany.accent_color}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}>View Prizes</button>
+        </div>
+      )
+    } else {
+      return(
+        <div style={{marginTop: '10px', marginBottom: '10px', height: '30px'}}>
+
         </div>
       )
     }
@@ -110,7 +116,20 @@ class CurrentCompetition extends React.Component {
   prizeModal() {
     return(
       <div className='col s12' style={{padding: '0px'}}>
-        <div style={styles.modalHeader} className='center'>
+        <div style={
+            {
+              width: '100%',
+              height: '60px',
+              lineHeight: '61px',
+              color: '#f2f7f7',
+              fontSize: '35px',
+              textShadow: '0 0 5px rgba(0,0,0,0.50)',
+              backgroundColor: `${this.props.assignedcompany.color}`,
+              borderBottom: '1px solid #333',
+              boxShadow: '0 0 6px #000',
+              position: 'relative',
+            }
+          } className='center'>
           <span>Prizes</span>
         </div>
         {this.prizeModalContent()}
