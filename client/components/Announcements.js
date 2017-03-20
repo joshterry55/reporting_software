@@ -118,7 +118,6 @@ class Announcements extends React.Component {
   render() {
     return(
       <div className='row'>
-        <AnnouncementsNav />
         <div className='col s12 center' style={{backgroundColor: '#ccc', marginTop: '0px'}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>

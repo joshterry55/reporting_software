@@ -235,10 +235,12 @@ class Employee extends React.Component {
       if(cancelPercentage >= parseInt(this.props.assignedcompany.cancel_percentage)) {
         return(
           <div>
-            <div className='center' style={{marginTop: '5px'}}>
-              <span style={{fontSize: '15px' }}>High Cancellation Rate </span>
+            <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>High Cancellation Rate </span>
             </div>
-            {this.suggestedCancelVideo()}
+            <div style={{marginTop: '10px'}}>
+              {this.suggestedCancelVideo()}
+            </div>
           </div>
         )
       }
@@ -295,11 +297,13 @@ class Employee extends React.Component {
       }
       if(truePercentage <= parseInt(this.props.assignedcompany.true_percentage)) {
         return(
-          <div>
-            <div className='center' style={{marginTop: '5px'}}>
-              <span style={{fontSize: '15px'}}>Low Close Rate</span>
+          <div >
+            <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>Low Close Rate</span>
             </div>
-            {this.suggestedTrueVideo()}
+            <div style={{marginTop: '10px'}}>
+              {this.suggestedTrueVideo()}
+            </div>
           </div>
         )
       }
@@ -367,8 +371,8 @@ class Employee extends React.Component {
       if((cancelPercentage < parseInt(this.props.assignedcompany.cancel_percentage)) && (truePercentage > parseInt(this.props.assignedcompany.true_percentage))) {
         return(
           <div>
-            <div className='center' style={{marginTop: '5px'}}>
-              <span style={{fontSize: '15px'}}>Motivation</span>
+            <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>Motivation</span>
             </div>
             {this.suggestedMotivationVideo()}
           </div>
@@ -507,13 +511,19 @@ class Employee extends React.Component {
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' >
-            <div className='center' style={{backgroundColor: '#aaa', height: '30px', fontSize: '20px', lineHeight: '30px', marginBottom: '10px'}}>
+            <div className='center' style={{backgroundColor: `${this.props.assignedcompany.color}`, height: '40px', fontSize: '20px', lineHeight: '40px', marginBottom: '10px', color: 'white'}}>
               Suggested Videos
             </div>
-            <div style={{height: '560px', overflow: 'scroll'}}>
-              {this.motivation(threemonth)}
-              {this.cancelVideos(threemonth)}
-              {this.trueVideos(threemonth)}
+            <div style={{height: '550px', overflow: 'scroll'}}>
+              <div>
+                {this.motivation(threemonth)}
+              </div>
+              <div>
+                {this.trueVideos(threemonth)}
+              </div>
+              <div>
+                {this.cancelVideos(threemonth)}
+              </div>
             </div>
           </div>
         </div>

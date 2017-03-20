@@ -92,6 +92,7 @@ class NavBar extends React.Component {
           <div>
             <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/' style={styles.textShadow}>Home</Link></li>
             <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements' style={styles.textShadow}>Announcements</Link></li>
+            <li onClick={() => this.highlightNav('employeeCompetitions')} id="employeeCompetitions"><Link to='/competitions' style={styles.textShadow}>Competitions</Link></li>
             <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={styles.textShadow}>Leaderboard</Link></li>
             <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings' style={styles.textShadow}>Training</Link></li>
             <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent} style={styles.textShadow}>Reports</Link></li>
@@ -104,6 +105,7 @@ class NavBar extends React.Component {
         <div>
           <li onClick={() => this.highlightNav('home')} id="home"><Link to='/' style={styles.textShadow}>Home</Link></li>
           <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' style={styles.textShadow}>Announcements</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('competitions')} id="competitions"><Link to='/competitions' style={styles.textShadow}>Competitions</Link></li>
           <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={styles.textShadow}>Leaderboard</Link></li>
           <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings' style={styles.textShadow}>Training</Link></li>
           <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent} style={styles.textShadow}>Reports</Link></li>
