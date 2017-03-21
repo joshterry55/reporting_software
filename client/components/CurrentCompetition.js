@@ -141,17 +141,17 @@ class CurrentCompetition extends React.Component {
     if(this.props.currentprizes.length) {
       return this.props.currentprizes.map( prize => {
         return(
-          <div key={prize.id} className='col s12'>
+          <div key={prize.id} className='col s6'>
             <div className='col s12 center' style={{marginTop: '20px'}}>
               {this.prizeRank(prize)}
             </div>
-            <div className='col s12'>
-              <div style={{height: '225px', marginBottom: '10px'}}>
+            <div className='col s12 center'>
+              <div style={{height: '100px', marginBottom: '10px'}}>
                 <div style={{
                     backgroundImage: `url(${prize.avatar})`,
                     width: '100%',
                     height: '100%',
-                    maxWidth: '225px',
+                    maxWidth: '100px',
                     display: 'block',
                     backgroundSize: 'cover',
                     borderRadius: '5px',
@@ -160,6 +160,7 @@ class CurrentCompetition extends React.Component {
                   }}>
                 </div>
               </div>
+              {prize.name}
             </div>
           </div>
         )
@@ -171,19 +172,19 @@ class CurrentCompetition extends React.Component {
     if(prize.rank === '1') {
       return(
         <div style={{fontSize: '18px'}}>
-          <b>1st Place</b> - {prize.name}
+          <b>1st Place</b>
         </div>
       )
     } else if(prize.rank === '2') {
       return(
         <div style={{fontSize: '18px'}}>
-          <b>2nd Place</b> - {prize.name}
+          <b>2nd Place</b>
         </div>
       )
     } else if(prize.rank === '3') {
       return(
         <div style={{fontSize: '18px'}}>
-          <b>3rd Place</b> - {prize.name}
+          <b>3rd Place</b>
         </div>
       )
     }
@@ -436,11 +437,11 @@ class CurrentCompetition extends React.Component {
 const styles = {
   modalStyling: {
     width: '80%',
-    maxWidth: '500px',
+    maxWidth: '400px',
     border: '1px solid #333',
     borderRadius: '10px',
     overflow: 'scroll',
-    height: '600px'
+    height: '500px'
   },
   modalFooter: {
     position: 'absolute',

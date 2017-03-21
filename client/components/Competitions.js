@@ -148,7 +148,7 @@ class Competitions extends React.Component {
                 <select className='browser-default' style={{backgroundColor: '#f2f7f'}} onChange={this.competitionFilter}>
                   <option defaultValue="" disabled selected>Select a Filter</option>
                   <option id='active' value='active'>Active</option>
-                  <option id='notStarted' value='not started'>Not Started</option>
+                  <option id='notStarted' value='not started'>Future</option>
                   <option id='completed' value='completed'>Completed</option>
                 </select>
               </div>
