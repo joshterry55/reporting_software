@@ -13,7 +13,12 @@ class Settings extends React.Component {
     this.updateCompany = this.updateCompany.bind(this)
   }
 
+  componentDidMount() {
+    $('select').material_select();
+  }
+
   componentDidUpdate() {
+    $('select').material_select();
     this.refs.truePercentage.value = this.props.assignedcompany.true_percentage
     this.refs.cancelPercentage.value = this.props.assignedcompany.cancel_percentage
     this.refs.color.value = this.props.assignedcompany.color.substring(1)
@@ -29,6 +34,8 @@ class Settings extends React.Component {
     let kw = this.refs.lifetimeKw.value
     let color = this.refs.color.value
     let accent = this.refs.accentColor.value
+    let companyText = this.refs.companyText.value
+    let accentTextColor = this.refs.accentText.value
     let regexAccentTest = /[0-9A-F]{6}$/i.test(accent)
     let regexColorTest = /[0-9A-F]{6}$/i.test(color)
     if(regexColorTest) {
@@ -46,7 +53,9 @@ class Settings extends React.Component {
                 cancel_percentage: cancelPerc,
                 color: color,
                 lifetime_kw: kw,
-                accent_color: accent
+                accent_color: accent,
+                accent_text: accentTextColor,
+                color_text: companyText
               }}
             }).done( company => {
               let messageSuccess = `${company.name} Updated`
@@ -97,6 +106,20 @@ class Settings extends React.Component {
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Color (hex code for buttons, links)</b> <br />
             <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,1.5)'}} className="browser-default employee-info" defaultValue={companyAccent} required />
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Company Text Color</b> <br />
+            <select className="browser-default" ref='companyText' defaultValue={this.props.assignedcompany.color_text} style={{border: '1px solid #ddd'}}>
+              <option value="" disabled>Choose your option</option>
+              <option value="#ffffff">White</option>
+              <option value="#000000">Black</option>
+            </select>
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Secondary Text Color</b> <br />
+            <select className="browser-default" ref='accentText' defaultValue={this.props.assignedcompany.accent_text} style={{border: '1px solid #ddd'}}>
+              <option value="" disabled >Choose your option</option>
+              <option value="#ffffff">White</option>
+              <option value="#000000">Black</option>
+            </select>
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317184250) do
+ActiveRecord::Schema.define(version: 20170321000042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170317184250) do
     t.string   "color",             default: "#354458"
     t.string   "lifetime_kw",       default: "1000"
     t.string   "accent_color",      default: "#60b9e8"
+    t.string   "color_text",        default: "#ffffff"
+    t.string   "accent_text",       default: "#ffffff"
   end
 
   create_table "competition_groups", force: :cascade do |t|
