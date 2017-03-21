@@ -102,10 +102,10 @@ class Settings extends React.Component {
             <span style={{fontSize: '20px', fontWeight: 'bold'}}>Customize Colors</span> (defaults: Company: #354458, Secondary: #60B9E8)
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Company Color (hex code for navbar)</b> <br />
-            <input ref='color' style={{backgroundColor: `${company.color}`, color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,1.5)'}} className="browser-default employee-info" defaultValue={companyColor} required />
+            <input ref='color' style={{backgroundColor: `${company.color}`, color: `${this.props.assignedcompany.color_text}`}} className="browser-default employee-info" defaultValue={companyColor} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Color (hex code for buttons, links)</b> <br />
-            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,1.5)'}} className="browser-default employee-info" defaultValue={companyAccent} required />
+            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Company Text Color</b> <br />
             <select className="browser-default" ref='companyText' defaultValue={this.props.assignedcompany.color_text} style={{border: '1px solid #ddd'}}>
@@ -123,7 +123,7 @@ class Settings extends React.Component {
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>
-            <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} value='Update'/> &nbsp;
+            <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} value='Update'/> &nbsp;
           </div>
         </form>
       </div>

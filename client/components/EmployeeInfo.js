@@ -172,7 +172,7 @@ class EmployeeInfo extends React.Component {
                 </div>
                 <div className='col s12'> </div>
                 <div className='col s12'>
-                  <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} value='Update'/> &nbsp;
+                  <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} value='Update'/> &nbsp;
                   <span className='btn' style={{backgroundColor: '#F53D3D'}} onClick={this.deleteEmployee}>Delete</span>
                 </div>
               </form>

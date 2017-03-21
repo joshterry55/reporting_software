@@ -78,7 +78,7 @@ class LeaderboardContainer extends Component {
 				<div style={styles.topBarContainer}>
 					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-						<button type='button' className='btn' style={{background: `${this.props.assignedcompany.color}`, color: '#f2f7f7', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' className='btn' style={{background: `${this.props.assignedcompany.color}`, color: `${this.props.assignedcompany.color_text}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
 				</div>

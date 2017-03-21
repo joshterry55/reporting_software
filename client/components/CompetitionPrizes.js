@@ -172,7 +172,7 @@ class CompetitionPrizes extends React.Component {
                       <label>Prize Ranking</label>
                     </div>
                     <div className='col s12 center' style={{marginBottom: '10px'}}>
-                      <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Update' />
+                      <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} type='submit' value='Update' />
                     </div>
                   </form>
                   <div className='center col s12' style={{marginBottom: '0px'}}>
@@ -292,7 +292,7 @@ class CompetitionPrizes extends React.Component {
               <label>Prize Ranking</label>
             </div>
             <div className='col s12 center'>
-              <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
+              <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} />
             </div>
           </form>
           <div className='col s12 center' style={{marginTop: '10px'}}>

@@ -67,7 +67,7 @@ class Employees extends React.Component {
                 <input ref='firstName' type='text' required placeholder='Employee First Name' autoFocus />
                 <input ref='lastName' type='text' required placeholder='Employee Last Name' />
                 <input ref='email' type='email' required placeholder='Employee Email' />
-                <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Add' />
+                <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} type='submit' value='Add' />
               </div>
             </form>
             <div className='center col s12' style={{marginBottom: '10px'}}>

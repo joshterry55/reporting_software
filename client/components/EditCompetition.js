@@ -211,7 +211,7 @@ class EditCompetition extends React.Component {
                 </div>
               </div>
               <div className='col s12 center'>
-                <input type='submit' className='btn' style={{backgroundColor: '#60b9e8', textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}} />
+                <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} />
               </div>
             </form>
             <div className='col s12 center' style={{fontSize: '15px', marginTop: '10px', cursor: 'pointer'}}>

@@ -175,7 +175,7 @@ employeeFind(id) {
             </div>
           </div>
           <div className='col s6 offset-s3 l4 offset-l4' style={{marginBottom: '30px', marginTop: '10px'}}>
-            <button type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, width: '100%', textAlign: 'center'}}>Add Sale</button>
+            <button type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, width: '100%', textAlign: 'center', color: `${this.props.assignedcompany.accent_text}`}}>Add Sale</button>
           </div>
         </form>
       )

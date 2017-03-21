@@ -102,7 +102,7 @@ class TrainingSections extends React.Component {
                   <input ref='sectionName' placeholder='New Section' autoFocus required />
                 </div>
                 <div className='col s2'>
-                  <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Add' />
+                  <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} type='submit' value='Add' />
                 </div>
               </form>
               <div className='center col s12' style={{marginBottom: '10px'}}>
@@ -182,7 +182,7 @@ class TrainingSections extends React.Component {
                         <input ref='editSectionName' style={{fontSize: '15px'}} placeholder={section.name} defaultValue={section.name} autoFocus required />
                       </div>
                       <div className='col s12 center' style={{marginBottom: '10px'}}>
-                        <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`}} type='submit' value='Update' />
+                        <input className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} type='submit' value='Update' />
                       </div>
                     </form>
                     <div className='center col s12' style={{marginBottom: '0px'}}>

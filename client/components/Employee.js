@@ -236,7 +236,7 @@ class Employee extends React.Component {
         return(
           <div>
             <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
-              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>High Cancellation Rate </span>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: `${this.props.assignedcompany.accent_text}`, borderRadius: '5px', border: '1px solid #aaa'}}>High Cancellation Rate </span>
             </div>
             <div style={{marginTop: '10px'}}>
               {this.suggestedCancelVideo()}
@@ -299,7 +299,7 @@ class Employee extends React.Component {
         return(
           <div >
             <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
-              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>Low Close Rate</span>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: `${this.props.assignedcompany.accent_text}` , borderRadius: '5px', border: '1px solid #aaa'}}>Low Close Rate</span>
             </div>
             <div style={{marginTop: '10px'}}>
               {this.suggestedTrueVideo()}
@@ -372,7 +372,7 @@ class Employee extends React.Component {
         return(
           <div>
             <div className='center' style={{marginTop: '5px', marginBottom: '5px'}}>
-              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: 'white', textShadow: '1px 1px 1px rgba(0,0,0,0.5)', borderRadius: '5px', border: '1px solid #aaa'}}>Motivation</span>
+              <span style={{fontSize: '15px', backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', color: `${this.props.assignedcompany.accent_text}` , borderRadius: '5px', border: '1px solid #aaa'}}>Motivation</span>
             </div>
             {this.suggestedMotivationVideo()}
           </div>
@@ -511,7 +511,7 @@ class Employee extends React.Component {
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
           <div className='col s12' >
-            <div className='center' style={{backgroundColor: `${this.props.assignedcompany.color}`, height: '40px', fontSize: '20px', lineHeight: '40px', marginBottom: '10px', color: 'white'}}>
+            <div className='center' style={{backgroundColor: `${this.props.assignedcompany.color}`, height: '40px', fontSize: '20px', lineHeight: '40px', marginBottom: '10px', color: `${this.props.assignedcompany.color_text}`}}>
               Suggested Videos
             </div>
             <div style={{height: '550px', overflow: 'scroll'}}>

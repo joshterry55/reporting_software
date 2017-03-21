@@ -84,7 +84,7 @@ class CurrentCompetition extends React.Component {
     if(this.props.currentprizes.length) {
       return(
         <div style={{marginTop: '10px', marginBottom: '10px', height: '30px'}}>
-          <button data-target="modal1" style={{color: '#f2f7f7', backgroundColor: `${this.props.assignedcompany.accent_color}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)'}}>View Prizes</button>
+          <button data-target="modal1" style={{color: `${this.props.assignedcompany.accent_text}`, backgroundColor: `${this.props.assignedcompany.accent_color}`}}>View Prizes</button>
         </div>
       )
     } else {
@@ -121,7 +121,7 @@ class CurrentCompetition extends React.Component {
               width: '100%',
               height: '60px',
               lineHeight: '61px',
-              color: '#f2f7f7',
+              color: `${this.props.assignedcompany.color_text}`,
               fontSize: '35px',
               textShadow: '0 0 5px rgba(0,0,0,0.50)',
               backgroundColor: `${this.props.assignedcompany.color}`,

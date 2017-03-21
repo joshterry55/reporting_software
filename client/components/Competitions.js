@@ -124,7 +124,7 @@ class Competitions extends React.Component {
     if(this.props.user.role === 'Admin') {
       return(
         <div className='col s12 center' style={{height: '40px', lineHeight: '40px'}}>
-          <span style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, textShadow: '1px 1px 1px rgba(0,0,0,0.5)', padding: '5px 10px', borderRadius: '5px'}}><Link to='/createcompetition' style={{color: '#f2f7f7'}}>+ Create Competition</Link></span>
+          <span style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, padding: '5px 10px', borderRadius: '5px'}}><Link to='/createcompetition' style={{color: `${this.props.assignedcompany.accent_text}`}}>+ Create Competition</Link></span>
         </div>
       )
     }
