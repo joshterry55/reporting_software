@@ -84,7 +84,7 @@ class CurrentCompetition extends React.Component {
     if(this.props.currentprizes.length) {
       return(
         <div style={{marginTop: '10px', marginBottom: '10px', height: '30px'}}>
-          <button data-target="modal1" style={{color: `${this.props.assignedcompany.accent_text}`, backgroundColor: `${this.props.assignedcompany.accent_color}`}}>View Prizes</button>
+          <button data-target="modal1" style={{color: `${this.props.assignedcompany.accent_text}`, backgroundColor: `${this.props.assignedcompany.accent_color}`, boxShadow: '2px 2px 2px #888888', border: 'none', paddingTop: '5px'}}>View Prizes</button>
         </div>
       )
     } else {
@@ -399,24 +399,24 @@ class CurrentCompetition extends React.Component {
     let groups = this.props.currentgroups
     return(
       <div className='row'>
-        <div className='col s12 center'>
+        <div className='col s12' style={{height: '30px', backgroundColor: `${this.props.assignedcompany.color}`, color: `${this.props.assignedcompany.color_text}`, lineHeight: '30px'}}>
+          <div className='col s12 m6 center'>
+            <span>Competition Type: {this.props.currentcompetition.competition_type}</span>
+          </div>
+          <div className='col s12 m6 center'>
+            <span>Grouped By: {this.props.currentcompetition.grouped_by}</span>
+          </div>
+        </div>
+        <div className='col s12 center' style={{backgroundColor: '#eee', borderBottomRightRadius: '5px', borderBottomLeftRadius: '5px', paddingTop: '10px', border: '1px solid #ccc'}}>
           <span style={{fontSize: '20px'}}>{this.props.currentcompetition.name} {this.adminCheck()}</span>
           <span style={{fontSize: '15px', marginBottom: '10px'}}>{this.dateFormat(this.props.currentcompetition)}</span>
           {this.prizes()}
-          <div style={{height: '30px', backgroundColor: '#ccc', lineHeight: '30px'}}>
-            <div className='col s12 m6 center'>
-              <span>Competition Type: {this.props.currentcompetition.competition_type}</span>
-            </div>
-            <div className='col s12 m6 center'>
-              <span>Grouped By: {this.props.currentcompetition.grouped_by}</span>
-            </div>
-          </div>
         </div>
         <div className='col s12' style={{paddingTop: '10px'}}>
           {this.groups()}
         </div>
-        <div className='col s12' style={{padding: '20px 0px'}}>
-          <div className=' col s12 m10 offset-m1 ' style={{backgroundColor: '#eee', minHeight: '100px', padding: '0px', borderRadius: '5px', border: '1px solid #bbb'}}>
+        <div className='col s12' style={{padding: '20px 20px'}}>
+          <div className=' col s12 ' style={{backgroundColor: '#eee', minHeight: '100px', padding: '0px', borderRadius: '5px', border: '1px solid #bbb'}}>
             <div className='col s12 center' style={{height: '40px', backgroundColor: '#bbb', fontSize: '20px', lineHeight: '40px'}}>
               <span>{this.props.currentcompetition.name} Leaderboard</span>
             </div>

@@ -334,8 +334,13 @@ class TrainingVideos extends React.Component {
               <br />
             </div>
           </div>
-          <div className='col s12 m3' style={{height: '700px', backgroundColor: '#ddd', marginTop: '42px', borderRadius: '5px', paddingTop: '20px', overflow: 'scroll'}}>
-            {this.displaySideBar()}
+          <div className='col s12 m3' style={{ backgroundColor: `${this.props.assignedcompany.color}`, marginTop: '42px', borderRadius: '5px'}}>
+            <div className='col s12 center' style={{padding: '0px', margin: '0px', height: '40px', lineHeight: '40px', color: `${this.props.assignedcompany.color_text}`, backgroundColor: `${this.props.assignedcompany.color}`, fontSize: '20px'}}>
+              Videos
+            </div>
+            <div className='col s12' style={{height: '700px',  overflow: 'scroll', padding: '0px', margin: '0px', backgroundColor: '#ddd'}}>
+              {this.displaySideBar()}
+            </div>
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}></div>
         </div>
