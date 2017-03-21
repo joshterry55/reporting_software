@@ -417,7 +417,7 @@ class CurrentCompetition extends React.Component {
         </div>
         <div className='col s12' style={{padding: '20px 20px'}}>
           <div className=' col s12 ' style={{backgroundColor: '#eee', minHeight: '100px', padding: '0px', borderRadius: '5px', border: '1px solid #bbb'}}>
-            <div className='col s12 center' style={{height: '40px', backgroundColor: '#bbb', fontSize: '20px', lineHeight: '40px'}}>
+            <div className='col s12 center' style={{height: '40px', backgroundColor: `${this.props.assignedcompany.color}`, color: `${this.props.assignedcompany.color_text}`, fontSize: '20px', lineHeight: '40px'}}>
               <span>{this.props.currentcompetition.name} Leaderboard</span>
             </div>
             <div className='col s12' style={{maxHeight: '600px', overflow: 'scroll'}}>
