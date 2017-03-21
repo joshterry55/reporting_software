@@ -275,6 +275,35 @@ class ReportOfficeSales extends React.Component {
     }
   }
 
+  sitDownCheck(sitdown) {
+    if(sitdown === 1) {
+      return(
+        <i className="tiny material-icons" style={{color: 'white', backgroundColor: 'green', padding: '2px', borderRadius: '2px'}}><b>done</b></i>
+      )
+    }
+  }
+  closeCheck(close) {
+    if(close === 1) {
+      return(
+        <i className="tiny material-icons" style={{color: 'white', backgroundColor: 'green', padding: '2px', borderRadius: '2px'}}><b>done</b></i>
+      )
+    }
+  }
+  siteSurveyCheck(siteSurvey) {
+    if(siteSurvey === 1) {
+      return(
+        <i className="tiny material-icons" style={{color: 'white', backgroundColor: 'green', padding: '2px', borderRadius: '2px'}}><b>done</b></i>
+      )
+    }
+  }
+  cancelCheck(cancel) {
+    if(cancel === 1) {
+      return(
+        <i className="tiny material-icons" style={{color: 'white', backgroundColor: 'red', padding: '2px', borderRadius: '2px'}}><b>done</b></i>
+      )
+    }
+  }
+
   // class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"
 
 
@@ -282,15 +311,15 @@ class ReportOfficeSales extends React.Component {
     if(this.props.officesales.length) {
       return this.props.officesales.map( sale => {
         return(
-            <tr className='row' style={{height: '30px', lineHeight: '30px'}} key={sale.id}>
+            <tr className='row' style={{height: '40px', lineHeight: '40px'}} key={sale.id}>
               <td className='col s2'>{sale.date}</td>
               <td className='col s2'>{sale.salesman}</td>
               <td className='col s2'>{sale.first_name} {sale.last_name}</td>
               <td className='col s1'>{sale.kw}</td>
-              <td className='col s1'>{sale.sit_down}</td>
-              <td className='col s1'>{sale.close}</td>
-              <td className='col s1'>{sale.site_survey}</td>
-              <td className='col s1'>{sale.cancel}</td>
+              <td className='col s1'>{this.sitDownCheck(sale.sit_down)}</td>
+              <td className='col s1'>{this.closeCheck(sale.close)}</td>
+              <td className='col s1'>{this.siteSurveyCheck(sale.site_survey)}</td>
+              <td className='col s1'>{this.cancelCheck(sale.cancel)}</td>
               {this.editDelete(sale)}
             </tr>
         );
@@ -335,12 +364,12 @@ class ReportOfficeSales extends React.Component {
             <tr className='row' style={{ height: '30px', lineHeight: '30px'}}>
               <td className='col s2'><b>TOTAL:</b></td>
               <td className='col s2'></td>
-              <td className='col s2'><b>{kilowatts}</b></td>
+              <td className='col s2'></td>
+              <td className='col s1'><b>{kilowatts}</b></td>
               <td className='col s1'><b>{sitdown}</b></td>
               <td className='col s1'><b>{close}</b></td>
               <td className='col s1'><b>{sitesurvey}</b></td>
               <td className='col s1'><b>{cancel}</b></td>
-              <td className='col s1'></td>
               <td className='col s1'></td>
             </tr>
           </tbody>
