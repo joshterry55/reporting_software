@@ -312,13 +312,13 @@ class CompetitionGroups extends React.Component {
         <div className="col s12">
           <form className='col s12 m4 offset-m4' onSubmit={this.submitGroup}>
             <div className="input-field col s12">
-              <select ref='newGroup'>
+              <span style={styles.customLabel}>Select {this.props.currentcompetition.grouped_by}</span>
+              <select ref='newGroup' className='browser-default'>
                 <option value="" disabled selected>Choose Team</option>
                 {this.teamOptions()}
               </select>
-              <label>Select {this.props.currentcompetition.grouped_by}</label>
             </div>
-            <div className='col s12 center'>
+            <div className='col s12 center' style={{marginTop: '15px'}}>
               <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} />
             </div>
           </form>
@@ -348,6 +348,15 @@ class CompetitionGroups extends React.Component {
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  customLabel: {
+    padding: '0px',
+    margin: '0px',
+    fontSize: '12px',
+    color: '#999'
   }
 }
 

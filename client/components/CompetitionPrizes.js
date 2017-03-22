@@ -280,18 +280,18 @@ class CompetitionPrizes extends React.Component {
           <form className='col s12 m4 offset-m4' onSubmit={this.submitPrize}>
             <div className='col s12'>
               <label>Prize</label>
-              <input ref='prizeName' type='text' />
+              <input ref='prizeName' type='text' placeholder='Prize Name' />
             </div>
             <div className="input-field col s12">
-              <select ref='prizeRank'>
+              <span style={styles.customLabel}>Prize Ranking</span>
+              <select ref='prizeRank' className='browser-default'>
                 <option value="" disabled selected>Choose Rank</option>
                 <option value="1">1st Place</option>
                 <option value="2">2nd Place</option>
                 <option value="3">3rd Place</option>
               </select>
-              <label>Prize Ranking</label>
             </div>
-            <div className='col s12 center'>
+            <div className='col s12 center' style={{marginTop: '15px'}}>
               <input type='submit' className='btn' style={{backgroundColor: `${this.props.assignedcompany.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} />
             </div>
           </form>
@@ -321,6 +321,15 @@ class CompetitionPrizes extends React.Component {
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  customLabel: {
+    padding: '0px',
+    margin: '0px',
+    fontSize: '12px',
+    color: '#999'
   }
 }
 
