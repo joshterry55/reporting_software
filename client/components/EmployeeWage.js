@@ -19,6 +19,10 @@ class EmployeeWage extends Component {
 
 	componentDidUpdate() {
 		$('select').material_select();
+		if(this.props.saleswage.kw) {
+		} else {
+			this.refs.wageSelector.value = ''
+		}
 	}
 
 	selection() {
@@ -71,7 +75,7 @@ class EmployeeWage extends Component {
 		return(
 			<div className='col s12 m8 offset-m2'>
 				<form>
-					<select className='browser-default' onChange={this.selection} defaultValue=''>
+					<select className='browser-default' ref='wageSelector' onChange={this.selection} defaultValue=''>
 						<option value='' selected>select filter</option>
 						<option id='week'>Week</option>
 						<option id='month'>Month</option>

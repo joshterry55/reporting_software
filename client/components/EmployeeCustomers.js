@@ -12,6 +12,13 @@ class EmployeeCustomers extends Component {
 		this.customerTable = this.customerTable.bind(this)
 	}
 
+	componentDidUpdate() {
+		// if(this.props.employeecustomers.length) {
+		// } else {
+		// 	this.refs.customerSelector.value = ''
+		// }
+	}
+
 	selection() {
 		let userId = this.props.currentuser.id
 		if($('#weekCustomer').is(':selected') === true) {
@@ -23,7 +30,6 @@ class EmployeeCustomers extends Component {
 					startday: 'week'
 				}
 			}).done( customers => {
-				debugger
 				this.props.dispatch(employeecustomers(customers))
 			}).fail( data => {
 
@@ -37,7 +43,6 @@ class EmployeeCustomers extends Component {
 					startday: 'month'
 				}
 			}).done( customers => {
-				debugger
 				this.props.dispatch(employeecustomers(customers))
 			}).fail( data => {
 
@@ -128,7 +133,7 @@ class EmployeeCustomers extends Component {
 			<div className='col s12'>
 				<div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.color}`, fontSize: '20px', borderTopRightRadius: '5px', borderTopLeftRadius: '5px', padding: '10px 10px'}}>
 					<form className='col s12 m6 offset-m3'>
-						<select className='browser-default' onChange={this.selection} defaultValue=''>
+						<select className='browser-default'  ref='customerSelector' onChange={this.selection} defaultValue=''>
 							<option value='' selected>Select to view customers</option>
 							<option id='weekCustomer'>Week</option>
 							<option id='monthCustomer'>Month</option>
