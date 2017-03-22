@@ -83,23 +83,44 @@ class EmployeeWage extends Component {
 	}
 
 	wage() {
-		if(this.props.saleswage.kw) {
-			let currentWage = this.props.currentuser.wage
-			let totalKw = this.props.saleswage.kw
-			let salesWage = (parseInt(totalKw) * parseInt(currentWage))
-			return(
-				<div>
-					<span className='left' style={{textAlign: 'left'}}>$</span>
-					<span style={{paddingLeft: '5px'}}>{salesWage}</span>
-				</div>
-			)
+		if(this.props.user.role === 'Employee') {
+			if(this.props.saleswage.kw) {
+				let currentWage = this.props.user.wage
+				let totalKw = this.props.saleswage.kw
+				let salesWage = (parseInt(totalKw) * parseInt(currentWage))
+				return(
+					<div>
+						<span className='left' style={{textAlign: 'left'}}>$</span>
+						<span style={{paddingLeft: '5px'}}>{salesWage}</span>
+					</div>
+				)
+			} else {
+				return(
+					<div>
+						<span className='left' style={{textAlign: 'left'}}>$</span>
+						<span style={{paddingLeft: '5px'}}>0</span>
+					</div>
+				)
+			}
 		} else {
-			return(
-				<div>
-					<span className='left' style={{textAlign: 'left'}}>$</span>
-					<span style={{paddingLeft: '5px'}}>0</span>
-				</div>
-			)
+			if(this.props.saleswage.kw) {
+				let currentWage = this.props.currentuser.wage
+				let totalKw = this.props.saleswage.kw
+				let salesWage = (parseInt(totalKw) * parseInt(currentWage))
+				return(
+					<div>
+						<span className='left' style={{textAlign: 'left'}}>$</span>
+						<span style={{paddingLeft: '5px'}}>{salesWage}</span>
+					</div>
+				)
+			} else {
+				return(
+					<div>
+						<span className='left' style={{textAlign: 'left'}}>$</span>
+						<span style={{paddingLeft: '5px'}}>0</span>
+					</div>
+				)
+			}
 		}
 	}
 
