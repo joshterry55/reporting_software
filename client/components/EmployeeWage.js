@@ -91,7 +91,7 @@ class EmployeeWage extends Component {
 			if(this.props.saleswage.kw) {
 				let currentWage = this.props.user.wage
 				let totalKw = this.props.saleswage.kw
-				let salesWage = (parseInt(totalKw) * parseInt(currentWage))
+				let salesWage = (parseFloat(totalKw) * parseFloat(currentWage))
 				return(
 					<div>
 						<span className='left' style={{textAlign: 'left'}}>$</span>
@@ -110,7 +110,7 @@ class EmployeeWage extends Component {
 			if(this.props.saleswage.kw) {
 				let currentWage = this.props.currentuser.wage
 				let totalKw = this.props.saleswage.kw
-				let salesWage = (parseInt(totalKw) * parseInt(currentWage))
+				let salesWage = (parseFloat(totalKw) * parseFloat(currentWage))
 				return(
 					<div>
 						<span className='left' style={{textAlign: 'left'}}>$</span>
