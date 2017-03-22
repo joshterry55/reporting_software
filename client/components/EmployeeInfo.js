@@ -17,6 +17,7 @@ class EmployeeInfo extends React.Component {
     this.refs.firstName.value = this.props.currentuser.first_name
     this.refs.lastName.value = this.props.currentuser.last_name
     this.refs.role.value = this.props.currentuser.role
+    this.refs.wage.value = this.props.currentuser.wage
     if(this.props.currentuser.phone_number) {
       this.refs.phoneNumber.value = this.props.currentuser.phone_number
     } else {
@@ -73,6 +74,7 @@ class EmployeeInfo extends React.Component {
     let last = this.refs.lastName.value
     let role = this.refs.role.value
     let phone = this.refs.phoneNumber.value
+    let wage = this.refs.wage.value
     let id = this.props.currentuser.id
 
     $.ajax({
@@ -83,7 +85,8 @@ class EmployeeInfo extends React.Component {
         first_name: first,
         last_name: last,
         role: role,
-        phone_number: phone
+        phone_number: phone,
+        wage: wage
       }}
     }).done( user => {
       let messageSuccess = `Employee Updated`
@@ -154,6 +157,9 @@ class EmployeeInfo extends React.Component {
                 </div>
                 <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Phone Number: </b>(8005557777) <br />
                   <input type='text' ref='phoneNumber' style={{backgroundColor: 'white'}} className='employee-info' defaultValue={employee.phone_number ? employee.phone_number : 'None'} />
+                </div>
+                <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Wage: </b>per/kw (200, 175 etc.) <br />
+                  <input type='text' ref='wage' style={{backgroundColor: 'white'}} className='employee-info' defaultValue={employee.wage} />
                 </div>
                 <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px'}}><b>Company Role:</b> <br />
                   <select ref='role' className="browser-default employee-info" defaultValue={employee.role}>
