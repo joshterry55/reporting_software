@@ -112,7 +112,11 @@ class EmployeeCustomers extends Component {
 				);
 			});
 		} else {
-
+			return(
+					<tr className='row' style={{height: '100px', lineHeight: '100px'}}>
+						<td className='col s12 center' style={{backgroundColor: '#f2f7f7', color: '#ccc'}}>No Customers</td>
+					</tr>
+			);
 		}
 	}
 
@@ -141,7 +145,7 @@ class EmployeeCustomers extends Component {
 						</select>
 					</form>
 				</div>
-				<div className='col s12' style={{backgroundColor: '#f2f7f7', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px', height: '400px', overflow: 'scroll'}}>
+				<div className='col s12' style={{backgroundColor: '#f2f7f7', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px'}}>
 					<table className='striped scroll' >
 						<thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
 							<tr className='row' style={{marginBottom: '0px'}}>
@@ -159,7 +163,6 @@ class EmployeeCustomers extends Component {
 							{this.displaySales()}
 						</tbody>
 					</table>
-					{this.customerTable()}
 				</div>
 			</div>
 		);
