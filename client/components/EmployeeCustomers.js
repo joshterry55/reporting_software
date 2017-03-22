@@ -142,9 +142,9 @@ class EmployeeCustomers extends Component {
 					</form>
 				</div>
 				<div className='col s12' style={{backgroundColor: '#f2f7f7', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px', height: '400px', overflow: 'scroll'}}>
-					<table className='striped' >
-						<thead style={{borderBottom: '1px solid black', height: '35px', lineHeight: '30px'}}>
-							<tr className='row'>
+					<table className='striped scroll' >
+						<thead style={{borderBottom: '1px solid black', height: '30px', lineHeight: '30px'}}>
+							<tr className='row' style={{marginBottom: '0px'}}>
 									<th className='col s2'>Date</th>
 									<th className='col s2'>Salesman</th>
 									<th className='col s2'>Customer</th>
@@ -153,7 +153,6 @@ class EmployeeCustomers extends Component {
 									<th className='col s1'>CL</th>
 									<th className='col s1'>SS</th>
 									<th className='col s1'>CA</th>
-									<th className='col s1'></th>
 							</tr>
 						</thead>
 						<tbody id="products">
