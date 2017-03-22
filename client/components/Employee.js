@@ -7,6 +7,7 @@ require('superagent-rails-csrf')(request)
 import { threemonth } from '../actions/threemonth'
 import { sixmonth } from '../actions/sixmonth'
 import ThreeGraph from './ThreeGraph'
+import EmployeeWage from './EmployeeWage'
 import { Link } from 'react-router';
 
 
@@ -504,9 +505,13 @@ class Employee extends React.Component {
           </div>
         </div>
         <div className='col s12 l8' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
-          <div className='col s12' style={{height: '600px', borderRight: '2px solid #ccc'}}>
-            {this.graphSetup(sixmonth)}
-
+          <div className='col s12' style={{borderRight: '2px solid #ccc', paddingRight: '0px', paddingLeft: '0px'}}>
+            <div className='col s12'>
+              {this.graphSetup(sixmonth)}
+            </div>
+            <div className='col s12' style={{height: '176px'}}>
+              <EmployeeWage />
+            </div>
           </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get 'competition/:id/prizes', as: 'competition/prizes', :to => 'prizes#show'
     get 'competition/:id/competition_groups', as: 'competition/competition_groups', :to => 'competition_groups#show'
     get 'company/:id/competition_sales', as: 'company/competition_sales', :to => 'sales#competition_sales'
+    get 'user/:id/wage_sales', as: 'user/wage_sales', :to => 'sales#wage_sales'
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
     put 'prizes/:id/avatar', as: 'prizes/avatar', :to => 'prizes#add_avatar'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'

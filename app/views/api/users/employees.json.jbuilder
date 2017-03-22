@@ -12,4 +12,5 @@ json.array! @employees do |emp|
   json.assigned_company emp.assigned_company
   json.assigned_regions emp.assigned_regions
   json.assigned_offices emp.assigned_offices
+  json.wage emp.wage
 end

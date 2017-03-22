@@ -59,6 +59,20 @@ class Api::SalesController < ApplicationController
     render json: @sales
   end
 
+  def wage_sales
+    @user = User.find(params[:id])
+    @startday = params[:startday]
+    if @startday == 'week'
+      @sales = @user.sales.where(date: (Time.now.beginning_of_week..Time.now.end_of_week)).where(close: '1').where(cancel: '0')
+    elsif @startday == 'month'
+      @sales = @user.sales.where(date: (Time.now.beginning_of_month..Time.now.end_of_month)).where(close: '1').where(cancel: '0')
+    elsif @startday == 'year'
+      @sales = @user.sales.where(date: (Time.now.beginning_of_year..Time.now.end_of_year)).where(close: '1').where(cancel: '0')
+    end
+    # @sales = @company.sales.where(date: (@start_date)..(@end_date)).where(site_survey: '1')
+    render json: @sales
+  end
+
   def search
     @company = Company.find(params[:id])
     @search = params[:search]
