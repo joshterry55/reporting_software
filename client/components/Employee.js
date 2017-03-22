@@ -8,6 +8,7 @@ import { threemonth } from '../actions/threemonth'
 import { sixmonth } from '../actions/sixmonth'
 import ThreeGraph from './ThreeGraph'
 import EmployeeWage from './EmployeeWage'
+import EmployeeCustomers from './EmployeeCustomers'
 import { Link } from 'react-router';
 
 
@@ -509,17 +510,21 @@ class Employee extends React.Component {
             <div className='col s12'>
               {this.graphSetup(sixmonth)}
             </div>
-            <div className='col s12' style={{height: '176px'}}>
-              <EmployeeWage />
+
+            <div className='col s12' style={{padding: '0px 0px 20px 0px'}}>
+              <EmployeeCustomers />
             </div>
           </div>
         </div>
         <div className='col s12 l4' style={{backgroundColor: '#ddd', padding: '10px 0px'}}>
+          <div className='col s12' style={{height: '176px'}}>
+            <EmployeeWage />
+          </div>
           <div className='col s12' >
             <div className='center' style={{backgroundColor: `${this.props.assignedcompany.color}`, height: '40px', fontSize: '20px', lineHeight: '40px', marginBottom: '10px', color: `${this.props.assignedcompany.color_text}`}}>
               Suggested Videos
             </div>
-            <div style={{height: '550px', overflow: 'scroll'}}>
+            <div style={{height: '683px', overflow: 'scroll'}}>
               <div>
                 {this.motivation(threemonth)}
               </div>
@@ -536,6 +541,10 @@ class Employee extends React.Component {
     )
   }
 }
+
+// <div className='col s12' style={{height: '176px'}}>
+//   <EmployeeWage />
+// </div>
 
 const mapStateToProps = (state) => {
   let { user, lifetimekw, assignedcompany, currentuser, threemonth, trainingvideos, sixmonth, assignedoffices } = state

@@ -109,6 +109,7 @@ class EmployeeSelect extends React.Component {
       })
       this.props.dispatch({type: 'CURRENT_USER', user})
       this.props.dispatch({type: 'RESET_SALES_WAGE'})
+      this.props.dispatch({type: 'RESET_EMPLOYEE_CUSTOMERS'})
     }
   }
 

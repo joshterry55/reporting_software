@@ -127,10 +127,10 @@ class EmployeeWage extends Component {
 	render() {
 		return(
 			<div>
-				<div className='col s12 m6 offset-m3' style={{backgroundColor: `${this.props.assignedcompany.color}`, paddingTop: '10px', paddingBottom: '10px', borderTopRightRadius: '5px', borderTopLeftRadius: '5px'}}>
+				<div className='col s12' style={{backgroundColor: `${this.props.assignedcompany.color}`, paddingTop: '10px', paddingBottom: '10px', borderTopRightRadius: '5px', borderTopLeftRadius: '5px'}}>
 					{this.dateSelect()}
 				</div>
-				<div className='col s12 m6 offset-m3' style={{border: '1px solid #bbb', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px', backgroundColor: '#f2f7f7', paddingTop: '5px', paddingBottom: '10px'}}>
+				<div className='col s12' style={{border: '1px solid #bbb', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px', backgroundColor: '#f2f7f7', paddingTop: '5px', paddingBottom: '10px'}}>
 					<div className='center' style={{fontSize: '20px', margin: '0px', padding: '0px'}}>Estimated Income</div>
 					<div className='center' style={{fontSize: '12px', margin: '0px', paddingBottom: '7px'}}>(Based on closed deals)</div>
 					<div style={{width: '90px', border: '1px solid #aaa', margin: '0 auto', paddingLeft: '5px', borderRadius: '2px', paddingTop: '2px', paddingBottom: '2px'}}>
