@@ -139,43 +139,11 @@ class Settings extends React.Component {
               <option value="#000000">Black</option>
             </select>
           </div>
-          <div className='col s12' style={{fontSize: '20px', fontWeight: 'bold', marginBottom: '10px', marginTop: '20px'}}>
-            Company Logo
+          <div className='col s12' style={{marginBottom: '10px', marginTop: '20px'}}>
+            <span style={{fontSize: '20px', fontWeight: 'bold'}}>Company Logo</span> (200w x 100h recommended, transparent background)<DropZone style={{fontSize: '16px', fontWeight: 'regular', lineHeight: '20px', cursor: 'pointer'}} multiple={false} onDrop={this.onDrop} ><span className='edit-icon' style={{color: '#bbb'}}>Edit</span></DropZone>
           </div>
           <div className='col s12'>
-            <div style={{height: '200px', marginBottom: '10px'}}>
-              <div style={{
-                backgroundImage: `url(${this.props.assignedcompany.avatar})`,
-                width: '100%',
-                height: '100%',
-                maxWidth: '200px',
-                display: 'block',
-                backgroundSize: 'cover',
-                borderRadius: '10px',
-                boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
-                margin: '8px 0px 0px 0px',
-                backgroundColor: 'rgba(0,0,0,0.25)',
-                zIndex: '1',
-              }}>
-              <DropZone className='edit-icon' style={{
-                  backgroundColor: '#aaa',
-                  backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487276928/k8l3cfeaxmgdjja4yyah.jpg')`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center center',
-                  width: '100%',
-                  height: '100%',
-                  maxWidth: '200px',
-                  display: 'block',
-                  borderRadius: '10px',
-                  margin: '0px auto',
-                  position: 'relative',
-                  opacity: '0.25',
-                  zIndex: '2',
-                  cursor: 'pointer'
-                }} multiple={false} onDrop={this.onDrop} />
-              </div>
-            </div>
+            <img style={{maxHeight: '80px', marginTop: '5px'}} src={this.props.assignedcompany.avatar} alt=""  />
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>
@@ -203,6 +171,39 @@ class Settings extends React.Component {
   //   </select>
   // </div>
 
+  // <div style={{height: '200px', marginBottom: '10px'}}>
+  //   <div style={{
+  //     backgroundImage: `url(${this.props.assignedcompany.avatar})`,
+  //     width: '100%',
+  //     height: '100%',
+  //     maxWidth: '200px',
+  //     display: 'block',
+  //     backgroundSize: 'cover',
+  //     borderRadius: '10px',
+  //     boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+  //     margin: '8px 0px 0px 0px',
+  //     backgroundColor: 'rgba(0,0,0,0.25)',
+  //     zIndex: '1',
+  //   }}>
+  //   <DropZone className='edit-icon' style={{
+  //       backgroundColor: '#aaa',
+  //       backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487276928/k8l3cfeaxmgdjja4yyah.jpg')`,
+  //       backgroundSize: 'contain',
+  //       backgroundRepeat: 'no-repeat',
+  //       backgroundPosition: 'center center',
+  //       width: '100%',
+  //       height: '100%',
+  //       maxWidth: '200px',
+  //       display: 'block',
+  //       borderRadius: '10px',
+  //       margin: '0px auto',
+  //       position: 'relative',
+  //       opacity: '0.25',
+  //       zIndex: '2',
+  //       cursor: 'pointer'
+  //     }} multiple={false} onDrop={this.onDrop} />
+  //   </div>
+  // </div>
 
   render() {
     return(

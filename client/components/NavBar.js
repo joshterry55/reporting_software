@@ -128,16 +128,22 @@ class NavBar extends React.Component {
 
   render() {
     let navColor
+    let navImage
     if(this.props.assignedcompany.id) {
       navColor = this.props.assignedcompany.color
     } else {
       navColor = '#354458'
     }
+    if(this.props.assignedcompany.id) {
+      navImage = this.props.assignedcompany.avatar
+    } else {
+      navImage = 'http://res.cloudinary.com/dk2bj79p0/image/upload/v1487571022/Logomakr_3gZNsL_mrbshc.png'
+    }
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: `${navColor}`}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: `${navColor}`, height: '90px', lineHeight: '90px'}}>
           <div className='nav-wrapper'>
-            <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"></span><span className="logo-text"></span></Link>
+            <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"><img style={{maxHeight: '60px', marginTop: '15px'}} src={navImage} alt=""  /></span><span className="logo-text"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
               <i className='material-icons'>menu</i>
             </a>
