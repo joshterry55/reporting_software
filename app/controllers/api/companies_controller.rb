@@ -25,6 +25,13 @@ class Api::CompaniesController < ApplicationController
 
   end
 
+  def add_avatar
+    @company = Company.find(params[:id])
+    u = Cloudinary::Uploader.upload(File.open(params[:avatar].tempfile))
+   @company.update(avatar: u['url'])
+   render json: { avatar: u['url'] }
+  end
+
   def show
   end
 

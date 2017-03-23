@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Admin from './Admin'
 import { setFlash } from '../actions/flash';
+import DropZone from 'react-dropzone';
+import request from 'superagent';
+require('superagent-rails-csrf')(request)
 
 
 class Settings extends React.Component {
@@ -9,6 +12,7 @@ class Settings extends React.Component {
     super(props)
 
     this.state = {edit: false}
+    this.state = { avatar: [this.props.user.avatar]}
 
     this.updateCompany = this.updateCompany.bind(this)
   }
@@ -79,6 +83,20 @@ class Settings extends React.Component {
 
   }
 
+  onDrop = (files) => {
+    let id = this.props.assignedcompany.id
+    let employee = this.props.user
+    let file = files[0];
+    let req = request.put(`api/company/${id}/avatar`);
+    req.setCsrfToken();
+    req.attach('avatar', file)
+    req.end( (err, res) => {
+      if(res.body) {
+        this.setState({avatar: [res.body.avatar]})
+      }
+    })
+  }
+
   display() {
     let company = this.props.assignedcompany
     let companyColor = company.color.substring(1)
@@ -120,6 +138,44 @@ class Settings extends React.Component {
               <option value="#ffffff">White</option>
               <option value="#000000">Black</option>
             </select>
+          </div>
+          <div className='col s12' style={{fontSize: '20px', fontWeight: 'bold', marginBottom: '10px', marginTop: '20px'}}>
+            Company Logo
+          </div>
+          <div className='col s12'>
+            <div style={{height: '200px', marginBottom: '10px'}}>
+              <div style={{
+                backgroundImage: `url(${this.props.assignedcompany.avatar})`,
+                width: '100%',
+                height: '100%',
+                maxWidth: '200px',
+                display: 'block',
+                backgroundSize: 'cover',
+                borderRadius: '10px',
+                boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                margin: '8px 0px 0px 0px',
+                backgroundColor: 'rgba(0,0,0,0.25)',
+                zIndex: '1',
+              }}>
+              <DropZone className='edit-icon' style={{
+                  backgroundColor: '#aaa',
+                  backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1487276928/k8l3cfeaxmgdjja4yyah.jpg')`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center center',
+                  width: '100%',
+                  height: '100%',
+                  maxWidth: '200px',
+                  display: 'block',
+                  borderRadius: '10px',
+                  margin: '0px auto',
+                  position: 'relative',
+                  opacity: '0.25',
+                  zIndex: '2',
+                  cursor: 'pointer'
+                }} multiple={false} onDrop={this.onDrop} />
+              </div>
+            </div>
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>

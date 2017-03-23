@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get 'user/:id/wage_sales', as: 'user/wage_sales', :to => 'sales#wage_sales'
     get 'user/:id/all_employee_customers', as: 'user/all_employee_customers', :to => 'sales#all_employee_customers'
     put 'training_sections/:id/avatar', as: 'training_section/avatar', :to => 'training_sections#add_avatar'
+    put 'company/:id/avatar', as: 'company/avatar', :to => 'companies#add_avatar'
     put 'prizes/:id/avatar', as: 'prizes/avatar', :to => 'prizes#add_avatar'
     put 'users/:id/avatar', as: 'users/avatar', :to => 'users#add_avatar'
     resources :users
