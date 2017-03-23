@@ -143,7 +143,7 @@ class Settings extends React.Component {
             <span style={{fontSize: '20px', fontWeight: 'bold'}}>Company Logo</span> (200w x 100h recommended, transparent background)<DropZone style={{fontSize: '16px', fontWeight: 'regular', lineHeight: '20px', cursor: 'pointer'}} multiple={false} onDrop={this.onDrop} ><span className='edit-icon' style={{color: '#bbb'}}>Edit</span></DropZone>
           </div>
           <div className='col s12'>
-            <img style={{maxHeight: '80px', marginTop: '5px', border: '1px solid #ccc'}} src={this.props.assignedcompany.avatar} alt=""  />
+            <img style={{maxHeight: '80px', marginTop: '5px', border: '1px solid #ccc', backgroundColor: '#ddd'}} src={this.props.assignedcompany.avatar} alt=""  />
           </div>
           <div className='col s12' style={{marginBottom: '20px'}}> </div>
           <div className='col s12'>
