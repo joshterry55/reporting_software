@@ -66,13 +66,13 @@ class Admin extends React.Component {
           <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '10px'}}>
             <ul className="tabs tabs-fixed-width" style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
               <div className="tab col s3">
-                <li className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('addsale')} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: '#fff'}}>Add Sale</Link></li>
+                <li className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('addsale')} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}}>Add Sale</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link to='/company' className='admin' style={{color: '#fff'}}>{this.props.assignedcompany.name}</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link to='/company' className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}}>{this.props.assignedcompany.name}</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('settings')}><Link to='/settings' className='admin' style={{color: '#fff'}}>Settings</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('settings')}><Link to='/settings' className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}}>Settings</Link></li>
               </div>
             </ul>
           </div>
@@ -103,7 +103,7 @@ class Admin extends React.Component {
 const styles = {
 
   adminNavActiveTab: {
-    backgroundColor: '#ccc',
+    backgroundColor: 'rgba(200,200,200,.30)',
   }
 }
 

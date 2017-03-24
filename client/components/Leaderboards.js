@@ -26,7 +26,7 @@ class Leaderboards extends React.Component {
        case "employees":
          if(document.location.pathname === "/leaderboards/employees") {
            return {
-             backgroundColor: `#ccc`,
+             backgroundColor: `rgba(200,200,200,.30)`,
            }
          } else {
            return {backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}
@@ -35,7 +35,7 @@ class Leaderboards extends React.Component {
       case "offices":
          if(document.location.pathname === "/leaderboards/offices") {
            return {
-             backgroundColor: `#ccc`,
+             backgroundColor: `rgba(200,200,200,.30)`,
            }
          } else {
            return {backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}
@@ -43,7 +43,7 @@ class Leaderboards extends React.Component {
        case "regions":
          if(document.location.pathname === "/leaderboards/regions") {
            return {
-             backgroundColor: `#ccc`,
+             backgroundColor: `rgba(200,200,200,.30)`,
 
            }
          } else {
@@ -53,7 +53,7 @@ class Leaderboards extends React.Component {
        case "company":
          if(document.location.pathname === "/leaderboards/company") {
            return {
-             backgroundColor: `#ccc`,
+             backgroundColor: `rgba(200,200,200,.30)`,
            }
          } else {
            return {backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}
@@ -68,16 +68,16 @@ class Leaderboards extends React.Component {
           <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '10px'}}>
             <ul className="tabs tabs-fixed-width" style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('employees')}><Link className='admin' style={{color: '#fff'}} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('employees')}><Link className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('offices')}><Link className='admin' style={{color: '#fff'}} onClick={this.clearCurrentRegion} to='/leaderboards/offices'>Office</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('offices')}><Link className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}} onClick={this.clearCurrentRegion} to='/leaderboards/offices'>Office</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('regions')}><Link className='admin' style={{color: '#fff'}} to='/leaderboards/regions'>Region</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('regions')}><Link className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}} to='/leaderboards/regions'>Region</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link className='admin' style={{color: '#fff'}} to='/leaderboards/company'>Company</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link className='admin' style={{color: `${this.props.assignedcompany.secondary_text}`}} to='/leaderboards/company'>Company</Link></li>
               </div>
             </ul>
           </div>

@@ -42,6 +42,7 @@ class Settings extends React.Component {
     let secondaryColor = this.refs.secondaryNavColor.value
     let companyText = this.refs.companyText.value
     let accentTextColor = this.refs.accentText.value
+    let secondaryTextColor = this.refs.secondaryText.value
     let regexAccentTest = /[0-9A-F]{6}$/i.test(accent)
     let regexSecondaryTest = /[0-9A-F]{6}$/i.test(secondaryColor)
     let regexColorTest = /[0-9A-F]{6}$/i.test(color)
@@ -66,7 +67,8 @@ class Settings extends React.Component {
                     accent_color: accent,
                     accent_text: accentTextColor,
                     color_text: companyText,
-                    secondary_nav_color: secondaryColor
+                    secondary_nav_color: secondaryColor,
+                    secondary_text: secondaryTextColor
                   }}
                 }).done( company => {
                   let messageSuccess = `${company.name} Updated`
@@ -140,7 +142,7 @@ class Settings extends React.Component {
             <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Nav Color</b> <br />
-            <input ref='secondaryNavColor' style={{backgroundColor: `${company.secondary_nav_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companySecondary} required />
+            <input ref='secondaryNavColor' style={{backgroundColor: `${company.secondary_nav_color}`, color: `${this.props.assignedcompany.secondary_text}`}} className="browser-default employee-info" defaultValue={companySecondary} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Company Text Color</b> <br />
             <select className="browser-default" ref='companyText' defaultValue={this.props.assignedcompany.color_text} style={{border: '1px solid #ddd'}}>
@@ -151,6 +153,13 @@ class Settings extends React.Component {
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Button Text Color</b> <br />
             <select className="browser-default" ref='accentText' defaultValue={this.props.assignedcompany.accent_text} style={{border: '1px solid #ddd'}}>
+              <option value="" disabled >Choose your option</option>
+              <option value="#ffffff">White</option>
+              <option value="#000000">Black</option>
+            </select>
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Secondary Text Color</b> <br />
+            <select className="browser-default" ref='secondaryText' defaultValue={this.props.assignedcompany.secondary_text} style={{border: '1px solid #ddd'}}>
               <option value="" disabled >Choose your option</option>
               <option value="#ffffff">White</option>
               <option value="#000000">Black</option>
