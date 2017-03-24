@@ -217,7 +217,7 @@ PLATFORMS
 DEPENDENCIES
   cloudinary
   devise
-  devise_invitable (~> 1.7.0)
+  devise_invitable
   dotenv-rails
   jbuilder (~> 2.5)
   jquery-rails
