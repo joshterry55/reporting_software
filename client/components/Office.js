@@ -96,7 +96,7 @@ class Office extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+        <div className='col s12 center' style={{backgroundColor: '#f2f7f7'}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>
               {this.display()}

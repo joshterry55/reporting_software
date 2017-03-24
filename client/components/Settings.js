@@ -149,7 +149,7 @@ class Settings extends React.Component {
               <option value="#000000">Black</option>
             </select>
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Secondary Text Color</b> <br />
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Button Text Color</b> <br />
             <select className="browser-default" ref='accentText' defaultValue={this.props.assignedcompany.accent_text} style={{border: '1px solid #ddd'}}>
               <option value="" disabled >Choose your option</option>
               <option value="#ffffff">White</option>
@@ -226,11 +226,7 @@ class Settings extends React.Component {
     return(
       <div className='row'>
         <Admin />
-        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
-          <div style={{marginTop: '10px', marginBottom: '10px'}}>
-            <span style={{fontSize: '20px'}}>Settings</span>
-          </div>
-        </div>
+
         <div className='col s12 m10 offset-m1 l8 offset-l2' style={{marginTop: '15px'}}>
           {this.display()}
         </div>

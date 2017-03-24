@@ -35,23 +35,22 @@ class Admin extends React.Component {
   //  }
 
   highlightNav(tab) {
+    let company = this.props.assignedcompany
     if(tab === 'addsale') {
       if(document.location.pathname === "/addsale") {
         return styles.adminNavActiveTab
       } else {
-        return styles.adminNavTab
+
       }
     } else if(tab === 'company') {
       if(document.location.pathname === "/company") {
       return styles.adminNavActiveTab
       } else {
-        return styles.adminNavTab
       }
     } else if(tab === 'settings') {
       if(document.location.pathname === "/settings") {
         return styles.adminNavActiveTab
       } else {
-        return styles.adminNavTab
       }
     }
   }
@@ -64,16 +63,16 @@ class Admin extends React.Component {
   adminTabs() {
     if(this.props.assignedcompany.id) {
       return(
-          <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '13px'}}>
+          <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '10px'}}>
             <ul className="tabs tabs-fixed-width" style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
               <div className="tab col s3">
-                <li className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('addsale')} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: '#555'}}>Add Sale</Link></li>
+                <li className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('addsale')} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: '#fff'}}>Add Sale</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link to='/company' className='admin' style={{color: '#555'}}>{this.props.assignedcompany.name}</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('company')}><Link to='/company' className='admin' style={{color: '#fff'}}>{this.props.assignedcompany.name}</Link></li>
               </div>
               <div className="tab col s3">
-                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('settings')}><Link to='/settings' className='admin' style={{color: '#555'}}>Settings</Link></li>
+                <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('settings')}><Link to='/settings' className='admin' style={{color: '#fff'}}>Settings</Link></li>
               </div>
             </ul>
           </div>
@@ -93,7 +92,7 @@ class Admin extends React.Component {
   render() {
     return(
       <div className='row' style={{marginBottom: '0px'}}>
-        <div style={{height: '75px', backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, width: '100%'}}>
+        <div style={{height: '68px', backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, width: '100%'}}>
           {this.adminTabs()}
         </div>
       </div>
@@ -102,17 +101,9 @@ class Admin extends React.Component {
 }
 
 const styles = {
-  adminNavTab: {
-    border: '1px solid #3a3b3a',
-    borderRadius: '5px',
-    backgroundColor: '#f2f7f7',
-    boxShadow: 'inset 0 0 2px #3a3b3a'
-  },
+
   adminNavActiveTab: {
-    border: '1px solid #3a3b3a',
-    borderRadius: '5px',
     backgroundColor: '#ccc',
-    boxShadow: 'inset 0 0 2px #3a3b3a'
   }
 }
 

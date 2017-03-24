@@ -50,12 +50,7 @@ class LeaderboardEmployees extends React.Component {
     return(
       <div className='row'>
         <Leaderboards />
-          <div className='col s12 center' style={{backgroundColor: '#ccc', fontSize: '20px'}}>
-            <div style={{marginTop: '10px', marginBottom: '10px'}}>
-              Leaderboard
-            </div>
-          </div>
-        <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>
+        <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px', marginTop: '10px'}}>
           <form className='col s12 m5' style={{marginTop: '10px'}}>
             <span>Region:</span>
             <select ref='user' className='browser-default' style={{backgroundColor: 'white', border: '1px solid #bbb', color: 'black', fontSize: '18px', margin: '0 auto'}} onChange={this.regionInfo}>
