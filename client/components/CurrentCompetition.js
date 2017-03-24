@@ -123,7 +123,7 @@ class CurrentCompetition extends React.Component {
               lineHeight: '61px',
               color: `${this.props.assignedcompany.color_text}`,
               fontSize: '35px',
-              textShadow: '0 0 5px rgba(0,0,0,0.50)',
+              // textShadow: '0 0 5px rgba(0,0,0,0.50)',
               backgroundColor: `${this.props.assignedcompany.color}`,
               borderBottom: '1px solid #333',
               boxShadow: '0 0 6px #000',
