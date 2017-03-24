@@ -57,9 +57,11 @@ class ReportRegionSelect extends React.Component {
     }
     return(
       <div className='row'>
-        <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, fontSize: '20px'}}>
-          <div style={{marginTop: '10px', marginBottom: '10px'}}>
-            Office Reports
+        <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, fontSize: '20px', height: '68px'}}>
+          <div style={{marginTop: '19px', marginBottom: '10px'}}>
+            <span style={{fontSize: '20px', color: `${this.props.assignedcompany.secondary_text}`, padding: '10px 30px'}}>
+              Office Reports
+            </span>
           </div>
         </div>
         <div className = 'col s12 m10 offset-m1' style={{paddingLeft: '0px', paddingRight: '0px'}}>

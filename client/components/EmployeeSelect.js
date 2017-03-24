@@ -117,10 +117,10 @@ class EmployeeSelect extends React.Component {
     let company = this.props.assignedcompany
     return(
       <div className='row'>
-        <div style={{height: '75px', backgroundColor: `${company.secondary_nav_color}`}}>
+        <div style={{height: '68px', backgroundColor: `${company.secondary_nav_color}`}}>
           <div className='col s12 m4 offset-m4'>
             <form onSubmit={this.setCurrent} className='col s12'>
-              <div className='col s12' style={{marginTop: '15px'}}>
+              <div className='col s12' style={{marginTop: '12px'}}>
                 <select ref='user' className='browser-default' style={{backgroundColor: '#f2f7f'}} onChange={this.setCurrent}>
                   <option defaultValue="" disabled selected>Select a salesman</option>
                   {this.employeeSelector()}
