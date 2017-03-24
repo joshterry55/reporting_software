@@ -45,18 +45,25 @@ class CompanyLeaderboardDisplay extends React.Component {
   }
 
   companyAvatar(pic) {
+    // return(
+    //   <div className='col s0 l4 hide-on-med-and-down' style={{
+    //     height: '40px',
+    //     width: '40px',
+    //     borderRadius: '5px',
+    //     boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+    //     backgroundImage: `url(${pic})`,
+    //     backgroundSize: 'cover',
+    //     display: 'inline-block',
+    //     marginTop: '5px',
+    //     marginLeft: '5px'
+    //    }}></div>
+    // )
     return(
       <div className='col s0 l4 hide-on-med-and-down' style={{
-        height: '40px',
-        width: '40px',
-        borderRadius: '5px',
-        boxShadow: '0 0 2px rgba(0,0,0,0.35)',
-        backgroundImage: `url(${pic})`,
-        backgroundSize: 'cover',
-        display: 'inline-block',
-        marginTop: '5px',
-        marginLeft: '5px'
-       }}></div>
+          maxHeigth: '40px'
+        }}>
+        <img style={{maxWidth: '40px', marginTop: '15px'}} src={pic} alt=""  />
+      </div>
     )
   }
 

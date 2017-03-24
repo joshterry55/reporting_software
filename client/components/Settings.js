@@ -133,16 +133,16 @@ class Settings extends React.Component {
             <input type='text' ref='lifetimeKw' style={{backgroundColor: 'white'}} className='employee-info' placeholder='100, 1000 etc.' defaultValue={company.lifetime_kw} required/>
           </div>
           <div className='col s12' style={{ marginBottom: '10px', marginTop: '20px'}}>
-            <span style={{fontSize: '20px', fontWeight: 'bold'}}>Customize Colors</span> (defaults: Company: #354458, Secondary: #60B9E8)
+            <span style={{fontSize: '20px', fontWeight: 'bold'}}>Customize Colors</span> (defaults: Company: #354458, Secondary: #808080, Buttons: #60B9E8)
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Company Color (navbar, headings)</b> <br />
             <input ref='color' style={{backgroundColor: `${company.color}`, color: `${this.props.assignedcompany.color_text}`}} className="browser-default employee-info" defaultValue={companyColor} required />
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Button Color (buttons, links)</b> <br />
-            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
-          </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Nav Color</b> <br />
             <input ref='secondaryNavColor' style={{backgroundColor: `${company.secondary_nav_color}`, color: `${this.props.assignedcompany.secondary_text}`}} className="browser-default employee-info" defaultValue={companySecondary} required />
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Button Color (buttons, links)</b> <br />
+            <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Company Text Color</b> <br />
             <select className="browser-default" ref='companyText' defaultValue={this.props.assignedcompany.color_text} style={{border: '1px solid #ddd'}}>
@@ -151,15 +151,15 @@ class Settings extends React.Component {
               <option value="#000000">Black</option>
             </select>
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Button Text Color</b> <br />
-            <select className="browser-default" ref='accentText' defaultValue={this.props.assignedcompany.accent_text} style={{border: '1px solid #ddd'}}>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Secondary Text Color</b> <br />
+            <select className="browser-default" ref='secondaryText' defaultValue={this.props.assignedcompany.secondary_text} style={{border: '1px solid #ddd'}}>
               <option value="" disabled >Choose your option</option>
               <option value="#ffffff">White</option>
               <option value="#000000">Black</option>
             </select>
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Secondary Text Color</b> <br />
-            <select className="browser-default" ref='secondaryText' defaultValue={this.props.assignedcompany.secondary_text} style={{border: '1px solid #ddd'}}>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Button Text Color</b> <br />
+            <select className="browser-default" ref='accentText' defaultValue={this.props.assignedcompany.accent_text} style={{border: '1px solid #ddd'}}>
               <option value="" disabled >Choose your option</option>
               <option value="#ffffff">White</option>
               <option value="#000000">Black</option>
