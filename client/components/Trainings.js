@@ -203,7 +203,7 @@ class Trainings extends React.Component {
     let companyName = this.props.assignedcompany.name
     return(
       <div  className='row '>
-        <div className='col s12 center' style={{backgroundColor: '#ccc'}}>
+        <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>{companyName} Training</span>
           </div>

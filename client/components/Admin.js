@@ -65,7 +65,7 @@ class Admin extends React.Component {
     if(this.props.assignedcompany.id) {
       return(
           <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '13px'}}>
-            <ul className="tabs tabs-fixed-width" style={{backgroundColor: 'gray'}}>
+            <ul className="tabs tabs-fixed-width" style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
               <div className="tab col s3">
                 <li className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('addsale')} onClick={this.setForm}><Link to='/addsale' className='admin' style={{color: '#555'}}>Add Sale</Link></li>
               </div>
@@ -80,7 +80,7 @@ class Admin extends React.Component {
       )
     } else {
       return(
-          <div className="col s12" style={{marginTop: '10px'}}>
+          <div className="col s12" style={{marginTop: '10px', backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
             <ul className="tabs tabs-fixed-width">
               <li  className="tab col s3 admin-tabs"><Link to='/'>Home</Link></li>
               <li  className="tab col s3 admin-tabs"><Link to='/createcompany'>Company Setup</Link></li>
@@ -93,7 +93,7 @@ class Admin extends React.Component {
   render() {
     return(
       <div className='row' style={{marginBottom: '0px'}}>
-        <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
+        <div style={{height: '75px', backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, width: '100%'}}>
           {this.adminTabs()}
         </div>
       </div>

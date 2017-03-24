@@ -319,7 +319,7 @@ class TrainingVideos extends React.Component {
   render() {
     return(
       <div className='row'>
-        <div className='col s12 center' id='toTop' name='toTop' style={{backgroundColor: '#ccc'}}>
+        <div className='col s12 center' id='toTop' name='toTop' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px'}}>Training Videos</span>
           </div>

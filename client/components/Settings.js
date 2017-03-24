@@ -27,6 +27,7 @@ class Settings extends React.Component {
     this.refs.cancelPercentage.value = this.props.assignedcompany.cancel_percentage
     this.refs.color.value = this.props.assignedcompany.color.substring(1)
     this.refs.accentColor.value = this.props.assignedcompany.accent_color.substring(1)
+    this.refs.secondaryNavColor.value = this.props.assignedcompany.secondary_nav_color.substring(1)
     this.refs.lifetimeKw.value = this.props.assignedcompany.lifetime_kw
   }
 
@@ -38,9 +39,11 @@ class Settings extends React.Component {
     let kw = this.refs.lifetimeKw.value
     let color = this.refs.color.value
     let accent = this.refs.accentColor.value
+    let secondaryColor = this.refs.secondaryNavColor.value
     let companyText = this.refs.companyText.value
     let accentTextColor = this.refs.accentText.value
     let regexAccentTest = /[0-9A-F]{6}$/i.test(accent)
+    let regexSecondaryTest = /[0-9A-F]{6}$/i.test(secondaryColor)
     let regexColorTest = /[0-9A-F]{6}$/i.test(color)
     if(regexColorTest) {
       if(color.length === 6) {
@@ -48,31 +51,41 @@ class Settings extends React.Component {
         if(regexAccentTest) {
           if(accent.length === 6) {
             accent = `#${accent}`
-            $.ajax({
-              url: `/api/companies/${id}`,
-              type: 'PUT',
-              dataType: 'JSON',
-              data: { company: {
-                true_percentage: truePerc,
-                cancel_percentage: cancelPerc,
-                color: color,
-                lifetime_kw: kw,
-                accent_color: accent,
-                accent_text: accentTextColor,
-                color_text: companyText
-              }}
-            }).done( company => {
-              let messageSuccess = `${company.name} Updated`
-              this.props.dispatch(setFlash(messageSuccess, 'success'))
-              this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
-            }).fail( data => {
+            if(regexSecondaryTest) {
+              if(secondaryColor.length === 6) {
+                secondaryColor = `#${secondaryColor}`
+                $.ajax({
+                  url: `/api/companies/${id}`,
+                  type: 'PUT',
+                  dataType: 'JSON',
+                  data: { company: {
+                    true_percentage: truePerc,
+                    cancel_percentage: cancelPerc,
+                    color: color,
+                    lifetime_kw: kw,
+                    accent_color: accent,
+                    accent_text: accentTextColor,
+                    color_text: companyText,
+                    secondary_nav_color: secondaryColor
+                  }}
+                }).done( company => {
+                  let messageSuccess = `${company.name} Updated`
+                  this.props.dispatch(setFlash(messageSuccess, 'success'))
+                  this.props.dispatch({type: 'ASSIGNED_COMPANY', company})
+                }).fail( data => {
 
-            })
+                })
+              } else {
+                alert('Invalid hex code for secondary color, please use 6-digit format (000000)')
+              }
+            } else {
+              alert('Invalid hex code for secondary color, please use 6-digit format (000000)')
+            }
           } else {
-            alert('Invalid hex code for secondary color, please use 6-digit format (000000)')
+            alert('Invalid hex code for button color, please use 6-digit format (000000)')
           }
         } else {
-          alert('Invalid hex code for secondary color, please use 6-digit format (000000)')
+          alert('Invalid hex code for button color, please use 6-digit format (000000)')
         }
       } else {
         alert('Invalid hex code for company color, please use 6-digit format (000000)')
@@ -101,6 +114,7 @@ class Settings extends React.Component {
     let company = this.props.assignedcompany
     let companyColor = company.color.substring(1)
     let companyAccent = company.accent_color.substring(1)
+    let companySecondary = company.secondary_nav_color.substring(1)
     return(
       <div>
         <form className='col s12 test-test' style={{backgroundColor: '#f27f7', minHeight: '500px', fontSize: '13px'}} onSubmit={this.updateCompany}>
@@ -119,11 +133,14 @@ class Settings extends React.Component {
           <div className='col s12' style={{ marginBottom: '10px', marginTop: '20px'}}>
             <span style={{fontSize: '20px', fontWeight: 'bold'}}>Customize Colors</span> (defaults: Company: #354458, Secondary: #60B9E8)
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Company Color (hex code for navbar)</b> <br />
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Company Color (navbar, headings)</b> <br />
             <input ref='color' style={{backgroundColor: `${company.color}`, color: `${this.props.assignedcompany.color_text}`}} className="browser-default employee-info" defaultValue={companyColor} required />
           </div>
-          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Color (hex code for buttons, links)</b> <br />
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Button Color (buttons, links)</b> <br />
             <input ref='accentColor' style={{backgroundColor: `${company.accent_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companyAccent} required />
+          </div>
+          <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px'}}><b>Secondary Nav Color</b> <br />
+            <input ref='secondaryNavColor' style={{backgroundColor: `${company.secondary_nav_color}`, color: `${this.props.assignedcompany.accent_text}`}} className="browser-default employee-info" defaultValue={companySecondary} required />
           </div>
           <div className='col s12 m6 l4' style={{marginBottom: '30px', height: '40px', paddingRight: '0px', marginRight: '0px'}}><b> Company Text Color</b> <br />
             <select className="browser-default" ref='companyText' defaultValue={this.props.assignedcompany.color_text} style={{border: '1px solid #ddd'}}>

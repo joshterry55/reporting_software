@@ -77,7 +77,7 @@ class Leaderboards extends React.Component {
     if(this.props.assignedcompany.id) {
       return(
           <div className="col s12 m10 offset-m1 l8 offset-l2" style={{marginTop: '13px'}}>
-            <ul className="tabs tabs-fixed-width" style={{backgroundColor: 'gray'}}>
+            <ul className="tabs tabs-fixed-width" style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`}}>
               <div className="tab col s3">
                 <li  className="tab col s10 offset-s1 admin-tabs" style={this.highlightNav('employees')}><Link className='admin' style={{color: '#555'}} onClick={this.clearCurrent} to='/leaderboards/employees'>Salesman</Link></li>
               </div>
@@ -107,7 +107,7 @@ class Leaderboards extends React.Component {
   render() {
     return(
       <div>
-        <div style={{height: '75px', backgroundColor: 'gray', width: '100%'}}>
+        <div style={{height: '75px', backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, width: '100%'}}>
           {this.leaderboardTabs()}
         </div>
       </div>

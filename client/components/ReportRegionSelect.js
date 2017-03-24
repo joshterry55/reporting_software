@@ -57,7 +57,7 @@ class ReportRegionSelect extends React.Component {
     }
     return(
       <div className='row'>
-        <div className='col s12 center' style={{backgroundColor: '#ccc', fontSize: '20px'}}>
+        <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, fontSize: '20px'}}>
           <div style={{marginTop: '10px', marginBottom: '10px'}}>
             Office Reports
           </div>
@@ -103,8 +103,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assignedregions, currentregion, assignedoffices, currentoffice } = state
-  return { user, assignedregions, currentregion, assignedoffices, currentoffice }
+  let { user, assignedregions, currentregion, assignedoffices, currentoffice, assignedcompany } = state
+  return { user, assignedregions, currentregion, assignedoffices, currentoffice, assignedcompany }
 }
 
 export default connect(mapStateToProps)(ReportRegionSelect)
