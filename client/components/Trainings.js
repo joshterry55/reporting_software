@@ -206,7 +206,7 @@ class Trainings extends React.Component {
         <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, height: '68px'}}>
           <div style={{marginTop: '19px', marginBottom: '10px'}}>
             <span style={{fontSize: '20px', color: `${this.props.assignedcompany.secondary_text}`, padding: '10px 30px'}}>
-              Training
+              {`${this.props.assignedcompany.name}`} Training
             </span>
           </div>
         </div>

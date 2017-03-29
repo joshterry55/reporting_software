@@ -261,14 +261,13 @@ class EditCompetition extends React.Component {
   render() {
     return(
       <div className='row'>
-        <AnnouncementsNav />
-        <div className='col s12 center' style={{backgroundColor: '#ccc', marginTop: '0px'}}>
-          <div style={{marginTop: '10px', marginBottom: '10px'}}>
-            <span style={{fontSize: '20px'}}>
-              Edit Competition
-            </span>
+          <div className='col s12 center' style={{backgroundColor: `${this.props.assignedcompany.secondary_nav_color}`, marginTop: '0px', height: '68px'}}>
+            <div style={{marginTop: '19px', marginBottom: '10px'}}>
+              <span style={{fontSize: '20px', color: `${this.props.assignedcompany.secondary_text}`, padding: '10px 30px'}}>
+                Edit Competition
+              </span>
+            </div>
           </div>
-        </div>
         <div className='col s12'>
           {this.display()}
         </div>
