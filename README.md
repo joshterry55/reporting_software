@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+export PATH=~/.local/bin:$PATH && source ~/.bash_profile
+
+
+1. npm install --global webpack webpack-dev-server
+2. webpack -d --config config/webpack.config.js --content-base public/ --progress --colors

@@ -20,3 +20,13 @@
 npm-debug.log
 
 .env 
+# Added by webpack-rails
+/node_modules
+/public/webpack
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+config/application.yml
+public/client
