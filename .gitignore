@@ -30,4 +30,3 @@ npm-debug.log
 !.elasticbeanstalk/*.global.yml
 config/application.yml
 public/client
-Gemfile.lock
