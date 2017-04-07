@@ -21,7 +21,7 @@ gem 'devise_invitable', '~> 1.7.0'
 gem 'cloudinary'
 gem 'ransack'
 gem 'restforce', '~> 2.5.0'
-
+gem 'nio4r'
 group :development, :test do
   gem 'pry'
   gem 'dotenv-rails'
