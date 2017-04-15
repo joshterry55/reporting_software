@@ -18,5 +18,7 @@
 /node_modules
 /public/webpack
 npm-debug.log
-
+.elasticbeanstalk/
+config/application.yml
+public/client
 .env 

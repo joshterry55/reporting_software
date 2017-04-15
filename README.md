@@ -22,6 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+export PATH=~/.local/bin:$PATH && source ~/.bash_profile
+
 
 * eb ssh environment
 
