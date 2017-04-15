@@ -22,3 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* eb ssh environment
+
+* Node version Install here, latest node version needed 
+* https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server
+* npm install
+
+* npm install --global webpack webpack-dev-server
+
+* rake assets:precompile RAILS_ENV=production
+
+* NODE_ENV='production' webpack -d --config config/webpack.config.heroku.js --content-base public/ --progress --colors
+
