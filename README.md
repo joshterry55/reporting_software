@@ -25,5 +25,23 @@ Things you may want to cover:
 export PATH=~/.local/bin:$PATH && source ~/.bash_profile
 
 
-1. npm install --global webpack webpack-dev-server
-2. webpack -d --config config/webpack.config.js --content-base public/ --progress --colors
+
+* eb ssh environment
+
+* Node version Install here, latest node version needed 
+* https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server
+
+
+* npm install --global webpack webpack-dev-server
+
+* rake assets:precompile RAILS_ENV=production
+* npm install
+
+* NODE_ENV='production' webpack -d --config config/webpack.config.heroku.js --content-base public/ --progress --colors
+
+
+1 cd /var/app/current
+2. sudo chmod -R 777 /var/app/current
+3. npm install
+4. NODE_ENV='production' webpack -d --config config/webpack.config.heroku.js --content-base public/ --progress --colors
+
