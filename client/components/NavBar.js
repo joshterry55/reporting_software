@@ -141,7 +141,7 @@ class NavBar extends React.Component {
     }
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: 'red', height: '90px', lineHeight: '90px'}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: `${navColor}`, height: '90px', lineHeight: '90px'}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"><img style={{maxHeight: '60px', marginTop: '15px'}} src={navImage} alt=""  /></span><span className="logo-text"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
