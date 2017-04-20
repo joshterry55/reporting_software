@@ -236,7 +236,7 @@ class Settings extends React.Component {
       <div className='row'>
         <Admin />
 
-        <div className='col s12 m10 offset-m1 l8 offset-l2' style={{marginTop: '15px'}}>
+        <div className='col s12 m10 offset-m1' style={{marginTop: '15px'}}>
           {this.display()}
         </div>
       </div>

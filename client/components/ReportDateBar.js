@@ -71,7 +71,17 @@ class ReportDateBar extends Component {
 
 	render() {
 		return (
-			<div style={styles.dateBarWindow}>
+			<div style={{
+				width: '100%',
+				height: '40px',
+				// backgroundColor: "#ccc",
+				backgroundColor: `${this.props.assignedcompany.color}`,
+				border: "1px solid #bbb",
+				borderBottom: '0px solid #bbb',
+				overflowX: 'scroll',
+				overflowY: 'hidden',
+				color: `${this.props.assignedcompany.color_text}`
+				}}>
 				<div style={styles.dateBar}>
 					{this.showDates()}
 				</div>
@@ -89,23 +99,16 @@ const styles = {
 	dateBarWindow: {
 		width: '100%',
 		height: '40px',
-		// backgroundColor: "#ccc",
 		backgroundColor: "#888",
 		border: "1px solid black",
-		borderBottom: '0px solid black',
 		overflowX: 'scroll',
 		overflowY: 'hidden',
-		boxShadow: 'inset 0 0 5px rgba(0,0,0,0.5)'
-		// boxShadow: 'inset 0 0 5px black'
 	},
 	dateBar: {
 		width: '100%',
 		textAlign: 'center',
 		fontSize: '20px',
 		lineHeight: '40px',
-		fontWeight: 'bold',
-		color: '#f2f7f7',
-		textShadow: '1px 1px 1px rgba(0,0,0,0.75)'
 	}
 }
 

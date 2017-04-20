@@ -42,7 +42,7 @@ class ReportContainer extends Component {
 				<div style={styles.topBarContainer}>
 					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-						<button type='button' className='btn' style={{ background: `${this.props.assignedcompany.color}`, color: `${this.props.assignedcompany.color_text}` }} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' className='btn' style={{ background: `${this.props.assignedcompany.color}`, color: `${this.props.assignedcompany.color_text}`, paddingTop: '1px' }} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
 				</div>
@@ -68,8 +68,8 @@ const styles = {
 	calendarWindow: {
 		height: '600px',
 		width: '100%',
-		backgroundColor: "#ccc",
-		border: "1px solid black",
+		backgroundColor: "#ddd",
+		border: "1px solid #bbb",
 		overflow: 'scroll',
 		marginBottom: '20px'
 	},
@@ -79,16 +79,15 @@ const styles = {
 	button: {
 		height: '30px',
 		padding: '0 10px',
-		margin: '6px 5px',
+		margin: '0px 5px 0px 5px',
 		borderRadius: '5px',
-		border: '1px solid #666',
-		backgroundColor: "linear-gradient(#bbb, #999)",
-		boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+		border: '1px solid #ccc',
+		backgroundColor: `#ddd`,
 		fontSize: '20px',
 		fontWeight: 'bold',
 		lineHeight: '25px',
-		color: '#333',
-		textShadow: '0 1px #ddd'
+		boxShadow: '1px 1px 1px #888',
+		color: '#777',
 	},
 	buttonCurrent: {
 		background: "#60b9e8",
