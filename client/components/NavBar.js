@@ -90,37 +90,37 @@ class NavBar extends React.Component {
       case 'Employee':
         return(
           <div>
-      <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Home</Link></li>
-            <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Announcements</Link></li>
-            <li onClick={() => this.highlightNav('employeeCompetitions')} id="employeeCompetitions"><Link to='/competitions' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Competitions</Link></li>
-            <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Leaderboard</Link></li>
-            <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Training</Link></li>
-            <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Reports</Link></li>
-            <li onClick={() => this.highlightNav('employeePage')} id="employeePage"><Link to='/employee' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>{`${this.props.user.first_name}`}</Link></li>
-            <li onClick={() => this.highlightNav('announcements')} id="announcements"><a onClick={this.logout} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Logout</a></li>
+      <li onClick={() => this.highlightNav('employeeHome')} id="employeeHome"><Link to='/' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Home</Link></li>
+            <li onClick={() => this.highlightNav('employeeAnnouncements')} id="employeeAnnouncements"><Link to='/announcements' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Announcements</Link></li>
+            <li onClick={() => this.highlightNav('employeeCompetitions')} id="employeeCompetitions"><Link to='/competitions' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Competitions</Link></li>
+            <li onClick={() => this.highlightNav('employeeLeaderboard')} id="employeeLeaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Leaderboard</Link></li>
+            <li onClick={() => this.highlightNav('employeeTrainings')} id="employeeTrainings"><Link to='/trainings' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Training</Link></li>
+            <li onClick={() => this.highlightNav('employeeReports')} id="employeeReports"><Link to='/reports' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Reports</Link></li>
+            <li onClick={() => this.highlightNav('employeePage')} id="employeePage"><Link to='/employee' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>{`${this.props.user.first_name}`}</Link></li>
+            <li onClick={() => this.highlightNav('announcements')} id="announcements"><a onClick={this.logout} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Logout</a></li>
           </div>
         )
       case 'Admin':
       return(
         <div>
-          <li onClick={() => this.highlightNav('home')} id="home"><Link to='/' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Home</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Announcements</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('competitions')} id="competitions"><Link to='/competitions' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Competitions</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Leaderboard</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Training</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Reports</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('company')} id="company"><Link to='/company' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Admin</Link></li>
-          <li className='off-tab' onClick={() => this.highlightNav('employee')} id="employee"><Link to='/employeeselect' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}}>Reps</Link></li>
-          <li><a style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
+          <li onClick={() => this.highlightNav('home')} id="home"><Link to='/' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Home</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('announcements')} id="announcements"><Link to='/announcements' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Announcements</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('competitions')} id="competitions"><Link to='/competitions' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Competitions</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('leaderboard')} id="leaderboard"><Link to='/leaderboards/employees' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Leaderboard</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('trainings')} id="trainings"><Link to='/trainings' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Training</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('reports')} id="reports"><Link to='/reports' onClick={this.clearCurrent} style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Reports</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('company')} id="company"><Link to='/company' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Admin</Link></li>
+          <li className='off-tab' onClick={() => this.highlightNav('employee')} id="employee"><Link to='/employeeselect' style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}}>Reps</Link></li>
+          <li><a style={{color: `${this.props.assignedcompany.color_text}`, cursor: 'pointer', fontWeight: 'bold', fontSize: '15px'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
       default:
       return(
         <div>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/signup'>Signup</Link></li>
-          <li><Link to='/signin'>Signin</Link></li>
-          <li><Link to='/'>About</Link></li>
+          <li><Link style={{fontWeight: 'bold', fontSize: '15px'}} to='/'>Home</Link></li>
+          <li><Link style={{fontWeight: 'bold', fontSize: '15px'}} to='/signup'>Signup</Link></li>
+          <li><Link style={{fontWeight: 'bold', fontSize: '15px'}} to='/signin'>Signin</Link></li>
+          <li><Link style={{fontWeight: 'bold', fontSize: '15px'}} to='/'>About</Link></li>
         </div>
       )
     }
